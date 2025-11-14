@@ -1,0 +1,128 @@
+<Project InitialTargets="VerifyProjectSettings;ShowBuildParameters;EnsureBuildOutputPaths">
+
+     <!--This must go in the targets as the directory imports occur BEFORE $(NETCoreSdkVersion) is set and would end up blank -->
+    <PropertyGroup Condition="'$(NETCoreSdkVersion)'!='' AND $([MSBuild]::VersionGreaterThanOrEquals('$(NETCoreSdkVersion)', '10.0.0'))">
+        <DefineConstants>$(DefineConstants);NET_SDK_10_OR_GREATER</DefineConstants>
+    </PropertyGroup>
+
+    <!--
+    Since Nuget.config is configured to include the build output location this
+    will ensure the folder exists during restore so that it won't fail.
+    -->
+    <Target Name="EnsureBuildOutputPaths" Condition="!Exists($(PackageOutputPath))">
+        <Message Importance="high" Text="PackageOutputPath: $(PackageOutputPath)"/>
+        <MakeDir Directories="$(PackageOutputPath)"/>
+    </Target>
+
+    <Target Name="ShowBuildParameters">
+        <Message Importance="normal" Text="              BuildRootDir: $(BuildRootDir)" />
+        <Message Importance="normal" Text="       BaseBuildOutputPath: $(BaseBuildOutputPath)" />
+        <Message Importance="normal" Text="    BaseBuildOutputBinPath: $(BaseBuildOutputBinPath)" />
+        <Message Importance="normal" Text="BaseIntermediateOutputPath: $(BaseIntermediateOutputPath)" />
+        <Message Importance="normal" Text="                    IntDir: $(IntDir)" />
+        <Message Importance="normal" Text="            BaseOutputPath: $(BaseOutputPath)" />
+        <Message Importance="normal" Text="           FullBuildNumber: $(FullBuildNumber)"/>
+        <Message Importance="normal" Text="            PackageVersion: $(PackageVersion)"/>
+        <Message Importance="normal" Text="               FileVersion: $(FileVersion)"/>
+        <Message Importance="normal" Text="                  Platform: $(Platform)"/>
+        <Message Importance="normal" Text="             Configuration: $(Configuration)"/>
+        <Message Importance="normal" Text="         NETCoreSdkVersion: $(NETCoreSdkVersion)"/>
+        <Message Importance="normal" Text="           TargetFramework: $(TargetFramework)"/>
+    </Target>
+
+    <Target Name="VerifyProjectSettings" Condition="'$(MSBuildProjectExtension)'=='.csproj'">
+        <!--
+        Detect if something has this horrible non-feature enabled. It is a blight on the build/language that should never have been added
+        let alone used as the default for projects with no way to block/disable it all up... [Only a subtle, default on, per project option is available]
+
+        NOTE:
+        .editorconfig in this repo includes `csharp_style_prefer_top_level_statements = false:error` to ensure that bad design choice isn't used either.
+
+        NOTE:
+        While the MSBuild `ImplicitUsings` property is banned from this repo, the C# language feature of global usings is NOT.
+        The build property will auto include an invisible and undiscoverable (without looking up obscure documentation)
+        set of namespaces that is NOT consistent or controlled by the developer. THAT is what is BAD/BROKEN about that feature.
+        By banning it's use and then providing a `GlobalNamespaceImports.cs` source file with ONLY global using statements ALL of
+        that is eliminated. Such use of the language feature restores FULL control and visibility of the namespaces to the developer,
+        where it belongs. For a good explanation of this problem see: https://rehansaeed.com/the-problem-with-csharp-10-implicit-usings/.
+        For an explanation of the benefits of the language feature see: https://www.hanselman.com/blog/implicit-usings-in-net-6
+        -->
+        <Error Condition="'$(ImplicitUsings)'!='disable'" Text="$(MSBuildProjectFile) - Projects in this repository MUST NOT have ImplicitUsings enabled!"/>
+    </Target>
+
+    <!-- see https://stackoverflow.com/questions/53278544/nuget-versioning-with-projectreference-dependencies for inspiration of this -->
+    <!--
+    This updates the required version of the referenced package in the package generated for *this* project.
+    -->
+    <Target Name="UseExplicitPackageVersions" BeforeTargets="_SetNuSpecPropertiesWithBuildInfo">
+        <ItemGroup>
+            <_ProjectReferencesWithVersions Condition="'%(FullPath)' != ''">
+                <PackageVersion>@(ProjectReference->'%(PackageVersion)')</PackageVersion>
+            </_ProjectReferencesWithVersions>
+            <_ProjectReferencesWithVersions Condition="'%(Identity)' != '' And '%(PackageVersion)' != ''">
+                <ProjectVersion>$([System.String]::new('%(PackageVersion)').Replace('~',%(ProjectVersion)))</ProjectVersion>
+            </_ProjectReferencesWithVersions>
+        </ItemGroup>
+    </Target>
+
+    <!--Antlr4BuildTasks specific support -->
+    <!--
+    Sadly the Antlr4BuildTasks package creates an ItemDefinitionGroup for Antlr4, in the "targets" file...
+    (Should go in the props file so a project can override it!). Fortunately, **this** targets file is processed
+    AFTER any NUGET targets, allowing overrides here.
+    -->
+    <ItemDefinitionGroup>
+        <Antlr4>
+            <JavaDownloadDirectory>$(BaseBuildOutputPath)packages\Java</JavaDownloadDirectory>
+            <AntlrToolJarDownloadDir>$(BaseBuildOutputPath)packages\antlr4</AntlrToolJarDownloadDir>
+        </Antlr4>
+    </ItemDefinitionGroup>
+
+    <!-- Gist of this inline task from https://stackoverflow.com/questions/7837644/how-to-replace-string-in-file-using-msbuild -->
+    <UsingTask
+        TaskName="ReplaceFileText"
+        TaskFactory="RoslynCodeTaskFactory"
+        AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll">
+        <ParameterGroup>
+            <InputFilename ParameterType="System.String" Required="true" />
+            <OutputFilename ParameterType="System.String" Required="true" />
+            <MatchExpression ParameterType="System.String" Required="true" />
+            <ReplacementText ParameterType="System.String" Required="true" />
+        </ParameterGroup>
+        <Task>
+            <Using Namespace="System" />
+            <Using Namespace="System.IO" />
+            <Using Namespace="System.Text.RegularExpressions" />
+            <Code Type="Fragment" Language="cs">
+                <![CDATA[
+            File.WriteAllText(
+                OutputFilename,
+                Regex.Replace(File.ReadAllText(InputFilename), MatchExpression, ReplacementText)
+                );
+          ]]>
+            </Code>
+        </Task>
+    </UsingTask>
+
+    <!--
+    Sadly, the Antlr4 C# generator is hard coded to use "public" access for the generated code files.
+    So, this target will use text replacement on the generated source files to set internal access.
+    -->
+    <Target Name="MakeAntlrGeneratedCodeInternal"
+        AfterTargets="Antlr4Compile"
+        Condition="'$(ForceAntlr4GeneratedCodeInternal)'=='true'">
+
+        <!-- Use Antlr4BuildTasks target to get an item list of all the generated files-->
+        <CallTarget Targets="Antlr4CompileReadGeneratedFileList">
+            <Output TaskParameter="TargetOutputs" ItemName="Antlr4GeneratedCodeFiles"/>
+        </CallTarget>
+
+        <!-- use text replacement on each file to convert the public partial classes and interfaces to internal -->
+        <ReplaceFileText
+              Condition="'%(Antlr4GeneratedCodeFiles.FullPath)'!=''"
+              InputFileName="%(Antlr4GeneratedCodeFiles.FullPath)"
+              OutputFileName="%(Antlr4GeneratedCodeFiles.FullPath)"
+              MatchExpression="public (partial class|interface)"
+              ReplacementText="internal $1" />
+    </Target>
+</Project>

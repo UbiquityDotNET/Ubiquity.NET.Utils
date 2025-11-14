@@ -1,0 +1,50 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <!--
+      Most runtime support required is polyfilled with additional dependencies. Though
+      some language features have a hard requirement on runtime support not available
+      in .NET Standard 2.0 needed for source generators. Thus will land in build errors
+      in most cases, but sometimes can end up as runtime errors! BEWARE!
+      -->
+    <!--Until C#14 and the "field" and "extension" keywords are available use the preview language -->
+    <LangVersion>preview</LangVersion>
+
+    <!--NuGet packaging support -->
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <MinClientVersion>4.9.0</MinClientVersion>
+    <Authors>.NET Foundation,Ubiquity.NET</Authors>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <Description>General use .NET extensions and utilities for implementing Roslyn analyzers, fixers and src generators</Description>
+    <PackageTags>Extensions, Rolsyn,Utility,Helper,.NET,Ubiquity.NET</PackageTags>
+    <PackageReadmeFile>ReadMe.md</PackageReadmeFile>
+    <PackageProjectUrl>https://github.com/UbiquityDotNET/Ubiquity.NET.Utils</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/UbiquityDotNET/Ubiquity.NET.Utils.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseExpression>Apache-2.0 WITH LLVM-exception</PackageLicenseExpression>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="ReadMe.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Bcl.HashCode" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Common"/>
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp"/>
+    <PackageReference Include="Microsoft.CodeAnalysis.VisualBasic"/>
+    <PackageReference Include="Microsoft.CodeAnalysis.Analyzers">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="PolySharp">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <!--Until C#14 and the "field" and "extensions" keywords are available use the preview language -->
+        <LangVersion>preview</LangVersion>
+        <GenerateDocumentationFile>True</GenerateDocumentationFile>
+
+        <!--NuGet packaging support -->
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <MinClientVersion>4.9.0</MinClientVersion>
+        <Authors>.NET Foundation,Ubiquity.NET</Authors>
+        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+        <Description>General use Support for Command line parsing based on System.CommandLine</Description>
+        <PackageTags>Extensions,.NET,Ubiquity.NET, Console</PackageTags>
+        <PackageReadmeFile>PackageReadMe.md</PackageReadmeFile>
+        <PackageProjectUrl>https://github.com/UbiquityDotNET/Ubiquity.NET.Utils</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/UbiquityDotNET/Ubiquity.NET.Utils.git</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageLicenseExpression>Apache-2.0 WITH LLVM-exception</PackageLicenseExpression>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="PackageReadMe.md" Pack="true" PackagePath="\" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="System.CommandLine" />
+        <PackageReference Include="AnsiCodes" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Ubiquity.NET.Extensions\Ubiquity.NET.Extensions.csproj" />
+    </ItemGroup>
+
+</Project>
