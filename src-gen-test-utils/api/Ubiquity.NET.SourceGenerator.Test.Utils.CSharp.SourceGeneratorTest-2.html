@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class SourceGeneratorTest&lt;TSourceGenerator, TVerifier&gt; | Ubiquity.NET </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class SourceGeneratorTest&lt;TSourceGenerator, TVerifier&gt; | Ubiquity.NET ">
+      
+      <meta name="description" content="Source generator tests for C# that allows specification of the language">
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/new/develop/apiSpec/new?filename=Ubiquity_NET_SourceGenerator_Test_Utils_CSharp_SourceGeneratorTest_2.md&amp;value=---%0Auid%3A%20Ubiquity.NET.SourceGenerator.Test.Utils.CSharp.SourceGeneratorTest%602%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../favicon-32x32.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+        </div>
+
+        <article data-uid="Ubiquity.NET.SourceGenerator.Test.Utils.CSharp.SourceGeneratorTest`2">
+
+
+
+  <h1 id="Ubiquity_NET_SourceGenerator_Test_Utils_CSharp_SourceGeneratorTest_2" data-uid="Ubiquity.NET.SourceGenerator.Test.Utils.CSharp.SourceGeneratorTest`2" class="text-break">
+Class SourceGeneratorTest&lt;TSourceGenerator, TVerifier&gt;  <a class="header-action link-secondary" title="View source" href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.8-rc.2/src/Ubiquity.NET.SourceGenerator.Test.Utils/CSharp/SourceGeneratorTest.cs/#L13"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Ubiquity.html">Ubiquity</a>.<a class="xref" href="Ubiquity.NET.html">NET</a>.<a class="xref" href="Ubiquity.NET.SourceGenerator.html">SourceGenerator</a>.<a class="xref" href="Ubiquity.NET.SourceGenerator.Test.html">Test</a>.<a class="xref" href="Ubiquity.NET.SourceGenerator.Test.Utils.html">Utils</a>.<a class="xref" href="Ubiquity.NET.SourceGenerator.Test.Utils.CSharp.html">CSharp</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Ubiquity.NET.SourceGenerator.Test.Utils.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Source generator tests for C# that allows specification of the language</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class SourceGeneratorTest&lt;TSourceGenerator, TVerifier&gt; : CSharpSourceGeneratorTest&lt;TSourceGenerator, TVerifier&gt; where TSourceGenerator : new() where TVerifier : IVerifier, new()</code></pre>
+  </div>
+
+
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>TSourceGenerator</code></dt>
+    <dd><p>Source generator type</p>
+</dd>
+    <dt><code>TVerifier</code></dt>
+    <dd><p>Verifier type</p>
+</dd>
+  </dl>
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">AnalyzerTest</span>&lt;TVerifier&gt;</div>
+      <div><span class="xref">SourceGeneratorTest</span>&lt;TVerifier&gt;</div>
+      <div><span class="xref">CSharpSourceGeneratorTest</span>&lt;TSourceGenerator, TVerifier&gt;</div>
+      <div><span class="xref">SourceGeneratorTest&lt;TSourceGenerator, TVerifier&gt;</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <span class="xref">CSharpSourceGeneratorTest&lt;TSourceGenerator, TVerifier&gt;.GetSourceGenerators()</span>
+    </div>
+    <div>
+      <span class="xref">CSharpSourceGeneratorTest&lt;TSourceGenerator, TVerifier&gt;.CreateCompilationOptions()</span>
+    </div>
+    <div>
+      <span class="xref">CSharpSourceGeneratorTest&lt;TSourceGenerator, TVerifier&gt;.CreateParseOptions()</span>
+    </div>
+    <div>
+      <span class="xref">CSharpSourceGeneratorTest&lt;TSourceGenerator, TVerifier&gt;.DefaultFileExt</span>
+    </div>
+    <div>
+      <span class="xref">CSharpSourceGeneratorTest&lt;TSourceGenerator, TVerifier&gt;.Language</span>
+    </div>
+    <div>
+      <span class="xref">SourceGeneratorTest&lt;TVerifier&gt;.GetDiagnosticAnalyzers()</span>
+    </div>
+    <div>
+      <span class="xref">SourceGeneratorTest&lt;TVerifier&gt;.GetSourceGenerators()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">AnalyzerTest&lt;TVerifier&gt;.RunAsync(CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">AnalyzerTest&lt;TVerifier&gt;.RunImplAsync(CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.diagnostics.diagnosticanalyzer">AnalyzerTest&lt;TVerifier&gt;.GetDefaultDiagnostic(DiagnosticAnalyzer[])</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1">AnalyzerTest&lt;TVerifier&gt;.FormatVerifierMessage(ImmutableArray&lt;DiagnosticAnalyzer&gt;, Diagnostic, DiagnosticResult, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">AnalyzerTest&lt;TVerifier&gt;.VerifySourceGeneratorAsync(SolutionState, IVerifier, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1">AnalyzerTest&lt;TVerifier&gt;.VerifyDiagnosticsAsync(EvaluatedProjectState, ImmutableArray&lt;EvaluatedProjectState&gt;, DiagnosticResult[], IVerifier, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.solution">AnalyzerTest&lt;TVerifier&gt;.GetSortedDiagnosticsAsync(Solution, ImmutableArray&lt;DiagnosticAnalyzer&gt;, ImmutableArray&lt;(Project project, Diagnostic diagnostic)&gt;, CompilerDiagnostics, IVerifier, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.project">AnalyzerTest&lt;TVerifier&gt;.GetProjectCompilationAsync(Project, IVerifier, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.diagnostic">AnalyzerTest&lt;TVerifier&gt;.IsCompilerDiagnosticIncluded(Diagnostic, CompilerDiagnostics)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.project">AnalyzerTest&lt;TVerifier&gt;.GetAnalyzerOptions(Project)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.compilation">AnalyzerTest&lt;TVerifier&gt;.CreateCompilationWithAnalyzers(Compilation, ImmutableArray&lt;DiagnosticAnalyzer&gt;, AnalyzerOptions, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1">AnalyzerTest&lt;TVerifier&gt;.CreateProjectAsync(EvaluatedProjectState, ImmutableArray&lt;EvaluatedProjectState&gt;, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1">AnalyzerTest&lt;TVerifier&gt;.CreateProjectImplAsync(EvaluatedProjectState, ImmutableArray&lt;EvaluatedProjectState&gt;, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">AnalyzerTest&lt;TVerifier&gt;.GetNameAndFoldersFromPath(string, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.projectid">AnalyzerTest&lt;TVerifier&gt;.CreateSolutionAsync(ProjectId, EvaluatedProjectState, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.project">AnalyzerTest&lt;TVerifier&gt;.ApplyCompilationOptions(Project)</a>
+    </div>
+    <div>
+      <span class="xref">AnalyzerTest&lt;TVerifier&gt;.CreateWorkspaceAsync()</span>
+    </div>
+    <div>
+      <span class="xref">AnalyzerTest&lt;TVerifier&gt;.CreateWorkspaceImplAsync()</span>
+    </div>
+    <div>
+      <span class="xref">AnalyzerTest&lt;TVerifier&gt;.CreateCompilationOptions()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1">AnalyzerTest&lt;TVerifier&gt;.FilterDiagnostics(ImmutableArray&lt;(Project project, Diagnostic diagnostic)&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1">AnalyzerTest&lt;TVerifier&gt;.SortDistinctDiagnostics(ImmutableArray&lt;(Project project, Diagnostic diagnostic)&gt;)</a>
+    </div>
+    <div>
+      <span class="xref">AnalyzerTest&lt;TVerifier&gt;.Verify</span>
+    </div>
+    <div>
+      <span class="xref">AnalyzerTest&lt;TVerifier&gt;.DefaultFilePathPrefix</span>
+    </div>
+    <div>
+      <span class="xref">AnalyzerTest&lt;TVerifier&gt;.DefaultTestProjectName</span>
+    </div>
+    <div>
+      <span class="xref">AnalyzerTest&lt;TVerifier&gt;.DefaultFilePath</span>
+    </div>
+    <div>
+      <span class="xref">AnalyzerTest&lt;TVerifier&gt;.DefaultFileExt</span>
+    </div>
+    <div>
+      <span class="xref">AnalyzerTest&lt;TVerifier&gt;.Language</span>
+    </div>
+    <div>
+      <span class="xref">AnalyzerTest&lt;TVerifier&gt;.TestCode</span>
+    </div>
+    <div>
+      <span class="xref">AnalyzerTest&lt;TVerifier&gt;.ExpectedDiagnostics</span>
+    </div>
+    <div>
+      <span class="xref">AnalyzerTest&lt;TVerifier&gt;.CompilerDiagnostics</span>
+    </div>
+    <div>
+      <span class="xref">AnalyzerTest&lt;TVerifier&gt;.MarkupOptions</span>
+    </div>
+    <div>
+      <span class="xref">AnalyzerTest&lt;TVerifier&gt;.TestState</span>
+    </div>
+    <div>
+      <span class="xref">AnalyzerTest&lt;TVerifier&gt;.XmlReferences</span>
+    </div>
+    <div>
+      <span class="xref">AnalyzerTest&lt;TVerifier&gt;.TestBehaviors</span>
+    </div>
+    <div>
+      <span class="xref">AnalyzerTest&lt;TVerifier&gt;.DisabledDiagnostics</span>
+    </div>
+    <div>
+      <span class="xref">AnalyzerTest&lt;TVerifier&gt;.ReferenceAssemblies</span>
+    </div>
+    <div>
+      <span class="xref">AnalyzerTest&lt;TVerifier&gt;.DiagnosticVerifier</span>
+    </div>
+    <div>
+      <span class="xref">AnalyzerTest&lt;TVerifier&gt;.OptionsTransforms</span>
+    </div>
+    <div>
+      <span class="xref">AnalyzerTest&lt;TVerifier&gt;.SolutionTransforms</span>
+    </div>
+    <div>
+      <span class="xref">AnalyzerTest&lt;TVerifier&gt;.MatchDiagnosticsTimeout</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+  <dl class="jumplist">
+    <dt><a class="xref" href="Ubiquity.NET.SourceGenerator.Test.Utils.CSharp.SourceGeneratorTest-2.-ctor.html#Ubiquity_NET_SourceGenerator_Test_Utils_CSharp_SourceGeneratorTest_2__ctor_Microsoft_CodeAnalysis_CSharp_LanguageVersion_">SourceGeneratorTest(LanguageVersion)</a></dt>
+    <dd><p>Initializes a new instance of the <a class="xref" href="Ubiquity.NET.SourceGenerator.Test.Utils.CSharp.SourceGeneratorTest-2.html">SourceGeneratorTest&lt;TSourceGenerator, TVerifier&gt;</a> class.</p>
+</dd>
+  </dl>
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+  <dl class="jumplist">
+    <dt><a class="xref" href="Ubiquity.NET.SourceGenerator.Test.Utils.CSharp.SourceGeneratorTest-2.CreateParseOptions.html#Ubiquity_NET_SourceGenerator_Test_Utils_CSharp_SourceGeneratorTest_2_CreateParseOptions">CreateParseOptions()</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.8-rc.2/src/Ubiquity.NET.SourceGenerator.Test.Utils/CSharp/SourceGeneratorTest.cs/#L13" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright (C) 2017-2025, Ubiquity.NET Contributors
+          - Build: 20.1.8-rc.2
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
