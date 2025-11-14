@@ -1,0 +1,57 @@
+﻿{
+  "$schema": "https://raw.githubusercontent.com/DotNetAnalyzers/StyleCopAnalyzers/master/StyleCop.Analyzers/StyleCop.Analyzers/Settings/stylecop.schema.json",
+  "settings":
+  {
+        "indentation":
+        {
+            "indentationSize": 4,
+            "tabSize": 4,
+            "useTabs": false
+        },
+        "namingRules":
+        {
+            "allowCommonHungarianPrefixes": false,
+            "allowedHungarianPrefixes": ["h", "di", "op", "os", "ir", "is", "do", "un", "on", "to", "if", "no", "v", "in", "p", "pp", "by", "dy"]
+        },
+        "orderingRules":
+        {
+            "elementOrder": [ "constant", "accessibility", "static", "readonly" ],
+            "systemUsingDirectivesFirst": true,
+            "usingDirectivesPlacement": "outsideNamespace",
+            "blankLinesBetweenUsingGroups": "allow"
+        },
+        "maintainabilityRules":
+        {
+            "topLevelTypes": ["class"]
+        },
+        "layoutRules":
+        {
+            "newlineAtEndOfFile": "require",
+            "allowConsecutiveUsings": true,
+            "allowDoWhileOnClosingBrace": true
+        },
+        "documentationRules":
+        {
+            "companyName": "Ubiquity.NET",
+            "headerDecoration": "-----------------------------------------------------------------------",
+            "copyrightText": "Copyright (c) {companyName} Contributors. All rights reserved.\nLicensed under the {licenseName} license. See the {licenseFile} file in the project root for full license information.",
+            "variables": {
+                "licenseName": "Apache-2.0 WITH LLVM-exception",
+                "licenseFile": "LICENSE.md"
+            },
+            "xmlHeader": false,
+            // The use of these two values is just plain weird and IMNSHO broken but it does the job of requiring documentation
+            // on public interfaces and ignoring internal ones. See: https://github.com/DotNetAnalyzers/StyleCopAnalyzers/issues/3100
+            "documentExposedElements": true,
+            "documentInterfaces": false,  // since the above settings is true, this applies to non-exposed interfaces
+            "documentInternalElements": false,
+            "documentPrivateElements": false,
+            "documentPrivateFields": false,
+            "documentationCulture":"en-us"
+        },
+        "readabilityRules":
+        {
+            "allowBuiltInTypeAliases": true
+        }
+  }
+}

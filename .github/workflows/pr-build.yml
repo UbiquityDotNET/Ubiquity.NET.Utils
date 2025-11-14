@@ -1,0 +1,90 @@
+name: CI-Build
+permissions:
+  contents: read
+defaults:
+    run:
+        shell: pwsh
+
+on:
+  push:
+    branches:
+      - develop
+
+    paths-ignore:
+      - '**.md'
+      - '**.dic'
+      - 'BuildVersion.xml'
+      - 'GitHub/workflows/release-build.yml'
+      - 'OneFlow/**.ps1'
+
+  pull_request:
+    branches:
+      - develop
+
+    paths-ignore:
+      - '**.md'
+      - '**.dic'
+      - 'BuildVersion.xml'
+      - 'GitHub/workflows/release-build.yml'
+      - 'OneFlow/**.ps1'
+
+jobs:
+  # see: https://github.com/EnricoMi/publish-unit-test-result-action?tab=readme-ov-file#support-fork-repositories-and-dependabot-branches
+  event_file:
+    name: "Event File"
+    runs-on: windows-latest
+    steps:
+      - name: Upload event file
+        uses: actions/upload-artifact@v4
+        with:
+          name: Event File
+          path: ${{ github.event_path }}
+
+  build_target:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+        with:
+           persist-credentials: false
+           fetch-depth: 0
+
+      - name: Build Source
+        run: ./Build-Source.ps1 -ForceClean
+
+      - name: Run Tests
+        run: ./Invoke-Tests.ps1
+
+      # Upload test results even if failed; unless cancelled
+      - name: Upload Test Results
+        if: (!cancelled())
+        uses: actions/upload-artifact@v4
+        with:
+          name: Test Results
+          path: BuildOutput/Test-Results/*.trx
+
+      - name: Upload NuGET Packages
+        uses: actions/upload-artifact@v4
+        with:
+            name: NuGet Packages
+            path: ./BuildOutput/NuGet
+
+  build-docs:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+        with:
+           persist-credentials: false
+
+      - name: Build Docs
+        run: ./Build-Docs.ps1 -FullInit -Configuration Release
+
+      - name: Upload docs artifact
+        uses: actions/upload-artifact@v4
+        with:
+            name: Docs
+            path: |
+              BuildOutput/docs/
+              !BuildOutput/docs/.git/**
+

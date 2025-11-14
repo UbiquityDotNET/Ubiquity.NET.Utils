@@ -1,0 +1,51 @@
+<Solution>
+  <Folder Name="/Repo Items/">
+    <File Path="../.editorconfig" />
+    <File Path="../.gitignore" />
+    <File Path="../Build-Docs.ps1" />
+    <File Path="../Build-Source.ps1" />
+    <File Path="../BuildVersion.xml" />
+    <File Path="../CODE_OF_CONDUCT.md" />
+    <File Path="../Directory.Build.props" />
+    <File Path="../Directory.Build.targets" />
+    <File Path="../Directory.Packages.props" />
+    <File Path="../global.json" />
+    <File Path="../GOVERNANCE.md" />
+    <File Path="../IgnoredWords.dic" />
+    <File Path="../Invoke-Tests.ps1" />
+    <File Path="../LICENSE.md" />
+    <File Path="../NuGet.Config" />
+    <File Path="../README.md" />
+    <File Path="../Show-Docs.ps1" />
+    <File Path="../stylecop.json" />
+    <File Path="x64.runsettings" />
+  </Folder>
+  <Folder Name="/Repo Items/GitHub/" />
+  <Folder Name="/Repo Items/GitHub/workflow/">
+    <File Path="../.github/workflows/pr-build.yml" />
+    <File Path="../.github/workflows/release-build.yml" />
+  </Folder>
+  <Folder Name="/Repo Items/OneFlow/">
+    <File Path="../OneFlow/Publish-Release.ps1" />
+    <File Path="../OneFlow/ReadMe.md" />
+    <File Path="../OneFlow/Start-Release.ps1" />
+  </Folder>
+  <Folder Name="/Tests/">
+    <Project Path="Ubiquity.NET.CommandLine.UT/Ubiquity.NET.CommandLine.UT.csproj" />
+    <Project Path="Ubiquity.NET.Extensions.UT/Ubiquity.NET.Extensions.UT.csproj" Id="8c25ceeb-c564-4983-9f8b-abc749d5db6c" />
+    <Project Path="Ubiquity.NET.InteropHelpers.UT/Ubiquity.NET.InteropHelpers.UT.csproj" />
+    <Project Path="Ubiquity.NET.SrcGeneration.UT/Ubiquity.NET.SrcGeneration.UT.csproj" Id="eaf06b2e-fb6c-450c-9fb2-774b043acf4d" />
+  </Folder>
+  <Project Path="../docfx/documentation.msbuildproj" Type="13b669be-bb05-4ddf-9536-439f39a36129" />
+  <Project Path="../PsModules/CommonBuild/CommonBuild.pssproj" Type="f5034706-568f-408a-b7b3-4d38c6db8a32" Id="6cafc0c6-a428-4d30-a9f9-700e829fea51" />
+  <Project Path="../PsModules/RepoBuild/RepoBuild.pssproj" Type="f5034706-568f-408a-b7b3-4d38c6db8a32" Id="118e4d2b-5adb-4f7c-9395-b4ceeee3d2e1" />
+  <Project Path="Ubiquity.NET.ANTLR.Utils/Ubiquity.NET.ANTLR.Utils.csproj" />
+  <Project Path="Ubiquity.NET.CodeAnalysis.Utils/Ubiquity.NET.CodeAnalysis.Utils.csproj" />
+  <Project Path="Ubiquity.NET.CommandLine/Ubiquity.NET.CommandLine.csproj" Id="3dae7afd-0d33-4805-855b-c1283237b58a" />
+  <Project Path="Ubiquity.NET.Extensions/Ubiquity.NET.Extensions.csproj" />
+  <Project Path="Ubiquity.NET.InteropHelpers/Ubiquity.NET.InteropHelpers.csproj" />
+  <Project Path="Ubiquity.NET.PollyFill.SharedSources/Ubiquity.NET.PollyFill.SharedSources.shproj" Id="9fb998e5-6d78-4129-8022-9bb39fea81f2" />
+  <Project Path="Ubiquity.NET.Runtime.Utils/Ubiquity.NET.Runtime.Utils.csproj" />
+  <Project Path="Ubiquity.NET.SourceGenerator.Test.Utils/Ubiquity.NET.SourceGenerator.Test.Utils.csproj" Id="d147612e-b247-49cc-8fda-800e1e69879c" />
+  <Project Path="Ubiquity.NET.SrcGeneration/Ubiquity.NET.SrcGeneration.csproj" />
+</Solution>

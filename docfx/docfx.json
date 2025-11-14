@@ -1,0 +1,255 @@
+// NOTE: docfx does NOT support multi-targetting
+// It can generate docs for ONLY one version of the library
+// docfx merge was supposed to resolve that, but is broken (https://github.com/dotnet/docfx/issues/2289).
+// Sadly that's been open since 2017 so not likely to ever be resolved.
+// Use of this tool is likely abandoned and an alternative should be sought.
+{
+    "$schema": "https://raw.githubusercontent.com/dotnet/docfx/main/schemas/docfx.schema.json",
+    "metadata": [
+        // [Sigh] - docfx tooling will process and report warnings etc.. on projects found BEFORE it
+        // deals with the exclusion list so a simple glob for all csproj files doesn't work. It creates
+        // warnings and returns a non-success value which stops the build.
+        // Each project is listed in the order they appear in the VS solution explorer so they are easier
+        // to find and check etc...
+        {
+            // ANTLR Utilities library
+            "memberLayout": "separatePages",
+            "namespaceLayout": "nested",
+            "src": [
+                {
+                    "src": "../src/Ubiquity.NET.ANTLR.Utils",
+                    "files": [ "**.csproj" ]
+                }
+            ],
+            "dest": "antlr-utils/api"
+        },
+        {
+            // CodeAnalysis Utilities library
+            "memberLayout": "separatePages",
+            "namespaceLayout": "nested",
+            "src": [
+                {
+                    "src": "../src/Ubiquity.NET.CodeAnalysis.Utils",
+                    "files": [ "**.csproj" ]
+                }
+            ],
+            "dest": "CodeAnalysis/api"
+        },
+        {
+            // Command line Utilities library
+            "memberLayout": "separatePages",
+            "namespaceLayout": "nested",
+            "src": [
+                {
+                    "src": "../src/Ubiquity.NET.CommandLine",
+                    "files": [ "**.csproj" ]
+                }
+            ],
+            "dest": "CommandLine/api"
+        },
+        {
+            // Extensions library
+            "memberLayout": "separatePages",
+            "namespaceLayout": "nested",
+            "src": [
+                {
+                    "src": "../src/Ubiquity.NET.Extensions",
+                    "files": [ "**.csproj" ]
+                }
+            ],
+            "dest": "extensions/api",
+        },
+        {
+            // Interop helpers library
+            "memberLayout": "separatePages",
+            "namespaceLayout": "nested",
+            "src": [
+                {
+                    "src": "../src/Ubiquity.NET.InteropHelpers",
+                    "files": [ "**.csproj" ]
+                }
+            ],
+            "dest": "interop-helpers/api"
+        },
+        {
+            // Runtime utilities library
+            "memberLayout": "separatePages",
+            "namespaceLayout": "nested",
+            "src": [
+                {
+                    "src": "../src/Ubiquity.NET.Runtime.Utils",
+                    "files": [ "**.csproj" ]
+                }
+            ],
+            "dest": "runtime-utils/api",
+        },
+        {
+            // Runtime utilities library
+            "memberLayout": "separatePages",
+            "namespaceLayout": "nested",
+            "src": [
+                {
+                    "src": "../src/Ubiquity.NET.SourceGenerator.Test.Utils",
+                    "files": [ "**.csproj" ]
+                }
+            ],
+            "dest": "src-gen-test-utils/api",
+        },
+        {
+            // SrcGeneration library
+            "memberLayout": "separatePages",
+            "namespaceLayout": "nested",
+            "src": [
+                {
+                    "src": "../src/Ubiquity.NET.SrcGeneration",
+                    "files": [ "**.csproj" ]
+                }
+            ],
+            "dest": "SrcGeneration/api",
+        }
+    ],
+    "build": {
+        // xref YAML files that contain mappings from an XREF ID to the actual URL for the content in an external source
+        "xref": [
+            "https://learn.microsoft.com/en-us/dotnet/.xrefmap.json"
+        ],
+        // NOTE: Unless overridden by a "src" key, All File paths are relative to the location of this docfx.json file
+        "content": [
+            {
+                // Root of the site; only uses the index and TOC explicitly named (NO GLOBS to confuse things!)
+                "files": [
+                    "index.md",
+                    "toc.yml"
+                ]
+            },
+            {
+                // ANTLR Utils project additional content, Includes the generated metadata API folder
+                "files": [
+                    "antlr-utils/**.{md,yml}"
+                ],
+                // Exclude the namespace overwrites and XREF maps as they are listed explicitly elsewhere
+                "exclude": [
+                    "**/namespaces/**.md",
+                    "**/*-xref.yml"
+                ]
+            },
+            {
+                // CodeAnalysis.Utils project additional content, Includes the generated metadata API folder
+                "files": [
+                    "CodeAnalysis/**.{md,yml}"
+                ],
+                // Exclude the namespace overwrites and XREF maps as they are listed explicitly elsewhere
+                "exclude": [
+                    "**/namespaces/**.md",
+                    "**/*-xref.yml"
+                ]
+            },
+            {
+                // CommandLine Utils project additional content, Includes the generated metadata API folder
+                "files": [
+                    "CommandLine/**.{md,yml}"
+                ],
+                // Exclude the namespace overwrites and XREF maps as they are listed explicitly elsewhere
+                "exclude": [
+                    "**/namespaces/**.md",
+                    "**/*-xref.yml"
+                ]
+            },
+            {
+                // extensions project additional content, Includes the generated metadata API folder
+                "files": [
+                    "extensions/**.{md,yml}"
+                ],
+                // Exclude the namespace overwrites and XREF maps as they are listed explicitly elsewhere
+                "exclude": [
+                    "**/namespaces/**.md",
+                    "**/*-xref.yml"
+                ]
+            },
+            {
+                // InteropHelpers project additional content, Includes the generated metadata API folder
+                "files": [
+                    "interop-helpers/**.{md,yml}"
+                ],
+                // Exclude the namespace overwrites and XREF maps as they are listed explicitly elsewhere
+                "exclude": [
+                    "**/namespaces/**.md",
+                    "**/*-xref.yml"
+                ]
+            },
+            {
+                // Runtime Utils project additional content, Includes the generated metadata API folder
+                // NOTE: File paths are relative to the location of this file
+                "files": [
+                    "runtime-utils/**.{md,yml}"
+                ],
+                // Exclude the namespace overwrites and XREF maps as they are listed explicitly elsewhere
+                "exclude": [
+                    "**/namespaces/**.md",
+                    "**/*-xref.yml"
+                ]
+            },
+            {
+                // SrcGenerations project additional content, Includes the generated metadata API folder
+                // NOTE: File paths are relative to the location of this file
+                "files": [
+                    "src-gen-test-utils/**.{md,yml}"
+                ],
+                // Exclude the namespace overwrites and XREF maps as they are listed explicitly elsewhere
+                "exclude": [
+                    "**/namespaces/**.md",
+                    "**/*-xref.yml"
+                ]
+            },
+            {
+                // SrcGenerations project additional content, Includes the generated metadata API folder
+                // NOTE: File paths are relative to the location of this file
+                "files": [
+                    "SrcGeneration/**.{md,yml}"
+                ],
+                // Exclude the namespace overwrites and XREF maps as they are listed explicitly elsewhere
+                "exclude": [
+                    "**/namespaces/**.md",
+                    "**/*-xref.yml"
+                ]
+            }
+        ],
+        "resource": [
+            {
+                // General site resources
+                "files": [
+                    "favicon.ico",
+                    "**.png",
+                    "**.svg"
+                ]
+            }
+        ],
+        "overwrite": [
+            {
+                "files": [
+                    "**/apidocs/**.md",
+                    "**/namespaces/**.md"
+                ]
+            }
+        ],
+        "template": [
+            "default",
+            "modern",
+            "templates/Ubiquity"
+        ],
+        "globalMetadataFiles": [],
+        "fileMetadataFiles": [],
+        "postProcessors": [],
+        "globalMetadata": {
+            "_appTitle": "Ubiquity.NET",
+            "_appFooter": "Copyright (C) 2017-2025, Ubiquity.NET Contributors",
+            "_appLogoPath": "favicon-32x32.png",
+            "_disableBreadcrumb": true,
+            "_gitContribute": {
+                "repo": "https://github.com/UbiquityDotNET/Ubiquity.NET.Utils",
+                "branch": "develop"
+            },
+            "_gitUrlPattern": "github"
+        }
+    }
+}
