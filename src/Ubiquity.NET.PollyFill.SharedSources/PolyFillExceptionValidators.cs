@@ -11,6 +11,8 @@
 
 #pragma warning disable IDE0130 // Namespace does not match folder structure
 
+#if !NET7_0_OR_GREATER
+
 namespace System
 {
     file enum ResourceId
@@ -67,268 +69,253 @@ namespace System
     /// </remarks>
     internal static class PolyFillExceptionValidators
     {
-        /// <summary>Poly fill Extensions for <see cref="ArgumentException"/></summary>
-        extension( global::System.ArgumentException )
+        /// <summary>Throw an <see cref="ArgumentException"/> if a string is <see langword="null"/>m empty, or all whitepsace.</summary>
+        /// <param name="argument">input string to test</param>
+        /// <param name="paramName">expression or name of the string to test; normally provided by compiler</param>
+        /// <exception cref="ArgumentException">string is <see langword="null"/>m empty, or all whitepsace</exception>
+        public static void ThrowIfNullOrWhiteSpace(
+            [global::System.Diagnostics.CodeAnalysis.NotNullAttribute] string? argument,
+            [global::System.Runtime.CompilerServices.CallerArgumentExpressionAttribute( nameof( argument ) )] string? paramName = null
+            )
         {
-            /// <summary>Throw an <see cref="ArgumentException"/> if a string is <see langword="null"/>m empty, or all whitepsace.</summary>
-            /// <param name="argument">input string to test</param>
-            /// <param name="paramName">expression or name of the string to test; normally provided by compiler</param>
-            /// <exception cref="ArgumentException">string is <see langword="null"/>m empty, or all whitepsace</exception>
-            public static void ThrowIfNullOrWhiteSpace(
-                [global::System.Diagnostics.CodeAnalysis.NotNullAttribute] string? argument,
-                [global::System.Runtime.CompilerServices.CallerArgumentExpressionAttribute( nameof( argument ) )] string? paramName = null
-                )
-            {
-                global::System.ArgumentNullException.ThrowIfNull( argument, paramName );
+            PolyFillExceptionValidators.ThrowIfNull( argument, paramName);
 
-                // argument is non-null verified by this, sadly older frameworks don't have
-                // attributes to declare that.
-                if(string.IsNullOrWhiteSpace( argument ))
-                {
-                    throw new global::System.ArgumentException( "The value cannot be an empty string or composed entirely of whitespace.", paramName );
-                }
+            // argument is non-null verified by this, sadly older frameworks don't have
+            // attributes to declare that.
+            if(string.IsNullOrWhiteSpace( argument ))
+            {
+                throw new global::System.ArgumentException( "The value cannot be an empty string or composed entirely of whitespace.", paramName );
             }
         }
 
-        /// <summary>Poly fill Extensions for <see cref="ArgumentNullException"/></summary>
-        extension( global::System.ArgumentNullException )
+        /// <summary>Throws an aexception if the tested argument is <see langword="null"/></summary>
+        /// <param name="argument">value to test</param>
+        /// <param name="paramName">expression for the name of the value; normally provided by compiler</param>
+        /// <exception cref="ArgumentNullException"><paramref name="argument"/> is <see langword="null"/></exception>
+        public static void ThrowIfNull(
+            [global::System.Diagnostics.CodeAnalysis.NotNullAttribute] object? argument,
+            [global::System.Runtime.CompilerServices.CallerArgumentExpressionAttribute( nameof( argument ) )] string? paramName = default
+            )
         {
-            /// <summary>Throws an aexception if the tested argument is <see langword="null"/></summary>
-            /// <param name="argument">value to test</param>
-            /// <param name="paramName">expression for the name of the value; normally provided by compiler</param>
-            /// <exception cref="ArgumentNullException"><paramref name="argument"/> is <see langword="null"/></exception>
-            public static void ThrowIfNull(
-                [global::System.Diagnostics.CodeAnalysis.NotNullAttribute] object? argument,
-                [global::System.Runtime.CompilerServices.CallerArgumentExpressionAttribute( nameof( argument ) )] string? paramName = default
-                )
+            if(argument is null)
             {
-                if(argument is null)
-                {
-                    throw new global::System.ArgumentNullException( paramName );
-                }
+                throw new global::System.ArgumentNullException( paramName );
             }
         }
 
-        /// <summary>Poly fill Extensions for <see cref="ObjectDisposedException"/></summary>
-        extension( global::System.ObjectDisposedException )
+        /// <summary>Throws an <see cref="ObjectDisposedException"/> if <paramref name="condition"/> is <see langword="true"/>.</summary>
+        /// <param name="condition">Condition to determine if the instance is disposed</param>
+        /// <param name="instance">instance that is tested; Used to get type name for exception</param>
+        /// <exception cref="ObjectDisposedException"><paramref name="condition"/> is <see langword="true"/></exception>
+        public static void ThrowIf(
+            [global::System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute( true )] bool condition,
+            object instance
+            )
         {
-            /// <summary>Throws an <see cref="ObjectDisposedException"/> if <paramref name="condition"/> is <see langword="true"/>.</summary>
-            /// <param name="condition">Condition to determine if the instance is disposed</param>
-            /// <param name="instance">instance that is tested; Used to get type name for exception</param>
-            /// <exception cref="ObjectDisposedException"><paramref name="condition"/> is <see langword="true"/></exception>
-            public static void ThrowIf(
-                [global::System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute( true )] bool condition,
-                object instance
-                )
+            if(condition)
             {
-                if(condition)
-                {
-                    throw new global::System.ObjectDisposedException( instance?.GetType().FullName );
-                }
+                throw new global::System.ObjectDisposedException( instance?.GetType().FullName );
             }
         }
 
-        /// <summary>Poly fill Extensions for <see cref="ObjectDisposedException"/></summary>
-        extension( global::System.ArgumentOutOfRangeException )
+        /// <summary>Throws an <see cref="ArgumentOutOfRangeException"/> if <paramref name="value"/> is equal to <paramref name="other"/>.</summary>
+        /// <param name="value">The argument to validate as not equal to <paramref name="other"/>.</param>
+        /// <param name="other">The value to compare with <paramref name="value"/>.</param>
+        /// <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        public static void ThrowIfEqual<T>( T value, T other, [global::System.Runtime.CompilerServices.CallerArgumentExpressionAttribute( nameof( value ) )] string? paramName = null )
+            where T : IEquatable<T>?
         {
-            /// <summary>Throws an <see cref="ArgumentOutOfRangeException"/> if <paramref name="value"/> is equal to <paramref name="other"/>.</summary>
-            /// <param name="value">The argument to validate as not equal to <paramref name="other"/>.</param>
-            /// <param name="other">The value to compare with <paramref name="value"/>.</param>
-            /// <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
-            public static void ThrowIfEqual<T>( T value, T other, [global::System.Runtime.CompilerServices.CallerArgumentExpressionAttribute( nameof( value ) )] string? paramName = null )
-                where T : IEquatable<T>?
+            if(global::System.Collections.Generic.EqualityComparer<T>.Default.Equals( value, other ))
             {
-                if(global::System.Collections.Generic.EqualityComparer<T>.Default.Equals( value, other ))
-                {
-                    ThrowEqual( value, other, paramName );
-                }
+                ThrowEqual( value, other, paramName );
             }
+        }
 
-            /// <summary>Throws an <see cref="ArgumentOutOfRangeException"/> if <paramref name="value"/> is not equal to <paramref name="other"/>.</summary>
-            /// <param name="value">The argument to validate as equal to <paramref name="other"/>.</param>
-            /// <param name="other">The value to compare with <paramref name="value"/>.</param>
-            /// <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
-            public static void ThrowIfNotEqual<T>( T value, T other, [global::System.Runtime.CompilerServices.CallerArgumentExpressionAttribute( nameof( value ) )] string? paramName = null )
-                where T : global::System.IEquatable<T>?
+        /// <summary>Throws an <see cref="ArgumentOutOfRangeException"/> if <paramref name="value"/> is not equal to <paramref name="other"/>.</summary>
+        /// <param name="value">The argument to validate as equal to <paramref name="other"/>.</param>
+        /// <param name="other">The value to compare with <paramref name="value"/>.</param>
+        /// <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        public static void ThrowIfNotEqual<T>( T value, T other, [global::System.Runtime.CompilerServices.CallerArgumentExpressionAttribute( nameof( value ) )] string? paramName = null )
+            where T : global::System.IEquatable<T>?
+        {
+            if(!global::System.Collections.Generic.EqualityComparer<T>.Default.Equals( value, other ))
             {
-                if(!global::System.Collections.Generic.EqualityComparer<T>.Default.Equals( value, other ))
-                {
-                    ThrowNotEqual( value, other, paramName );
-                }
+                ThrowNotEqual( value, other, paramName );
             }
+        }
 
-            /// <summary>Throws an <see cref="ArgumentOutOfRangeException"/> if <paramref name="value"/> is greater than <paramref name="other"/>.</summary>
-            /// <param name="value">The argument to validate as less or equal than <paramref name="other"/>.</param>
-            /// <param name="other">The value to compare with <paramref name="value"/>.</param>
-            /// <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
-            public static void ThrowIfGreaterThan<T>( T value, T other, [global::System.Runtime.CompilerServices.CallerArgumentExpressionAttribute( nameof( value ) )] string? paramName = null )
-                where T : global::System.IComparable<T>
+        /// <summary>Throws an <see cref="ArgumentOutOfRangeException"/> if <paramref name="value"/> is greater than <paramref name="other"/>.</summary>
+        /// <param name="value">The argument to validate as less or equal than <paramref name="other"/>.</param>
+        /// <param name="other">The value to compare with <paramref name="value"/>.</param>
+        /// <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        public static void ThrowIfGreaterThan<T>( T value, T other, [global::System.Runtime.CompilerServices.CallerArgumentExpressionAttribute( nameof( value ) )] string? paramName = null )
+            where T : global::System.IComparable<T>
+        {
+            if(value.CompareTo( other ) > 0)
             {
-                if(value.CompareTo( other ) > 0)
-                {
-                    ThrowGreater( value, other, paramName );
-                }
+                ThrowGreater( value, other, paramName );
             }
+        }
 
-            /// <summary>Throws an <see cref="ArgumentOutOfRangeException"/> if <paramref name="value"/> is greater than or equal <paramref name="other"/>.</summary>
-            /// <param name="value">The argument to validate as less than <paramref name="other"/>.</param>
-            /// <param name="other">The value to compare with <paramref name="value"/>.</param>
-            /// <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
-            public static void ThrowIfGreaterThanOrEqual<T>( T value, T other, [global::System.Runtime.CompilerServices.CallerArgumentExpressionAttribute( nameof( value ) )] string? paramName = null )
-                where T : global::System.IComparable<T>
+        /// <summary>Throws an <see cref="ArgumentOutOfRangeException"/> if <paramref name="value"/> is greater than or equal <paramref name="other"/>.</summary>
+        /// <param name="value">The argument to validate as less than <paramref name="other"/>.</param>
+        /// <param name="other">The value to compare with <paramref name="value"/>.</param>
+        /// <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        public static void ThrowIfGreaterThanOrEqual<T>( T value, T other, [global::System.Runtime.CompilerServices.CallerArgumentExpressionAttribute( nameof( value ) )] string? paramName = null )
+            where T : global::System.IComparable<T>
+        {
+            if(value.CompareTo( other ) >= 0)
             {
-                if(value.CompareTo( other ) >= 0)
-                {
-                    ThrowGreaterEqual( value, other, paramName );
-                }
+                ThrowGreaterEqual( value, other, paramName );
             }
+        }
 
-            /// <summary>Throws an <see cref="ArgumentOutOfRangeException"/> if <paramref name="value"/> is less than <paramref name="other"/>.</summary>
-            /// <param name="value">The argument to validate as greatar than or equal than <paramref name="other"/>.</param>
-            /// <param name="other">The value to compare with <paramref name="value"/>.</param>
-            /// <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
-            public static void ThrowIfLessThan<T>( T value, T other, [global::System.Runtime.CompilerServices.CallerArgumentExpressionAttribute( nameof( value ) )] string? paramName = null )
-                where T : global::System.IComparable<T>
+        /// <summary>Throws an <see cref="ArgumentOutOfRangeException"/> if <paramref name="value"/> is less than <paramref name="other"/>.</summary>
+        /// <param name="value">The argument to validate as greatar than or equal than <paramref name="other"/>.</param>
+        /// <param name="other">The value to compare with <paramref name="value"/>.</param>
+        /// <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        public static void ThrowIfLessThan<T>( T value, T other, [global::System.Runtime.CompilerServices.CallerArgumentExpressionAttribute( nameof( value ) )] string? paramName = null )
+            where T : global::System.IComparable<T>
+        {
+            if(value.CompareTo( other ) < 0)
             {
-                if(value.CompareTo( other ) < 0)
-                {
-                    ThrowLess( value, other, paramName );
-                }
+                ThrowLess( value, other, paramName );
             }
+        }
 
-            /// <summary>Throws an <see cref="ArgumentOutOfRangeException"/> if <paramref name="value"/> is less than or equal <paramref name="other"/>.</summary>
-            /// <param name="value">The argument to validate as greatar than than <paramref name="other"/>.</param>
-            /// <param name="other">The value to compare with <paramref name="value"/>.</param>
-            /// <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
-            public static void ThrowIfLessThanOrEqual<T>( T value, T other, [global::System.Runtime.CompilerServices.CallerArgumentExpressionAttribute( nameof( value ) )] string? paramName = null )
-                where T : global::System.IComparable<T>
+        /// <summary>Throws an <see cref="ArgumentOutOfRangeException"/> if <paramref name="value"/> is less than or equal <paramref name="other"/>.</summary>
+        /// <param name="value">The argument to validate as greatar than than <paramref name="other"/>.</param>
+        /// <param name="other">The value to compare with <paramref name="value"/>.</param>
+        /// <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
+        public static void ThrowIfLessThanOrEqual<T>( T value, T other, [global::System.Runtime.CompilerServices.CallerArgumentExpressionAttribute( nameof( value ) )] string? paramName = null )
+            where T : global::System.IComparable<T>
+        {
+            if(value.CompareTo( other ) <= 0)
             {
-                if(value.CompareTo( other ) <= 0)
-                {
-                    ThrowLessEqual( value, other, paramName );
-                }
+                ThrowLessEqual( value, other, paramName );
             }
+        }
 
-            [global::System.Diagnostics.CodeAnalysis.DoesNotReturn]
-            private static void ThrowZero<T>( T value, string? paramName )
-            {
-                string msg = string.Format( global::System.Globalization.CultureInfo.CurrentCulture
-                                          , ResourceId.ArgumentOutOfRange_Generic_MustBeNonNegative.GetResourceString()
-                                          , paramName
-                                          , value
-                                          );
+        [global::System.Diagnostics.CodeAnalysis.DoesNotReturn]
+        private static void ThrowZero<T>( T value, string? paramName )
+        {
+            string msg = string.Format( global::System.Globalization.CultureInfo.CurrentCulture
+                                      , ResourceId.ArgumentOutOfRange_Generic_MustBeNonNegative.GetResourceString()
+                                      , paramName
+                                      , value
+                                      );
 
-                throw new global::System.ArgumentOutOfRangeException( paramName, value, msg );
-            }
+            throw new global::System.ArgumentOutOfRangeException( paramName, value, msg );
+        }
 
-            [global::System.Diagnostics.CodeAnalysis.DoesNotReturn]
-            private static void ThrowNegative<T>( T value, string? paramName )
-            {
-                string msg = string.Format( global::System.Globalization.CultureInfo.CurrentCulture
-                                          , ResourceId.ArgumentOutOfRange_Generic_MustBeNonZero.GetResourceString()
-                                          , paramName
-                                          , value
-                                          );
+        [global::System.Diagnostics.CodeAnalysis.DoesNotReturn]
+        private static void ThrowNegative<T>( T value, string? paramName )
+        {
+            string msg = string.Format( global::System.Globalization.CultureInfo.CurrentCulture
+                                      , ResourceId.ArgumentOutOfRange_Generic_MustBeNonZero.GetResourceString()
+                                      , paramName
+                                      , value
+                                      );
 
-                throw new global::System.ArgumentOutOfRangeException( paramName, value, msg );
-            }
+            throw new global::System.ArgumentOutOfRangeException( paramName, value, msg );
+        }
 
-            [global::System.Diagnostics.CodeAnalysis.DoesNotReturn]
-            private static void ThrowNegativeOrZero<T>( T value, string? paramName )
-            {
-                string msg = string.Format( global::System.Globalization.CultureInfo.CurrentCulture
-                                          , ResourceId.ArgumentOutOfRange_Generic_MustBeNonNegativeNonZero.GetResourceString()
-                                          , paramName
-                                          , value
-                                          );
+        [global::System.Diagnostics.CodeAnalysis.DoesNotReturn]
+        private static void ThrowNegativeOrZero<T>( T value, string? paramName )
+        {
+            string msg = string.Format( global::System.Globalization.CultureInfo.CurrentCulture
+                                      , ResourceId.ArgumentOutOfRange_Generic_MustBeNonNegativeNonZero.GetResourceString()
+                                      , paramName
+                                      , value
+                                      );
 
-                throw new global::System.ArgumentOutOfRangeException( paramName, value, msg );
-            }
+            throw new global::System.ArgumentOutOfRangeException( paramName, value, msg );
+        }
 
-            [global::System.Diagnostics.CodeAnalysis.DoesNotReturn]
-            private static void ThrowGreater<T>( T value, T other, string? paramName )
-            {
-                var msg = string.Format(
-                    global::System.Globalization.CultureInfo.CurrentCulture,
-                    ResourceId.ArgumentOutOfRange_Generic_MustBeLessOrEqual.GetResourceString(),
-                    paramName,
-                    value,
-                    other
-                    );
+        [global::System.Diagnostics.CodeAnalysis.DoesNotReturn]
+        private static void ThrowGreater<T>( T value, T other, string? paramName )
+        {
+            var msg = string.Format(
+                global::System.Globalization.CultureInfo.CurrentCulture,
+                ResourceId.ArgumentOutOfRange_Generic_MustBeLessOrEqual.GetResourceString(),
+                paramName,
+                value,
+                other
+                );
 
-                throw new global::System.ArgumentOutOfRangeException( paramName, value, msg);
-            }
+            throw new global::System.ArgumentOutOfRangeException( paramName, value, msg);
+        }
 
-            [global::System.Diagnostics.CodeAnalysis.DoesNotReturn]
-            private static void ThrowGreaterEqual<T>( T value, T other, string? paramName )
-            {
+        [global::System.Diagnostics.CodeAnalysis.DoesNotReturn]
+        private static void ThrowGreaterEqual<T>( T value, T other, string? paramName )
+        {
 
-                var msg = string.Format(
-                    global::System.Globalization.CultureInfo.CurrentCulture,
-                    ResourceId.ArgumentOutOfRange_Generic_MustBeLess.GetResourceString(),
-                    paramName,
-                    value,
-                    other
-                    );
+            var msg = string.Format(
+                global::System.Globalization.CultureInfo.CurrentCulture,
+                ResourceId.ArgumentOutOfRange_Generic_MustBeLess.GetResourceString(),
+                paramName,
+                value,
+                other
+                );
 
-                throw new global::System.ArgumentOutOfRangeException( paramName, value, msg );
-            }
+            throw new global::System.ArgumentOutOfRangeException( paramName, value, msg );
+        }
 
-            [global::System.Diagnostics.CodeAnalysis.DoesNotReturn]
-            private static void ThrowLess<T>( T value, T other, string? paramName )
-            {
-                var msg = string.Format(
-                    global::System.Globalization.CultureInfo.CurrentCulture,
-                    ResourceId.ArgumentOutOfRange_Generic_MustBeGreaterOrEqual.GetResourceString(),
-                    paramName,
-                    value,
-                    other
-                    );
+        [global::System.Diagnostics.CodeAnalysis.DoesNotReturn]
+        private static void ThrowLess<T>( T value, T other, string? paramName )
+        {
+            var msg = string.Format(
+                global::System.Globalization.CultureInfo.CurrentCulture,
+                ResourceId.ArgumentOutOfRange_Generic_MustBeGreaterOrEqual.GetResourceString(),
+                paramName,
+                value,
+                other
+                );
 
-                throw new global::System.ArgumentOutOfRangeException( paramName, value, msg );
-            }
+            throw new global::System.ArgumentOutOfRangeException( paramName, value, msg );
+        }
 
-            [global::System.Diagnostics.CodeAnalysis.DoesNotReturn]
-            private static void ThrowLessEqual<T>( T value, T other, string? paramName )
-            {
-                var msg = string.Format(
-                    global::System.Globalization.CultureInfo.CurrentCulture,
-                    ResourceId.ArgumentOutOfRange_Generic_MustBeGreater.GetResourceString(),
-                    paramName,
-                    value,
-                    other
-                    );
+        [global::System.Diagnostics.CodeAnalysis.DoesNotReturn]
+        private static void ThrowLessEqual<T>( T value, T other, string? paramName )
+        {
+            var msg = string.Format(
+                global::System.Globalization.CultureInfo.CurrentCulture,
+                ResourceId.ArgumentOutOfRange_Generic_MustBeGreater.GetResourceString(),
+                paramName,
+                value,
+                other
+                );
 
-                throw new global::System.ArgumentOutOfRangeException( paramName, value, msg );
-            }
+            throw new global::System.ArgumentOutOfRangeException( paramName, value, msg );
+        }
 
-            [global::System.Diagnostics.CodeAnalysis.DoesNotReturn]
-            private static void ThrowEqual<T>( T value, T other, string? paramName )
-            {
-                var msg = string.Format(
-                    global::System.Globalization.CultureInfo.CurrentCulture,
-                    ResourceId.ArgumentOutOfRange_Generic_MustBeNotEqual.GetResourceString(),
-                    paramName,
-                    value,
-                    other
-                    );
+        [global::System.Diagnostics.CodeAnalysis.DoesNotReturn]
+        private static void ThrowEqual<T>( T value, T other, string? paramName )
+        {
+            var msg = string.Format(
+                global::System.Globalization.CultureInfo.CurrentCulture,
+                ResourceId.ArgumentOutOfRange_Generic_MustBeNotEqual.GetResourceString(),
+                paramName,
+                value,
+                other
+                );
 
-                throw new global::System.ArgumentOutOfRangeException( paramName, value, msg);
-            }
+            throw new global::System.ArgumentOutOfRangeException( paramName, value, msg);
+        }
 
-            [global::System.Diagnostics.CodeAnalysis.DoesNotReturn]
-            private static void ThrowNotEqual<T>( T value, T other, string? paramName )
-            {
-                var msg = string.Format(
-                    global::System.Globalization.CultureInfo.CurrentCulture,
-                    ResourceId.ArgumentOutOfRange_Generic_MustBeEqual.GetResourceString(),
-                    paramName,
-                    value,
-                    other
-                    );
+        [global::System.Diagnostics.CodeAnalysis.DoesNotReturn]
+        private static void ThrowNotEqual<T>( T value, T other, string? paramName )
+        {
+            var msg = string.Format(
+                global::System.Globalization.CultureInfo.CurrentCulture,
+                ResourceId.ArgumentOutOfRange_Generic_MustBeEqual.GetResourceString(),
+                paramName,
+                value,
+                other
+                );
 
-                throw new global::System.ArgumentOutOfRangeException( paramName, value, msg );
-            }
+            throw new global::System.ArgumentOutOfRangeException( paramName, value, msg );
         }
     }
 }
+#endif

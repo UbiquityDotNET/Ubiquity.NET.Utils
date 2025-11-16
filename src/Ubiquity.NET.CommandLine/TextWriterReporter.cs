@@ -31,6 +31,7 @@ namespace Ubiquity.NET.CommandLine
             Verbose = verbose ?? TextWriter.Null;
         }
 
+#if NET10_0_OR_GREATER
         /// <summary>Gets the Error writer for this reporter</summary>
         public required TextWriter Error
         {
@@ -74,6 +75,56 @@ namespace Ubiquity.NET.CommandLine
                 field = value;
             }
         }
+#else
+        /// <summary>Gets the Error writer for this reporter</summary>
+        public required TextWriter Error
+        {
+            get => ErrorBackingField;
+            init
+            {
+                ArgumentNullException.ThrowIfNull( value );
+                ErrorBackingField = value;
+            }
+        }
+
+        /// <summary>Gets the warning writer for this reporter</summary>
+        public TextWriter Warning
+        {
+            get => WarningBackingField;
+            init
+            {
+                ArgumentNullException.ThrowIfNull( value );
+                WarningBackingField = value;
+            }
+        }
+
+        /// <summary>Gets the information writer for this reporter</summary>
+        public TextWriter Information
+        {
+            get => InformationBackingField;
+            init
+            {
+                ArgumentNullException.ThrowIfNull( value );
+                InformationBackingField = value;
+            }
+        }
+
+        /// <summary>Gets the verbose writer for this reporter</summary>
+        public TextWriter Verbose
+        {
+            get => VerboseBackingField;
+            init
+            {
+                ArgumentNullException.ThrowIfNull( value );
+                VerboseBackingField = value;
+            }
+        }
+
+        private readonly TextWriter ErrorBackingField = TextWriter.Null;
+        private readonly TextWriter WarningBackingField = TextWriter.Null;
+        private readonly TextWriter InformationBackingField = TextWriter.Null;
+        private readonly TextWriter VerboseBackingField = TextWriter.Null;
+#endif
 
         /// <inheritdoc/>
         public MsgLevel Level { get; init; }

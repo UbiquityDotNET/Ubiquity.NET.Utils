@@ -30,7 +30,11 @@ namespace Ubiquity.NET.InteropHelpers
         {
             get
             {
+#if NET7_0_OR_GREATER
                 ObjectDisposedException.ThrowIf( IsClosed, this );
+#else
+                PolyFillExceptionValidators.ThrowIf( IsClosed, this );
+#endif
                 unsafe
                 {
                     return new( (void*)handle, LazyStrLen.Value );
@@ -46,7 +50,11 @@ namespace Ubiquity.NET.InteropHelpers
         /// </remarks>
         public override string? ToString( )
         {
+#if NET7_0_OR_GREATER
             ObjectDisposedException.ThrowIf( IsClosed, this );
+#else
+            PolyFillExceptionValidators.ThrowIf( IsClosed, this );
+#endif
             return ManagedString.Value;
         }
 
@@ -61,7 +69,11 @@ namespace Ubiquity.NET.InteropHelpers
         [SuppressMessage( "Globalization", "CA1307:Specify StringComparison for clarity", Justification = "Matches string API" )]
         public override int GetHashCode( )
         {
+#if NET7_0_OR_GREATER
             ObjectDisposedException.ThrowIf( IsClosed, this );
+#else
+            PolyFillExceptionValidators.ThrowIf( IsClosed, this );
+#endif
             return ToString()?.GetHashCode() ?? 0;
         }
 
@@ -99,7 +111,11 @@ namespace Ubiquity.NET.InteropHelpers
             unsafe
             {
                 ManagedString = new( ( ) => ExecutionEncodingStringMarshaller.ConvertToManaged( (byte*)handle ), LazyThreadSafetyMode.ExecutionAndPublication );
+#if NET6_0_OR_GREATER
                 LazyStrLen = new( ( ) => MemoryMarshal.CreateReadOnlySpanFromNullTerminated( (byte*)handle ).Length, LazyThreadSafetyMode.ExecutionAndPublication );
+#else
+                LazyStrLen = new( ( ) => PolyFillMemoryMarshal.CreateReadOnlySpanFromNullTerminated( (byte*)handle ).Length, LazyThreadSafetyMode.ExecutionAndPublication );
+#endif
             }
         }
 

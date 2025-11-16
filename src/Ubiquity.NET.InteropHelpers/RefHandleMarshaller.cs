@@ -47,8 +47,13 @@ namespace Ubiquity.NET.InteropHelpers
         public static TRetVal WithNativePointer<THandle, TRetVal>( this THandle[] managedArray, ReturningOp<TRetVal> op )
             where THandle : SafeHandle
         {
+#if NET8_0_OR_GREATER
             ArgumentNullException.ThrowIfNull( managedArray );
             ArgumentNullException.ThrowIfNull( op );
+#else
+            PolyFillExceptionValidators.ThrowIfNull( managedArray );
+            PolyFillExceptionValidators.ThrowIfNull( op );
+#endif
 
             unsafe
             {
@@ -68,8 +73,13 @@ namespace Ubiquity.NET.InteropHelpers
         public static void WithNativePointer<THandle>( this THandle[] managedArray, VoidOp op )
             where THandle : SafeHandle
         {
+#if NET8_0_OR_GREATER
             ArgumentNullException.ThrowIfNull( managedArray );
             ArgumentNullException.ThrowIfNull( op );
+#else
+            PolyFillExceptionValidators.ThrowIfNull( managedArray );
+            PolyFillExceptionValidators.ThrowIfNull( op );
+#endif
 
             unsafe
             {
@@ -89,8 +99,13 @@ namespace Ubiquity.NET.InteropHelpers
         private static void FillNative<T>( Memory<nint> nativeSpace, T[] managedArray )
             where T : SafeHandle
         {
+#if NET8_0_OR_GREATER
             ArgumentNullException.ThrowIfNull( managedArray );
             ArgumentOutOfRangeException.ThrowIfNotEqual( nativeSpace.Length, managedArray.Length );
+#else
+            PolyFillExceptionValidators.ThrowIfNull( managedArray );
+            PolyFillExceptionValidators.ThrowIfNotEqual( nativeSpace.Length, managedArray.Length );
+#endif
 
             for(int i = 0; i < managedArray.Length; ++i)
             {

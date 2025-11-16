@@ -47,6 +47,7 @@ namespace Ubiquity.NET.CommandLine
         /// <summary>Gets the Level/Category of the message</summary>
         public MsgLevel Level { get; init; }
 
+#if NET10_0_OR_GREATER
         /// <summary>Gets the code for the message (No spaces)</summary>
         public string? Code
         {
@@ -72,6 +73,37 @@ namespace Ubiquity.NET.CommandLine
                 field = value;
             }
         }
+#else
+        /// <summary>Gets the code for the message (No spaces)</summary>
+        public string? Code
+        {
+            get => CodeBackingField;
+            init
+            {
+                if(value is not null && value.Any( ( c ) => char.IsWhiteSpace( c ) ))
+                {
+                    throw new ArgumentException( "If provided, code must not contain whitespace", nameof( value ) );
+                }
+
+                CodeBackingField = value;
+            }
+        }
+
+        private readonly string? CodeBackingField;
+
+        /// <summary>Gets the text of the message</summary>
+        public string Text
+        {
+            get => TextBackingField;
+            init
+            {
+                ArgumentNullException.ThrowIfNull( value );
+                TextBackingField = value;
+            }
+        }
+
+        private readonly string TextBackingField;
+#endif
 
         /// <summary>Formats this instance using the general runtime specific format</summary>
         /// <returns>Formatted string for the message</returns>

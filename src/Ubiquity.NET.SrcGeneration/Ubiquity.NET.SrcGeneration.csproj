@@ -3,8 +3,7 @@
     <PropertyGroup>
         <TargetFrameworks>net8.0;netstandard2.0</TargetFrameworks>
         <PlatformTarget>AnyCPU</PlatformTarget>
-        <!--Until C#14 and the "field" and "extension" keywords are available use the preview language -->
-        <LangVersion>preview</LangVersion>
+        <LangVersion>13</LangVersion>
         <IsAotCompatible>True</IsAotCompatible>
         <GenerateDocumentationFile>True</GenerateDocumentationFile>
         <AllowUnsafeBlocks>True</AllowUnsafeBlocks>

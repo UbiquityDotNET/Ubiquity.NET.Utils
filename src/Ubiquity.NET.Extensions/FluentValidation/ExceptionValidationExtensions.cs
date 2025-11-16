@@ -47,7 +47,7 @@ namespace Ubiquity.NET.Extensions.FluentValidation
         public static T ThrowIfNull<T>( [NotNull] this T? self, [CallerArgumentExpression( nameof( self ) )] string? exp = null )
         {
             return self is null
-                 ? throw new ArgumentNullException(exp)
+                 ? throw new ArgumentNullException( exp )
                  : self;
         }
 
@@ -63,8 +63,13 @@ namespace Ubiquity.NET.Extensions.FluentValidation
         public static T ThrowIfOutOfRange<T>( this T self, T min, T max, [CallerArgumentExpression( nameof( self ) )] string? exp = null )
             where T : struct, IComparable<T>
         {
+#if NET8_0_OR_GREATER
             ArgumentOutOfRangeException.ThrowIfLessThan(self, min, exp);
             ArgumentOutOfRangeException.ThrowIfGreaterThan(self, max, exp);
+#else
+            PolyFillExceptionValidators.ThrowIfLessThan( self, min, exp );
+            PolyFillExceptionValidators.ThrowIfGreaterThan( self, max, exp );
+#endif
             return self;
         }
 
@@ -86,7 +91,7 @@ namespace Ubiquity.NET.Extensions.FluentValidation
         {
             exp ??= string.Empty;
 
-            if(Enum.IsDefined( typeof(T), self ))
+            if(Enum.IsDefined( typeof( T ), self ))
             {
                 return self;
             }
@@ -96,7 +101,7 @@ namespace Ubiquity.NET.Extensions.FluentValidation
                 int underlyingValue = (int)Convert.ChangeType(self, typeof(int), CultureInfo.InvariantCulture);
                 throw new InvalidEnumArgumentException( exp, underlyingValue, typeof( T ) );
             }
-            catch(Exception ex) when (ex is InvalidCastException or FormatException or OverflowException)
+            catch(Exception ex) when(ex is InvalidCastException or FormatException or OverflowException)
             {
                 // InvalidEnumArgumentException constructors ONLY provide paramater name value set for values
                 // that are representable as an int. Thus, anything else requires a custom message that at

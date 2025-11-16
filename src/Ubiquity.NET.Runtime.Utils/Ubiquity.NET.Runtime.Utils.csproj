@@ -2,8 +2,7 @@
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
         <Nullable>enable</Nullable>
-        <!--Until C#14 and the "field" and "extension" keywords are available use the preview language -->
-        <LangVersion>preview</LangVersion>
+        <LangVersion>13</LangVersion>
         <IsAotCompatible>True</IsAotCompatible>
         <GenerateDocumentationFile>True</GenerateDocumentationFile>
 

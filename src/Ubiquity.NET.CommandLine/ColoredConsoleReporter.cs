@@ -32,6 +32,7 @@ namespace Ubiquity.NET.CommandLine
             ColorMap = colorMapping ?? ImmutableDictionary<MsgLevel, AnsiCode>.Empty;
         }
 
+#if NET10_0_OR_GREATER
         /// <summary>Gets the <see cref="MsgLevel"/> to <see cref="AnsiCode"/> colorMapping used for coloring</summary>
         public ImmutableDictionary<MsgLevel, AnsiCode> ColorMap
         {
@@ -42,6 +43,20 @@ namespace Ubiquity.NET.CommandLine
                 field = value;
             }
         }
+#else
+        /// <summary>Gets the <see cref="MsgLevel"/> to <see cref="AnsiCode"/> colorMapping used for coloring</summary>
+        public ImmutableDictionary<MsgLevel, AnsiCode> ColorMap
+        {
+            get => ColorMapBackingField.IsEmpty ? DefaultColorMap : ColorMapBackingField;
+            init
+            {
+                ArgumentNullException.ThrowIfNull( value );
+                ColorMapBackingField = value;
+            }
+        }
+
+        private readonly ImmutableDictionary<MsgLevel, AnsiCode> ColorMapBackingField = DefaultColorMap;
+#endif
 
         /// <summary>Gets the default color map for this type</summary>
         public static ImmutableDictionary<MsgLevel, AnsiCode> DefaultColorMap { get; }

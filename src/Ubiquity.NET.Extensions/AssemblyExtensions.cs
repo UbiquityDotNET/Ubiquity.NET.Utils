@@ -38,7 +38,11 @@ namespace Ubiquity.NET.Extensions
         /// <returns>String contents from the <see cref="AssemblyInformationalVersionAttribute"/> in the assembly or <see cref="string.Empty"/></returns>
         public static string GetInformationalVersion(this Assembly self, [CallerArgumentExpression( nameof( self ) )] string? exp = null )
         {
+#if NET6_0_OR_GREATER
             ArgumentNullException.ThrowIfNull( self, exp );
+#else
+            PolyFillExceptionValidators.ThrowIfNull( self, exp );
+#endif
 
             var assemblyVersionAttribute = self.GetCustomAttribute<AssemblyInformationalVersionAttribute>();
 
@@ -48,5 +52,5 @@ namespace Ubiquity.NET.Extensions
         }
 #endif
 
-    }
+        }
 }

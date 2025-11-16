@@ -135,7 +135,12 @@ namespace Ubiquity.NET.Extensions
         [SuppressMessage("StyleCop.CSharp.ReadabilityRules", "SA1108:BlockStatementsMustNotContainEmbeddedComments", Justification = "Reviewed.")]
         private string FormatRuntime(IFormatProvider formatProvider)
         {
-            if(OperatingSystem.IsWindows())
+#if NET5_0_OR_GREATER
+            bool isWindows = OperatingSystem.IsWindows();
+#else
+            bool isWindows = PolyFillOperatingSystem.IsWindows();
+#endif
+            if(isWindows)
             {
                 return FormatMsBuild(formatProvider);
             }

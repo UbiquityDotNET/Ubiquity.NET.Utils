@@ -85,13 +85,26 @@ namespace Ubiquity.NET.CommandLine
         /// </remarks>
         public TryReplaceToken? ResponseFileTokenReplacer
         {
+#if NET10_0_OR_GREATER
             get;
             init
             {
                 field = value;
                 HasCustomeResponseFileBehavior = true;
             }
+#else
+            get => ResponseFileTokenReplacerBackingField;
+            init
+            {
+                ResponseFileTokenReplacerBackingField = value;
+                HasCustomeResponseFileBehavior = true;
+            }
+#endif
         }
+
+#if !NET10_0_OR_GREATER
+        private TryReplaceToken? ResponseFileTokenReplacerBackingField = null;
+#endif
 
         /// <summary>Constructs a new <see cref="ParserConfiguration"/> based on this instance</summary>
         /// <returns>new <see cref="ParserConfiguration"/> from this instance</returns>

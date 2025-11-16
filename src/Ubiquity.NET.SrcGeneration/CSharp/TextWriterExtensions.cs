@@ -14,9 +14,13 @@ namespace Ubiquity.NET.SrcGeneration.CSharp
         /// <param name="attribArgs">arguments for the attribute</param>
         public static void WriteAttributeLine( this TextWriter self, string attributeName, params string[] attribArgs )
         {
+#if NET8_0_OR_GREATER
             ArgumentNullException.ThrowIfNull( self );
             ArgumentException.ThrowIfNullOrWhiteSpace(attributeName);
-
+#else
+            PolyFillExceptionValidators.ThrowIfNull( self );
+            PolyFillExceptionValidators.ThrowIfNullOrWhiteSpace(attributeName);
+#endif
             self.WriteAttribute( attributeName, attribArgs );
             self.WriteLine();
         }
@@ -27,9 +31,13 @@ namespace Ubiquity.NET.SrcGeneration.CSharp
         /// <param name="attribArgs">arguments for the attribute</param>
         public static void WriteAttribute(this TextWriter self, string attributeName, params string[] attribArgs )
         {
+#if NET8_0_OR_GREATER
             ArgumentNullException.ThrowIfNull( self );
             ArgumentException.ThrowIfNullOrWhiteSpace( attributeName );
-
+#else
+            PolyFillExceptionValidators.ThrowIfNull( self );
+            PolyFillExceptionValidators.ThrowIfNullOrWhiteSpace(attributeName);
+#endif
             self.Write( $"[{attributeName}" );
             if(attribArgs.Length > 0)
             {
@@ -44,7 +52,11 @@ namespace Ubiquity.NET.SrcGeneration.CSharp
         /// <param name="description">Text to include in the summary (Nothing is written if this is <see langword="null"/> or all whitespace </param>
         public static void WriteSummaryComment(this TextWriter self, string? description )
         {
+#if NET8_0_OR_GREATER
             ArgumentNullException.ThrowIfNull( self );
+#else
+            PolyFillExceptionValidators.ThrowIfNull( self );
+#endif
 
             if(!string.IsNullOrWhiteSpace( description ))
             {
@@ -61,7 +73,11 @@ namespace Ubiquity.NET.SrcGeneration.CSharp
         /// </remarks>
         public static void WriteRemarksComment( this TextWriter self, string? txt )
         {
+#if NET8_0_OR_GREATER
             ArgumentNullException.ThrowIfNull( self );
+#else
+            PolyFillExceptionValidators.ThrowIfNull( self );
+#endif
 
             if(string.IsNullOrWhiteSpace( txt ))
             {
@@ -93,7 +109,11 @@ namespace Ubiquity.NET.SrcGeneration.CSharp
         /// </remarks>
         public static void WriteSummaryAndRemarksComments( this TextWriter self, string? txt, string? defaultSummary = null )
         {
+#if NET8_0_OR_GREATER
             ArgumentNullException.ThrowIfNull( self );
+#else
+            PolyFillExceptionValidators.ThrowIfNull( self );
+#endif
 
             if(string.IsNullOrWhiteSpace( txt ))
             {
@@ -105,7 +125,12 @@ namespace Ubiquity.NET.SrcGeneration.CSharp
                 return;
             }
 
-            ArgumentException.ThrowIfNullOrWhiteSpace(defaultSummary);
+#if NET8_0_OR_GREATER
+            ArgumentException.ThrowIfNullOrWhiteSpace( defaultSummary );
+#else
+            PolyFillExceptionValidators.ThrowIfNullOrWhiteSpace( defaultSummary );
+#endif
+
             self.WriteLine( $"/// <summary>{defaultSummary.Trim()}</summary>" );
             string[] lines = [ .. txt!.GetCommentLines() ];
             if(lines.Length > 0)
@@ -127,8 +152,13 @@ namespace Ubiquity.NET.SrcGeneration.CSharp
         /// <param name="namespaceName">Namespace for the using directive</param>
         public static void WriteUsingDirective(this TextWriter self, string namespaceName )
         {
+#if NET8_0_OR_GREATER
             ArgumentNullException.ThrowIfNull( self );
             ArgumentException.ThrowIfNullOrWhiteSpace(namespaceName);
+#else
+            PolyFillExceptionValidators.ThrowIfNull( self );
+            PolyFillExceptionValidators.ThrowIfNullOrWhiteSpace(namespaceName);
+#endif
 
             self.WriteLine( $"using {namespaceName};" );
         }

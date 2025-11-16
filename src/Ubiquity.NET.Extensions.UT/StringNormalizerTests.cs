@@ -68,9 +68,16 @@ namespace Ubiquity.NET.Extensions.UT
         // Technincally Mac OS prior to OS X (Lion) use CR, but .NET does not
         // support those older versions. Thus, this only treats Windows as the
         // "odd man out", everything else uses LF.
+#if NET5_0_OR_GREATER
         private static LineEndingKind OsDefaultLineEnding
             => OperatingSystem.IsWindows()
                 ? LineEndingKind.CarriageReturnLineFeed
                 : LineEndingKind.LineFeed;
+#else
+        private static LineEndingKind OsDefaultLineEnding
+            => PolyFillOperatingSystem.IsWindows()
+                ? LineEndingKind.CarriageReturnLineFeed
+                : LineEndingKind.LineFeed;
+#endif
     }
 }

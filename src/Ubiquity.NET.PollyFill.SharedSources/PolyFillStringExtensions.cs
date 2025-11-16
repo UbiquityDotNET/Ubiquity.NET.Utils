@@ -17,40 +17,40 @@ namespace System
     /// <inheritdoc cref="PolyFillExceptionValidators" path="/remarks"/>
     internal static class PolyFillStringExtensions
     {
-        extension(string)
+#if NETSTANDARD2_0
+        /// <summary>Concatenates the members of a collection, using the specified separator between each member.</summary>
+        /// <typeparam name="T">The type of the members of values.</typeparam>
+        /// <param name="separator">The character to use as a separator. separator is included in the returned string only if values has more than one element.</param>
+        /// <param name="values">A collection that contains the objects to concatenate.</param>
+        /// <returns>
+        /// A string that consists of the members of values delimited by the separator character.
+        /// -or- System.String.Empty if values has no elements.
+        /// </returns>
+        /// <exception cref="System.ArgumentNullException"><paramref name="values"/> is <see langword="null"/></exception>
+        /// <exception cref="System.OutOfMemoryException">The length of the resulting string overflows the maximum allowed length (<see cref="Int32.MaxValue"/>).</exception>
+        public static string Join<T>( char separator, IEnumerable<T> values )
         {
-            /// <summary>Concatenates the members of a collection, using the specified separator between each member.</summary>
-            /// <typeparam name="T">The type of the members of values.</typeparam>
-            /// <param name="separator">The character to use as a separator. separator is included in the returned string only if values has more than one element.</param>
-            /// <param name="values">A collection that contains the objects to concatenate.</param>
-            /// <returns>
-            /// A string that consists of the members of values delimited by the separator character.
-            /// -or- System.String.Empty if values has no elements.
-            /// </returns>
-            /// <exception cref="System.ArgumentNullException"><paramref name="values"/> is <see langword="null"/></exception>
-            /// <exception cref="System.OutOfMemoryException">The length of the resulting string overflows the maximum allowed length (<see cref="Int32.MaxValue"/>).</exception>
-            public static string Join<T>( char separator, IEnumerable<T> values )
-            {
-                return string.Join(separator.ToString(), values);
-            }
+            return string.Join( separator.ToString(), values );
         }
 
         public static int GetHashCode( this string self, StringComparison comparisonType )
         {
             if(comparisonType != StringComparison.Ordinal)
             {
-                throw new global::System.ComponentModel.InvalidEnumArgumentException(nameof(comparisonType), (int)comparisonType, typeof(StringComparison));
+                throw new global::System.ComponentModel.InvalidEnumArgumentException( nameof( comparisonType ), (int)comparisonType, typeof( StringComparison ) );
             }
 
             return self.GetHashCode();
         }
+#endif
 
+#if !NET6_0_OR_GREATER
         /// <summary>Replace line endings in the string with environment specific forms</summary>
         /// <param name="self">string to change line endings for</param>
         /// <returns>string with environment specific line endings</returns>
-        public static string ReplaceLineEndings(this string self)
+        public static string ReplaceLineEndings( this string self )
         {
-            return ReplaceLineEndings(self, global::System.Environment.NewLine);
+            return ReplaceLineEndings( self, global::System.Environment.NewLine );
         }
 
         // This is NOT the most performant implementation, it's going for simplistic pollyfill that has
@@ -61,11 +61,11 @@ namespace System
         /// <param name="self">string to change line endings for</param>
         /// <param name="replacementText">Text to replace all of the line endings in <paramref name="self"/></param>
         /// <returns>string with line endings replaced by <paramref name="replacementText"/></returns>
-        [global::System.Runtime.CompilerServices.MethodImpl(global::System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining)]
-        public static string ReplaceLineEndings(this string self, string replacementText)
+        [global::System.Runtime.CompilerServices.MethodImpl( global::System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining )]
+        public static string ReplaceLineEndings( this string self, string replacementText )
         {
-            global::System.ArgumentNullException.ThrowIfNull(self);
-            global::System.ArgumentNullException.ThrowIfNull(replacementText);
+            global::System.PolyFillExceptionValidators.ThrowIfNull( self );
+            global::System.PolyFillExceptionValidators.ThrowIfNull( replacementText );
 
             string retVal = UnicodeNewLinesRegEx.Replace(self, replacementText);
 
@@ -86,6 +86,7 @@ namespace System
         // the output of one generator as the input for another. They all see the same input, therefore
         // the partial implementation would never be filled in and produces a compilation error instead.
         private static global::System.Text.RegularExpressions.Regex UnicodeNewLinesRegEx { get; }
-            = new global::System.Text.RegularExpressions.Regex(UnicodeNewLinesRegExPattern);
+            = new global::System.Text.RegularExpressions.Regex( UnicodeNewLinesRegExPattern );
+#endif
     }
 }
