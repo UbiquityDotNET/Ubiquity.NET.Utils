@@ -13,26 +13,24 @@ namespace System
     [global::System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1034: Nested types should not be visible", Justification = "extension, broken analyzer")]
     internal static class PolyFillOperatingSystem
     {
-        /// <summary>Poly fill Extensions for <see cref="OperatingSystem"/></summary>
-        extension(global::System.OperatingSystem)
+#if !NET5_0_OR_GREATER
+        /// <summary>Indicates whether the current application is running on Windows.</summary>
+        /// <returns><see langword="true"/> if the current application is running on Windows; <see langword="false"/> otherwise.</returns>
+        public static bool IsWindows()
         {
-            /// <summary>Indicates whether the current application is running on Windows.</summary>
-            /// <returns><see langword="true"/> if the current application is running on Windows; <see langword="false"/> otherwise.</returns>
-            public static bool IsWindows()
+            return global::System.Environment.OSVersion.Platform switch
             {
-                return global::System.Environment.OSVersion.Platform switch
-                {
-                    PlatformID.Win32S or
-                    PlatformID.Win32Windows or
-                    PlatformID.Win32NT or
-                    PlatformID.WinCE => true,
-                    _ => false,
-                };
-            }
-
-            // other forms of Is* are more difficult to poly fill as Linux, macOS, iOS, and android, are all apparently reported as PlatformId.Unix
-            // So they need to rely on additional native interop APIs for unix AND type name searches
-            // see: https://github.com/ryancheung/PlatformUtil/blob/master/PlatformUtil/PlatformInfo.cs
+                PlatformID.Win32S or
+                PlatformID.Win32Windows or
+                PlatformID.Win32NT or
+                PlatformID.WinCE => true,
+                _ => false,
+            };
         }
+
+        // other forms of Is* are more difficult to poly fill as Linux, macOS, iOS, and android, are all apparently reported as PlatformId.Unix
+        // So they need to rely on additional native interop APIs for unix AND type name searches
+        // see: https://github.com/ryancheung/PlatformUtil/blob/master/PlatformUtil/PlatformInfo.cs
+#endif
     }
 }

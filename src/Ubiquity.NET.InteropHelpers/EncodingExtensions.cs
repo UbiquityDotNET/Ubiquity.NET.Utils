@@ -45,7 +45,11 @@ namespace Ubiquity.NET.InteropHelpers
         /// <exception cref="ArgumentNullException"><paramref name="self"/> is <see langword="null"/></exception>
         public static string? MarshalString( this Encoding self, ReadOnlySpan<byte> span )
         {
+#if NET6_0_OR_GREATER
             ArgumentNullException.ThrowIfNull( self );
+#else
+            PolyFillExceptionValidators.ThrowIfNull( self );
+#endif
 
             return span.IsEmpty
                  ? string.Empty // optimization for empty spans
@@ -62,14 +66,21 @@ namespace Ubiquity.NET.InteropHelpers
         /// <exception cref="ArgumentNullException"><paramref name="self"/> is <see langword="null"/></exception>
         public static unsafe string? MarshalString( this Encoding self, byte* nativeStringPtr )
         {
+#if NET6_0_OR_GREATER
             ArgumentNullException.ThrowIfNull( self );
+#else
+            PolyFillExceptionValidators.ThrowIfNull( self );
+#endif
 
             if(nativeStringPtr is null)
             {
                 return null;
             }
-
+#if NET6_0_OR_GREATER
             var span = MemoryMarshal.CreateReadOnlySpanFromNullTerminated( nativeStringPtr );
+#else
+            var span = PolyFillMemoryMarshal.CreateReadOnlySpanFromNullTerminated( nativeStringPtr );
+#endif
             return MarshalString( self, span );
         }
     }

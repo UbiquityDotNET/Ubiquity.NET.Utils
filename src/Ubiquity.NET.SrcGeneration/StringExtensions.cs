@@ -21,7 +21,11 @@ namespace Ubiquity.NET.SrcGeneration
         /// </remarks>
         public static IEnumerable<string> GetCommentLines( this string self, StringSplitOptions2 options = StringSplitOptions2.TrimEntries )
         {
+#if NET8_0_OR_GREATER
             ArgumentNullException.ThrowIfNull( self );
+#else
+            PolyFillExceptionValidators.ThrowIfNull( self );
+#endif
 
             // For now, naive conversion - just splits on newlines
             // more sophisticated implementation could split on word boundaries based on length...
@@ -40,7 +44,11 @@ namespace Ubiquity.NET.SrcGeneration
         /// </remarks>
         public static string EscapeComment( this string self )
         {
+#if NET8_0_OR_GREATER
             ArgumentNullException.ThrowIfNull( self );
+#else
+            PolyFillExceptionValidators.ThrowIfNull( self );
+#endif
 
             // For now, the only escape is a newline '\n'
 #if NETSTANDARD2_0
@@ -65,7 +73,11 @@ namespace Ubiquity.NET.SrcGeneration
         /// </remarks>
         public static IEnumerable<string> SplitLines( this string self, StringSplitOptions2 splitOptions = StringSplitOptions2.None )
         {
+#if NET8_0_OR_GREATER
             ArgumentNullException.ThrowIfNull( self );
+#else
+            PolyFillExceptionValidators.ThrowIfNull( self );
+#endif
 
 #if !NET5_0_OR_GREATER
             // StringSplitOptions.TrimeEntries member is not available, do it the hard/slow way
@@ -93,7 +105,11 @@ namespace Ubiquity.NET.SrcGeneration
         /// <remarks>This will perform escaping of characters for XML such as conversion of `&amp;` into `&amp;amp;` etc...</remarks>
         public static string MakeXmlSafe( this string self )
         {
+#if NET8_0_OR_GREATER
             ArgumentNullException.ThrowIfNull( self );
+#else
+            PolyFillExceptionValidators.ThrowIfNull( self );
+#endif
 
             return new XText( self ).ToString();
         }
@@ -103,7 +119,11 @@ namespace Ubiquity.NET.SrcGeneration
         /// <returns>Sequence of XML escaped strings</returns>
         public static IEnumerable<string> EscapeForXML( this IEnumerable<string> self )
         {
+#if NET8_0_OR_GREATER
             ArgumentNullException.ThrowIfNull( self );
+#else
+            PolyFillExceptionValidators.ThrowIfNull( self );
+#endif
 
             return from s in self
                    select MakeXmlSafe( s );
@@ -115,7 +135,11 @@ namespace Ubiquity.NET.SrcGeneration
         /// <seealso cref="EscapeComment(string?)"/>
         public static IEnumerable<string> EscapeForComment( this IEnumerable<string> self )
         {
+#if NET8_0_OR_GREATER
             ArgumentNullException.ThrowIfNull( self );
+#else
+            PolyFillExceptionValidators.ThrowIfNull( self );
+#endif
 
             return from s in self
                    select EscapeComment( s );
@@ -136,7 +160,11 @@ namespace Ubiquity.NET.SrcGeneration
         /// </remarks>
         public static IEnumerable<string> SkipDuplicates( this IEnumerable<string> self )
         {
+#if NET8_0_OR_GREATER
             ArgumentNullException.ThrowIfNull( self );
+#else
+            PolyFillExceptionValidators.ThrowIfNull( self );
+#endif
 
             string? oldVal = null;
             return self.Where((s)=>

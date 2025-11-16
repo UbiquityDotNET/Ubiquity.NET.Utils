@@ -31,38 +31,48 @@ namespace Ubiquity.NET.Extensions
         /// <summary>Gets the 0 based column value of this position</summary>
         public required int Column
         {
-            get;
+            get => ColumnBackingField;
             init
             {
 #if NET7_0_OR_GREATER
                 ArgumentOutOfRangeException.ThrowIfLessThan(value, 0);
 #else
-                if(value.CompareTo(0) < 0)
-                {
-                    throw new ArgumentOutOfRangeException(SR.Format(nameof(Resources.ArgumentOutOfRange_Generic_MustBeGreaterOrEqual), nameof(value), value, 0));
-                }
+                PolyFillExceptionValidators.ThrowIfLessThan(value, 0);
 #endif
+#if NET10_0_OR_GREATER
                 field = value;
+#else
+                ColumnBackingField = value;
+#endif
             }
         }
+
+#if !NET10_0_OR_GREATER
+        private readonly int ColumnBackingField;
+#endif
 
         /// <summary>Gets the one based line position of the location</summary>
         public required int Line
         {
-            get;
+            get => LineBackingField;
             init
             {
 #if NET7_0_OR_GREATER
                 ArgumentOutOfRangeException.ThrowIfLessThanOrEqual(value, 0);
 #else
-                if(value.CompareTo(0) <= 0)
-                {
-                    throw new ArgumentOutOfRangeException(SR.Format(nameof(Resources.ArgumentOutOfRange_Generic_MustBeGreater), nameof(value), value, 0));
-                }
+                PolyFillExceptionValidators.ThrowIfLessThanOrEqual(value, 0);
 #endif
+#if NET10_0_OR_GREATER
                 field = value;
+#else
+                LineBackingField = value;
+#endif
             }
         }
+
+#if !NET10_0_OR_GREATER
+        private readonly int LineBackingField;
+#endif
 
         /// <summary>Produces a string form of this position</summary>
         /// <returns>string form of the position</returns>

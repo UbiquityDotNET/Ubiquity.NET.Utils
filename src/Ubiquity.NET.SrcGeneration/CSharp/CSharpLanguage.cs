@@ -110,7 +110,11 @@ namespace Ubiquity.NET.SrcGeneration.CSharp
         /// </remarks>
         public static string MakeIdentifier( this string self )
         {
+#if NET8_0_OR_GREATER
             ArgumentNullException.ThrowIfNull( self );
+#else
+            PolyFillExceptionValidators.ThrowIfNull( self );
+#endif
 
             // always replace invalid characters
             // TODO: more sophisticated Regex that matches anything NOT a valid identifier char

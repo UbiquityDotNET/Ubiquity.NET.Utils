@@ -143,8 +143,9 @@ render properly in final docs.
     b) This will at least show in the in-editor rendering as distinct sub items so if
        everything is trimmed it is at least a distinct pattern that is readable.
 5) ***DO NOT*** put lists in any place other than inside a `remarks` region
-    a) Usually, the remarks comments are not even rendered as the most useful part is the
-        API signaure and parameter info. Different editors may allow control of that.
+    a) Usually, the remarks comments are not even rendered in an editor as the most useful
+       part is the API signaure and parameter info. Different editors may allow control of
+       that.
         i) In VS [2019|2022] for C# it is controlled by
             `Text Editor > C# > Advanced > Editor Help: "Show remarks in Quick Info."`
             1) Turning this off can greatly reduce the noise AND reduce the problems of

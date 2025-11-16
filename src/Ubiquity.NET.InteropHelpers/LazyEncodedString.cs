@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Ubiquity.NET Contributors. All rights reserved.
 // Licensed under the Apache-2.0 WITH LLVM-exception license. See the LICENSE.md file in the project root for full license information.
+using System.Text;
 
 namespace Ubiquity.NET.InteropHelpers
 {
@@ -47,8 +48,7 @@ namespace Ubiquity.NET.InteropHelpers
             {
                 int nativeByteLen = Encoding.GetByteCount(managed) + 1; // +1 for terminator
                 byte[] retVal = new byte[nativeByteLen];
-
-                int numBytes = Encoding.GetBytes(ManagedString.Value, retVal);
+                int numBytes = Encoding.GetBytes( ManagedString.Value.AsSpan(), retVal);
                 Debug.Assert( numBytes == nativeByteLen - 1, "Invalid terminator length assumptions!" ); // -1 as numBytes does not account for terminator
                 retVal[ numBytes ] = 0; // force null termination so it is viable with native code
                 return retVal;
@@ -292,7 +292,11 @@ namespace Ubiquity.NET.InteropHelpers
 
             // attempt to convert all empty strings to same instance to reduce
             // pressure on GC Heap.
-            var span = MemoryMarshal.CreateReadOnlySpanFromNullTerminated(p);
+#if NET6_0_OR_GREATER
+            var span = MemoryMarshal.CreateReadOnlySpanFromNullTerminated( p );
+#else
+            var span = PolyFillMemoryMarshal.CreateReadOnlySpanFromNullTerminated( p );
+#endif
             return span.IsEmpty ? Empty : new( span );
         }
 
@@ -317,7 +321,11 @@ namespace Ubiquity.NET.InteropHelpers
 #endif
         public static LazyEncodedString Join<T>( char separator, params IEnumerable<T> values )
         {
+#if NETSTANDARD2_0
+            return new( PolyFillStringExtensions.Join( separator, values ) );
+#else
             return new( string.Join( separator, values ) );
+#endif
         }
 
         /// <summary>Specialized join that optimizes for <see cref="LazyEncodedString"/> values</summary>
@@ -332,7 +340,11 @@ namespace Ubiquity.NET.InteropHelpers
             // If all are already in native form then this could convert the separator and use that character
             // to join the contents of the native arrays.
             // for now just do the unoptimized variant.
+#if NETSTANDARD2_0
+            return new( PolyFillStringExtensions.Join( separator, values ) );
+#else
             return new( string.Join( separator, values ) );
+#endif
         }
 
         /// <summary>Gets a <see cref="LazyEncodedString"/> representation of an empty string</summary>
@@ -367,7 +379,11 @@ namespace Ubiquity.NET.InteropHelpers
         /// </remarks>
         public static implicit operator ReadOnlySpan<byte>( LazyEncodedString self )
         {
+#if NET6_0_OR_GREATER
             ArgumentNullException.ThrowIfNull( self );
+#else
+            PolyFillExceptionValidators.ThrowIfNull( self );
+#endif
 
             return self.ToReadOnlySpan();
         }

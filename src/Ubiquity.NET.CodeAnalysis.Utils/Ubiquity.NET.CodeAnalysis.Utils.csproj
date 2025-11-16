@@ -8,9 +8,8 @@
       some language features have a hard requirement on runtime support not available
       in .NET Standard 2.0 needed for source generators. Thus will land in build errors
       in most cases, but sometimes can end up as runtime errors! BEWARE!
-      -->
-    <!--Until C#14 and the "field" and "extension" keywords are available use the preview language -->
-    <LangVersion>preview</LangVersion>
+    -->
+    <LangVersion>13</LangVersion>
 
     <!--NuGet packaging support -->
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>

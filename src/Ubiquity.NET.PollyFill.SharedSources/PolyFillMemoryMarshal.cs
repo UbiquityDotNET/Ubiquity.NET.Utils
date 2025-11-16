@@ -12,20 +12,18 @@ namespace System.Runtime.InteropServices
     /// <summary>Extensions for <see cref="MemoryMarshal"/> to allow downlevel compatibility</summary>
     internal static class PolyFillMemoryMarshal
     {
-        extension(global::System.Runtime.InteropServices.MemoryMarshal)
+#if !NET6_0_OR_GREATER
+        /// <summary>Creates a new read-only span for a null-terminated UTF-8 string.</summary>
+        /// <param name="value">The pointer to the null-terminated string of bytes.</param>
+        /// <returns>A read-only span representing the specified null-terminated string, or an empty span if the pointer is null.</returns>
+        /// <remarks>The returned span does not include the null terminator, nor does it validate the well-formedness of the UTF-8 data.</remarks>
+        /// <exception cref="ArgumentException">The string is longer than <see cref="int.MaxValue"/>.</exception>
+        [global::System.CLSCompliant(false)]
+        public static unsafe global::System.ReadOnlySpan<byte> CreateReadOnlySpanFromNullTerminated(byte* value)
         {
-            /// <summary>Creates a new read-only span for a null-terminated UTF-8 string.</summary>
-            /// <param name="value">The pointer to the null-terminated string of bytes.</param>
-            /// <returns>A read-only span representing the specified null-terminated string, or an empty span if the pointer is null.</returns>
-            /// <remarks>The returned span does not include the null terminator, nor does it validate the well-formedness of the UTF-8 data.</remarks>
-            /// <exception cref="ArgumentException">The string is longer than <see cref="int.MaxValue"/>.</exception>
-            [global::System.CLSCompliant(false)]
-            public static unsafe global::System.ReadOnlySpan<byte> CreateReadOnlySpanFromNullTerminated(byte* value)
-            {
-                return value != null
-                     ? new global::System.ReadOnlySpan<byte>(value, StrLen(value))
-                     : default;
-            }
+            return value != null
+                    ? new global::System.ReadOnlySpan<byte>(value, StrLen(value))
+                    : default;
         }
 
         private static unsafe int StrLen(byte* p)
@@ -38,5 +36,6 @@ namespace System.Runtime.InteropServices
 
             return indexOfTerminator;
         }
+#endif
     }
 }
