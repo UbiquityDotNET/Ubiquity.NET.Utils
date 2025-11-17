@@ -2,7 +2,7 @@
 // Licensed under the Apache-2.0 WITH LLVM-exception license. See the LICENSE.md file in the project root for full license information.
 
 // Mostly from: https://github.com/Sergio0694/PolySharp/blob/main/src/PolySharp.SourceGenerators/Extensions/CompilationExtensions.cs
-// Reformated and adapted to support repo guidelines
+// Reformatted and adapted to support repo guidelines
 
 using Microsoft.CodeAnalysis.VisualBasic;
 
@@ -42,7 +42,7 @@ namespace Ubiquity.NET.CodeAnalysis.Utils
 
         /// <summary>Gets the runtime version by extracting the version from the assembly implementing <see cref="System.Object"/></summary>
         /// <param name="self">Compilation to get the version information from</param>
-        /// <returns>Version of the runtime the compilation is targetting</returns>
+        /// <returns>Version of the runtime the compilation is targeting</returns>
         public static RuntimeVersion GetRuntimeVersion(this Compilation self)
         {
             var objectType = self.GetSpecialType(SpecialType.System_Object);
@@ -50,10 +50,10 @@ namespace Ubiquity.NET.CodeAnalysis.Utils
             return new(runtimeAssembly.Identity.Name, runtimeAssembly.Identity.Version);
         }
 
-        /// <summary>Gets a value indicating wheter the compilation has a minium version of the runtime</summary>
+        /// <summary>Gets a value indicating whether the compilation has a minium version of the runtime</summary>
         /// <param name="self">Compilation to test</param>
         /// <param name="minVersion">Minimum version accepted</param>
-        /// <returns><see langword="true"/> if the runtime version targetted by the compilation is at least <paramref name="minVersion"/>; <see langword="false"/> otherwise</returns>
+        /// <returns><see langword="true"/> if the runtime version targeted by the compilation is at least <paramref name="minVersion"/>; <see langword="false"/> otherwise</returns>
         public static bool HasRuntimeVersionAtLeast(this Compilation self, RuntimeVersion minVersion)
         {
             var runtimeVersion = GetRuntimeVersion(self);
@@ -140,7 +140,7 @@ namespace Ubiquity.NET.CodeAnalysis.Utils
         /// <param name="memberName">Name of the member to test for</param>
         /// <param name="within">Symbol to test if the member is accessible within</param>
         /// <param name="throughType">Symbol to use for "protected access" [default: null]</param>
-        /// <returns><see langword="true"/> if the member is accesible and <see langword="false"/></returns>
+        /// <returns><see langword="true"/> if the member is accessible and <see langword="false"/></returns>
         public static bool HasAccessibleMemberWithin(
             this Compilation self,
             ITypeSymbol typeSymbol,

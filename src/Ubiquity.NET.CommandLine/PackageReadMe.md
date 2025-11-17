@@ -25,7 +25,7 @@ if(!ArgsParsing.TryParse<Options>( args, reporter, out Options? options, out int
 of the logging interfaces available. The primary distinction is with the ***intention*** of
 use. `IDiagnosticReporter` specifically assumes the use for UI/UX rather than a
 debugging/diagnostic log. These have VERY distinct use cases and purposes and generally show
-very different information. (Not to mention the overlly complex requirements of
+very different information. (Not to mention the overly complex requirements of
 the anti-pattern DI container assumed in `Microsoft.Extensions.Logging`)
 
 ### Messages
@@ -37,7 +37,7 @@ There are a few pre-built implementation of the `IDiagnosticReporter` interface.
 * `TextWriterReporter`
     * Base class for writing UX to a `TextWriter`
 * `ConsoleReporter`
-    * Reporter that reports errors to `Console.Error` and all other nessages to
+    * Reporter that reports errors to `Console.Error` and all other messages to
       `Console.Out`
 * `ColoredConsoleReporter`
     * `ConsoleReporter` that colorizes output using ANSI color codes

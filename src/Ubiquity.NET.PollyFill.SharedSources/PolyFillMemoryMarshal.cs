@@ -9,7 +9,7 @@
 
 namespace System.Runtime.InteropServices
 {
-    /// <summary>Extensions for <see cref="MemoryMarshal"/> to allow downlevel compatibility</summary>
+    /// <summary>Extensions for <see cref="MemoryMarshal"/> to allow down-level compatibility</summary>
     internal static class PolyFillMemoryMarshal
     {
 #if !NET6_0_OR_GREATER
@@ -28,7 +28,7 @@ namespace System.Runtime.InteropServices
 
         private static unsafe int StrLen(byte* p)
         {
-            // Crude but functional - definately NOT perf optimized.
+            // Crude but functional - definitely NOT perf optimized.
             int indexOfTerminator = 0;
             for(; *p != 0; ++p, ++indexOfTerminator)
             {

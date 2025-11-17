@@ -32,7 +32,7 @@ namespace Ubiquity.NET.Extensions.UT
 #endif
 
         // Technically this tests both poly filled and official implementations, but validates the
-        // assumptions that exist betweeen them. If both pass then the poly fill is replicating the
+        // assumptions that exist between them. If both pass then the poly fill is replicating the
         // tested behavior of the official runtime implementation. (If, perhaps, less performant...)
 
         [TestMethod]

@@ -11,7 +11,7 @@ namespace Ubiquity.NET.SrcGeneration
         /// <param name="options">String split options to use when splitting lines</param>
         /// <returns>Enumerable sequence of comment strings without any language specific leading or trailing delimiters</returns>
         /// <remarks>
-        /// This is generally used by language specific extensions that will also emit the comment leading/trailiing text as needed.
+        /// This is generally used by language specific extensions that will also emit the comment leading/trailing text as needed.
         /// Thus it is a general language neutral facility that is used to produce the final language specific comments.
         /// It will perform the following on the input string:
         /// 1) <see cref="EscapeComment(string)"/> to ensure character escaping is applied to the whole string<br/>
@@ -177,8 +177,8 @@ namespace Ubiquity.NET.SrcGeneration
 
 #pragma warning disable IDE0002
 // names can't be simplified further due to weird ambiguities with how extensions are resolved
-// net stadard 2.0 does NOT contain the static methods for argument validation on exceptions.
-// Thus in tat runtime they are polly fill extensions, but they have the same name as instance
+// .NET Standard 2.0 does NOT contain the static methods for argument validation on exceptions.
+// Thus in tat runtime they are poly fill extensions, but they have the same name as instance
 // extensions - those win out and collide causing mass confusion.
         private static readonly string [] MixedLineEndings =
             [

@@ -46,7 +46,7 @@ namespace Ubiquity.NET.CodeAnalysis.Utils
         /// <param name="self">The context to report the diagnostic to</param>
         /// <param name="location">Location of the source of this diagnostic</param>
         /// <param name="descriptor">Descriptor for the diagnostic</param>
-        /// <param name="messageArgs">Argumnets, if any, for the diagnostic message</param>
+        /// <param name="messageArgs">Arguments, if any, for the diagnostic message</param>
         public static void ReportDiagnostic(
             this SourceProductionContext self,
             Location location,
@@ -61,7 +61,7 @@ namespace Ubiquity.NET.CodeAnalysis.Utils
         /// <param name="self">The context to report the diagnostic to</param>
         /// <param name="node">Node as the source of the diagnostic</param>
         /// <param name="descriptor">Descriptor for the diagnostic</param>
-        /// <param name="messageArgs">Argumnets, if any, for the diagnostic message</param>
+        /// <param name="messageArgs">Arguments, if any, for the diagnostic message</param>
         public static void ReportDiagnostic(
             this SourceProductionContext self,
             CSharpSyntaxNode node,

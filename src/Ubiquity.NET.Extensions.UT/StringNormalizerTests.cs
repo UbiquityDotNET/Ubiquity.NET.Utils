@@ -8,8 +8,8 @@ namespace Ubiquity.NET.Extensions.UT
     //
     // Example:
     //     Assert.AreEqual failed. Expected string length 51 but was 52. 'expected' expression: 'expectedOutput', 'actual' expression: 'systemNormalizedInput'.
-    // Expected: "This is a line␊This is anotherline␊And..."
-    // But was:  "This is a line␍␊This is anotherline␍An..."
+    // Expected: "This is a line␊This is another line␊And..."
+    // But was:  "This is a line␍␊This is another line␍An..."
     // -------------------------^
 
     // NOTE: In C# the string "line1\nLine2" has exactly what was put in the string
@@ -21,7 +21,7 @@ namespace Ubiquity.NET.Extensions.UT
     //       Recommendation R4 and Table 5-2 (CR, LF, CRLF, NEL, LS, FF, PS). Explicitly excluded
     //       is VT. Thus, that will normalize ANY newline sequence to the form expected by the
     //       environment.
-    //       Unfortunately, ReplaceLineEndings() is NOT available in downlevel runtimes...
+    //       Unfortunately, ReplaceLineEndings() is NOT available in down-level runtimes...
 
     [TestClass]
     [ExcludeFromCodeCoverage]
@@ -36,7 +36,7 @@ namespace Ubiquity.NET.Extensions.UT
         [TestMethod]
         public void Normalize_with_default_endings_does_nothing( )
         {
-            string testInput = "This is a line" + Environment.NewLine + "And so is this"; // Platform sepecific
+            string testInput = "This is a line" + Environment.NewLine + "And so is this"; // Platform specific
             string normalizedOutput = testInput.NormalizeLineEndings(StringNormalizer.SystemLineEndings);
             Assert.AreSame(testInput, normalizedOutput, "Should return same instance (zero copy)");
         }
@@ -44,10 +44,10 @@ namespace Ubiquity.NET.Extensions.UT
         [TestMethod]
         public void Normalize_with_alternate_endings_produces_new_string( )
         {
-            string testInput = "This is a line"+ Environment.NewLine + "And so is this"; // Platform sepecific
+            string testInput = "This is a line"+ Environment.NewLine + "And so is this"; // Platform specific
             const string expectedOutput = "This is a line\rAnd so is this";
 
-            // CR Only is not the default for any currently supported runtinme for .NET so this
+            // CR Only is not the default for any currently supported runtime for .NET so this
             // remains a platform neutral test - verify that assumption!
             // See also: System_line_ending_detected_correctly()
             Assert.AreNotEqual(LineEndingKind.CarriageReturn, StringNormalizer.SystemLineEndings, "TEST ERROR: CR is default line ending for this runtime!");
@@ -59,13 +59,13 @@ namespace Ubiquity.NET.Extensions.UT
         [TestMethod]
         public void Normalize_with_mixed_input_succeeds()
         {
-            const string mixedInput = "This is a line\r\nThis is anotherline\rAnd aonther line";
-            string expectedOutput = "This is a line"+ Environment.NewLine + "This is anotherline"+ Environment.NewLine + "And aonther line"; // Platform sepecific
+            const string mixedInput = "This is a line\r\nThis is another line\rAnd another line";
+            string expectedOutput = "This is a line"+ Environment.NewLine + "This is another line"+ Environment.NewLine + "And another line"; // Platform specific
             string systemNormalizedInput = mixedInput.NormalizeLineEndings(LineEndingKind.MixedOrUnknownEndings, StringNormalizer.SystemLineEndings);
             Assert.AreEqual(expectedOutput, systemNormalizedInput);
         }
 
-        // Technincally Mac OS prior to OS X (Lion) use CR, but .NET does not
+        // Technically, Mac OS prior to OS X (Lion) use CR, but .NET does not
         // support those older versions. Thus, this only treats Windows as the
         // "odd man out", everything else uses LF.
 #if NET5_0_OR_GREATER

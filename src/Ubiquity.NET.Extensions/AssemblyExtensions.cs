@@ -17,7 +17,7 @@ namespace Ubiquity.NET.Extensions
         extension(Assembly self)
         {
             /// <summary>Gets the informational version from an assembly</summary>
-            /// <param name="exp">Expresssion for the assembly to retrieve the attribute data from; normally provided by compiler</param>
+            /// <param name="exp">Expression for the assembly to retrieve the attribute data from; normally provided by compiler</param>
             /// <returns>String contents from the <see cref="AssemblyInformationalVersionAttribute"/> in the assembly or <see cref="string.Empty"/></returns>
             [SuppressMessage( "Performance", "CA1822:Mark members as static", Justification = "Instance extension" )]
             public string GetInformationalVersion( [CallerArgumentExpression( nameof( self ) )] string? exp = null )
@@ -34,7 +34,7 @@ namespace Ubiquity.NET.Extensions
 #else
         /// <summary>Gets the informational version from an assembly</summary>
         /// <param name="self">Assembly to extract the version from</param>
-        /// <param name="exp">Expresssion for the assembly to retrieve the attribute data from; normally provided by compiler</param>
+        /// <param name="exp">Expression for the assembly to retrieve the attribute data from; normally provided by compiler</param>
         /// <returns>String contents from the <see cref="AssemblyInformationalVersionAttribute"/> in the assembly or <see cref="string.Empty"/></returns>
         public static string GetInformationalVersion(this Assembly self, [CallerArgumentExpression( nameof( self ) )] string? exp = null )
         {

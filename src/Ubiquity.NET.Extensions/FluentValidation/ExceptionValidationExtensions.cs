@@ -5,7 +5,7 @@ namespace Ubiquity.NET.Extensions.FluentValidation
 {
     // This does NOT use the new C# 14 extension syntax due to several reasons
     // 1) Code lens does not work https://github.com/dotnet/roslyn/issues/79006 [Sadly, marked as "not planned" - e.g., dead-end]
-    // 2) MANY analyzers get things wrong and need to be supressed (CA1000, CA1034, and many others [SAxxxx])
+    // 2) MANY analyzers get things wrong and need to be suppressed (CA1000, CA1034, and many others [SAxxxx])
     // 3) Many external tools don't support the new syntax yet and it isn't clear if they will in the future.
     // 4) No clear support for Caller* attributes ([CallerArgumentExpression(...)]).
     //
@@ -23,13 +23,13 @@ namespace Ubiquity.NET.Extensions.FluentValidation
     /// use mostly a moot point.
     /// <note type="important">
     /// In .NET Standard 2.0 builds this can create ambiguities with the static extensions
-    /// in `PolyFillExceptionValidators`. This is becuase they are "Poly Filled"
+    /// in `PolyFillExceptionValidators`. This is because they are "Poly Filled"
     /// in downstream versions and the resolution rules for extensions in the C# language.
     /// Instance methods are resolved before the static extensions and therefore the extensions
     /// here are resolved even if there is a direct static extensions. This seems broken, but
-    /// is how the language is resolving things. Therefore carefull use of namespace usings
+    /// is how the language is resolving things. Therefore careful use of namespace usings
     /// and global usings as well as explicit use of this type is needed to resolve this. It
-    /// is NOT recommended to use explict references to the static method in `PolyFillExceptionValidators`
+    /// is NOT recommended to use explicit references to the static method in `PolyFillExceptionValidators`
     /// as the methods don't exist if the BCL type contains the method already in a given
     /// runtime. Thus, in compilation units, needing both namespaces only this one is
     /// explicitly referenced.
@@ -103,7 +103,7 @@ namespace Ubiquity.NET.Extensions.FluentValidation
             }
             catch(Exception ex) when(ex is InvalidCastException or FormatException or OverflowException)
             {
-                // InvalidEnumArgumentException constructors ONLY provide paramater name value set for values
+                // InvalidEnumArgumentException constructors ONLY provide parameter name value set for values
                 // that are representable as an int. Thus, anything else requires a custom message that at
                 // least includes the original value in question. (Normally an enum does fit an int, but for
                 // interop might not) the resulting exception will have "ParamName" as the default of "null"!

@@ -36,18 +36,9 @@ normally used when the value itself isn't passed on but some transformed value i
 
 |Method | Description |
 |-------|-------------|
-|`ThrowIfNull()`| Thows an exception if the argument is null or returns it as-is |
-|`ThrowIfOutOfRange()` | Thorws an exception if a value is out of the specified range |
+|`ThrowIfNull()`| Throws an exception if the argument is null or returns it as-is |
+|`ThrowIfOutOfRange()` | Throws an exception if a value is out of the specified range |
 |`ThrowIfNotDefined()` | Throws an exception if an enum value is undefined |
-
-## Why not PolyFill?
-While it isn't impossible to make polyfill for this to work on .NET standard 2.0 it
-***is*** a HUGE amount of effort to do so and there's no compelling reason to do so. Roslyn
-extensions/VSIX extensions are the most likely candidates left. VS extensions are shifting
-to external processes for extensions for this reason, leaving Roslyn generators. The bottom
-line is that too much of MODERN .NET and C# is incompatible with .NET Standard 2.0 that a
-distinct PolyFill library can only cover some of it. (Even the PolySharp generator covers
-only some of the missing functionality)
 
 ## Runtime Dependencies
 None  

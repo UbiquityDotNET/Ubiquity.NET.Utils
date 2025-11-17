@@ -14,7 +14,7 @@ For an explanation of the benefits of the language feature see: https://www.hans
 
 // BUG: False positive from IDE0005 - Using directive is unnecessary
 // Attempts to remove/sort are at least able to figure it out and do the right thing.
-// Bug seems to be related to multi-targetting.
+// Bug seems to be related to multi-targeting.
 #pragma warning disable IDE0005
 
 global using System;

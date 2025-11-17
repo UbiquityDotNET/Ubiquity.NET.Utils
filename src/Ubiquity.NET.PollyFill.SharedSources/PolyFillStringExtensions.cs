@@ -13,7 +13,7 @@ using global::System.Diagnostics;
 
 namespace System
 {
-    /// <summary>Pollyfill extensions for support not present in older runtimes</summary>
+    /// <summary>Polyfill extensions for support not present in older runtimes</summary>
     /// <inheritdoc cref="PolyFillExceptionValidators" path="/remarks"/>
     internal static class PolyFillStringExtensions
     {
@@ -53,7 +53,7 @@ namespace System
             return ReplaceLineEndings( self, global::System.Environment.NewLine );
         }
 
-        // This is NOT the most performant implementation, it's going for simplistic pollyfill that has
+        // This is NOT the most performant implementation, it's going for simplistic polyfill that has
         // the correct behavior, even if not the most performant. If performance is critical, use a
         // later version of the runtime!
 
@@ -82,7 +82,7 @@ namespace System
         // language=regex
         private const string UnicodeNewLinesRegExPattern = @"(\r\n|\r|\n|\f|\u0085|\u2028|\u2029)";
 
-        // NOTE: can't use source generated RegEx here as there's no way to declare the depency on
+        // NOTE: can't use source generated RegEx here as there's no way to declare the dependency on
         // the output of one generator as the input for another. They all see the same input, therefore
         // the partial implementation would never be filled in and produces a compilation error instead.
         private static global::System.Text.RegularExpressions.Regex UnicodeNewLinesRegEx { get; }

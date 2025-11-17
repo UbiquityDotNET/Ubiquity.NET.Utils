@@ -3,7 +3,7 @@
 
 namespace Ubiquity.NET.Extensions.Properties
 {
-    /// <summary>Exception thornw if a resource is missing</summary>
+    /// <summary>Exception thrown if a resource is missing</summary>
     /// <remarks>
     /// This is ALWAYS a bug in the application and should not be caught or suppressed in any way.
     /// It indicates that a named resource does not exist, either add the resource or correct the
