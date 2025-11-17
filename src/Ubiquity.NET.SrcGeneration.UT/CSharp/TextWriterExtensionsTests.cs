@@ -170,12 +170,14 @@ namespace Ubiquity.NET.SrcGeneration.UT.CSharp
             This is another discrete line. The preceding duplicate blank is removed.
             """;
 
-            // NOTE: Literal strings requires a blank line to indicate a line terminator.
+            // NOTE: Literal strings require a blank line to indicate a line terminator.
             //       Otherwise, the compiler generates a string without a terminating new line!
+            //       Also note, that there is an intentional trailing whitespace to indicate a
+            //       non-empty line for this test.
             const string expected = """
             /// <remarks>
             /// This is a remarks line
-            ///
+            /// 
             /// This is another discrete line. The preceding duplicate blank is removed.
             /// </remarks>
 
@@ -226,11 +228,13 @@ namespace Ubiquity.NET.SrcGeneration.UT.CSharp
 
             // NOTE: Literal strings requires a blank line to indicate a line terminator.
             //       Otherwise, the compiler generates a string without a terminating new line!
+            //       Also note, that there is an intentional trailing whitespace to indicate a
+            //       non-empty line for this test.
             const string expected = """
             /// <summary>description of this API</summary>
             /// <remarks>
             /// This is a remarks line
-            ///
+            /// 
             /// This is another discrete line. The preceding duplicate blank is removed.
             /// </remarks>
 
