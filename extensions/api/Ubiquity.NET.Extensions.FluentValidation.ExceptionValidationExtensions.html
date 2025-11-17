@@ -84,7 +84,7 @@
 
 
   <h1 id="Ubiquity_NET_Extensions_FluentValidation_ExceptionValidationExtensions" data-uid="Ubiquity.NET.Extensions.FluentValidation.ExceptionValidationExtensions" class="text-break">
-Class ExceptionValidationExtensions  <a class="header-action link-secondary" title="View source" href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.8-rc.3/src/Ubiquity.NET.Extensions/FluentValidation/ExceptionValidationExtensions.cs/#L38"><i class="bi bi-code-slash"></i></a>
+Class ExceptionValidationExtensions  <a class="header-action link-secondary" title="View source" href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.8/src/Ubiquity.NET.Extensions/FluentValidation/ExceptionValidationExtensions.cs/#L38"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -151,13 +151,13 @@ method implementations etc... Though the C# 14 <code>field</code> keyword makes 
 use mostly a moot point.</p>
 <div class="IMPORTANT"><h5>important</h5><p>
 In .NET Standard 2.0 builds this can create ambiguities with the static extensions
-in `PolyFillExceptionValidators`. This is becuase they are "Poly Filled"
+in `PolyFillExceptionValidators`. This is because they are "Poly Filled"
 in downstream versions and the resolution rules for extensions in the C# language.
 Instance methods are resolved before the static extensions and therefore the extensions
 here are resolved even if there is a direct static extensions. This seems broken, but
-is how the language is resolving things. Therefore carefull use of namespace usings
+is how the language is resolving things. Therefore careful use of namespace usings
 and global usings as well as explicit use of this type is needed to resolve this. It
-is NOT recommended to use explict references to the static method in `PolyFillExceptionValidators`
+is NOT recommended to use explicit references to the static method in `PolyFillExceptionValidators`
 as the methods don't exist if the BCL type contains the method already in a given
 runtime. Thus, in compilation units, needing both namespaces only this one is
 explicitly referenced.
@@ -188,7 +188,7 @@ explicitly referenced.
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.8-rc.3/src/Ubiquity.NET.Extensions/FluentValidation/ExceptionValidationExtensions.cs/#L38" class="edit-link">Edit this page</a>
+          <a href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.8/src/Ubiquity.NET.Extensions/FluentValidation/ExceptionValidationExtensions.cs/#L38" class="edit-link">Edit this page</a>
         </div>
 
 
@@ -204,7 +204,7 @@ explicitly referenced.
       <div class="container-xxl">
         <div class="flex-fill">
           Copyright (C) 2017-2025, Ubiquity.NET Contributors
-          - Build: 20.1.8-rc.3
+          - Build: 20.1.8
         </div>
       </div>
     </footer>
