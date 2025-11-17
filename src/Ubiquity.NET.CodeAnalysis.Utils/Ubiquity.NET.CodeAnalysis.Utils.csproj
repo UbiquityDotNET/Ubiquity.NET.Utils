@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <Nullable>enable</Nullable>
     <!--
-      Most runtime support required is polyfilled with additional dependencies. Though
+      Most runtime support required is poly filled with additional dependencies. Though
       some language features have a hard requirement on runtime support not available
       in .NET Standard 2.0 needed for source generators. Thus will land in build errors
       in most cases, but sometimes can end up as runtime errors! BEWARE!
@@ -17,7 +17,7 @@
     <Authors>.NET Foundation,Ubiquity.NET</Authors>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <Description>General use .NET extensions and utilities for implementing Roslyn analyzers, fixers and src generators</Description>
-    <PackageTags>Extensions, Rolsyn,Utility,Helper,.NET,Ubiquity.NET</PackageTags>
+    <PackageTags>Extensions, Roslyn,Utility,Helper,.NET,Ubiquity.NET</PackageTags>
     <PackageReadmeFile>ReadMe.md</PackageReadmeFile>
     <PackageProjectUrl>https://github.com/UbiquityDotNET/Ubiquity.NET.Utils</PackageProjectUrl>
     <RepositoryUrl>https://github.com/UbiquityDotNET/Ubiquity.NET.Utils.git</RepositoryUrl>
