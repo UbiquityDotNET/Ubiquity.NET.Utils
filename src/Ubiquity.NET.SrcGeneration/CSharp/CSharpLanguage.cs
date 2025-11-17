@@ -102,7 +102,7 @@ namespace Ubiquity.NET.SrcGeneration.CSharp
         /// <param name="self">identifier string to convert</param>
         /// <returns>Syntactically valid identifier</returns>
         /// <remarks>
-        /// Current implementation simplisticly performs keyword escaping AND
+        /// Current implementation simplistically performs keyword escaping AND
         /// conversion of space to `'_'`. Specifically, it does NOT (yet anyway)
         /// validate that the result satisfies the language definition of an
         /// identifier (which limits the characters allowed and further restricts

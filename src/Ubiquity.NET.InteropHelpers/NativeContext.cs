@@ -5,7 +5,7 @@ namespace Ubiquity.NET.InteropHelpers
 {
     // This does NOT use the new C# 14 extension syntax due to several reasons
     // 1) Code lens does not work https://github.com/dotnet/roslyn/issues/79006 [Sadly marked as "not planned" - e.g., dead-end]
-    // 2) MANY analyzers get things wrong and need to be supressed (CA1000, CA1034, and many others [SAxxxx])
+    // 2) MANY analyzers get things wrong and need to be suppressed (CA1000, CA1034, and many others [SAxxxx])
     // 3) Many tools (like docfx don't support the new syntax yet)
     // 4) No clear support for Caller* attributes ([CallerArgumentExpression(...)]).
     //
@@ -66,7 +66,7 @@ namespace Ubiquity.NET.InteropHelpers
         /// <typeparam name="T">Type of the managed object to materialize</typeparam>
         /// <param name="ctx">Native context</param>
         /// <param name="value">Materialized value or <see langword="null"/> if not</param>
-        /// <returns><see langword="true"/> if the value is succesfully materialized and <see langword="false"/> if not</returns>
+        /// <returns><see langword="true"/> if the value is successfully materialized and <see langword="false"/> if not</returns>
         [MustUseReturnValue]
         public static unsafe bool TryFrom<T>(void* ctx, [MaybeNullWhen(false)] out T value)
         {

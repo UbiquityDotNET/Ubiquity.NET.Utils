@@ -15,7 +15,7 @@ namespace Ubiquity.NET.CodeAnalysis.Utils
         /// <param name="keyword">Keyword for this declaration</param>
         /// <param name="name">Name of the type</param>
         /// <param name="constraints">Constraints for this type</param>
-        /// <param name="children">Names of any nested child types to form hiearachies</param>
+        /// <param name="children">Names of any nested child types to form hierarchies</param>
         /// <remarks>
         /// <paramref name="keyword"/> is normally one of ("class", "struct", "interface", "record [class|struct]?").
         /// </remarks>

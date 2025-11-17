@@ -50,7 +50,7 @@ namespace Ubiquity.NET.CodeAnalysis.Utils
             return value != null;
         }
 
-        /// <summary>Determines if a declartion has an extern modifier</summary>
+        /// <summary>Determines if a declaration has an extern modifier</summary>
         /// <param name="self"><see cref="MemberDeclarationSyntax"/> to test</param>
         /// <returns><see langword="true"/> if <paramref name="self"/> has the modifier or <see langword="false"/> not</returns>
         /// <exception cref="ArgumentNullException"><paramref name="self"/> is null</exception>
@@ -61,7 +61,7 @@ namespace Ubiquity.NET.CodeAnalysis.Utils
                  : throw new ArgumentNullException(nameof(self));
         }
 
-        /// <summary>Determines if a declartion has a partial modifier</summary>
+        /// <summary>Determines if a declaration has a partial modifier</summary>
         /// <inheritdoc cref="IsExtern(MemberDeclarationSyntax)"/>
         public static bool IsPartial(this MemberDeclarationSyntax self)
         {
@@ -70,7 +70,7 @@ namespace Ubiquity.NET.CodeAnalysis.Utils
                  : throw new ArgumentNullException(nameof(self));
         }
 
-        /// <summary>Determines if a declartion has a static modifier</summary>
+        /// <summary>Determines if a declaration has a static modifier</summary>
         /// <inheritdoc cref="IsExtern(MemberDeclarationSyntax)"/>
         public static bool IsStatic(this MemberDeclarationSyntax self)
         {

@@ -16,7 +16,7 @@ namespace Ubiquity.NET.CommandLine.UT
             var settings = CreateTestSettings();
             var result = ArgsParsing.Parse<TestOptions>(["--version"], settings);
 
-            Assert.HasCount( 0, result.Errors, "Version alone should not procue errors" );
+            Assert.HasCount( 0, result.Errors, "Version alone should not produce errors" );
 
             var versionOption = result.GetVersionOption();
             Assert.IsNotNull(versionOption);

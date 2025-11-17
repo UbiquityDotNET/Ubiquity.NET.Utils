@@ -32,7 +32,7 @@ namespace System
 
     // Sadly, these are NOT localized messages as the official forms are.
     // There is no way, at least no-known way (easy or not) to inject resources
-    // that would participate in loclization. (If the consumer even does that...)
+    // that would participate in localization. (If the consumer even does that...)
     // The actual strings used are the same as the values in the official runtime
     // support so are at least compatible for "en-us". This fakes it to make it
     // more readable AND make it easier to shift if a means of injecting resources
@@ -69,10 +69,10 @@ namespace System
     /// </remarks>
     internal static class PolyFillExceptionValidators
     {
-        /// <summary>Throw an <see cref="ArgumentException"/> if a string is <see langword="null"/>m empty, or all whitepsace.</summary>
+        /// <summary>Throw an <see cref="ArgumentException"/> if a string is <see langword="null"/>m empty, or all whitespace.</summary>
         /// <param name="argument">input string to test</param>
         /// <param name="paramName">expression or name of the string to test; normally provided by compiler</param>
-        /// <exception cref="ArgumentException">string is <see langword="null"/>m empty, or all whitepsace</exception>
+        /// <exception cref="ArgumentException">string is <see langword="null"/>m empty, or all whitespace</exception>
         public static void ThrowIfNullOrWhiteSpace(
             [global::System.Diagnostics.CodeAnalysis.NotNullAttribute] string? argument,
             [global::System.Runtime.CompilerServices.CallerArgumentExpressionAttribute( nameof( argument ) )] string? paramName = null
@@ -88,7 +88,7 @@ namespace System
             }
         }
 
-        /// <summary>Throws an aexception if the tested argument is <see langword="null"/></summary>
+        /// <summary>Throws an exception if the tested argument is <see langword="null"/></summary>
         /// <param name="argument">value to test</param>
         /// <param name="paramName">expression for the name of the value; normally provided by compiler</param>
         /// <exception cref="ArgumentNullException"><paramref name="argument"/> is <see langword="null"/></exception>
@@ -171,7 +171,7 @@ namespace System
         }
 
         /// <summary>Throws an <see cref="ArgumentOutOfRangeException"/> if <paramref name="value"/> is less than <paramref name="other"/>.</summary>
-        /// <param name="value">The argument to validate as greatar than or equal than <paramref name="other"/>.</param>
+        /// <param name="value">The argument to validate as greater than or equal than <paramref name="other"/>.</param>
         /// <param name="other">The value to compare with <paramref name="value"/>.</param>
         /// <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
         public static void ThrowIfLessThan<T>( T value, T other, [global::System.Runtime.CompilerServices.CallerArgumentExpressionAttribute( nameof( value ) )] string? paramName = null )
@@ -184,7 +184,7 @@ namespace System
         }
 
         /// <summary>Throws an <see cref="ArgumentOutOfRangeException"/> if <paramref name="value"/> is less than or equal <paramref name="other"/>.</summary>
-        /// <param name="value">The argument to validate as greatar than than <paramref name="other"/>.</param>
+        /// <param name="value">The argument to validate as greater than <paramref name="other"/>.</param>
         /// <param name="other">The value to compare with <paramref name="value"/>.</param>
         /// <param name="paramName">The name of the parameter with which <paramref name="value"/> corresponds.</param>
         public static void ThrowIfLessThanOrEqual<T>( T value, T other, [global::System.Runtime.CompilerServices.CallerArgumentExpressionAttribute( nameof( value ) )] string? paramName = null )

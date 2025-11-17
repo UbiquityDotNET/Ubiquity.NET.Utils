@@ -14,28 +14,28 @@ namespace Ubiquity.NET.Extensions
         /// <summary>Omit array elements that contain an empty string from the result.</summary>
         /// <remarks>
         /// If <see cref="RemoveEmptyEntries"/> and <see cref="TrimEntries"/> are specified together,
-        /// then substrings that consist only of white-space characters are also removed from the result.
+        /// then sub-strings that consist only of white-space characters are also removed from the result.
         /// </remarks>
         RemoveEmptyEntries = StringSplitOptions.RemoveEmptyEntries,
 
 #if NET5_0_OR_GREATER
-        /// <summary>Trim white-space characters from each substring in the result.</summary>
+        /// <summary>Trim white-space characters from each sub-string in the result.</summary>
         /// <remarks>
         /// If <see cref="RemoveEmptyEntries"/> and <see cref="TrimEntries"/> are specified together,
-        /// then substrings that consist only of white-space characters are also removed from the result.
+        /// then sub-strings that consist only of white-space characters are also removed from the result.
         /// </remarks>
         TrimEntries = StringSplitOptions.TrimEntries
 #else
-        /// <summary>Trim white-space characters from each substring in the result.</summary>
+        /// <summary>Trim white-space characters from each sub-string in the result.</summary>
         /// <remarks>
         /// <note type="important">
         /// The official value of this field is available in .NET 5 and later versions only. Unless a method
-        /// using <see cref="StringSplitOptions"/> is explicitily re-written to support <see cref="StringSplitOptions2"/>,
+        /// using <see cref="StringSplitOptions"/> is explicitly re-written to support <see cref="StringSplitOptions2"/>,
         /// then the functionality for this is not available.
         /// </note>
         /// <para>
         /// If <see cref="RemoveEmptyEntries"/> and <see cref="TrimEntries"/> are specified together,
-        /// then substrings that consist only of white-space characters are also removed from the result.
+        /// then sub-strings that consist only of white-space characters are also removed from the result.
         /// </para>
         /// </remarks>
         TrimEntries = 2,

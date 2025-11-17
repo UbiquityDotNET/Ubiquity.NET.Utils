@@ -175,7 +175,7 @@ namespace Ubiquity.NET.SrcGeneration.UT.CSharp
             const string expected = """
             /// <remarks>
             /// This is a remarks line
-            /// 
+            ///
             /// This is another discrete line. The preceding duplicate blank is removed.
             /// </remarks>
 
@@ -230,7 +230,7 @@ namespace Ubiquity.NET.SrcGeneration.UT.CSharp
             /// <summary>description of this API</summary>
             /// <remarks>
             /// This is a remarks line
-            /// 
+            ///
             /// This is another discrete line. The preceding duplicate blank is removed.
             /// </remarks>
 

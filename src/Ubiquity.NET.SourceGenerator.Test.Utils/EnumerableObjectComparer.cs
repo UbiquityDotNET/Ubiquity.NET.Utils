@@ -14,7 +14,7 @@ namespace Ubiquity.NET.SourceGenerator.Test.Utils
         : IEqualityComparer<IEnumerable<object>>
     {
         /// <inheritdoc/>
-        [SuppressMessage( "StyleCop.CSharp.NamingRules", "SA1305:Field names should not use Hungarian notation", Justification = "xValues and yValues are not hungarioan names" )]
+        [SuppressMessage( "StyleCop.CSharp.NamingRules", "SA1305:Field names should not use Hungarian notation", Justification = "xValues and yValues are not Hungarian names" )]
         public bool Equals(IEnumerable<object>? x, IEnumerable<object>? y)
         {
             ArgumentNullException.ThrowIfNull(x);

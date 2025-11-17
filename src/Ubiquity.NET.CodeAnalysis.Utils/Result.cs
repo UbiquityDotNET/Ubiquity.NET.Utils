@@ -73,8 +73,8 @@ namespace Ubiquity.NET.CodeAnalysis.Utils
         /// <summary>Report all diagnostics to the provided <paramref name="ctx"/></summary>
         /// <param name="ctx"><see cref="SourceProductionContext"/> to report the diagnostics to</param>
         /// <remarks>
-        /// This supports the deferral of reporting with a collection of cahceable <see cref="Result{T}"/>. This allows
-        /// for a generatr to report critical internal problems.
+        /// This supports the deferral of reporting with a collection of cacheable <see cref="Result{T}"/>. This allows
+        /// for a generator to report critical internal problems.
         /// </remarks>
         public void ReportDiagnostics(SourceProductionContext ctx)
         {

@@ -10,7 +10,7 @@ namespace Ubiquity.NET.Extensions.UT
         public void IsWindows_reports_correct_value( )
         {
 #if NET5_0_OR_GREATER
-            Assert.Inconclusive("Test not applicable if targetting runtime >= 5");
+            Assert.Inconclusive("Test not applicable if targeting runtime >= 5");
 #else
             bool isWindows = Environment.OSVersion.Platform switch
             {
