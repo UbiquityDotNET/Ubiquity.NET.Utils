@@ -1,8 +1,6 @@
 // Copyright (c) Ubiquity.NET Contributors. All rights reserved.
 // Licensed under the Apache-2.0 WITH LLVM-exception license. See the LICENSE.md file in the project root for full license information.
 
-using Ubiquity.NET.SrcGeneration.CSharp;
-
 namespace Ubiquity.NET.SrcGeneration.UT.CSharp
 {
     [TestClass]
@@ -18,19 +16,31 @@ namespace Ubiquity.NET.SrcGeneration.UT.CSharp
             var ex = Assert.ThrowsExactly<ArgumentNullException>(()=>TextWriterExtensions.WriteAttribute( null, "fooAttrib" ));
             Assert.AreEqual( "self", ex.ParamName );
 
-            Assert.ThrowsExactly<ArgumentNullException>( ( ) => TextWriterExtensions.WriteAttributeLine( null, "fooAttrib" ) );
+            ex = Assert.ThrowsExactly<ArgumentNullException>( ( ) => TextWriterExtensions.WriteAttributeLine( null, "fooAttrib" ) );
             Assert.AreEqual( "self", ex.ParamName );
 
-            Assert.ThrowsExactly<ArgumentNullException>( ( ) => TextWriterExtensions.WriteRemarksComment( null, null ) );
+            ex = Assert.ThrowsExactly<ArgumentNullException>( ( ) => TextWriterExtensions.WriteRemarksComment( null, null ) );
             Assert.AreEqual( "self", ex.ParamName );
 
-            Assert.ThrowsExactly<ArgumentNullException>( ( ) => TextWriterExtensions.WriteSummaryAndRemarksComments( null, null ) );
+            ex = Assert.ThrowsExactly<ArgumentNullException>( ( ) => TextWriterExtensions.WriteSummaryAndRemarksComments( null, null ) );
             Assert.AreEqual( "self", ex.ParamName );
 
-            Assert.ThrowsExactly<ArgumentNullException>( ( ) => TextWriterExtensions.WriteSummaryComment( null, null ) );
+            ex = Assert.ThrowsExactly<ArgumentNullException>( ( ) => TextWriterExtensions.WriteSummaryComment( null, null ) );
             Assert.AreEqual( "self", ex.ParamName );
 
-            Assert.ThrowsExactly<ArgumentNullException>( ( ) => TextWriterExtensions.WriteUsingDirective( null, string.Empty ) );
+            ex = Assert.ThrowsExactly<ArgumentNullException>( ( ) => TextWriterExtensions.WriteUsingDirective( null, string.Empty ) );
+            Assert.AreEqual( "self", ex.ParamName );
+
+            ex = Assert.ThrowsExactly<ArgumentNullException>( ( ) => TextWriterExtensions.WriteEmptyCommentLine( null ) );
+            Assert.AreEqual( "self", ex.ParamName );
+
+            ex = Assert.ThrowsExactly<ArgumentNullException>( ( ) => TextWriterExtensions.WriteCommentLines( null, ["test"] ) );
+            Assert.AreEqual( "self", ex.ParamName );
+
+            ex = Assert.ThrowsExactly<ArgumentNullException>( ( ) => TextWriterExtensions.WriteCommentLines( null, (IEnumerable<string>)["test"] ) );
+            Assert.AreEqual( "self", ex.ParamName );
+
+            ex = Assert.ThrowsExactly<ArgumentNullException>( ( ) => TextWriterExtensions.WriteCommentLines( null, "test" ) );
             Assert.AreEqual( "self", ex.ParamName );
 
             using var writer = new StringWriter();
@@ -66,6 +76,15 @@ namespace Ubiquity.NET.SrcGeneration.UT.CSharp
 
             argEx = Assert.ThrowsExactly<ArgumentException>( ( ) => TextWriterExtensions.WriteUsingDirective( writer, "   " ) );
             Assert.AreEqual( "namespaceName", argEx.ParamName );
+
+            ex = Assert.ThrowsExactly<ArgumentNullException>( ( ) => TextWriterExtensions.WriteCommentLines( writer, (string[]?)null ) );
+            Assert.AreEqual( "commentLines", ex.ParamName );
+
+            ex = Assert.ThrowsExactly<ArgumentNullException>( ( ) => TextWriterExtensions.WriteCommentLines( writer, (IEnumerable<string>?)null ) );
+            Assert.AreEqual( "commentLines", ex.ParamName );
+
+            ex = Assert.ThrowsExactly<ArgumentNullException>( ( ) => TextWriterExtensions.WriteCommentLines( writer, (string?)null ) );
+            Assert.AreEqual( "commentTextBlock", ex.ParamName );
         }
 #pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
         #endregion
@@ -249,6 +268,87 @@ namespace Ubiquity.NET.SrcGeneration.UT.CSharp
             writer.WriteUsingDirective( "My.Namespace" );
             string expected = "using My.Namespace;" + Environment.NewLine;
             Assert.AreEqual(expected, writer.ToString());
+        }
+
+        [TestMethod]
+        public void WriteEmptyCommentLine_succeeds( )
+        {
+            using var writer = new StringWriter();
+            writer.WriteEmptyCommentLine( );
+            string expected = "//" + Environment.NewLine;
+            Assert.AreEqual(expected, writer.ToString());
+        }
+
+        [TestMethod]
+        public void WriteCommentLine_succeeds( )
+        {
+            using var writer = new StringWriter();
+            writer.WriteCommentLine( "This is a test" );
+            string expected = "// This is a test" + Environment.NewLine;
+            Assert.AreEqual(expected, writer.ToString());
+        }
+
+        [TestMethod]
+        public void WriteCommentLine_with_newLine_throws( )
+        {
+            using var writer = new StringWriter();
+            string[] inputs = [
+                "This\r is a test",
+                "This\n is a test",
+                "This\f is a test",
+                "This\u0085 is a test",
+                "This\u2028 is a test",
+                "This\u2029 is a test",
+            ];
+
+            foreach(string test in inputs)
+            {
+                Assert.ThrowsExactly<FormatException>( ( ) => writer.WriteCommentLine(test));
+            }
+        }
+
+        [TestMethod]
+        public void WriteCommentLines_params_succeeds( )
+        {
+            using var writer = new StringWriter();
+            writer.WriteCommentLines( "This is a test", "This is another test" );
+            string expected = "// This is a test" + Environment.NewLine
+                            + "// This is another test" + Environment.NewLine;
+            Assert.AreEqual(expected, writer.ToString());
+        }
+
+        [TestMethod]
+        public void WriteCommentLines_enumerable_succeeds( )
+        {
+            using var writer = new StringWriter();
+            writer.WriteCommentLines( (IEnumerable<string>)["This is a test", "This is another test"] );
+            string expected = "// This is a test" + Environment.NewLine
+                            + "// This is another test" + Environment.NewLine;
+            Assert.AreEqual(expected, writer.ToString());
+        }
+
+        [TestMethod]
+        public void WriteCommentLines_from_string_succeeds( )
+        {
+            using var writer = new StringWriter();
+            var inputs = new Dictionary<string, string>
+            {
+                ["This\r is a test"] = "// This" + Environment.NewLine + "// is a test" + Environment.NewLine,
+                ["This is\n a test"] = "// This is" + Environment.NewLine + "// a test" + Environment.NewLine,
+                ["This is \fa test"] = "// This is" + Environment.NewLine + "// a test" + Environment.NewLine,
+                ["This\u0085 is a test"] = "// This" + Environment.NewLine + "// is a test" + Environment.NewLine,
+                ["This is\u2028 a test"] = "// This is" + Environment.NewLine + "// a test" + Environment.NewLine,
+                ["This is \u2029a test"] = "// This is" + Environment.NewLine + "// a test" + Environment.NewLine,
+            };
+
+            int i = 0;
+            foreach(var test in inputs)
+            {
+                writer.WriteCommentLines(test.Key);
+                Assert.AreEqual(test.Value, writer.ToString(), $"Result should match for input {test.Key}[{i}]");
+                writer.GetStringBuilder().Clear();
+                ++i;
+            }
         }
     }
 }

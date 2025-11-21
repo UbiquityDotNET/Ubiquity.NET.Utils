@@ -14,14 +14,25 @@ namespace Ubiquity.NET.SrcGeneration
         /// <param name="close">Closing value of block (on it's own line)</param>
         /// <param name="leadingLine">Line of text preceding the block</param>
         /// <param name="indented">Indicates if additional content written is indented or not [Default: <see langword="true"/>]</param>
+        /// <param name="writeClosingNewLine">Indicates if the closing newline for a block is written or not [Default:<see langword="true"/>]</param>
         /// <returns><see cref="IDisposable"/> that will automatically emit <paramref name="close"/> and out dent the writer.</returns>
         /// <remarks>
-        /// <note type="important">
-        /// This does NOT end the line. This allows writing a comment or other output after the block is closed on the same line
-        /// as the <paramref name="close"/>.
-        /// </note>
+        /// <para><paramref name="indented"/> allows for optional indentation of the contents of the block. The default is to
+        /// perform automatic indentation. However, for things like a single line comment block it is usually desired to keep
+        /// them all lined up. Therefore, this parameter allows the option to skip indenting the contents of the block.
+        /// </para>
+        /// <para>
+        /// <paramref name="writeClosingNewLine"/> allows writing a comment or other output after the block is closed on the same line
+        /// as the <paramref name="close"/> IFF it is <see langword="false"/> (The default).</para>
         /// </remarks>
-        public static IDisposable Block(this IndentedTextWriter self, string open, string close, string? leadingLine = null, bool indented = true )
+        public static IDisposable Block(
+            this IndentedTextWriter self,
+            string open,
+            string close,
+            string? leadingLine = null,
+            bool indented = true,
+            bool writeClosingNewLine = false
+            )
         {
 #if NET6_0_OR_GREATER
             ArgumentNullException.ThrowIfNull( self );
@@ -54,7 +65,14 @@ namespace Ubiquity.NET.SrcGeneration
                     --self.Indent;
                 }
 
-                self.Write( close );
+                if(writeClosingNewLine)
+                {
+                    self.WriteLine( close );
+                }
+                else
+                {
+                    self.Write( close );
+                }
             } );
         }
 

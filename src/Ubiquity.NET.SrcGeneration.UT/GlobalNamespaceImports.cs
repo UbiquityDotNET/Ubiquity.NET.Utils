@@ -22,3 +22,4 @@ global using System.IO;
 global using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 global using Ubiquity.NET.Extensions;
+global using Ubiquity.NET.SrcGeneration.CSharp;

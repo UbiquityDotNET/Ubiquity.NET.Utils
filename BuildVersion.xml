@@ -15,5 +15,6 @@ PreReleaseFix
 <BuildVersionData
     BuildMajor = "20"
     BuildMinor = "1"
-    BuildPatch = "8"
+    BuildPatch = "9"
+    PreReleaseName = "alpha"
 />

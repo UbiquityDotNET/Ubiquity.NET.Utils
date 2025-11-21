@@ -44,7 +44,7 @@ namespace Ubiquity.NET.Extensions.UT
         [TestMethod]
         public void Normalize_with_alternate_endings_produces_new_string( )
         {
-            string testInput = "This is a line"+ Environment.NewLine + "And so is this"; // Platform specific
+            string testInput = "This is a line" + Environment.NewLine + "And so is this"; // Platform specific
             const string expectedOutput = "This is a line\rAnd so is this";
 
             // CR Only is not the default for any currently supported runtime for .NET so this

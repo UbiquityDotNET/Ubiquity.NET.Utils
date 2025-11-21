@@ -19,7 +19,10 @@ namespace Ubiquity.NET.SrcGeneration
         /// 3) <see cref="EscapeForXML(IEnumerable{string})"/> to ensure the lines are valid for XML doc comments<br/>
         /// 4) <see cref="SkipDuplicates(IEnumerable{string})"/> to fold duplicate entries into one (usually to reduce multiple blank lines to one)<br/>
         /// </remarks>
-        public static IEnumerable<string> GetCommentLines( this string self, StringSplitOptions2 options = StringSplitOptions2.TrimEntries )
+        public static IEnumerable<string> GetCommentLines(
+            this string self,
+            StringSplitOptions2 options = StringSplitOptions2.TrimEntries
+            )
         {
 #if NET8_0_OR_GREATER
             ArgumentNullException.ThrowIfNull( self );
@@ -50,7 +53,7 @@ namespace Ubiquity.NET.SrcGeneration
             PolyFillExceptionValidators.ThrowIfNull( self );
 #endif
 
-            // For now, the only escape is a newline '\n'
+            // For now, the only escape is a newline "\\n"
 #if NETSTANDARD2_0
             return self.Replace( "\\n", Environment.NewLine );
 #else
@@ -70,7 +73,14 @@ namespace Ubiquity.NET.SrcGeneration
         /// and simplicity of implementation over performance. If absolute best performance is
         /// desired then use the latest runtime.
         /// </note>
+        /// <para>
+        /// This is an extension of <see cref="string.Split(string[], StringSplitOptions)"/> that
+        /// treats any Unicode line ending as a split point. The most common cases are CRLF, LF,
+        /// or CR, but additional Unicode code points (NEL, LS, PS) are specified as a valid line
+        /// endings and recognized by this implementation.
+        /// </para>
         /// </remarks>
+        /// <seealso href="https://www.unicode.org/standard/reports/tr13/tr13-5.html"/>
         public static IEnumerable<string> SplitLines( this string self, StringSplitOptions2 splitOptions = StringSplitOptions2.None )
         {
 #if NET8_0_OR_GREATER
@@ -81,16 +91,16 @@ namespace Ubiquity.NET.SrcGeneration
 
 #if !NET5_0_OR_GREATER
             // StringSplitOptions.TrimeEntries member is not available, do it the hard/slow way
-            if(splitOptions.HasFlag(StringSplitOptions2.TrimEntries))
+            if(splitOptions.HasFlag( StringSplitOptions2.TrimEntries ))
             {
                 var options = (StringSplitOptions)((int)splitOptions & ~(int)StringSplitOptions2.TrimEntries);
-                return from s in self.Split( MixedLineEndings, options)
+                return from s in self.Split( MixedLineEndings, options )
                        let t = s.Trim()
-                       where !splitOptions.HasFlag(StringSplitOptions2.RemoveEmptyEntries) || !string.IsNullOrEmpty(t)
+                       where !splitOptions.HasFlag( StringSplitOptions2.RemoveEmptyEntries ) || !string.IsNullOrEmpty( t )
                        select t;
             }
 #endif
-            return self.Split( MixedLineEndings, (StringSplitOptions)splitOptions);
+            return self.Split( MixedLineEndings, (StringSplitOptions)splitOptions );
         }
 
         // TODO: WithLines(Action<ReadOnlySpan<char>> op)
@@ -167,7 +177,7 @@ namespace Ubiquity.NET.SrcGeneration
 #endif
 
             string? oldVal = null;
-            return self.Where((s)=>
+            return self.Where( ( s ) =>
                 {
                     bool retVal = s != oldVal;
                     oldVal = s;
@@ -175,17 +185,16 @@ namespace Ubiquity.NET.SrcGeneration
                 } );
         }
 
-#pragma warning disable IDE0002
-// names can't be simplified further due to weird ambiguities with how extensions are resolved
-// .NET Standard 2.0 does NOT contain the static methods for argument validation on exceptions.
-// Thus in tat runtime they are poly fill extensions, but they have the same name as instance
-// extensions - those win out and collide causing mass confusion.
+        // see: https://www.unicode.org/standard/reports/tr13/tr13-5.html
         private static readonly string [] MixedLineEndings =
             [
-                Extensions.StringNormalizer.LineEnding(Extensions.LineEndingKind.CarriageReturnLineFeed),
-                Extensions.StringNormalizer.LineEnding(Extensions.LineEndingKind.CarriageReturn),
-                Extensions.StringNormalizer.LineEnding(Extensions.LineEndingKind.LineFeed),
+                "\r\n",   // CRLF
+                "\r",     // CR
+                "\n",     // LF
+                "\f",     // FF
+                "\u0085", // NEL
+                "\u2028", // LS
+                "\u2029", // PS
             ];
-#pragma warning restore IDE0002
     }
 }
