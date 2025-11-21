@@ -139,6 +139,19 @@ namespace Ubiquity.NET.SrcGeneration.UT
             Assert.AreEqual( TestBlockWithNoIndentation, writer.ToString() );
         }
 
+        [TestMethod]
+        public void Block_produces_correct_results_with_closing_newline( )
+        {
+            using var writer = new OwningIndentedStringWriter();
+            using(var scope = IndentedTextWriterExtensions.Block( writer, "begin", "end", writeClosingNewLine: true ))
+            {
+                writer.WriteLine( "test line" );
+            }
+
+            Assert.AreEqual( 0, writer.Indent );
+            Assert.AreEqual( TestBlockWithTrailingLineEnding, writer.ToString() );
+        }
+
         private const string TestBlock = """
         begin
             test line
@@ -169,6 +182,13 @@ namespace Ubiquity.NET.SrcGeneration.UT
         line1
 
         line2 [no trailing newline]
+        """;
+
+        private const string TestBlockWithTrailingLineEnding = """
+        begin
+            test line
+        end
+
         """;
     }
 }

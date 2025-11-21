@@ -67,7 +67,7 @@ namespace System
             global::System.PolyFillExceptionValidators.ThrowIfNull( self );
             global::System.PolyFillExceptionValidators.ThrowIfNull( replacementText );
 
-            string retVal = UnicodeNewLinesRegEx.Replace(self, replacementText);
+            string retVal = UnicodeNewLinesRegex.Replace(self, replacementText);
 
             // if the result of replacement is the same, just return the original
             // This is wasted overhead, but at least matches the behavior
@@ -82,11 +82,30 @@ namespace System
         // language=regex
         private const string UnicodeNewLinesRegExPattern = @"(\r\n|\r|\n|\f|\u0085|\u2028|\u2029)";
 
-        // NOTE: can't use source generated RegEx here as there's no way to declare the dependency on
+        // language=regex
+        private const string SystemNewLinesRegExPattern = @"(\r\n|\r|\n)";
+
+        // NOTE: can't use source generated Regex here as there's no way to declare the dependency on
         // the output of one generator as the input for another. They all see the same input, therefore
         // the partial implementation would never be filled in and produces a compilation error instead.
-        private static global::System.Text.RegularExpressions.Regex UnicodeNewLinesRegEx { get; }
-            = new global::System.Text.RegularExpressions.Regex( UnicodeNewLinesRegExPattern );
+        // Thus these use a lazy pattern to take the cost only once.
+        internal static global::System.Text.RegularExpressions.Regex UnicodeNewLinesRegex
+        {
+            [global::System.Runtime.CompilerServices.MethodImpl( global::System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining )]
+            get => LazyUnicodeNewLinesRegex.Value;
+        }
+
+        internal static global::System.Text.RegularExpressions.Regex SystemNewLinesRegex
+        {
+            [global::System.Runtime.CompilerServices.MethodImpl( global::System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining )]
+            get => LazySystemNewLinesRegex.Value;
+        }
+
+        private static global::System.Lazy<global::System.Text.RegularExpressions.Regex> LazyUnicodeNewLinesRegex
+            = new(() => new global::System.Text.RegularExpressions.Regex( UnicodeNewLinesRegExPattern ));
+
+        internal static global::System.Lazy<global::System.Text.RegularExpressions.Regex> LazySystemNewLinesRegex
+            = new(() => new global::System.Text.RegularExpressions.Regex( SystemNewLinesRegExPattern ));
 #endif
     }
 }

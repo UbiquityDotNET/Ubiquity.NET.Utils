@@ -29,7 +29,7 @@ namespace System
         }
 
         // other forms of Is* are more difficult to poly fill as Linux, macOS, iOS, and android, are all apparently reported as PlatformId.Unix
-        // So they need to rely on additional native interop APIs for unix AND type name searches
+        // So they need to rely on additional native interop APIs for Unix AND type name searches
         // see: https://github.com/ryancheung/PlatformUtil/blob/master/PlatformUtil/PlatformInfo.cs
 #endif
     }

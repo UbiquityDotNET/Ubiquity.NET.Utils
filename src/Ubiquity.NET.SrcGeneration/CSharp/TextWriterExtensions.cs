@@ -162,5 +162,119 @@ namespace Ubiquity.NET.SrcGeneration.CSharp
 
             self.WriteLine( $"using {namespaceName};" );
         }
+
+        /// <summary>Write an empty single line comment</summary>
+        /// <param name="self">Writer to write the line to</param>
+        public static void WriteEmptyCommentLine(this TextWriter self)
+        {
+#if NET8_0_OR_GREATER
+            ArgumentNullException.ThrowIfNull( self );
+#else
+            PolyFillExceptionValidators.ThrowIfNull( self );
+#endif
+
+            self.WriteLine("//");
+        }
+
+        /// <summary>Writes a single line comment to <paramref name="self"/></summary>
+        /// <param name="self"><see cref="TextWriter"/> to write the comment to</param>
+        /// <param name="comment">Contents of the comment</param>
+        /// <exception cref="FormatException"><paramref name="comment"/> contains a new line</exception>
+        /// <exception cref="ArgumentNullException"><paramref name="self"/> is null</exception>
+        /// <exception cref="ArgumentNullException"><paramref name="comment"/> is null</exception>
+        public static void WriteCommentLine( this TextWriter self, string comment)
+        {
+#if NET8_0_OR_GREATER
+            ArgumentNullException.ThrowIfNull( self );
+            ArgumentNullException.ThrowIfNull( comment );
+#else
+            PolyFillExceptionValidators.ThrowIfNull( self );
+            PolyFillExceptionValidators.ThrowIfNull( comment );
+#endif
+            if(comment.HasLineEndings())
+            {
+                throw new FormatException( "Single line comments cannot contain line endings" );
+            }
+
+            InternalWriteComment( self, comment );
+        }
+
+#if !NET9_0_OR_GREATER
+        /// <summary>Writes a sequence of single line comments</summary>
+        /// <param name="self">Writer to write the comments to</param>
+        /// <param name="commentLines">Lines to write</param>
+        /// <exception cref="FormatException">An element of the <paramref name="commentLines"/> sequence contains a new line</exception>
+        /// <exception cref="ArgumentNullException"><paramref name="self"/> is null</exception>
+        /// <exception cref="ArgumentNullException"><paramref name="commentLines"/> is null</exception>
+        public static void WriteCommentLines( this TextWriter self, params string[] commentLines)
+        {
+#if NET8_0_OR_GREATER
+            ArgumentNullException.ThrowIfNull( self );
+            ArgumentNullException.ThrowIfNull( commentLines );
+#else
+            PolyFillExceptionValidators.ThrowIfNull( self );
+            PolyFillExceptionValidators.ThrowIfNull( commentLines );
+#endif
+            WriteCommentLines(self, (IEnumerable<string>)commentLines);
+        }
+#endif
+
+        /// <summary>Writes a sequence of single line comments</summary>
+        /// <param name="self">Writer to write the comments to</param>
+        /// <param name="commentLines">Lines to write</param>
+        /// <exception cref="FormatException">An element of the <paramref name="commentLines"/> sequence contains a new line</exception>
+        /// <exception cref="ArgumentNullException"><paramref name="self"/> is null</exception>
+        /// <exception cref="ArgumentNullException"><paramref name="commentLines"/> is null</exception>
+#if NET9_0_OR_GREATER
+        public static void WriteCommentLines( this TextWriter self, params IEnumerable<string> commentLines)
+#else
+        public static void WriteCommentLines( this TextWriter self, IEnumerable<string> commentLines)
+#endif
+        {
+#if NET8_0_OR_GREATER
+            ArgumentNullException.ThrowIfNull( self );
+            ArgumentNullException.ThrowIfNull( commentLines );
+#else
+            PolyFillExceptionValidators.ThrowIfNull( self );
+            PolyFillExceptionValidators.ThrowIfNull( commentLines );
+#endif
+
+            foreach(string comment in commentLines)
+            {
+                // comment MAY contain a new line, so go through checking method.
+                WriteCommentLine(self, comment);
+            }
+        }
+
+        /// <summary>Writes a block of text as single line comments</summary>
+        /// <param name="self">Writer to write the comment(s) to</param>
+        /// <param name="commentTextBlock">Block of text that may contain new lines</param>
+        /// <remarks>
+        /// The input <paramref name="commentTextBlock"/> is split on any existing line endings
+        /// and a single line comment is emitted for each line found. If no new lines are present
+        /// then the entire string is emitted as a single line comment.
+        /// </remarks>
+        public static void WriteCommentLines( this TextWriter self, string commentTextBlock)
+        {
+#if NET8_0_OR_GREATER
+            ArgumentNullException.ThrowIfNull( self );
+            ArgumentNullException.ThrowIfNull( commentTextBlock );
+#else
+            PolyFillExceptionValidators.ThrowIfNull( self );
+            PolyFillExceptionValidators.ThrowIfNull( commentTextBlock );
+#endif
+
+            // SplitLines already handles the new lines so optimize by doing a simple write
+            foreach(string comment in commentTextBlock.SplitLines(StringSplitOptions2.TrimEntries))
+            {
+               InternalWriteComment(self, comment);
+            }
+        }
+
+        private static void InternalWriteComment( TextWriter self, string comment )
+        {
+            self.Write( "// " );
+            self.WriteLine( comment );
+        }
     }
 }
