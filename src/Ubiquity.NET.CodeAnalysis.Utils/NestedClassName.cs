@@ -11,6 +11,30 @@ namespace Ubiquity.NET.CodeAnalysis.Utils
     public sealed class NestedClassName
         : IEquatable<NestedClassName>
     {
+#if !NET9_0_OR_GREATER
+        /// <summary>Initializes a new instance of the <see cref="NestedClassName"/> class.</summary>
+        /// <param name="keyword">Keyword for this declaration</param>
+        /// <param name="name">Name of the type</param>
+        /// <param name="constraints">Constraints for this type</param>
+        /// <param name="children">Names of any nested child types to form hierarchies</param>
+        /// <remarks>
+        /// <paramref name="keyword"/> is normally one of ("class", "struct", "interface", "record [class|struct]?").
+        /// </remarks>
+        public NestedClassName(string keyword, string name, string constraints, params NestedClassName[] children)
+            : this( keyword, name, constraints, (IEnumerable<NestedClassName>)children)
+        {
+        }
+
+        /// <summary>Initializes a new instance of the <see cref="NestedClassName"/> class.</summary>
+        /// <param name="keyword">Keyword for this declaration</param>
+        /// <param name="name">Name of the type</param>
+        /// <param name="constraints">Constraints for this type</param>
+        /// <param name="children">Names of any nested child types to form hierarchies</param>
+        /// <remarks>
+        /// <paramref name="keyword"/> is normally one of ("class", "struct", "interface", "record [class|struct]?").
+        /// </remarks>
+        public NestedClassName(string keyword, string name, string constraints, IEnumerable<NestedClassName> children)
+#else
         /// <summary>Initializes a new instance of the <see cref="NestedClassName"/> class.</summary>
         /// <param name="keyword">Keyword for this declaration</param>
         /// <param name="name">Name of the type</param>
@@ -20,6 +44,7 @@ namespace Ubiquity.NET.CodeAnalysis.Utils
         /// <paramref name="keyword"/> is normally one of ("class", "struct", "interface", "record [class|struct]?").
         /// </remarks>
         public NestedClassName(string keyword, string name, string constraints, params IEnumerable<NestedClassName> children)
+#endif
         {
             Keyword = keyword;
             Name = name;

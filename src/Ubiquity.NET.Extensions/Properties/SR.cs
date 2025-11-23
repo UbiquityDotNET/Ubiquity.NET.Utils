@@ -48,7 +48,16 @@ namespace Ubiquity.NET.Extensions.Properties
             return string.Format( Resources.Culture, fmt, arg0, arg1, arg2 );
         }
 
+#if !NET9_0_OR_GREATER
+        internal static string Format( [NotNull] string resourceName, params object?[] args )
+        {
+            return Format(resourceName, (IEnumerable<object?>)args);
+        }
+
+        internal static string Format( [NotNull] string resourceName, IEnumerable<object?> args )
+#else
         internal static string Format( [NotNull] string resourceName, params IEnumerable<object?> args )
+#endif
         {
 #if NET6_0_OR_GREATER
             ArgumentNullException.ThrowIfNull( resourceName );
