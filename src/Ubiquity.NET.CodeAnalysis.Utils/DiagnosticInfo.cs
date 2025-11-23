@@ -13,11 +13,28 @@ namespace Ubiquity.NET.CodeAnalysis.Utils
     /// </remarks>
     public sealed record DiagnosticInfo
     {
+#if !NET9_0_OR_GREATER
+        /// <summary>Initializes a new instance of the <see cref="DiagnosticInfo"/> class.</summary>
+        /// <param name="descriptor">Descriptor for the diagnostic</param>
+        /// <param name="location">Location in the source file that triggered this diagnostic</param>
+        /// <param name="msgArgs">Args for the message</param>
+        public DiagnosticInfo(DiagnosticDescriptor descriptor, Location? location, params string[] msgArgs)
+            : this(descriptor, location, (IEnumerable<string>)msgArgs)
+        {
+        }
+
+        /// <summary>Initializes a new instance of the <see cref="DiagnosticInfo"/> class.</summary>
+        /// <param name="descriptor">Descriptor for the diagnostic</param>
+        /// <param name="location">Location in the source file that triggered this diagnostic</param>
+        /// <param name="msgArgs">Args for the message</param>
+        public DiagnosticInfo(DiagnosticDescriptor descriptor, Location? location, IEnumerable<string> msgArgs)
+#else
         /// <summary>Initializes a new instance of the <see cref="DiagnosticInfo"/> class.</summary>
         /// <param name="descriptor">Descriptor for the diagnostic</param>
         /// <param name="location">Location in the source file that triggered this diagnostic</param>
         /// <param name="msgArgs">Args for the message</param>
         public DiagnosticInfo(DiagnosticDescriptor descriptor, Location? location, params IEnumerable<string> msgArgs)
+#endif
         {
             Descriptor = descriptor;
             Location = location;

@@ -8,8 +8,11 @@
       some language features have a hard requirement on runtime support not available
       in .NET Standard 2.0 needed for source generators. Thus will land in build errors
       in most cases, but sometimes can end up as runtime errors! BEWARE!
+      This sets the language version to the maximum for the supported max target framework
+      specified in global.json. Functionality is Poly Filled, if possible, or conditionally
+      compiled out.
     -->
-    <LangVersion>13</LangVersion>
+    <LangVersion>12</LangVersion>
 
     <!--NuGet packaging support -->
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>

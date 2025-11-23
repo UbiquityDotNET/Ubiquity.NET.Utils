@@ -29,9 +29,23 @@ namespace Ubiquity.NET.CodeAnalysis.Utils
         {
         }
 
+#if !NET9_0_OR_GREATER
+        /// <summary>Initializes a new instance of the <see cref="Result{T}"/> struct from diagnostics</summary>
+        /// <param name="diagnostics">Information describing the diagnostics for this result</param>
+        public Result(params DiagnosticInfo[] diagnostics)
+            : this((IEnumerable<DiagnosticInfo>)diagnostics)
+        {
+        }
+
+        /// <summary>Initializes a new instance of the <see cref="Result{T}"/> struct from diagnostics</summary>
+        /// <param name="diagnostics">Information describing the diagnostics for this result</param>
+        public Result(IEnumerable<DiagnosticInfo> diagnostics)
+
+#else
         /// <summary>Initializes a new instance of the <see cref="Result{T}"/> struct from diagnostics</summary>
         /// <param name="diagnostics">Information describing the diagnostics for this result</param>
         public Result(params IEnumerable<DiagnosticInfo> diagnostics)
+#endif
             : this(default, [.. diagnostics])
         {
         }

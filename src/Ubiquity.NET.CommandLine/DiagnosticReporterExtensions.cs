@@ -179,10 +179,17 @@ namespace Ubiquity.NET.CommandLine
             Report(self, level, null, location, fmt, args);
         }
 
+#if NET9_0_OR_GREATER
         /// <summary>Reports multiple diagnostics to the reporter</summary>
         /// <param name="self">Reporter to report the diagnostics to</param>
         /// <param name="diagnostics">DIagnostics to report. This is a 'params' value so it is variadic in languages that support such a thing</param>
         public static void Report( this IDiagnosticReporter self, params IEnumerable<DiagnosticMessage> diagnostics )
+#else
+        /// <summary>Reports multiple diagnostics to the reporter</summary>
+        /// <param name="self">Reporter to report the diagnostics to</param>
+        /// <param name="diagnostics">Diagnostics to report.</param>
+        public static void Report( this IDiagnosticReporter self, IEnumerable<DiagnosticMessage> diagnostics )
+#endif
         {
             foreach(var dm in diagnostics)
             {
