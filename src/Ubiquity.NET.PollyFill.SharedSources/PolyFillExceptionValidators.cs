@@ -31,7 +31,7 @@ namespace System
     }
 
     // Sadly, these are NOT localized messages as the official forms are.
-    // There is no way, at least no-known way (easy or not) to inject resources
+    // There is no way, at least no-known way (easy or not), to inject resources
     // that would participate in localization. (If the consumer even does that...)
     // The actual strings used are the same as the values in the official runtime
     // support so are at least compatible for "en-us". This fakes it to make it
@@ -60,13 +60,6 @@ namespace System
     }
 
     /// <summary>poly fill extensions for static methods added in .NET 7</summary>
-    /// <remarks>
-    /// This requires support of the C#14 keyword `extension` to work properly. There is
-    /// no other way to add static methods to non-partial types for source compatibility.
-    /// Otherwise code cannot use the modern .NET runtime implementations and instead
-    /// must always use some extension methods, or litter around a LOT of #if/#else/#endif
-    /// based on the framework version...
-    /// </remarks>
     internal static class PolyFillExceptionValidators
     {
         /// <summary>Throw an <see cref="ArgumentException"/> if a string is <see langword="null"/>m empty, or all whitespace.</summary>

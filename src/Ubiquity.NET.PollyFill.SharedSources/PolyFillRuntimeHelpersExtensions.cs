@@ -4,6 +4,9 @@
 // Copyright (c) Ubiquity.NET Contributors. All rights reserved.
 // Licensed under the Apache-2.0 WITH LLVM-exception license. See the LICENSE.md file in the project root for full license information.
 
+// Sadly, this is not workable as the compiler looks for an explicit static method
+// to support it's generated functionality. It does NOT allow extension methods
+// as older versions of the language don't support such a thing anyway...
 #if COMPILER_LOOKS_FOR_EXTENSIONS
 // based on work from: https://github.com/Sergio0694/PolySharp/issues/104
 

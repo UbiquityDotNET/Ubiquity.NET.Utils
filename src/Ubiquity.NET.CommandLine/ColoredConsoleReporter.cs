@@ -51,6 +51,7 @@ namespace Ubiquity.NET.CommandLine
             init
             {
                 ArgumentNullException.ThrowIfNull( value );
+
                 ColorMapBackingField = value;
             }
         }

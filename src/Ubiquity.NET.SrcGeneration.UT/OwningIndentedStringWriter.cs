@@ -8,7 +8,6 @@ namespace Ubiquity.NET.SrcGeneration.UT
     // actually moved in such a case - but safe/correct handling of that in general is rather complicated.)
     // In a test scenario, an exception in the constructor will crash the test host and treated as a test
     // failure. This is desired behavior, and extremely unlikely to ever occur, so OK in this special case.
-    [SuppressMessage( "StyleCop.CSharp.MaintainabilityRules", "SA1402:File may only contain a single type", Justification = "DUH, it's file scoped" )]
     [ExcludeFromCodeCoverage]
     internal class OwningIndentedStringWriter
         : IndentedTextWriter
