@@ -45,6 +45,45 @@ namespace Ubiquity.NET.CommandLine
             return versionOptions.FirstOrDefault();
         }
 
+        /// <summary>Invokes the results with re-directing writers that use <paramref name="reporter"/> to write messages</summary>
+        /// <param name="self">Results to invoke</param>
+        /// <param name="reporter">Reporter to report information/errors to</param>
+        /// <param name="ct">Cancellation token to use for the async operation</param>
+        /// <param name="timeout">Timeout for the invocation [Default: null (2s)]</param>
+        /// <returns>Exit code from invoking the results</returns>
+        public static async Task<int> InvokeAsync( this ParseResult self, IDiagnosticReporter reporter, CancellationToken ct, TimeSpan? timeout = null )
+        {
+            using var outWriter = new DiagnosticReportingWriter(reporter, MsgLevel.Information);
+            using var errWriter = new DiagnosticReportingWriter(reporter, MsgLevel.Error);
+            var cfg = new InvocationConfiguration()
+            {
+                Output = outWriter,
+                Error = errWriter,
+                ProcessTerminationTimeout = timeout,
+            };
+
+            return await self.InvokeAsync( cfg, ct );
+        }
+
+        /// <summary>Invokes the results with re-directing writers that use <paramref name="reporter"/> to write messages</summary>
+        /// <param name="self">Results to invoke</param>
+        /// <param name="reporter">Reporter to report information/errors to</param>
+        /// <param name="timeout">Timeout for the invocation [Default: null (2s)]</param>
+        /// <returns>Exit code from invoking the results</returns>
+        public static int Invoke( this ParseResult self, IDiagnosticReporter reporter, TimeSpan? timeout = null )
+        {
+            using var outWriter = new DiagnosticReportingWriter(reporter, MsgLevel.Information);
+            using var errWriter = new DiagnosticReportingWriter(reporter, MsgLevel.Error);
+            var cfg = new InvocationConfiguration()
+            {
+                Output = outWriter,
+                Error = errWriter,
+                ProcessTerminationTimeout = timeout,
+            };
+
+            return self.Invoke( cfg );
+        }
+
         // shamelessly "borrowed" from: https://github.com/dotnet/dotnet/blob/8c7b3dcd2bd657c11b12973f1214e7c3c616b174/src/command-line-api/src/System.CommandLine/Help/HelpBuilderExtensions.cs#L42
         internal static IEnumerable<T> RecurseWhileNotNull<T>( this T? source, Func<T, T?> next )
             where T : class
