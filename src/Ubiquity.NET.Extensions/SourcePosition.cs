@@ -31,7 +31,7 @@ namespace Ubiquity.NET.Extensions
         /// <summary>Gets the 0 based column value of this position</summary>
         public required int Column
         {
-            get => ColumnBackingField;
+            get;
             init
             {
 #if NET7_0_OR_GREATER
@@ -39,22 +39,14 @@ namespace Ubiquity.NET.Extensions
 #else
                 PolyFillExceptionValidators.ThrowIfLessThan(value, 0);
 #endif
-#if NET10_0_OR_GREATER
                 field = value;
-#else
-                ColumnBackingField = value;
-#endif
             }
         }
-
-#if !NET10_0_OR_GREATER
-        private readonly int ColumnBackingField;
-#endif
 
         /// <summary>Gets the one based line position of the location</summary>
         public required int Line
         {
-            get => LineBackingField;
+            get;
             init
             {
 #if NET7_0_OR_GREATER
@@ -62,17 +54,9 @@ namespace Ubiquity.NET.Extensions
 #else
                 PolyFillExceptionValidators.ThrowIfLessThanOrEqual(value, 0);
 #endif
-#if NET10_0_OR_GREATER
                 field = value;
-#else
-                LineBackingField = value;
-#endif
             }
         }
-
-#if !NET10_0_OR_GREATER
-        private readonly int LineBackingField;
-#endif
 
         /// <summary>Produces a string form of this position</summary>
         /// <returns>string form of the position</returns>

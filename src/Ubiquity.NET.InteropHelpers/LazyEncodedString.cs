@@ -298,8 +298,9 @@ namespace Ubiquity.NET.InteropHelpers
             return span.IsEmpty ? Empty : new( span );
         }
 
+#if !NET9_0_OR_GREATER
 #if NETSTANDARD2_0
-        /// <inheritdoc cref="PolyFillStringExtensions.Join"/>
+        /// <inheritdoc cref="PolyFillStringExtensions.Join{T}(char, IEnumerable{T})"/>
         /// <returns><see cref="LazyEncodedString"/> with the joined result</returns>
         /// <remarks>
         /// This will join the managed form of any LazyEncodedString (Technically the results
@@ -317,7 +318,42 @@ namespace Ubiquity.NET.InteropHelpers
         /// provide the managed form if/when needed (conversion still only happens once).
         /// </remarks>
 #endif
+        public static LazyEncodedString Join<T>( char separator, params T[] values )
+        {
+            return Join(separator, (IEnumerable<T>)values);
+        }
+
+    #if NETSTANDARD2_0
+        /// <inheritdoc cref="PolyFillStringExtensions.Join{T}(char, IEnumerable{T})"/>
+        /// <returns><see cref="LazyEncodedString"/> with the joined result</returns>
+        /// <remarks>
+        /// This will join the managed form of any LazyEncodedString (Technically the results
+        /// of calling <see cref="object.ToString"/> on each value provided) to produce a final
+        /// joined string. The result will only have the managed form created but will lazily
+        /// provide the managed form if/when needed (conversion still only happens once).
+        /// </remarks>
+    #else
+        /// <inheritdoc cref="string.Join{T}(char, IEnumerable{T})"/>
+        /// <returns><see cref="LazyEncodedString"/> with the joined result</returns>
+        /// <remarks>
+        /// This will join the managed form of any LazyEncodedString (Technically the results
+        /// of calling <see cref="object.ToString"/> on each value provided) to produce a final
+        /// joined string. The result will only have the managed form created but will lazily
+        /// provide the managed form if/when needed (conversion still only happens once).
+        /// </remarks>
+    #endif
+        public static LazyEncodedString Join<T>( char separator, IEnumerable<T> values )
+#else
+        /// <inheritdoc cref="string.Join{T}(char, IEnumerable{T})"/>
+        /// <returns><see cref="LazyEncodedString"/> with the joined result</returns>
+        /// <remarks>
+        /// This will join the managed form of any LazyEncodedString (Technically the results
+        /// of calling <see cref="object.ToString"/> on each value provided) to produce a final
+        /// joined string. The result will only have the managed form created but will lazily
+        /// provide the managed form if/when needed (conversion still only happens once).
+        /// </remarks>
         public static LazyEncodedString Join<T>( char separator, params IEnumerable<T> values )
+#endif
         {
 #if NETSTANDARD2_0
             return new( PolyFillStringExtensions.Join( separator, values ) );
@@ -326,11 +362,28 @@ namespace Ubiquity.NET.InteropHelpers
 #endif
         }
 
+#if !NET9_0_OR_GREATER
+        /// <summary>Specialized join that optimizes for <see cref="LazyEncodedString"/> values</summary>
+        /// <param name="separator">Separator character</param>
+        /// <param name="values">Values to join together</param>
+        /// <returns>Result of the joined set of values</returns>
+        public static LazyEncodedString Join( char separator, params LazyEncodedString[] values )
+        {
+            return Join(separator, (IEnumerable<LazyEncodedString>)values);
+        }
+
+        /// <summary>Specialized join that optimizes for <see cref="LazyEncodedString"/> values</summary>
+        /// <param name="separator">Separator character</param>
+        /// <param name="values">Values to join together</param>
+        /// <returns>Result of the joined set of values</returns>
+        public static LazyEncodedString Join( char separator, IEnumerable<LazyEncodedString> values )
+#else
         /// <summary>Specialized join that optimizes for <see cref="LazyEncodedString"/> values</summary>
         /// <param name="separator">Separator character</param>
         /// <param name="values">Values to join together</param>
         /// <returns>Result of the joined set of values</returns>
         public static LazyEncodedString Join( char separator, params IEnumerable<LazyEncodedString> values )
+#endif
         {
             // TODO: Optimize this to deal with only the native UTF8 form.
             // Though "optimize" is a bit of a toss up. The normal case is that ALL of the values

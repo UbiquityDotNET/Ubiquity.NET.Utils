@@ -41,7 +41,7 @@ normally used when the value itself isn't passed on but some transformed value i
 |`ThrowIfNotDefined()` | Throws an exception if an enum value is undefined |
 
 ## Runtime Dependencies
-None  
+System.Collections.Immutable for NET Standard 2.0 builds.
 
 There are dependencies on various compile time analyzers but no runtime dependencies are
-allowed.
+allowed that aren't poly filled.

@@ -6,23 +6,12 @@ namespace Ubiquity.NET.Extensions
     /// <summary>Process related extensions/support</summary>
     public static class ProcessInfo
     {
-#if NET10_0_OR_GREATER
         /// <summary>Gets the active assembly as of the first use of this property</summary>
         /// <remarks>
         /// The active assembly is the entry assembly which may be null if called from native
         /// code as no such assembly exists for that scenario.
         /// </remarks>
         public static Assembly? ActiveAssembly => field ??= Assembly.GetEntryAssembly();
-#else
-        /// <summary>Gets the active assembly as of the first use of this property</summary>
-        /// <remarks>
-        /// The active assembly is the entry assembly which may be null if called from native
-        /// code as no such assembly exists for that scenario.
-        /// </remarks>
-        public static Assembly? ActiveAssembly => ActiveAssemblyBackingField ??= Assembly.GetEntryAssembly();
-
-        private static Assembly? ActiveAssemblyBackingField;
-#endif
 
         /// <summary>Gets the executable path for this instance of an application</summary>
         /// <remarks>This is a short hand for <see cref="Environment.GetCommandLineArgs()"/>[ 0 ]</remarks>

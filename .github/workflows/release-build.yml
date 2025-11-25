@@ -48,9 +48,6 @@ jobs:
           name: nuget-packages
           path: .\BuildOutput\Nuget
 
-      - name: Show asset names
-        run: dir BuildOutput/Nuget
-
       - name: Build Docs
         run: ./Build-Docs.ps1
 
@@ -67,6 +64,9 @@ jobs:
           directory: .\BuildOutput\docs
           branch: gh-pages
 
+      - name: Show asset names
+        run: dir BuildOutput/Nuget
+
       - name: Publish packages to NuGet.org
         run: |
           if( [string]::IsNullOrWhiteSpace('${{secrets.NUGETPUSH_ACCESS_TOKEN}}'))
@@ -80,5 +80,7 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           draft: true
-          files: BuildOutput/NuGet/*.nupkg
+          files: |
+              BuildOutput/NuGet/*.nupkg
+              BuildOutput/NuGet/*.snupkg
 

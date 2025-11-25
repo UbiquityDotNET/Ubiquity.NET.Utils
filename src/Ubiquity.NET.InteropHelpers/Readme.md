@@ -25,3 +25,7 @@ library for any code base providing interop support.
       the proper signature and the captured "this" pointer so is NOT AOT friendly) The
       support offered in this library, though a bit more tedious, is AOT friendly.
 
+>[!NOTE]
+> The .NET Standard 2.0 build of this library is reduced in functionality to what is
+> supported in that runtime. This include all of the source generated marshaling that is
+> available in .NET7+. There's no support for poly filling such a thing.

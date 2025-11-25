@@ -26,7 +26,7 @@ namespace Ubiquity.NET.Extensions
         }
 
         // Since the poly fills are only applied for .NET Standard 2.0 this has to
-        // replicate the new line Regular expressions.
+        // replicate the new line Regular expressions for later runtimes.
 #if !NETSTANDARD2_0
         // The Unicode Standard, Sec. 5.8, Recommendation R4 and Table 5-2 state that the CR, LF,
         // CRLF, NEL, LS, FF, and PS sequences are considered newline functions. That section
@@ -40,13 +40,13 @@ namespace Ubiquity.NET.Extensions
         private const string SystemNewLinesRegExPattern = @"(\r\n|\r|\n)";
 
     #if NET9_0_OR_GREATER
-            // Source generator for .NET 9+ understands properties directly
-            [GeneratedRegex( UnicodeNewLinesRegExPattern )]
-            internal static partial Regex UnicodeNewLinesRegEx { get; }
+        // Source generator for .NET 9+ understands properties directly
+        [GeneratedRegex( UnicodeNewLinesRegExPattern )]
+        internal static partial Regex UnicodeNewLinesRegex { get; }
 
-            // Source generator for .NET 9+ understands properties directly
-            [GeneratedRegex( SystemNewLinesRegExPattern )]
-            internal static partial Regex SystemNewLinesRegEx { get; }
+        // Source generator for .NET 9+ understands properties directly
+        [GeneratedRegex( SystemNewLinesRegExPattern )]
+        internal static partial Regex SystemNewLinesRegex { get; }
     #else
         // The generated method uses a static instance already, so
         // this syntactic sugar should be aggressively inlined to

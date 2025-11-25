@@ -132,7 +132,7 @@ namespace Ubiquity.NET.CommandLine.UT
             Assert.AreEqual( "action", ex.ParamName );
 
             // overload 3
-            ex = Assert.ThrowsExactly<ArgumentNullException>( ( ) => _ = TestOptions.BuildRootCommand( null, (  o, ct ) => Task.CompletedTask ) );
+            ex = Assert.ThrowsExactly<ArgumentNullException>( ( ) => _ = TestOptions.BuildRootCommand( null, ( o, ct ) => Task.CompletedTask ) );
             Assert.AreEqual( "settings", ex.ParamName );
 
             ex = Assert.ThrowsExactly<ArgumentNullException>( ( ) => _ = TestOptions.BuildRootCommand( settings, (Func<TestOptions, CancellationToken, Task>?)null ) );
@@ -188,7 +188,51 @@ namespace Ubiquity.NET.CommandLine.UT
             string[] testArgs = ["--option1", "value1"];
 
 #if NET10_0_OR_GREATER
-            Assert.Inconclusive("Not yet implemented for .NET 10/C# 14");
+            // Overload 1
+            var cmd = TestOptions.BuildRootCommand( settings, ( o ) => actionCalled = true);
+            Assert.IsNotNull( cmd );
+            int exitCode = cmd.ParseAndInvokeResult( reporter, settings, testArgs );
+            Assert.IsTrue( actionCalled );
+            Assert.AreEqual( 0, exitCode );
+
+            // Overload 2
+            cmd = TestOptions.BuildRootCommand( settings, ( o ) =>
+            {
+                actionCalled = true;
+                return 1;
+            } );
+            Assert.IsNotNull( cmd );
+
+            actionCalled = false;
+            exitCode = cmd.ParseAndInvokeResult( reporter, settings, testArgs );
+            Assert.IsTrue( actionCalled );
+            Assert.AreEqual( 1, exitCode );
+
+            // Overload 3
+            cmd = TestOptions.BuildRootCommand( settings, ( o, ct ) =>
+            {
+                actionCalled = true;
+                return Task.CompletedTask;
+            } );
+            Assert.IsNotNull( cmd );
+
+            actionCalled = false;
+            exitCode = cmd.ParseAndInvokeResult( reporter, settings, testArgs );
+            Assert.IsTrue( actionCalled );
+            Assert.AreEqual( 0, exitCode );
+
+            // Overload 4
+            cmd = TestOptions.BuildRootCommand( settings, ( o, ct ) =>
+            {
+                actionCalled = true;
+                return Task.FromResult( 1 );
+            } );
+
+            Assert.IsNotNull( cmd );
+            actionCalled = false;
+            exitCode = cmd.ParseAndInvokeResult( reporter, settings, testArgs );
+            Assert.IsTrue( actionCalled );
+            Assert.AreEqual( 1, exitCode );
 #else
             // Overload 1
             var cmd = CommandLineOptions.BuildRootCommand( settings, ( TestOptions o ) => actionCalled = true);
@@ -249,7 +293,51 @@ namespace Ubiquity.NET.CommandLine.UT
             string[] testArgs = ["--option1", "value1"];
 
 #if NET10_0_OR_GREATER
-            Assert.Inconclusive("Not yet implemented for .NET 10/C# 14");
+            // Overload 1
+            var cmd = TestOptions.BuildRootCommand( settings, ( o ) => actionCalled = true);
+            Assert.IsNotNull( cmd );
+            int exitCode = await cmd.ParseAndInvokeResultAsync( reporter, settings, TestContext.CancellationToken, testArgs );
+            Assert.IsTrue( actionCalled );
+            Assert.AreEqual( 0, exitCode );
+
+            // Overload 2
+            cmd = TestOptions.BuildRootCommand( settings, ( o ) =>
+            {
+                actionCalled = true;
+                return 1;
+            } );
+            Assert.IsNotNull( cmd );
+
+            actionCalled = false;
+            exitCode = await cmd.ParseAndInvokeResultAsync( reporter, settings, TestContext.CancellationToken, testArgs );
+            Assert.IsTrue( actionCalled );
+            Assert.AreEqual( 1, exitCode );
+
+            // Overload 3
+            cmd = TestOptions.BuildRootCommand( settings, ( o, ct ) =>
+            {
+                actionCalled = true;
+                return Task.CompletedTask;
+            } );
+            Assert.IsNotNull( cmd );
+
+            actionCalled = false;
+            exitCode = await cmd.ParseAndInvokeResultAsync( reporter, settings, TestContext.CancellationToken, testArgs );
+            Assert.IsTrue( actionCalled );
+            Assert.AreEqual( 0, exitCode );
+
+            // Overload 4
+            cmd = TestOptions.BuildRootCommand( settings, ( o, ct ) =>
+            {
+                actionCalled = true;
+                return Task.FromResult( 1 );
+            } );
+
+            Assert.IsNotNull( cmd );
+            actionCalled = false;
+            exitCode = await cmd.ParseAndInvokeResultAsync( reporter, settings, TestContext.CancellationToken, testArgs );
+            Assert.IsTrue( actionCalled );
+            Assert.AreEqual( 1, exitCode );
 #else
             // Overload 1
             var cmd = CommandLineOptions.BuildRootCommand( settings, ( TestOptions o ) => actionCalled = true);

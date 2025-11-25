@@ -21,13 +21,13 @@ namespace Ubiquity.NET.Runtime.Utils
         public void VisualizeParseTree( XDocument parseTreeXml );
 
         /// <summary>
-        /// processes the DGML representation of the Kaleidoscope AST if <see cref="VisualizationKind"/> has the <see cref="VisualizationKind.Dgml"/> flag
+        /// processes the DGML representation of the AST if <see cref="VisualizationKind"/> has the <see cref="VisualizationKind.Dgml"/> flag
         /// </summary>
-        /// <param name="astDgml">DGML representation of the Kaleidoscope AST</param>
+        /// <param name="astDgml">DGML representation of the AST</param>
         public void VisualizeAstDgml( XDocument astDgml );
 
         /// <summary>
-        /// Called to process the BlockDiag representation of the Kaleidoscope AST if <see cref="VisualizationKind"/> has the <see cref="VisualizationKind.BlockDiag"/> flag
+        /// Called to process the BlockDiag representation of the AST if <see cref="VisualizationKind"/> has the <see cref="VisualizationKind.BlockDiag"/> flag
         /// </summary>
         /// <param name="blockDiag">BlockDiag representation of the parse</param>
         void VisualizeBlockDiag( string blockDiag );

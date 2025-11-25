@@ -23,7 +23,6 @@ namespace Ubiquity.NET.SourceGenerator.Test.Utils
         where TGenerator : IIncrementalGenerator
     {
         /// <summary>Initializes a new instance of the <see cref="ResourceSourceTextDictionary{TGenerator}"/> class.</summary>
-        /// <param name="containingAssembly">Assembly that contains the resources</param>
         /// <param name="nameTransform">Transform function to convert the resource name into a generated file name</param>
         /// <remarks>
         /// If <paramref name="nameTransform"/> is <see langword="null"/> then the default is to use a C# transformation
