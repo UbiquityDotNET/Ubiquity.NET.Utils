@@ -19,7 +19,7 @@ namespace Ubiquity.NET.Runtime.Utils
         /// <para>The behavior of this method depends on the implementation. The common case is to
         /// actually generate a module for the JIT engine. Normally, any anonymous expressions
         /// are JIT compiled and executed. The result of executing the expression is returned.
-        /// For Function definitions or declarations, the function is returned.
+        /// For function definitions or declarations, the function is returned.
         /// However, that's not required. In a simple syntax analyzer, the generate may do nothing
         /// more than generate diagrams or other diagnostics from the input tree.</para>
         /// <para>For a lazy compilation JIT the generator will defer the actual generation of code and instead

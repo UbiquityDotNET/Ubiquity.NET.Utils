@@ -1,14 +1,25 @@
-// NOTE: docfx does NOT support multi-targetting
+// NOTE: docfx does NOT support multi-targeting
 // It can generate docs for ONLY one version of the library
 // docfx merge was supposed to resolve that, but is broken (https://github.com/dotnet/docfx/issues/2289).
-// Sadly that's been open since 2017 so not likely to ever be resolved.
+// Sadly, that's been open since 2017 (8 years now...) so not likely to ever be resolved.
 // Use of this tool is likely abandoned and an alternative should be sought.
 {
     "$schema": "https://raw.githubusercontent.com/dotnet/docfx/main/schemas/docfx.schema.json",
     "metadata": [
-        // [Sigh] - docfx tooling will process and report warnings etc.. on projects found BEFORE it
-        // deals with the exclusion list so a simple glob for all csproj files doesn't work. It creates
-        // warnings and returns a non-success value which stops the build.
+        // [Sigh] - docfx tooling doesn't support .NET 10 SDK. So, build docs from binaries.
+        // This requires a synchronous build as building the docs now requires the built binaries.
+        // Additionally, this requires a release build of the binaries as there is no way to specify
+        // the configuration to docx metadata.
+        //
+        // Also due to a bug in reference processing in docfx (https://github.com/dotnet/docfx/issues/10423)
+        // this will generate warnings that can be ignored:
+        // warning: InvalidAssemblyReference: Unable to resolve assembly reference Microsoft.CodeAnalysis, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+        // warning: InvalidAssemblyReference: Unable to resolve assembly reference Microsoft.CodeAnalysis.CSharp, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+        // warning: InvalidAssemblyReference: Unable to resolve assembly reference Microsoft.CodeAnalysis.VisualBasic, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+        // warning: InvalidAssemblyReference: Unable to resolve assembly reference Microsoft.Bcl.HashCode, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51
+        // warning: InvalidAssemblyReference: Unable to resolve assembly reference SQLitePCLRaw.core, Version=2.1.0.1603, Culture=neutral, PublicKeyToken=1488e028ca7ab535
+        // warning: InvalidAssemblyReference: Unable to resolve assembly reference SQLitePCLRaw.batteries_v2, Version=2.1.0.1603, Culture=neutral, PublicKeyToken=8226ea5df37bcae9
+        //
         // Each project is listed in the order they appear in the VS solution explorer so they are easier
         // to find and check etc...
         {
@@ -17,8 +28,8 @@
             "namespaceLayout": "nested",
             "src": [
                 {
-                    "src": "../src/Ubiquity.NET.ANTLR.Utils",
-                    "files": [ "**.csproj" ]
+                    "src": "../BuildOutput/bin/Ubiquity.NET.ANTLR.Utils/Release/net8.0",
+                    "files": [ "Ubiquity.NET.ANTLR.Utils.dll" ]
                 }
             ],
             "dest": "antlr-utils/api"
@@ -29,8 +40,8 @@
             "namespaceLayout": "nested",
             "src": [
                 {
-                    "src": "../src/Ubiquity.NET.CodeAnalysis.Utils",
-                    "files": [ "**.csproj" ]
+                    "src": "../BuildOutput/bin/Ubiquity.NET.CodeAnalysis.Utils/Release/netstandard2.0",
+                    "files": [ "Ubiquity.NET.CodeAnalysis.Utils.dll" ]
                 }
             ],
             "dest": "CodeAnalysis/api"
@@ -41,8 +52,8 @@
             "namespaceLayout": "nested",
             "src": [
                 {
-                    "src": "../src/Ubiquity.NET.CommandLine",
-                    "files": [ "**.csproj" ]
+                    "src": "../BuildOutput/bin/Ubiquity.NET.CommandLine/Release/net10.0",
+                    "files": [ "Ubiquity.NET.CommandLine.dll" ]
                 }
             ],
             "dest": "CommandLine/api"
@@ -53,8 +64,8 @@
             "namespaceLayout": "nested",
             "src": [
                 {
-                    "src": "../src/Ubiquity.NET.Extensions",
-                    "files": [ "**.csproj" ]
+                    "src": "../BuildOutput/bin/Ubiquity.NET.Extensions/Release/net8.0",
+                    "files": [ "Ubiquity.NET.Extensions.dll" ]
                 }
             ],
             "dest": "extensions/api",
@@ -65,8 +76,8 @@
             "namespaceLayout": "nested",
             "src": [
                 {
-                    "src": "../src/Ubiquity.NET.InteropHelpers",
-                    "files": [ "**.csproj" ]
+                    "src": "../BuildOutput/bin/Ubiquity.NET.InteropHelpers/Release/net8.0",
+                    "files": [ "Ubiquity.NET.InteropHelpers.dll" ]
                 }
             ],
             "dest": "interop-helpers/api"
@@ -77,8 +88,8 @@
             "namespaceLayout": "nested",
             "src": [
                 {
-                    "src": "../src/Ubiquity.NET.Runtime.Utils",
-                    "files": [ "**.csproj" ]
+                    "src": "../BuildOutput/bin/Ubiquity.NET.Runtime.Utils/Release/net8.0",
+                    "files": [ "Ubiquity.NET.Runtime.Utils.dll" ]
                 }
             ],
             "dest": "runtime-utils/api",
@@ -89,8 +100,8 @@
             "namespaceLayout": "nested",
             "src": [
                 {
-                    "src": "../src/Ubiquity.NET.SourceGenerator.Test.Utils",
-                    "files": [ "**.csproj" ]
+                    "src": "../BuildOutput/bin/Ubiquity.NET.SourceGenerator.Test.Utils/Release/net10.0",
+                    "files": [ "Ubiquity.NET.SourceGenerator.Test.Utils.dll" ]
                 }
             ],
             "dest": "src-gen-test-utils/api",
@@ -101,8 +112,8 @@
             "namespaceLayout": "nested",
             "src": [
                 {
-                    "src": "../src/Ubiquity.NET.SrcGeneration",
-                    "files": [ "**.csproj" ]
+                    "src": "../BuildOutput/bin/Ubiquity.NET.SrcGeneration/Release/net8.0",
+                    "files": [ "Ubiquity.NET.SrcGeneration.dll" ]
                 }
             ],
             "dest": "SrcGeneration/api",

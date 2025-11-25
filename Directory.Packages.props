@@ -23,12 +23,12 @@
     <!-- Roslyn Analyzers ***MUST*** target older framework -->
     <PackageVersion Include="AnsiCodes" Version="0.2.1" />
     <PackageVersion Include="Microsoft.Bcl.HashCode" Version="6.0.0" />
-    <PackageVersion Include="Microsoft.CodeAnalysis" Version="4.14.0" />
-    <PackageVersion Include="Microsoft.CodeAnalysis.Common" Version="4.14.0" />
-    <PackageVersion Include="Microsoft.CodeAnalysis.CSharp" Version="4.14.0" />
-    <PackageVersion Include="Microsoft.CodeAnalysis.CSharp.Features" Version="4.14.0" />
+    <PackageVersion Include="Microsoft.CodeAnalysis" Version="5.0.0" />
+    <PackageVersion Include="Microsoft.CodeAnalysis.Common" Version="5.0.0" />
+    <PackageVersion Include="Microsoft.CodeAnalysis.CSharp" Version="5.0.0" />
+    <PackageVersion Include="Microsoft.CodeAnalysis.CSharp.Features" Version="5.0.0" />
     <PackageVersion Include="Microsoft.CodeAnalysis.CSharp.SourceGenerators.Testing" Version="1.1.2" />
-    <PackageVersion Include="Microsoft.CodeAnalysis.VisualBasic" Version="4.14.0" />
+    <PackageVersion Include="Microsoft.CodeAnalysis.VisualBasic" Version="5.0.0" />
     <PackageVersion Include="Microsoft.CodeAnalysis.Analyzers" Version="4.14.0" />
     <PackageVersion Include="Microsoft.CodeAnalysis.VisualBasic.Features" Version="4.14.0" />
     <PackageVersion Include="Microsoft.CodeAnalysis.VisualBasic.SourceGenerators.Testing" Version="1.1.2" />
@@ -38,25 +38,20 @@
     <PackageVersion Include="System.Collections.Immutable" Version="10.0.0" />
     <PackageVersion Include="System.Memory" Version="4.5.5" />
     <PackageVersion Include="System.CommandLine" Version="2.0.0" />
-
     <!-- Security vulnerability overrides -->
     <!-- https://github.com/dotnet/roslyn-sdk/issues/1191 -->
     <PackageVersion Include="System.Formats.Asn1" Version="10.0.0" />
-
     <!-- https://github.com/advisories/GHSA-7jgj-8wvc-jh57 -->
     <PackageVersion Include="System.Net.Http" Version="4.3.4" />
-
     <!-- https://github.com/advisories/GHSA-cmhx-cq75-c4mj -->
     <PackageVersion Include="System.Text.RegularExpressions" Version="4.3.1" />
-
     <!-- Common packages for solution -->
-    <PackageVersion Include="System.Linq.Async" Version="6.0.3" />
+    <PackageVersion Include="System.Linq.Async" Version="7.0.0" />
     <PackageVersion Include="Antlr4BuildTasks" Version="12.11.0" />
     <PackageVersion Include="Antlr4.Runtime.Standard" Version="4.13.1" />
     <PackageVersion Include="OpenSoftware.DgmlBuilder" Version="2.1.0" />
     <PackageVersion Include="CppSharp" Version="1.1.5.3168" />
     <PackageVersion Include="System.CodeDom" Version="9.0.7" />
-
     <!-- Tests all use the same framework versions -->
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="18.0.1" />
     <PackageVersion Include="MSTest.TestAdapter" Version="4.0.2" />

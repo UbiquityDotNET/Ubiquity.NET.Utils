@@ -26,7 +26,6 @@ namespace Ubiquity.NET.SourceGenerator.Test.Utils.CSharp
         /// <remarks>Creates parse options</remarks>
         protected override ParseOptions CreateParseOptions( )
         {
-            // TODO: until C# 14 is formally released, this is "preview"
             return ((CSharpParseOptions)base.CreateParseOptions()).WithLanguageVersion(LanguageVersion);
         }
 

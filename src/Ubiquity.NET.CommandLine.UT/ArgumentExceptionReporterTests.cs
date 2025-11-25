@@ -8,16 +8,16 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 using Ubiquity.NET.CommandLine;
 
-namespace Ubiquity.NET.Commandline.UT
+namespace Ubiquity.NET.CommandLine.UT
 {
     [TestClass]
     public class ArgumentExceptionReporterTests
     {
         private const string ParamExpressionName = "expression";
-        private const string VerboseMessage = "This is a verbose";
-        private const string InformationMessage = "This is an Information level message";
-        private const string WarningMessage = "This is a warning";
-        private const string ErrorMessage = "This is an error";
+        private const string VerboseMessage = "This is a verbose message";
+        private const string InformationMessage = "This is an informational message";
+        private const string WarningMessage = "This is a warning message";
+        private const string ErrorMessage = "This is an error message";
 
         [TestMethod]
         public void ArgumentExceptionReporterTest( )

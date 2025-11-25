@@ -26,7 +26,15 @@ namespace Ubiquity.NET.Extensions
         CarriageReturn,
     }
 
-#pragma warning disable CS1574 // XML comment has cref attribute that could not be resolved
+#if !NET6_0_OR_GREATER
+    /// <summary>Utility class for converting line endings to expected forms</summary>
+    /// <remarks>This is similar to <see cref="PolyFillStringExtensions.ReplaceLineEndings(string)"/> and
+    /// <see cref="PolyFillStringExtensions.ReplaceLineEndings(string)"/> except that it allows explicit
+    /// control of the input AND output forms of the string via <see cref="LineEndingKind"/>.
+    /// Ultimately all forms of normalization resolves to a call to
+    /// <see cref="NormalizeLineEndings(string?, LineEndingKind, LineEndingKind)"/>.
+    /// </remarks>
+#else
     /// <summary>Utility class for converting line endings to expected forms</summary>
     /// <remarks>This is similar to <see cref="string.ReplaceLineEndings()"/> and
     /// <see cref="string.ReplaceLineEndings(string)"/> except that it allows explicit
@@ -34,7 +42,7 @@ namespace Ubiquity.NET.Extensions
     /// Ultimately all forms of normalization resolves to a call to
     /// <see cref="NormalizeLineEndings(string?, LineEndingKind, LineEndingKind)"/>.
     /// </remarks>
-#pragma warning restore CS1574 // XML comment has cref attribute that could not be resolved
+#endif
     public static partial class StringNormalizer
     {
         /// <summary>Gets a string form of the line ending</summary>
@@ -58,7 +66,7 @@ namespace Ubiquity.NET.Extensions
         /// <summary>Normalize a managed string with system defined line endings to a specified kind</summary>
         /// <param name="txt">input string to convert</param>
         /// <param name="dstKind">destination kind of string to convert</param>
-        /// <returns>Normalized string; If dstKind matches the current system environment then this returns <paramref name="txt"/> un-modified</returns>
+        /// <returns>Normalized string; If dstKind matches the current system environment then this returns <paramref name="txt"/> unmodified</returns>
         /// <remarks>
         /// This is equivalent to a call to <see cref="NormalizeLineEndings(string?, LineEndingKind, LineEndingKind)"/> with the
         /// source kind set to <see cref="LineEndingKind.MixedOrUnknownEndings"/>. Thus, it sets all forms of line endings to
@@ -70,18 +78,29 @@ namespace Ubiquity.NET.Extensions
             return txt.NormalizeLineEndings( LineEndingKind.MixedOrUnknownEndings, dstKind );
         }
 
-#pragma warning disable CS1574 // XML comment has cref attribute that could not be resolved
+#if !NET6_0_OR_GREATER
         /// <summary>Converts a string into a string with managed environment line endings</summary>
         /// <param name="txt">string to convert</param>
         /// <param name="srcKind">Line ending kind for the source (<paramref name="txt"/>)</param>
         /// <param name="dstKind">Line ending kind for the destination (return string)</param>
-        /// <returns>Normalized string; If the <paramref name="srcKind"/> is the same as <paramref name="dstKind"/> this is returns <paramref name="txt"/> un-modified</returns>
+        /// <returns>Normalized string; If the <paramref name="srcKind"/> is the same as <paramref name="dstKind"/> this is returns <paramref name="txt"/> unmodified</returns>
+        /// <remarks>
+        /// Unlike the .NET 6+ runtime provided <see cref="PolyFillStringExtensions.ReplaceLineEndings(string)"/> this does NOT replace
+        /// ALL forms of line endings unless <paramref name="srcKind"/> is <see cref="LineEndingKind.MixedOrUnknownEndings"/>. In
+        /// all other cases it ONLY replaces exact matches for the line endings specified in <paramref name="srcKind"/>.
+        /// </remarks>
+#else
+        /// <summary>Converts a string into a string with managed environment line endings</summary>
+        /// <param name="txt">string to convert</param>
+        /// <param name="srcKind">Line ending kind for the source (<paramref name="txt"/>)</param>
+        /// <param name="dstKind">Line ending kind for the destination (return string)</param>
+        /// <returns>Normalized string; If the <paramref name="srcKind"/> is the same as <paramref name="dstKind"/> this is returns <paramref name="txt"/> unmodified</returns>
         /// <remarks>
         /// Unlike the .NET 6+ runtime provided <see cref="string.ReplaceLineEndings(string)"/> this does NOT replace
         /// ALL forms of line endings unless <paramref name="srcKind"/> is <see cref="LineEndingKind.MixedOrUnknownEndings"/>. In
         /// all other cases it ONLY replaces exact matches for the line endings specified in <paramref name="srcKind"/>.
         /// </remarks>
-#pragma warning restore CS1574 // XML comment has cref attribute that could not be resolved
+#endif
         [return: NotNullIfNotNull(nameof(txt))]
         [SuppressMessage( "Style", "IDE0046:Convert to conditional expression", Justification = "Nested conditional are NOT simpler" )]
         public static string? NormalizeLineEndings( this string? txt, LineEndingKind srcKind, LineEndingKind dstKind )

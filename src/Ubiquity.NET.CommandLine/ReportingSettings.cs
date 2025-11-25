@@ -7,60 +7,17 @@ namespace Ubiquity.NET.CommandLine
     internal static class ReportingSettings
     {
         // Create an InvocationConiguration that wraps an IDiagnosticReporter
-        public static InvocationConfiguration CreateConfig( this IDiagnosticReporter self )
+        public static InvocationConfiguration CreateConfig( this IDiagnosticReporter self, bool enableDefaultHandler, TimeSpan? timeout = null )
         {
             ArgumentNullException.ThrowIfNull( self );
 
             return new()
             {
-                EnableDefaultExceptionHandler = false,
-                Error = new ReportingTextWriter( self, MsgLevel.Error ),
-                Output = new ReportingTextWriter( self, MsgLevel.Information ),
+                EnableDefaultExceptionHandler = enableDefaultHandler,
+                Error = new DiagnosticReportingWriter( self, MsgLevel.Error ),
+                Output = new DiagnosticReportingWriter( self, MsgLevel.Information ),
+                ProcessTerminationTimeout = timeout,
             };
         }
-    }
-
-    // TextWriter that wraps an IDiagnosticReporter for a given level
-    // This is an implementation of the GoF "Adapter Pattern"
-    [SuppressMessage( "StyleCop.CSharp.MaintainabilityRules", "SA1402:File may only contain a single type", Justification = "File scoped..." )]
-    file class ReportingTextWriter
-        : TextWriter
-    {
-        public ReportingTextWriter( IDiagnosticReporter diagnosticReporter, MsgLevel level )
-        {
-            Reporter = diagnosticReporter;
-            MsgLevel = level;
-            Builder = new();
-        }
-
-        public override Encoding Encoding => Reporter.Encoding;
-
-        public MsgLevel MsgLevel { get; }
-
-        public override void Write(string? value)
-        {
-            if (value == Environment.NewLine)
-            {
-                WriteLine();
-            }
-            else
-            {
-                base.Write(value);
-            }
-        }
-
-        public override void WriteLine( )
-        {
-            Reporter.Report( MsgLevel, Builder.ToString() );
-            Builder.Clear();
-        }
-
-        public override void Write( char value )
-        {
-            Builder.Append( value );
-        }
-
-        private readonly IDiagnosticReporter Reporter;
-        private readonly StringBuilder Builder;
     }
 }

@@ -4,6 +4,7 @@
 namespace Ubiquity.NET.Extensions.UT
 {
     [TestClass]
+    [ExcludeFromCodeCoverage]
     public class StringExtensionTests
     {
         [TestMethod]

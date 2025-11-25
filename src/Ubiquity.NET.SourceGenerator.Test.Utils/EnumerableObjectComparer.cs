@@ -19,6 +19,7 @@ namespace Ubiquity.NET.SourceGenerator.Test.Utils
         {
             ArgumentNullException.ThrowIfNull(x);
             ArgumentNullException.ThrowIfNull(y);
+
             var xValues = x.ToImmutableArray();
             var yValues = x.ToImmutableArray();
             return xValues.Length == yValues.Length

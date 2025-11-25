@@ -63,20 +63,6 @@ jobs:
           name: Test Results
           path: BuildOutput/Test-Results/*.trx
 
-      - name: Upload NuGET Packages
-        uses: actions/upload-artifact@v4
-        with:
-            name: NuGet Packages
-            path: ./BuildOutput/NuGet
-
-  build-docs:
-    runs-on: windows-latest
-    steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v4
-        with:
-           persist-credentials: false
-
       - name: Build Docs
         run: ./Build-Docs.ps1 -FullInit -Configuration Release
 
@@ -88,3 +74,8 @@ jobs:
               BuildOutput/docs/
               !BuildOutput/docs/.git/**
 
+      - name: Upload NuGET Packages
+        uses: actions/upload-artifact@v4
+        with:
+            name: NuGet Packages
+            path: ./BuildOutput/NuGet
