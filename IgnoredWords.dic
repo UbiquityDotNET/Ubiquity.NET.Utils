@@ -11,6 +11,7 @@ api
 app
 apps
 argkind
+arity
 ascii
 atomicrmw
 attrib
@@ -104,6 +105,7 @@ Licensor
 Llilum
 llvm
 llvmversion
+localizable
 lookups
 LValue
 malloc
