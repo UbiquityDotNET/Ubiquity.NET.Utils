@@ -3,6 +3,32 @@
 
 namespace Ubiquity.NET.Extensions.FluentValidation
 {
+    // TODO: [API BREAKING CHANGE] move namespace to the "extension" pattern type name
+    //       so that use of the full type name can disambiguate with any existing
+    //       method of the same name exists (or an extension). [i.e., An extension type
+    //       with a static method that has the same arity and type of args but different
+    //       return type is ambiguous. So without explicit]
+    /*
+    internal abstract class SampleBase
+    {
+        public SampleBase(string foo)
+        {
+            Foo = foo;
+        }
+
+        private readonly string Foo;
+    }
+
+    internal class Sample
+        : SampleBase
+    {
+        public Sample(string foo)
+            : base( FluentValidation.ThrowIfNull( foo ) )
+        {
+        }
+    }
+    */
+
     // This does NOT use the new C# 14 extension syntax due to several reasons
     // 1) Code lens does not work https://github.com/dotnet/roslyn/issues/79006 [Sadly, marked as "not planned" - e.g., dead-end]
     // 2) MANY analyzers get things wrong and need to be suppressed (CA1000, CA1034, and many others [SAxxxx])
@@ -90,26 +116,41 @@ namespace Ubiquity.NET.Extensions.FluentValidation
             where T : struct, Enum
         {
             exp ??= string.Empty;
-
-            if(Enum.IsDefined( typeof( T ), self ))
-            {
-                return self;
-            }
-
             try
             {
+#if NET5_0_OR_GREATER
+                if(Enum.IsDefined( self ))
+                {
+                    return self;
+                }
+#else
+                if(Enum.IsDefined( typeof( T ), self ))
+                {
+                    return self;
+                }
+#endif
                 int underlyingValue = (int)Convert.ChangeType(self, typeof(int), CultureInfo.InvariantCulture);
                 throw new InvalidEnumArgumentException( exp, underlyingValue, typeof( T ) );
             }
             catch(Exception ex) when(ex is InvalidCastException or FormatException or OverflowException)
             {
+                // bit cast the enum to an nuint as that is a platform specific maximal value
+#if NET8_0_OR_GREATER
+                nuint integral = Unsafe.BitCast<T, nuint>(self);
+#else
+                ref byte refSelf = ref Unsafe.As<T, byte>(ref self);
+                nuint integral = Unsafe.ReadUnaligned<nuint>(ref refSelf);
+#endif
+
                 // InvalidEnumArgumentException constructors ONLY provide parameter name value set for values
                 // that are representable as an int. Thus, anything else requires a custom message that at
                 // least includes the original value in question. (Normally an enum does fit an int, but for
                 // interop might not) the resulting exception will have "ParamName" as the default of "null"!
                 //
                 // This matches the overloaded constructor version but allows for reporting enums with non-int underlying type.
-                throw new InvalidEnumArgumentException( SR.Format( nameof( Resources.InvalidEnumArgument_NonInt ), exp, self, typeof( T ) ) );
+                throw new InvalidEnumArgumentException(
+                    SR.Format(CultureInfo.CurrentCulture, nameof( Resources.InvalidEnumArgument_NonInt ), exp, integral, typeof( T ) )
+                    );
             }
         }
     }

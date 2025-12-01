@@ -29,13 +29,14 @@
         <None Include="ReadMe.md" Pack="true" PackagePath="\" />
     </ItemGroup>
 
-    <ItemGroup>
-      <PackageReference Condition="$(TargetFramework)=='netstandard2.0'" Include="PolySharp">
+    <ItemGroup  Condition="$(TargetFramework)=='netstandard2.0'">
+      <PackageReference Include="PolySharp">
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
 
-      <PackageReference Include="System.Collections.Immutable" Condition="$(TargetFramework)=='netstandard2.0'" />
+      <PackageReference Include="System.Collections.Immutable" />
+      <PackageReference Include="Microsoft.Bcl.HashCode" />
     </ItemGroup>
 
     <ItemGroup>

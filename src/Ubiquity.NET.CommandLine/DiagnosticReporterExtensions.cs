@@ -20,6 +20,42 @@ namespace Ubiquity.NET.CommandLine
         /// <summary>Reports a message</summary>
         /// <param name="self">Reporter to use in reporting the message</param>
         /// <param name="level">Message level</param>
+        /// <param name="locStr">Localizable string for the message</param>
+        /// <param name="formatProvider">Format provider to use for the message</param>
+        /// <param name="origin">Origin of the message</param>
+        /// <param name="location">Location of the report in <paramref name="origin"/></param>
+        /// <param name="subCategory">Sub category for the message</param>
+        /// <param name="code">code for the message</param>
+        public static void Report(
+            this IDiagnosticReporter self,
+            MsgLevel level,
+            LocalizableString locStr,
+            IFormatProvider? formatProvider = default,
+            Uri? origin = default,
+            SourceRange? location = default,
+            string? subCategory = default,
+            string? code = default
+            )
+        {
+            if(IsEnabled( self, level ))
+            {
+                var diagnostic = new DiagnosticMessage()
+                {
+                    Origin = origin,
+                    Location = location,
+                    Subcategory = subCategory,
+                    Level = level,
+                    Code = code,
+                    Text = locStr.GetText(formatProvider)
+                };
+
+                self.Report( diagnostic );
+            }
+        }
+
+        /// <summary>Reports a message</summary>
+        /// <param name="self">Reporter to use in reporting the message</param>
+        /// <param name="level">Message level</param>
         /// <param name="msg">Message text</param>
         public static void Report( this IDiagnosticReporter self, MsgLevel level, string msg )
         {
@@ -94,7 +130,7 @@ namespace Ubiquity.NET.CommandLine
             [InterpolatedStringHandlerArgument( "self", "level" )] DiagnosticReporterInterpolatedStringHandler handler
             )
         {
-            Report(self, level, null, location, handler);
+            Report( self, level, null, location, handler );
         }
 
         /// <summary>Reports a message using an interpolated string</summary>
@@ -176,7 +212,7 @@ namespace Ubiquity.NET.CommandLine
             params object[] args
             )
         {
-            Report(self, level, null, location, fmt, args);
+            Report( self, level, null, location, fmt, args );
         }
 
 #if NET9_0_OR_GREATER
@@ -199,6 +235,42 @@ namespace Ubiquity.NET.CommandLine
         #endregion
 
         #region MsgLevel.Error
+
+        /// <summary>Reports a <see cref="MsgLevel.Error"/> level localizable message to <paramref name="self"/></summary>
+        /// <param name="self">Reporter to report message to</param>
+        /// <param name="locStr">Localizable string form of the message</param>
+        /// <param name="formatProvider">Format provider to use when formatting the string</param>
+        /// <param name="code">Identifier code for this message</param>
+        /// <param name="location">Location in the origin that this message refers to</param>
+        /// <param name="origin">Origin of the diagnostic (Usually the origin is a File, but may be anything or nothing)</param>
+        /// <param name="subCategory">Subcategory for this message</param>
+        public static void Error(
+            this IDiagnosticReporter self,
+            LocalizableString locStr,
+            IFormatProvider? formatProvider = null,
+            string? code = default,
+            SourceRange location = default,
+            Uri? origin = default,
+            string? subCategory = default
+            )
+        {
+            ArgumentNullException.ThrowIfNull( self );
+
+            if(self.IsEnabled( MsgLevel.Error ))
+            {
+                var diagnostic = new DiagnosticMessage()
+                {
+                    Code = code,
+                    Level = MsgLevel.Error,
+                    Location = location,
+                    Origin = origin,
+                    Subcategory = subCategory,
+                    Text = locStr.GetText(formatProvider),
+                };
+
+                self.Report( diagnostic );
+            }
+        }
 
         // maintainer's note: Doc comments are inherited from the "Error" implementation (except the summary)
         //                    and therefore the verbiage of the full comments should remain neutral.
@@ -230,7 +302,7 @@ namespace Ubiquity.NET.CommandLine
         {
             ArgumentNullException.ThrowIfNull( self );
 
-            if(self.IsEnabled(MsgLevel.Error))
+            if(self.IsEnabled( MsgLevel.Error ))
             {
                 var diagnostic = new DiagnosticMessage()
                 {
@@ -306,7 +378,7 @@ namespace Ubiquity.NET.CommandLine
         {
             ArgumentNullException.ThrowIfNull( self );
 
-            if(self.IsEnabled(MsgLevel.Error))
+            if(self.IsEnabled( MsgLevel.Error ))
             {
                 var diagnostic = new DiagnosticMessage()
                 {
@@ -330,7 +402,7 @@ namespace Ubiquity.NET.CommandLine
             params object[] args
             )
         {
-            Error(self, code: null, location: default, origin: null, subCategory: null, formatProvider, fmt, args);
+            Error( self, code: null, location: default, origin: null, subCategory: null, formatProvider, fmt, args );
         }
 
         /// <inheritdoc cref="Error(IDiagnosticReporter, string?, SourceRange, Uri?, string?, IFormatProvider?, string, object[])"/>
@@ -342,7 +414,7 @@ namespace Ubiquity.NET.CommandLine
             params object[] args
             )
         {
-            Error(self, code: null, location, origin: null, subCategory: null, formatProvider, fmt, args);
+            Error( self, code: null, location, origin: null, subCategory: null, formatProvider, fmt, args );
         }
 
         /// <inheritdoc cref="Error(IDiagnosticReporter, string?, SourceRange, Uri?, string?, ErrorReportingInterpolatedStringHandler)"/>
@@ -351,7 +423,7 @@ namespace Ubiquity.NET.CommandLine
             [InterpolatedStringHandlerArgument( "self" )] ErrorReportingInterpolatedStringHandler handler
             )
         {
-            Error(self, code: null, location: default, origin: null, subCategory: null, handler);
+            Error( self, code: null, location: default, origin: null, subCategory: null, handler );
         }
 
         /// <inheritdoc cref="Error(IDiagnosticReporter, string?, SourceRange, Uri?, string?, ErrorReportingInterpolatedStringHandler)"/>
@@ -361,7 +433,7 @@ namespace Ubiquity.NET.CommandLine
             [InterpolatedStringHandlerArgument( "self" )] ErrorReportingInterpolatedStringHandler handler
             )
         {
-            Error(self, code: null, location, origin: null, subCategory: null, handler);
+            Error( self, code: null, location, origin: null, subCategory: null, handler );
         }
 
         // doc comments don't inherit param correctly, see: https://github.com/dotnet/roslyn/issues/67326#issuecomment-3452843800
@@ -371,13 +443,49 @@ namespace Ubiquity.NET.CommandLine
         /// <param name="msg">Message to report</param>
         /// <param name="location">Location in the origin that this message refers to</param>
         /// <inheritdoc cref="Error(IDiagnosticReporter, string?, SourceRange, Uri?, string?, ErrorReportingInterpolatedStringHandler)" path="/remarks"/>
-        public static void Error(this IDiagnosticReporter self, string msg, SourceRange location = default)
+        public static void Error( this IDiagnosticReporter self, string msg, SourceRange location = default )
         {
-            Error(self, code: null, location, origin: null, subCategory: null, formatProvider: null, msg /*, args...*/);
+            Error( self, code: null, location, origin: null, subCategory: null, formatProvider: null, msg /*, args...*/);
         }
         #endregion
 
         #region MsgLevel.Warning
+
+        /// <summary>Reports a <see cref="MsgLevel.Warning"/> level localizable message to <paramref name="self"/></summary>
+        /// <param name="self">Reporter to report message to</param>
+        /// <param name="locStr">Localizable string form of the message</param>
+        /// <param name="formatProvider">Format provider to use when formatting the string</param>
+        /// <param name="code">Identifier code for this message</param>
+        /// <param name="location">Location in the origin that this message refers to</param>
+        /// <param name="origin">Origin of the diagnostic (Usually the origin is a File, but may be anything or nothing)</param>
+        /// <param name="subCategory">Subcategory for this message</param>
+        public static void Warning(
+            this IDiagnosticReporter self,
+            LocalizableString locStr,
+            IFormatProvider? formatProvider = null,
+            string? code = default,
+            SourceRange location = default,
+            Uri? origin = default,
+            string? subCategory = default
+            )
+        {
+            ArgumentNullException.ThrowIfNull( self );
+
+            if(self.IsEnabled( MsgLevel.Warning ))
+            {
+                var diagnostic = new DiagnosticMessage()
+                {
+                    Code = code,
+                    Level = MsgLevel.Warning,
+                    Location = location,
+                    Origin = origin,
+                    Subcategory = subCategory,
+                    Text = locStr.GetText(formatProvider),
+                };
+
+                self.Report( diagnostic );
+            }
+        }
 
         /// <summary>Reports a <see cref="MsgLevel.Warning"/> level message to <paramref name="self"/></summary>
         /// <inheritdoc cref="Error(IDiagnosticReporter, string?, SourceRange, Uri?, string?, IFormatProvider?, string, object[])"/>
@@ -394,7 +502,7 @@ namespace Ubiquity.NET.CommandLine
         {
             ArgumentNullException.ThrowIfNull( self );
 
-            if(self.IsEnabled(MsgLevel.Warning))
+            if(self.IsEnabled( MsgLevel.Warning ))
             {
                 var diagnostic = new DiagnosticMessage()
                 {
@@ -447,7 +555,7 @@ namespace Ubiquity.NET.CommandLine
             params object[] args
             )
         {
-            Warning(self, code: null, location: default, origin: null, subCategory: null, formatProvider, fmt, args);
+            Warning( self, code: null, location: default, origin: null, subCategory: null, formatProvider, fmt, args );
         }
 
         /// <inheritdoc cref="Warning(IDiagnosticReporter, string?, SourceRange, Uri?, string?, IFormatProvider?, string, object[])"/>
@@ -459,7 +567,7 @@ namespace Ubiquity.NET.CommandLine
             params object[] args
             )
         {
-            Warning(self, code: null, location, origin: null, subCategory: null, formatProvider, fmt, args);
+            Warning( self, code: null, location, origin: null, subCategory: null, formatProvider, fmt, args );
         }
 
         /// <inheritdoc cref="Warning(IDiagnosticReporter, string?, SourceRange, Uri?, string?, WarningReportingInterpolatedStringHandler)"/>
@@ -468,7 +576,7 @@ namespace Ubiquity.NET.CommandLine
             [InterpolatedStringHandlerArgument( "self" )] WarningReportingInterpolatedStringHandler handler
             )
         {
-            Warning(self, code: null, location: default, origin: null, subCategory: null, handler);
+            Warning( self, code: null, location: default, origin: null, subCategory: null, handler );
         }
 
         /// <inheritdoc cref="Warning(IDiagnosticReporter, string?, SourceRange, Uri?, string?, WarningReportingInterpolatedStringHandler)"/>
@@ -478,7 +586,7 @@ namespace Ubiquity.NET.CommandLine
             [InterpolatedStringHandlerArgument( "self" )] WarningReportingInterpolatedStringHandler handler
             )
         {
-            Warning(self, code: null, location, origin: null, subCategory: null, handler);
+            Warning( self, code: null, location, origin: null, subCategory: null, handler );
         }
 
         // doc comments don't inherit param correctly, see: https://github.com/dotnet/roslyn/issues/67326#issuecomment-3452843800
@@ -496,6 +604,42 @@ namespace Ubiquity.NET.CommandLine
 
         #region MsgLevel.Information
 
+        /// <summary>Reports a <see cref="MsgLevel.Information"/> level localizable message to <paramref name="self"/></summary>
+        /// <param name="self">Reporter to report message to</param>
+        /// <param name="locStr">Localizable string form of the message</param>
+        /// <param name="formatProvider">Format provider to use when formatting the string</param>
+        /// <param name="code">Identifier code for this message</param>
+        /// <param name="location">Location in the origin that this message refers to</param>
+        /// <param name="origin">Origin of the diagnostic (Usually the origin is a File, but may be anything or nothing)</param>
+        /// <param name="subCategory">Subcategory for this message</param>
+        public static void Information(
+            this IDiagnosticReporter self,
+            LocalizableString locStr,
+            IFormatProvider? formatProvider = null,
+            string? code = default,
+            SourceRange location = default,
+            Uri? origin = default,
+            string? subCategory = default
+            )
+        {
+            ArgumentNullException.ThrowIfNull( self );
+
+            if(self.IsEnabled( MsgLevel.Information ))
+            {
+                var diagnostic = new DiagnosticMessage()
+                {
+                    Code = code,
+                    Level = MsgLevel.Information,
+                    Location = location,
+                    Origin = origin,
+                    Subcategory = subCategory,
+                    Text = locStr.GetText(formatProvider),
+                };
+
+                self.Report( diagnostic );
+            }
+        }
+
         /// <summary>Reports a <see cref="MsgLevel.Information"/> level message to <paramref name="self"/></summary>
         /// <inheritdoc cref="Error(IDiagnosticReporter, string?, SourceRange, Uri?, string?, IFormatProvider?, string, object[])"/>
         public static void Information(
@@ -511,7 +655,7 @@ namespace Ubiquity.NET.CommandLine
         {
             ArgumentNullException.ThrowIfNull( self );
 
-            if(self.IsEnabled(MsgLevel.Information))
+            if(self.IsEnabled( MsgLevel.Information ))
             {
                 var diagnostic = new DiagnosticMessage()
                 {
@@ -564,7 +708,7 @@ namespace Ubiquity.NET.CommandLine
             params object[] args
             )
         {
-            Information(self, code: null, location: default, origin: null, subCategory: null, formatProvider, fmt, args);
+            Information( self, code: null, location: default, origin: null, subCategory: null, formatProvider, fmt, args );
         }
 
         /// <inheritdoc cref="Information(IDiagnosticReporter, string?, SourceRange, Uri?, string?, IFormatProvider?, string, object[])"/>
@@ -576,7 +720,7 @@ namespace Ubiquity.NET.CommandLine
             params object[] args
             )
         {
-            Information(self, code: null, location, origin: null, subCategory: null, formatProvider, fmt, args);
+            Information( self, code: null, location, origin: null, subCategory: null, formatProvider, fmt, args );
         }
 
         /// <inheritdoc cref="Information(IDiagnosticReporter, string?, SourceRange, Uri?, string?, InformationReportingInterpolatedStringHandler)"/>
@@ -585,7 +729,7 @@ namespace Ubiquity.NET.CommandLine
             [InterpolatedStringHandlerArgument( "self" )] InformationReportingInterpolatedStringHandler handler
             )
         {
-            Information(self, code: null, location: default, origin: null, subCategory: null, handler);
+            Information( self, code: null, location: default, origin: null, subCategory: null, handler );
         }
 
         /// <inheritdoc cref="Information(IDiagnosticReporter, string?, SourceRange, Uri?, string?, InformationReportingInterpolatedStringHandler)"/>
@@ -595,7 +739,7 @@ namespace Ubiquity.NET.CommandLine
             [InterpolatedStringHandlerArgument( "self" )] InformationReportingInterpolatedStringHandler handler
             )
         {
-            Information(self, code: null, location, origin: null, subCategory: null, handler);
+            Information( self, code: null, location, origin: null, subCategory: null, handler );
         }
 
         // doc comments don't inherit param correctly, see: https://github.com/dotnet/roslyn/issues/67326#issuecomment-3452843800
@@ -614,6 +758,42 @@ namespace Ubiquity.NET.CommandLine
 
         #region MsgLevel.Verbose
 
+        /// <summary>Reports a <see cref="MsgLevel.Verbose"/> level localizable message to <paramref name="self"/></summary>
+        /// <param name="self">Reporter to report message to</param>
+        /// <param name="locStr">Localizable string form of the message</param>
+        /// <param name="formatProvider">Format provider to use when formatting the string</param>
+        /// <param name="code">Identifier code for this message</param>
+        /// <param name="location">Location in the origin that this message refers to</param>
+        /// <param name="origin">Origin of the diagnostic (Usually the origin is a File, but may be anything or nothing)</param>
+        /// <param name="subCategory">Subcategory for this message</param>
+        public static void Verbose(
+            this IDiagnosticReporter self,
+            LocalizableString locStr,
+            IFormatProvider? formatProvider = null,
+            string? code = default,
+            SourceRange location = default,
+            Uri? origin = default,
+            string? subCategory = default
+            )
+        {
+            ArgumentNullException.ThrowIfNull( self );
+
+            if(self.IsEnabled( MsgLevel.Verbose ))
+            {
+                var diagnostic = new DiagnosticMessage()
+                {
+                    Code = code,
+                    Level = MsgLevel.Verbose,
+                    Location = location,
+                    Origin = origin,
+                    Subcategory = subCategory,
+                    Text = locStr.GetText(formatProvider),
+                };
+
+                self.Report( diagnostic );
+            }
+        }
+
         /// <summary>Reports a <see cref="MsgLevel.Verbose"/> level message to <paramref name="self"/></summary>
         /// <inheritdoc cref="Error(IDiagnosticReporter, string?, SourceRange, Uri?, string?, IFormatProvider?, string, object[])"/>
         public static void Verbose(
@@ -629,7 +809,7 @@ namespace Ubiquity.NET.CommandLine
         {
             ArgumentNullException.ThrowIfNull( self );
 
-            if(self.IsEnabled(MsgLevel.Verbose))
+            if(self.IsEnabled( MsgLevel.Verbose ))
             {
                 var diagnostic = new DiagnosticMessage()
                 {
@@ -682,7 +862,7 @@ namespace Ubiquity.NET.CommandLine
             params object[] args
             )
         {
-            Verbose(self, code: null, location: default, origin: null, subCategory: null, formatProvider, fmt, args);
+            Verbose( self, code: null, location: default, origin: null, subCategory: null, formatProvider, fmt, args );
         }
 
         /// <inheritdoc cref="Verbose(IDiagnosticReporter, string?, SourceRange, Uri?, string?, IFormatProvider?, string, object[])"/>
@@ -694,7 +874,7 @@ namespace Ubiquity.NET.CommandLine
             params object[] args
             )
         {
-            Verbose(self, code: null, location, origin: null, subCategory: null, formatProvider, fmt, args);
+            Verbose( self, code: null, location, origin: null, subCategory: null, formatProvider, fmt, args );
         }
 
         /// <inheritdoc cref="Verbose(IDiagnosticReporter, string?, SourceRange, Uri?, string?, VerboseReportingInterpolatedStringHandler)"/>
@@ -703,7 +883,7 @@ namespace Ubiquity.NET.CommandLine
             [InterpolatedStringHandlerArgument( "self" )] VerboseReportingInterpolatedStringHandler handler
             )
         {
-            Verbose(self, code: null, location: default, origin: null, subCategory: null, handler);
+            Verbose( self, code: null, location: default, origin: null, subCategory: null, handler );
         }
 
         /// <inheritdoc cref="Verbose(IDiagnosticReporter, string?, SourceRange, Uri?, string?, VerboseReportingInterpolatedStringHandler)"/>
@@ -713,7 +893,7 @@ namespace Ubiquity.NET.CommandLine
             [InterpolatedStringHandlerArgument( "self" )] VerboseReportingInterpolatedStringHandler handler
             )
         {
-            Verbose(self, code: null, location, origin: null, subCategory: null, handler);
+            Verbose( self, code: null, location, origin: null, subCategory: null, handler );
         }
 
         // doc comments don't inherit param correctly, see: https://github.com/dotnet/roslyn/issues/67326#issuecomment-3452843800
