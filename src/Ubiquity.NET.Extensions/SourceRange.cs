@@ -94,7 +94,7 @@ namespace Ubiquity.NET.Extensions
                 return string.Empty;
             }
 
-#if NET6_0_OR_GREATER
+#if NET6_0_OR_GREATER // string.Create (Interpolated strings)
             if(End.Line == 0)
             {
                 return Start.Column == 0

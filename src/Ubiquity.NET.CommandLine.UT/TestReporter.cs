@@ -1,7 +1,6 @@
 ﻿// Copyright (c) Ubiquity.NET Contributors. All rights reserved.
 // Licensed under the Apache-2.0 WITH LLVM-exception license. See the LICENSE.md file in the project root for full license information.
 
-using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
@@ -14,7 +13,17 @@ namespace Ubiquity.NET.CommandLine.UT
     internal class TestReporter
         : IDiagnosticReporter
     {
-        public MsgLevel Level => MsgLevel.Error; // Captures ALL messages (Max level)
+        public TestReporter(MsgLevel level)
+        {
+            Level = level;
+        }
+
+        public TestReporter()
+            : this( MsgLevel.Verbose ) // Captures ALL messages (Max level)
+        {
+        }
+
+        public MsgLevel Level { get; }
 
         public Encoding Encoding => Encoding.Unicode;
 
