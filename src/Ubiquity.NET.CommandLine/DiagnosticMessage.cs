@@ -1,6 +1,8 @@
 ﻿// Copyright (c) Ubiquity.NET Contributors. All rights reserved.
 // Licensed under the Apache-2.0 WITH LLVM-exception license. See the LICENSE.md file in the project root for full license information.
 
+using Ubiquity.NET.Extensions.FluentValidation;
+
 namespace Ubiquity.NET.CommandLine
 {
     /// <summary>Tool Message category</summary>
@@ -42,12 +44,36 @@ namespace Ubiquity.NET.CommandLine
         public SourceRange? Location { get; init; }
 
         /// <summary>Gets the subcategory of the message</summary>
-        public string? Subcategory { get; init; }
+        public string? Subcategory
+        {
+            get;
+            init
+            {
+                if(value is not null && value.Any( ( c ) => char.IsWhiteSpace( c ) ))
+                {
+                    throw new ArgumentException( "If provided, value must not contain whitespace", nameof( value ) );
+                }
+
+                field = value;
+            }
+        }
 
         /// <summary>Gets the Level/Category of the message</summary>
-        public MsgLevel Level { get; init; }
+        public MsgLevel Level
+        {
+            get;
+            init
+            {
+                value.ThrowIfNotDefined();
+                if(value == MsgLevel.None)
+                {
+                    throw new InvalidEnumArgumentException( nameof( value ), 0, typeof( MsgLevel ) );
+                }
 
-#if NET10_0_OR_GREATER
+                field = value;
+            }
+        }
+
         /// <summary>Gets the code for the message (No spaces)</summary>
         public string? Code
         {
@@ -56,7 +82,7 @@ namespace Ubiquity.NET.CommandLine
             {
                 if(value is not null && value.Any( ( c ) => char.IsWhiteSpace( c ) ))
                 {
-                    throw new ArgumentException( "If provided, code must not contain whitespace", nameof( value ) );
+                    throw new ArgumentException( "If provided, value must not contain whitespace", nameof( value ) );
                 }
 
                 field = value;
@@ -69,41 +95,10 @@ namespace Ubiquity.NET.CommandLine
             get;
             init
             {
-                ArgumentNullException.ThrowIfNull(value);
+                ArgumentException.ThrowIfNullOrWhiteSpace( value);
                 field = value;
             }
         }
-#else
-        /// <summary>Gets the code for the message (No spaces)</summary>
-        public string? Code
-        {
-            get => CodeBackingField;
-            init
-            {
-                if(value is not null && value.Any( ( c ) => char.IsWhiteSpace( c ) ))
-                {
-                    throw new ArgumentException( "If provided, code must not contain whitespace", nameof( value ) );
-                }
-
-                CodeBackingField = value;
-            }
-        }
-
-        private readonly string? CodeBackingField;
-
-        /// <summary>Gets the text of the message</summary>
-        public string Text
-        {
-            get => TextBackingField;
-            init
-            {
-                ArgumentNullException.ThrowIfNull( value );
-                TextBackingField = value;
-            }
-        }
-
-        private readonly string TextBackingField;
-#endif
 
         /// <summary>Formats this instance using the general runtime specific format</summary>
         /// <returns>Formatted string for the message</returns>
@@ -120,18 +115,20 @@ namespace Ubiquity.NET.CommandLine
         /// "G" for runtime specific (For Windows, this is the same as the MSBuild format['M'])
         /// [Format strings for other runtimes TBD (L:Linux, A:Apple ... ????)]
         /// </remarks>
+        /// <seealso href="https://learn.microsoft.com/en-us/visualstudio/msbuild/msbuild-diagnostic-format-for-tasks"/>
         public string ToString( string? format, IFormatProvider? formatProvider )
         {
             formatProvider ??= CultureInfo.CurrentCulture;
             return format switch
             {
-                "M" => FormatMsBuild( formatProvider ),
+                "M" => FormatMsBuild( ),
                 "G" => FormatRuntime( formatProvider ),
                 _ => throw new FormatException($"{format} is not a valid format specifier for {nameof(DiagnosticMessage)}")
             };
         }
 
-        private string FormatMsBuild(IFormatProvider formatProvider)
+        // Does not use a format provider as the format is specified by external sources
+        private string FormatMsBuild()
         {
             if(Origin is null || string.IsNullOrWhiteSpace(Origin.AbsoluteUri))
             {
@@ -141,10 +138,10 @@ namespace Ubiquity.NET.CommandLine
             string locString = string.Empty;
             if(Location is not null)
             {
-                locString = Location.Value.ToString( "M", formatProvider );
+                locString = Location.Value.ToString( "M", CultureInfo.InvariantCulture );
             }
 
-            // account for optional values with leading space.
+            // account for optional values with leading space so that values not provided use no space
             string subCat = Subcategory is not null ? $" {Subcategory}" : string.Empty;
             string code = Code is not null ? $" {Code}" : string.Empty;
             string origin = Origin.IsFile ? Origin.LocalPath : Origin.ToString();
@@ -153,16 +150,17 @@ namespace Ubiquity.NET.CommandLine
 
         [SuppressMessage( "Style", "IDE0046:Convert to conditional expression", Justification = "Place holder for future work" )]
         [SuppressMessage("StyleCop.CSharp.ReadabilityRules", "SA1108:BlockStatementsMustNotContainEmbeddedComments", Justification = "Reviewed.")]
-        private string FormatRuntime(IFormatProvider formatProvider)
+        private string FormatRuntime(IFormatProvider _)
         {
             if(OperatingSystem.IsWindows())
             {
-                return FormatMsBuild(formatProvider);
+                return FormatMsBuild();
             }
             else // TODO: Adjust this to format based on styles of additional runtimes
             {
-                // for now - always use MSBUILD format
-                return FormatMsBuild(formatProvider);
+                // For now - always use MSBUILD format
+                // platform specific formatting MAY use formatter (but probably doesn't)
+                return FormatMsBuild(/*formatProvider*/);
             }
         }
     }

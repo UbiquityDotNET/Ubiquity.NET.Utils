@@ -86,10 +86,9 @@ namespace Ubiquity.NET.Extensions
             return FixedString;
         }
 
-        [SuppressMessage( "Globalization", "CA1307:Specify StringComparison for clarity", Justification = "Legacy default is fine" )]
         public override int GetHashCode( )
         {
-            return FixedString?.GetHashCode() ?? 0;
+            return FixedString?.GetHashCode(StringComparison.Ordinal) ?? 0;
         }
 
         public override bool Equals( object? obj )

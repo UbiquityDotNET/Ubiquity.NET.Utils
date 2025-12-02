@@ -21,7 +21,7 @@ namespace Ubiquity.NET.Extensions
     public sealed class LocalizableResourceString
         : LocalizableString
     {
-        /// <inheritdoc cref="LocalizableResourceString.LocalizableResourceString(string, ResourceManager, object[])"/>
+        /// <inheritdoc cref="LocalizableResourceString.LocalizableResourceString(string, ResourceManager, object?[])"/>
         public LocalizableResourceString( string nameOfLocalizableResource, ResourceManager resourceManager )
             : this( nameOfLocalizableResource, resourceManager, [] )
         {
@@ -101,7 +101,7 @@ namespace Ubiquity.NET.Extensions
 
             for(int i = 0; i < lhs.Length; ++i)
             {
-                if(!ReferenceEquals( lhs[ i ], rhs[ i ] ))
+                if(!EqualityComparer<object?>.Default.Equals( lhs[ i ], rhs[ i ] ))
                 {
                     return false;
                 }
