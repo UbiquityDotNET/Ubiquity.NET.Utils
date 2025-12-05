@@ -19,7 +19,7 @@ namespace Ubiquity.NET.Extensions.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -160,11 +160,11 @@ namespace Ubiquity.NET.Extensions.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Missing resource. Name=&apos;{0}&apos;.
+        ///   Looks up a localized string similar to resource {0} was not found!.
         /// </summary>
-        internal static string Missing_Resource_Exception_Message_fmt {
+        internal static string Resource_0_was_not_found {
             get {
-                return ResourceManager.GetString("Missing_Resource_Exception_Message_fmt", resourceCulture);
+                return ResourceManager.GetString("Resource_0_was_not_found", resourceCulture);
             }
         }
     }

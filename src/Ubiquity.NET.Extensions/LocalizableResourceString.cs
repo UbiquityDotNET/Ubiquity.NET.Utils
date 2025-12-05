@@ -52,9 +52,12 @@ namespace Ubiquity.NET.Extensions
         }
 
         /// <inheritdoc/>
+        [SuppressMessage( "Style", "IDE0046:Convert to conditional expression", Justification = "nested conditional == BAD!" )]
         public override string GetText( IFormatProvider? formatProvider, CultureInfo? culture = null )
         {
-            string resourceString = ResourceManager.GetString(NameOfLocalizableResource, culture) ?? string.Empty;
+            string resourceString = ResourceManager.GetString(NameOfLocalizableResource, culture)
+                                 ?? throw new ResourceNotFoundException( NameOfLocalizableResource );
+
             return FormatArguments.Length == 0
                  ? resourceString
                  : string.Format( formatProvider, resourceString, FormatArguments );

@@ -4,6 +4,11 @@
 namespace Ubiquity.NET.Extensions
 {
     /// <summary>Poly fill extensions for the <see cref="StringSplitOptions"/> enumeration</summary>
+    /// <remarks>
+    /// The set of values for the enumeration <see cref="StringSplitOptions"/> is different based on the runtime
+    /// one is using. This replicates it and always defines the <see cref="TrimEntries"/> value. This is emulated
+    /// in down-level runtimes for APIs that accept this enumeration.
+    /// </remarks>
     [SuppressMessage( "Design", "CA1034:Nested types should not be visible", Justification = "Extension - Broken analyzer" )]
     [Flags]
     public enum StringSplitOptions2
