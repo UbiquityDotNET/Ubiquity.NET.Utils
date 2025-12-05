@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class DiagnosticInfo | Ubiquity.NET ">
       
-      <meta name="description" content="Contains diagnostic information collected for reporting to the host">
+      
       <link rel="icon" href="../../favicon.ico">
       <link rel="stylesheet" href="../../public/docfx.min.css">
       <link rel="stylesheet" href="../../public/main.css">
@@ -16,7 +16,7 @@
       
       
       
-      <meta name="docfx:docurl" content="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/new/develop/apiSpec/new?filename=Ubiquity_NET_CodeAnalysis_Utils_DiagnosticInfo.md&amp;value=---%0Auid%3A%20Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -84,7 +84,7 @@
 
 
   <h1 id="Ubiquity_NET_CodeAnalysis_Utils_DiagnosticInfo" data-uid="Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo" class="text-break">
-Class DiagnosticInfo  <a class="header-action link-secondary" title="View source" href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.8/src/Ubiquity.NET.CodeAnalysis.Utils/DiagnosticInfo.cs/#L14"><i class="bi bi-code-slash"></i></a>
+Class DiagnosticInfo  <a class="header-action link-secondary" title="View source" href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.9-beta/src/Ubiquity.NET.CodeAnalysis.Utils/DiagnosticInfo.cs"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -92,8 +92,7 @@ Class DiagnosticInfo  <a class="header-action link-secondary" title="View source
   <dl><dt>Assembly</dt><dd>Ubiquity.NET.CodeAnalysis.Utils.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Contains diagnostic information collected for reporting to the host</p>
-</div>
+  <div class="markdown summary"></div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
@@ -123,41 +122,30 @@ Class DiagnosticInfo  <a class="header-action link-secondary" title="View source
     <dt>Inherited Members</dt>
     <dd>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
     </div>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
-    </div>
-    <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
     </div>
   </dd></dl>
 
 
 
 
-  <h2 id="Ubiquity_NET_CodeAnalysis_Utils_DiagnosticInfo_remarks">Remarks</h2>
-  <div class="markdown level0 remarks"><p>This is an equatable type and therefore is legit for use in generators/analyzers where
-that is needed for caching. A <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.diagnostic">Diagnostic</a> is not, so this record bundles
-the parameters needed for creation of one and defers the construction until needed.</p>
-</div>
 
   <h2 class="section" id="constructors">Constructors
 </h2>
 
   <dl class="jumplist">
-    <dt><a class="xref" href="Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.-ctor.html#Ubiquity_NET_CodeAnalysis_Utils_DiagnosticInfo__ctor_Microsoft_CodeAnalysis_DiagnosticDescriptor_Microsoft_CodeAnalysis_Location_System_Collections_Generic_IEnumerable_System_String__">DiagnosticInfo(DiagnosticDescriptor, Location?, params IEnumerable&lt;string&gt;)</a></dt>
-    <dd><p>Initializes a new instance of the <a class="xref" href="Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.html">DiagnosticInfo</a> class.</p>
-</dd>
+    <dt><a class="xref" href="Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.-ctor.html#Ubiquity_NET_CodeAnalysis_Utils_DiagnosticInfo__ctor_Microsoft_CodeAnalysis_DiagnosticDescriptor_Microsoft_CodeAnalysis_Location_System_Collections_Generic_IEnumerable_System_String__">DiagnosticInfo(DiagnosticDescriptor, Location?, IEnumerable&lt;string&gt;)</a></dt>
+    <dd></dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.-ctor.html#Ubiquity_NET_CodeAnalysis_Utils_DiagnosticInfo__ctor_Microsoft_CodeAnalysis_DiagnosticDescriptor_Microsoft_CodeAnalysis_Location_System_String___">DiagnosticInfo(DiagnosticDescriptor, Location?, params string[])</a></dt>
+    <dd></dd>
   </dl>
 
   <h2 class="section" id="properties">Properties
@@ -165,18 +153,15 @@ the parameters needed for creation of one and defers the construction until need
 
   <dl class="jumplist">
     <dt><a class="xref" href="Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.Descriptor.html#Ubiquity_NET_CodeAnalysis_Utils_DiagnosticInfo_Descriptor">Descriptor</a></dt>
-    <dd><p>Gets the descriptor for this diagnostic</p>
-</dd>
+    <dd></dd>
   </dl>
   <dl class="jumplist">
     <dt><a class="xref" href="Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.Location.html#Ubiquity_NET_CodeAnalysis_Utils_DiagnosticInfo_Location">Location</a></dt>
-    <dd><p>Gets the location of the source of this diagnostic</p>
-</dd>
+    <dd></dd>
   </dl>
   <dl class="jumplist">
     <dt><a class="xref" href="Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.Params.html#Ubiquity_NET_CodeAnalysis_Utils_DiagnosticInfo_Params">Params</a></dt>
-    <dd><p>Gets the parameters for this diagnostic</p>
-</dd>
+    <dd></dd>
   </dl>
 
   <h2 class="section" id="methods">Methods
@@ -184,8 +169,35 @@ the parameters needed for creation of one and defers the construction until need
 
   <dl class="jumplist">
     <dt><a class="xref" href="Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.CreateDiagnostic.html#Ubiquity_NET_CodeAnalysis_Utils_DiagnosticInfo_CreateDiagnostic">CreateDiagnostic()</a></dt>
-    <dd><p>Factory to create a <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.diagnostic">Diagnostic</a> from the information contained in this holder</p>
-</dd>
+    <dd></dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.Equals.html#Ubiquity_NET_CodeAnalysis_Utils_DiagnosticInfo_Equals_System_Object_">Equals(object?)</a></dt>
+    <dd></dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.Equals.html#Ubiquity_NET_CodeAnalysis_Utils_DiagnosticInfo_Equals_Ubiquity_NET_CodeAnalysis_Utils_DiagnosticInfo_">Equals(DiagnosticInfo?)</a></dt>
+    <dd></dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.GetHashCode.html#Ubiquity_NET_CodeAnalysis_Utils_DiagnosticInfo_GetHashCode">GetHashCode()</a></dt>
+    <dd></dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.ToString.html#Ubiquity_NET_CodeAnalysis_Utils_DiagnosticInfo_ToString">ToString()</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h2 class="section" id="operators">Operators
+</h2>
+
+  <dl class="jumplist">
+    <dt><a class="xref" href="Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.op_Equality.html#Ubiquity_NET_CodeAnalysis_Utils_DiagnosticInfo_op_Equality_Ubiquity_NET_CodeAnalysis_Utils_DiagnosticInfo_Ubiquity_NET_CodeAnalysis_Utils_DiagnosticInfo_">operator ==(DiagnosticInfo?, DiagnosticInfo?)</a></dt>
+    <dd></dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.op_Inequality.html#Ubiquity_NET_CodeAnalysis_Utils_DiagnosticInfo_op_Inequality_Ubiquity_NET_CodeAnalysis_Utils_DiagnosticInfo_Ubiquity_NET_CodeAnalysis_Utils_DiagnosticInfo_">operator !=(DiagnosticInfo?, DiagnosticInfo?)</a></dt>
+    <dd></dd>
   </dl>
 
 
@@ -193,7 +205,7 @@ the parameters needed for creation of one and defers the construction until need
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.8/src/Ubiquity.NET.CodeAnalysis.Utils/DiagnosticInfo.cs/#L14" class="edit-link">Edit this page</a>
+          <a href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.9-beta/src/Ubiquity.NET.CodeAnalysis.Utils/DiagnosticInfo.cs" class="edit-link">Edit this page</a>
         </div>
 
 
@@ -209,7 +221,7 @@ the parameters needed for creation of one and defers the construction until need
       <div class="container-xxl">
         <div class="flex-fill">
           Copyright (C) 2017-2025, Ubiquity.NET Contributors
-          - Build: 20.1.8
+          - Build: 20.1.9-beta
         </div>
       </div>
     </footer>

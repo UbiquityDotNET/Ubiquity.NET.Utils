@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Struct Result&lt;T&gt; | Ubiquity.NET ">
       
-      <meta name="description" content="Container for a result or an error descriptor ()">
+      
       <link rel="icon" href="../../favicon.ico">
       <link rel="stylesheet" href="../../public/docfx.min.css">
       <link rel="stylesheet" href="../../public/main.css">
@@ -16,7 +16,7 @@
       
       
       
-      <meta name="docfx:docurl" content="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/new/develop/apiSpec/new?filename=Ubiquity_NET_CodeAnalysis_Utils_Result_1.md&amp;value=---%0Auid%3A%20Ubiquity.NET.CodeAnalysis.Utils.Result%601%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -84,7 +84,7 @@
 
 
   <h1 id="Ubiquity_NET_CodeAnalysis_Utils_Result_1" data-uid="Ubiquity.NET.CodeAnalysis.Utils.Result`1" class="text-break">
-Struct Result&lt;T&gt;  <a class="header-action link-secondary" title="View source" href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.8/src/Ubiquity.NET.CodeAnalysis.Utils/Result.cs/#L22"><i class="bi bi-code-slash"></i></a>
+Struct Result&lt;T&gt;  <a class="header-action link-secondary" title="View source" href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.9-beta/src/Ubiquity.NET.CodeAnalysis.Utils/Result.cs"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -92,12 +92,11 @@ Struct Result&lt;T&gt;  <a class="header-action link-secondary" title="View sour
   <dl><dt>Assembly</dt><dd>Ubiquity.NET.CodeAnalysis.Utils.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Container for a result or an error descriptor (<a class="xref" href="Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.html">DiagnosticInfo</a>)</p>
-</div>
+  <div class="markdown summary"></div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public readonly record struct Result&lt;T&gt; : IEquatable&lt;Result&lt;T&gt;&gt; where T : IEquatable&lt;T&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public readonly struct Result&lt;T&gt; : IEquatable&lt;Result&lt;T&gt;&gt; where T : IEquatable&lt;T&gt;</code></pre>
   </div>
 
 
@@ -105,8 +104,7 @@ Struct Result&lt;T&gt;  <a class="header-action link-secondary" title="View sour
   <h4 class="section">Type Parameters</h4>
   <dl class="parameters">
     <dt><code>T</code></dt>
-    <dd><p>Value contained in the result [Constrained to <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable&lt;T&gt;</a>]</p>
-</dd>
+    <dd></dd>
   </dl>
 
 
@@ -122,19 +120,10 @@ Struct Result&lt;T&gt;  <a class="header-action link-secondary" title="View sour
     <dt>Inherited Members</dt>
     <dd>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetype.equals">ValueType.Equals(object)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode">ValueType.GetHashCode()</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetype.tostring">ValueType.ToString()</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
@@ -144,37 +133,25 @@ Struct Result&lt;T&gt;  <a class="header-action link-secondary" title="View sour
 
 
 
-  <h2 id="Ubiquity_NET_CodeAnalysis_Utils_Result_1_remarks">Remarks</h2>
-  <div class="markdown level0 remarks"><div class="WARNING"><h5>warning</h5><p>
-<p>It is debatable if an incremental generator should produce diagnostics. The official
-<a href="https://github.com/dotnet/roslyn/blob/main/docs/features/incremental-generators.cookbook.md">cookbook</a>
-recommends against it [Section: "Issue diagnostics"]. Instead it recommends use of an analyzer. While it
-doesn't say what a generator is supposed to do in the event of an input error explicitly, it is implied
-that it should silently ignore them.</p>
-<p>This type allows generating diagnostics in the final source production stage of the pipeline by plumbing
-through all of the available data AND diagnostics via this generic record. This acts as a sort of
-discriminated union of results or diagnostics (or possibly a combination of both). All while maintaining
-support for caching with <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable&lt;T&gt;</a>.</p>
-</div>
-</div>
 
   <h2 class="section" id="constructors">Constructors
 </h2>
 
   <dl class="jumplist">
-    <dt><a class="xref" href="Ubiquity.NET.CodeAnalysis.Utils.Result-1.-ctor.html#Ubiquity_NET_CodeAnalysis_Utils_Result_1__ctor_System_Collections_Generic_IEnumerable_Ubiquity_NET_CodeAnalysis_Utils_DiagnosticInfo__">Result(params IEnumerable&lt;DiagnosticInfo&gt;)</a></dt>
-    <dd><p>Initializes a new instance of the <a class="xref" href="Ubiquity.NET.CodeAnalysis.Utils.Result-1.html">Result&lt;T&gt;</a> struct from diagnostics</p>
-</dd>
+    <dt><a class="xref" href="Ubiquity.NET.CodeAnalysis.Utils.Result-1.-ctor.html#Ubiquity_NET_CodeAnalysis_Utils_Result_1__ctor_System_Collections_Generic_IEnumerable_Ubiquity_NET_CodeAnalysis_Utils_DiagnosticInfo__">Result(IEnumerable&lt;DiagnosticInfo&gt;)</a></dt>
+    <dd></dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="Ubiquity.NET.CodeAnalysis.Utils.Result-1.-ctor.html#Ubiquity_NET_CodeAnalysis_Utils_Result_1__ctor_Ubiquity_NET_CodeAnalysis_Utils_DiagnosticInfo___">Result(params DiagnosticInfo[])</a></dt>
+    <dd></dd>
   </dl>
   <dl class="jumplist">
     <dt><a class="xref" href="Ubiquity.NET.CodeAnalysis.Utils.Result-1.-ctor.html#Ubiquity_NET_CodeAnalysis_Utils_Result_1__ctor__0_">Result(T)</a></dt>
-    <dd><p>Initializes a new instance of the <a class="xref" href="Ubiquity.NET.CodeAnalysis.Utils.Result-1.html">Result&lt;T&gt;</a> struct from a value [No diagnostics]</p>
-</dd>
+    <dd></dd>
   </dl>
   <dl class="jumplist">
     <dt><a class="xref" href="Ubiquity.NET.CodeAnalysis.Utils.Result-1.-ctor.html#Ubiquity_NET_CodeAnalysis_Utils_Result_1__ctor__0_System_Collections_Immutable_ImmutableArray_Ubiquity_NET_CodeAnalysis_Utils_DiagnosticInfo__">Result(T?, ImmutableArray&lt;DiagnosticInfo&gt;)</a></dt>
-    <dd><p>Initializes a new instance of the <a class="xref" href="Ubiquity.NET.CodeAnalysis.Utils.Result-1.html">Result&lt;T&gt;</a> struct from a nullable value and set of potentially empty diagnostics</p>
-</dd>
+    <dd></dd>
   </dl>
 
   <h2 class="section" id="properties">Properties
@@ -182,32 +159,55 @@ support for caching with <a class="xref" href="https://learn.microsoft.com/dotne
 
   <dl class="jumplist">
     <dt><a class="xref" href="Ubiquity.NET.CodeAnalysis.Utils.Result-1.Diagnostics.html#Ubiquity_NET_CodeAnalysis_Utils_Result_1_Diagnostics">Diagnostics</a></dt>
-    <dd><p>Gets the diagnostics produced for this result (if any)</p>
-</dd>
+    <dd></dd>
   </dl>
   <dl class="jumplist">
     <dt><a class="xref" href="Ubiquity.NET.CodeAnalysis.Utils.Result-1.HasDiagnostics.html#Ubiquity_NET_CodeAnalysis_Utils_Result_1_HasDiagnostics">HasDiagnostics</a></dt>
-    <dd><p>Gets a value indicating whether this result contains any diagnostics</p>
-</dd>
+    <dd></dd>
   </dl>
   <dl class="jumplist">
     <dt><a class="xref" href="Ubiquity.NET.CodeAnalysis.Utils.Result-1.HasValue.html#Ubiquity_NET_CodeAnalysis_Utils_Result_1_HasValue">HasValue</a></dt>
-    <dd><p>Gets a value indicating whether a value was produced for this result</p>
-</dd>
+    <dd></dd>
   </dl>
   <dl class="jumplist">
     <dt><a class="xref" href="Ubiquity.NET.CodeAnalysis.Utils.Result-1.Value.html#Ubiquity_NET_CodeAnalysis_Utils_Result_1_Value">Value</a></dt>
-    <dd><p>Gets the value produced for this result or <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a> if no value produced</p>
-</dd>
+    <dd></dd>
   </dl>
 
   <h2 class="section" id="methods">Methods
 </h2>
 
   <dl class="jumplist">
+    <dt><a class="xref" href="Ubiquity.NET.CodeAnalysis.Utils.Result-1.Equals.html#Ubiquity_NET_CodeAnalysis_Utils_Result_1_Equals_System_Object_">Equals(object)</a></dt>
+    <dd></dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="Ubiquity.NET.CodeAnalysis.Utils.Result-1.Equals.html#Ubiquity_NET_CodeAnalysis_Utils_Result_1_Equals_Ubiquity_NET_CodeAnalysis_Utils_Result__0__">Equals(Result&lt;T&gt;)</a></dt>
+    <dd></dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="Ubiquity.NET.CodeAnalysis.Utils.Result-1.GetHashCode.html#Ubiquity_NET_CodeAnalysis_Utils_Result_1_GetHashCode">GetHashCode()</a></dt>
+    <dd></dd>
+  </dl>
+  <dl class="jumplist">
     <dt><a class="xref" href="Ubiquity.NET.CodeAnalysis.Utils.Result-1.ReportDiagnostics.html#Ubiquity_NET_CodeAnalysis_Utils_Result_1_ReportDiagnostics_Microsoft_CodeAnalysis_SourceProductionContext_">ReportDiagnostics(SourceProductionContext)</a></dt>
-    <dd><p>Report all diagnostics to the provided <code class="paramref">ctx</code></p>
-</dd>
+    <dd></dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="Ubiquity.NET.CodeAnalysis.Utils.Result-1.ToString.html#Ubiquity_NET_CodeAnalysis_Utils_Result_1_ToString">ToString()</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h2 class="section" id="operators">Operators
+</h2>
+
+  <dl class="jumplist">
+    <dt><a class="xref" href="Ubiquity.NET.CodeAnalysis.Utils.Result-1.op_Equality.html#Ubiquity_NET_CodeAnalysis_Utils_Result_1_op_Equality_Ubiquity_NET_CodeAnalysis_Utils_Result__0__Ubiquity_NET_CodeAnalysis_Utils_Result__0__">operator ==(Result&lt;T&gt;, Result&lt;T&gt;)</a></dt>
+    <dd></dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="Ubiquity.NET.CodeAnalysis.Utils.Result-1.op_Inequality.html#Ubiquity_NET_CodeAnalysis_Utils_Result_1_op_Inequality_Ubiquity_NET_CodeAnalysis_Utils_Result__0__Ubiquity_NET_CodeAnalysis_Utils_Result__0__">operator !=(Result&lt;T&gt;, Result&lt;T&gt;)</a></dt>
+    <dd></dd>
   </dl>
 
 
@@ -215,7 +215,7 @@ support for caching with <a class="xref" href="https://learn.microsoft.com/dotne
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.8/src/Ubiquity.NET.CodeAnalysis.Utils/Result.cs/#L22" class="edit-link">Edit this page</a>
+          <a href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.9-beta/src/Ubiquity.NET.CodeAnalysis.Utils/Result.cs" class="edit-link">Edit this page</a>
         </div>
 
 
@@ -231,7 +231,7 @@ support for caching with <a class="xref" href="https://learn.microsoft.com/dotne
       <div class="container-xxl">
         <div class="flex-fill">
           Copyright (C) 2017-2025, Ubiquity.NET Contributors
-          - Build: 20.1.8
+          - Build: 20.1.9-beta
         </div>
       </div>
     </footer>

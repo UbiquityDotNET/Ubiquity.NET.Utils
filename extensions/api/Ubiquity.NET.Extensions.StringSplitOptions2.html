@@ -16,7 +16,7 @@
       
       
       
-      <meta name="docfx:docurl" content="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/new/develop/apiSpec/new?filename=Ubiquity_NET_Extensions_StringSplitOptions2.md&amp;value=---%0Auid%3A%20Ubiquity.NET.Extensions.StringSplitOptions2%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -85,7 +85,7 @@
 
 
   <h1 id="Ubiquity_NET_Extensions_StringSplitOptions2" data-uid="Ubiquity.NET.Extensions.StringSplitOptions2" class="text-break">
-Enum StringSplitOptions2  <a class="header-action link-secondary" title="View source" href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.8/src/Ubiquity.NET.Extensions/StringSplitOptions2.cs/#L7"><i class="bi bi-code-slash"></i></a>
+Enum StringSplitOptions2  <a class="header-action link-secondary" title="View source" href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.9-beta/src/Ubiquity.NET.Extensions/StringSplitOptions2.cs"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -98,8 +98,7 @@ Enum StringSplitOptions2  <a class="header-action link-secondary" title="View so
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[SuppressMessage(&quot;Design&quot;, &quot;CA1034:Nested types should not be visible&quot;, Justification = &quot;Extension - Broken analyzer&quot;)]
-[Flags]
+    <pre><code class="lang-csharp hljs">[Flags]
 public enum StringSplitOptions2</code></pre>
   </div>
 
@@ -143,11 +142,16 @@ then sub-strings that consist only of white-space characters are also removed fr
   </dl>
 
 
+  <h2 id="Ubiquity_NET_Extensions_StringSplitOptions2_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>The set of values for the enumeration <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.stringsplitoptions">StringSplitOptions</a> is different based on the runtime
+one is using. This replicates it and always defines the <a class="xref" href="Ubiquity.NET.Extensions.StringSplitOptions2.html#Ubiquity_NET_Extensions_StringSplitOptions2_TrimEntries">TrimEntries</a> value. This is emulated
+in down-level runtimes for APIs that accept this enumeration.</p>
+</div>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.8/src/Ubiquity.NET.Extensions/StringSplitOptions2.cs/#L7" class="edit-link">Edit this page</a>
+          <a href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.9-beta/src/Ubiquity.NET.Extensions/StringSplitOptions2.cs" class="edit-link">Edit this page</a>
         </div>
 
 
@@ -163,7 +167,7 @@ then sub-strings that consist only of white-space characters are also removed fr
       <div class="container-xxl">
         <div class="flex-fill">
           Copyright (C) 2017-2025, Ubiquity.NET Contributors
-          - Build: 20.1.8
+          - Build: 20.1.9-beta
         </div>
       </div>
     </footer>

@@ -452,14 +452,23 @@ references:
   fullName: Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo
   nameWithType: DiagnosticInfo
 - uid: Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.#ctor(Microsoft.CodeAnalysis.DiagnosticDescriptor,Microsoft.CodeAnalysis.Location,System.Collections.Generic.IEnumerable{System.String})
-  name: DiagnosticInfo(DiagnosticDescriptor, Location?, params IEnumerable<string>)
+  name: DiagnosticInfo(DiagnosticDescriptor, Location?, IEnumerable<string>)
   href: CodeAnalysis/api/Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.-ctor.html#Ubiquity_NET_CodeAnalysis_Utils_DiagnosticInfo__ctor_Microsoft_CodeAnalysis_DiagnosticDescriptor_Microsoft_CodeAnalysis_Location_System_Collections_Generic_IEnumerable_System_String__
   commentId: M:Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.#ctor(Microsoft.CodeAnalysis.DiagnosticDescriptor,Microsoft.CodeAnalysis.Location,System.Collections.Generic.IEnumerable{System.String})
   name.vb: New(DiagnosticDescriptor, Location, IEnumerable(Of String))
-  fullName: Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.DiagnosticInfo(Microsoft.CodeAnalysis.DiagnosticDescriptor, Microsoft.CodeAnalysis.Location?, params System.Collections.Generic.IEnumerable<string>)
+  fullName: Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.DiagnosticInfo(Microsoft.CodeAnalysis.DiagnosticDescriptor, Microsoft.CodeAnalysis.Location?, System.Collections.Generic.IEnumerable<string>)
   fullName.vb: Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.New(Microsoft.CodeAnalysis.DiagnosticDescriptor, Microsoft.CodeAnalysis.Location, System.Collections.Generic.IEnumerable(Of String))
-  nameWithType: DiagnosticInfo.DiagnosticInfo(DiagnosticDescriptor, Location?, params IEnumerable<string>)
+  nameWithType: DiagnosticInfo.DiagnosticInfo(DiagnosticDescriptor, Location?, IEnumerable<string>)
   nameWithType.vb: DiagnosticInfo.New(DiagnosticDescriptor, Location, IEnumerable(Of String))
+- uid: Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.#ctor(Microsoft.CodeAnalysis.DiagnosticDescriptor,Microsoft.CodeAnalysis.Location,System.String[])
+  name: DiagnosticInfo(DiagnosticDescriptor, Location?, params string[])
+  href: CodeAnalysis/api/Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.-ctor.html#Ubiquity_NET_CodeAnalysis_Utils_DiagnosticInfo__ctor_Microsoft_CodeAnalysis_DiagnosticDescriptor_Microsoft_CodeAnalysis_Location_System_String___
+  commentId: M:Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.#ctor(Microsoft.CodeAnalysis.DiagnosticDescriptor,Microsoft.CodeAnalysis.Location,System.String[])
+  name.vb: New(DiagnosticDescriptor, Location, ParamArray String())
+  fullName: Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.DiagnosticInfo(Microsoft.CodeAnalysis.DiagnosticDescriptor, Microsoft.CodeAnalysis.Location?, params string[])
+  fullName.vb: Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.New(Microsoft.CodeAnalysis.DiagnosticDescriptor, Microsoft.CodeAnalysis.Location, ParamArray String())
+  nameWithType: DiagnosticInfo.DiagnosticInfo(DiagnosticDescriptor, Location?, params string[])
+  nameWithType.vb: DiagnosticInfo.New(DiagnosticDescriptor, Location, ParamArray String())
 - uid: Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.#ctor*
   name: DiagnosticInfo
   href: CodeAnalysis/api/Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.-ctor.html
@@ -493,6 +502,42 @@ references:
   commentId: Overload:Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.Descriptor
   fullName: Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.Descriptor
   nameWithType: DiagnosticInfo.Descriptor
+- uid: Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.Equals(System.Object)
+  name: Equals(object?)
+  href: CodeAnalysis/api/Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.Equals.html#Ubiquity_NET_CodeAnalysis_Utils_DiagnosticInfo_Equals_System_Object_
+  commentId: M:Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.Equals(System.Object)
+  name.vb: Equals(Object)
+  fullName: Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.Equals(object?)
+  fullName.vb: Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.Equals(Object)
+  nameWithType: DiagnosticInfo.Equals(object?)
+  nameWithType.vb: DiagnosticInfo.Equals(Object)
+- uid: Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.Equals(Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo)
+  name: Equals(DiagnosticInfo?)
+  href: CodeAnalysis/api/Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.Equals.html#Ubiquity_NET_CodeAnalysis_Utils_DiagnosticInfo_Equals_Ubiquity_NET_CodeAnalysis_Utils_DiagnosticInfo_
+  commentId: M:Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.Equals(Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo)
+  name.vb: Equals(DiagnosticInfo)
+  fullName: Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.Equals(Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo?)
+  fullName.vb: Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.Equals(Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo)
+  nameWithType: DiagnosticInfo.Equals(DiagnosticInfo?)
+  nameWithType.vb: DiagnosticInfo.Equals(DiagnosticInfo)
+- uid: Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.Equals*
+  name: Equals
+  href: CodeAnalysis/api/Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.Equals.html
+  commentId: Overload:Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.Equals
+  fullName: Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.Equals
+  nameWithType: DiagnosticInfo.Equals
+- uid: Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.GetHashCode
+  name: GetHashCode()
+  href: CodeAnalysis/api/Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.GetHashCode.html#Ubiquity_NET_CodeAnalysis_Utils_DiagnosticInfo_GetHashCode
+  commentId: M:Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.GetHashCode
+  fullName: Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.GetHashCode()
+  nameWithType: DiagnosticInfo.GetHashCode()
+- uid: Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.GetHashCode*
+  name: GetHashCode
+  href: CodeAnalysis/api/Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.GetHashCode.html
+  commentId: Overload:Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.GetHashCode
+  fullName: Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.GetHashCode
+  nameWithType: DiagnosticInfo.GetHashCode
 - uid: Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.Location
   name: Location
   href: CodeAnalysis/api/Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.Location.html#Ubiquity_NET_CodeAnalysis_Utils_DiagnosticInfo_Location
@@ -517,6 +562,54 @@ references:
   commentId: Overload:Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.Params
   fullName: Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.Params
   nameWithType: DiagnosticInfo.Params
+- uid: Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.ToString
+  name: ToString()
+  href: CodeAnalysis/api/Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.ToString.html#Ubiquity_NET_CodeAnalysis_Utils_DiagnosticInfo_ToString
+  commentId: M:Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.ToString
+  fullName: Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.ToString()
+  nameWithType: DiagnosticInfo.ToString()
+- uid: Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.ToString*
+  name: ToString
+  href: CodeAnalysis/api/Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.ToString.html
+  commentId: Overload:Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.ToString
+  fullName: Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.ToString
+  nameWithType: DiagnosticInfo.ToString
+- uid: Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.op_Equality(Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo,Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo)
+  name: operator ==(DiagnosticInfo?, DiagnosticInfo?)
+  href: CodeAnalysis/api/Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.op_Equality.html#Ubiquity_NET_CodeAnalysis_Utils_DiagnosticInfo_op_Equality_Ubiquity_NET_CodeAnalysis_Utils_DiagnosticInfo_Ubiquity_NET_CodeAnalysis_Utils_DiagnosticInfo_
+  commentId: M:Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.op_Equality(Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo,Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo)
+  name.vb: =(DiagnosticInfo, DiagnosticInfo)
+  fullName: Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.operator ==(Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo?, Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo?)
+  fullName.vb: Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.=(Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo, Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo)
+  nameWithType: DiagnosticInfo.operator ==(DiagnosticInfo?, DiagnosticInfo?)
+  nameWithType.vb: DiagnosticInfo.=(DiagnosticInfo, DiagnosticInfo)
+- uid: Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.op_Equality*
+  name: operator ==
+  href: CodeAnalysis/api/Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.op_Equality.html
+  commentId: Overload:Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.op_Equality
+  name.vb: =
+  fullName: Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.operator ==
+  fullName.vb: Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.=
+  nameWithType: DiagnosticInfo.operator ==
+  nameWithType.vb: DiagnosticInfo.=
+- uid: Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.op_Inequality(Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo,Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo)
+  name: operator !=(DiagnosticInfo?, DiagnosticInfo?)
+  href: CodeAnalysis/api/Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.op_Inequality.html#Ubiquity_NET_CodeAnalysis_Utils_DiagnosticInfo_op_Inequality_Ubiquity_NET_CodeAnalysis_Utils_DiagnosticInfo_Ubiquity_NET_CodeAnalysis_Utils_DiagnosticInfo_
+  commentId: M:Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.op_Inequality(Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo,Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo)
+  name.vb: <>(DiagnosticInfo, DiagnosticInfo)
+  fullName: Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.operator !=(Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo?, Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo?)
+  fullName.vb: Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.<>(Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo, Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo)
+  nameWithType: DiagnosticInfo.operator !=(DiagnosticInfo?, DiagnosticInfo?)
+  nameWithType.vb: DiagnosticInfo.<>(DiagnosticInfo, DiagnosticInfo)
+- uid: Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.op_Inequality*
+  name: operator !=
+  href: CodeAnalysis/api/Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.op_Inequality.html
+  commentId: Overload:Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.op_Inequality
+  name.vb: <>
+  fullName: Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.operator !=
+  fullName.vb: Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.<>
+  nameWithType: DiagnosticInfo.operator !=
+  nameWithType.vb: DiagnosticInfo.<>
 - uid: Ubiquity.NET.CodeAnalysis.Utils.EquatableArray
   name: EquatableArray
   href: CodeAnalysis/api/Ubiquity.NET.CodeAnalysis.Utils.EquatableArray.html
@@ -898,14 +991,23 @@ references:
   fullName: Ubiquity.NET.CodeAnalysis.Utils.NestedClassName
   nameWithType: NestedClassName
 - uid: Ubiquity.NET.CodeAnalysis.Utils.NestedClassName.#ctor(System.String,System.String,System.String,System.Collections.Generic.IEnumerable{Ubiquity.NET.CodeAnalysis.Utils.NestedClassName})
-  name: NestedClassName(string, string, string, params IEnumerable<NestedClassName>)
+  name: NestedClassName(string, string, string, IEnumerable<NestedClassName>)
   href: CodeAnalysis/api/Ubiquity.NET.CodeAnalysis.Utils.NestedClassName.-ctor.html#Ubiquity_NET_CodeAnalysis_Utils_NestedClassName__ctor_System_String_System_String_System_String_System_Collections_Generic_IEnumerable_Ubiquity_NET_CodeAnalysis_Utils_NestedClassName__
   commentId: M:Ubiquity.NET.CodeAnalysis.Utils.NestedClassName.#ctor(System.String,System.String,System.String,System.Collections.Generic.IEnumerable{Ubiquity.NET.CodeAnalysis.Utils.NestedClassName})
   name.vb: New(String, String, String, IEnumerable(Of NestedClassName))
-  fullName: Ubiquity.NET.CodeAnalysis.Utils.NestedClassName.NestedClassName(string, string, string, params System.Collections.Generic.IEnumerable<Ubiquity.NET.CodeAnalysis.Utils.NestedClassName>)
+  fullName: Ubiquity.NET.CodeAnalysis.Utils.NestedClassName.NestedClassName(string, string, string, System.Collections.Generic.IEnumerable<Ubiquity.NET.CodeAnalysis.Utils.NestedClassName>)
   fullName.vb: Ubiquity.NET.CodeAnalysis.Utils.NestedClassName.New(String, String, String, System.Collections.Generic.IEnumerable(Of Ubiquity.NET.CodeAnalysis.Utils.NestedClassName))
-  nameWithType: NestedClassName.NestedClassName(string, string, string, params IEnumerable<NestedClassName>)
+  nameWithType: NestedClassName.NestedClassName(string, string, string, IEnumerable<NestedClassName>)
   nameWithType.vb: NestedClassName.New(String, String, String, IEnumerable(Of NestedClassName))
+- uid: Ubiquity.NET.CodeAnalysis.Utils.NestedClassName.#ctor(System.String,System.String,System.String,Ubiquity.NET.CodeAnalysis.Utils.NestedClassName[])
+  name: NestedClassName(string, string, string, params NestedClassName[])
+  href: CodeAnalysis/api/Ubiquity.NET.CodeAnalysis.Utils.NestedClassName.-ctor.html#Ubiquity_NET_CodeAnalysis_Utils_NestedClassName__ctor_System_String_System_String_System_String_Ubiquity_NET_CodeAnalysis_Utils_NestedClassName___
+  commentId: M:Ubiquity.NET.CodeAnalysis.Utils.NestedClassName.#ctor(System.String,System.String,System.String,Ubiquity.NET.CodeAnalysis.Utils.NestedClassName[])
+  name.vb: New(String, String, String, ParamArray NestedClassName())
+  fullName: Ubiquity.NET.CodeAnalysis.Utils.NestedClassName.NestedClassName(string, string, string, params Ubiquity.NET.CodeAnalysis.Utils.NestedClassName[])
+  fullName.vb: Ubiquity.NET.CodeAnalysis.Utils.NestedClassName.New(String, String, String, ParamArray Ubiquity.NET.CodeAnalysis.Utils.NestedClassName())
+  nameWithType: NestedClassName.NestedClassName(string, string, string, params NestedClassName[])
+  nameWithType.vb: NestedClassName.New(String, String, String, ParamArray NestedClassName())
 - uid: Ubiquity.NET.CodeAnalysis.Utils.NestedClassName.#ctor*
   name: NestedClassName
   href: CodeAnalysis/api/Ubiquity.NET.CodeAnalysis.Utils.NestedClassName.-ctor.html
@@ -1018,14 +1120,23 @@ references:
   nameWithType: Result<T>
   nameWithType.vb: Result(Of T)
 - uid: Ubiquity.NET.CodeAnalysis.Utils.Result`1.#ctor(System.Collections.Generic.IEnumerable{Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo})
-  name: Result(params IEnumerable<DiagnosticInfo>)
+  name: Result(IEnumerable<DiagnosticInfo>)
   href: CodeAnalysis/api/Ubiquity.NET.CodeAnalysis.Utils.Result-1.-ctor.html#Ubiquity_NET_CodeAnalysis_Utils_Result_1__ctor_System_Collections_Generic_IEnumerable_Ubiquity_NET_CodeAnalysis_Utils_DiagnosticInfo__
   commentId: M:Ubiquity.NET.CodeAnalysis.Utils.Result`1.#ctor(System.Collections.Generic.IEnumerable{Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo})
   name.vb: New(IEnumerable(Of DiagnosticInfo))
-  fullName: Ubiquity.NET.CodeAnalysis.Utils.Result<T>.Result(params System.Collections.Generic.IEnumerable<Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo>)
+  fullName: Ubiquity.NET.CodeAnalysis.Utils.Result<T>.Result(System.Collections.Generic.IEnumerable<Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo>)
   fullName.vb: Ubiquity.NET.CodeAnalysis.Utils.Result(Of T).New(System.Collections.Generic.IEnumerable(Of Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo))
-  nameWithType: Result<T>.Result(params IEnumerable<DiagnosticInfo>)
+  nameWithType: Result<T>.Result(IEnumerable<DiagnosticInfo>)
   nameWithType.vb: Result(Of T).New(IEnumerable(Of DiagnosticInfo))
+- uid: Ubiquity.NET.CodeAnalysis.Utils.Result`1.#ctor(Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo[])
+  name: Result(params DiagnosticInfo[])
+  href: CodeAnalysis/api/Ubiquity.NET.CodeAnalysis.Utils.Result-1.-ctor.html#Ubiquity_NET_CodeAnalysis_Utils_Result_1__ctor_Ubiquity_NET_CodeAnalysis_Utils_DiagnosticInfo___
+  commentId: M:Ubiquity.NET.CodeAnalysis.Utils.Result`1.#ctor(Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo[])
+  name.vb: New(ParamArray DiagnosticInfo())
+  fullName: Ubiquity.NET.CodeAnalysis.Utils.Result<T>.Result(params Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo[])
+  fullName.vb: Ubiquity.NET.CodeAnalysis.Utils.Result(Of T).New(ParamArray Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo())
+  nameWithType: Result<T>.Result(params DiagnosticInfo[])
+  nameWithType.vb: Result(Of T).New(ParamArray DiagnosticInfo())
 - uid: Ubiquity.NET.CodeAnalysis.Utils.Result`1.#ctor(`0)
   name: Result(T)
   href: CodeAnalysis/api/Ubiquity.NET.CodeAnalysis.Utils.Result-1.-ctor.html#Ubiquity_NET_CodeAnalysis_Utils_Result_1__ctor__0_
@@ -1069,6 +1180,48 @@ references:
   fullName.vb: Ubiquity.NET.CodeAnalysis.Utils.Result(Of T).Diagnostics
   nameWithType: Result<T>.Diagnostics
   nameWithType.vb: Result(Of T).Diagnostics
+- uid: Ubiquity.NET.CodeAnalysis.Utils.Result`1.Equals(System.Object)
+  name: Equals(object)
+  href: CodeAnalysis/api/Ubiquity.NET.CodeAnalysis.Utils.Result-1.Equals.html#Ubiquity_NET_CodeAnalysis_Utils_Result_1_Equals_System_Object_
+  commentId: M:Ubiquity.NET.CodeAnalysis.Utils.Result`1.Equals(System.Object)
+  name.vb: Equals(Object)
+  fullName: Ubiquity.NET.CodeAnalysis.Utils.Result<T>.Equals(object)
+  fullName.vb: Ubiquity.NET.CodeAnalysis.Utils.Result(Of T).Equals(Object)
+  nameWithType: Result<T>.Equals(object)
+  nameWithType.vb: Result(Of T).Equals(Object)
+- uid: Ubiquity.NET.CodeAnalysis.Utils.Result`1.Equals(Ubiquity.NET.CodeAnalysis.Utils.Result{`0})
+  name: Equals(Result<T>)
+  href: CodeAnalysis/api/Ubiquity.NET.CodeAnalysis.Utils.Result-1.Equals.html#Ubiquity_NET_CodeAnalysis_Utils_Result_1_Equals_Ubiquity_NET_CodeAnalysis_Utils_Result__0__
+  commentId: M:Ubiquity.NET.CodeAnalysis.Utils.Result`1.Equals(Ubiquity.NET.CodeAnalysis.Utils.Result{`0})
+  name.vb: Equals(Result(Of T))
+  fullName: Ubiquity.NET.CodeAnalysis.Utils.Result<T>.Equals(Ubiquity.NET.CodeAnalysis.Utils.Result<T>)
+  fullName.vb: Ubiquity.NET.CodeAnalysis.Utils.Result(Of T).Equals(Ubiquity.NET.CodeAnalysis.Utils.Result(Of T))
+  nameWithType: Result<T>.Equals(Result<T>)
+  nameWithType.vb: Result(Of T).Equals(Result(Of T))
+- uid: Ubiquity.NET.CodeAnalysis.Utils.Result`1.Equals*
+  name: Equals
+  href: CodeAnalysis/api/Ubiquity.NET.CodeAnalysis.Utils.Result-1.Equals.html
+  commentId: Overload:Ubiquity.NET.CodeAnalysis.Utils.Result`1.Equals
+  fullName: Ubiquity.NET.CodeAnalysis.Utils.Result<T>.Equals
+  fullName.vb: Ubiquity.NET.CodeAnalysis.Utils.Result(Of T).Equals
+  nameWithType: Result<T>.Equals
+  nameWithType.vb: Result(Of T).Equals
+- uid: Ubiquity.NET.CodeAnalysis.Utils.Result`1.GetHashCode
+  name: GetHashCode()
+  href: CodeAnalysis/api/Ubiquity.NET.CodeAnalysis.Utils.Result-1.GetHashCode.html#Ubiquity_NET_CodeAnalysis_Utils_Result_1_GetHashCode
+  commentId: M:Ubiquity.NET.CodeAnalysis.Utils.Result`1.GetHashCode
+  fullName: Ubiquity.NET.CodeAnalysis.Utils.Result<T>.GetHashCode()
+  fullName.vb: Ubiquity.NET.CodeAnalysis.Utils.Result(Of T).GetHashCode()
+  nameWithType: Result<T>.GetHashCode()
+  nameWithType.vb: Result(Of T).GetHashCode()
+- uid: Ubiquity.NET.CodeAnalysis.Utils.Result`1.GetHashCode*
+  name: GetHashCode
+  href: CodeAnalysis/api/Ubiquity.NET.CodeAnalysis.Utils.Result-1.GetHashCode.html
+  commentId: Overload:Ubiquity.NET.CodeAnalysis.Utils.Result`1.GetHashCode
+  fullName: Ubiquity.NET.CodeAnalysis.Utils.Result<T>.GetHashCode
+  fullName.vb: Ubiquity.NET.CodeAnalysis.Utils.Result(Of T).GetHashCode
+  nameWithType: Result<T>.GetHashCode
+  nameWithType.vb: Result(Of T).GetHashCode
 - uid: Ubiquity.NET.CodeAnalysis.Utils.Result`1.HasDiagnostics
   name: HasDiagnostics
   href: CodeAnalysis/api/Ubiquity.NET.CodeAnalysis.Utils.Result-1.HasDiagnostics.html#Ubiquity_NET_CodeAnalysis_Utils_Result_1_HasDiagnostics
@@ -1117,6 +1270,22 @@ references:
   fullName.vb: Ubiquity.NET.CodeAnalysis.Utils.Result(Of T).ReportDiagnostics
   nameWithType: Result<T>.ReportDiagnostics
   nameWithType.vb: Result(Of T).ReportDiagnostics
+- uid: Ubiquity.NET.CodeAnalysis.Utils.Result`1.ToString
+  name: ToString()
+  href: CodeAnalysis/api/Ubiquity.NET.CodeAnalysis.Utils.Result-1.ToString.html#Ubiquity_NET_CodeAnalysis_Utils_Result_1_ToString
+  commentId: M:Ubiquity.NET.CodeAnalysis.Utils.Result`1.ToString
+  fullName: Ubiquity.NET.CodeAnalysis.Utils.Result<T>.ToString()
+  fullName.vb: Ubiquity.NET.CodeAnalysis.Utils.Result(Of T).ToString()
+  nameWithType: Result<T>.ToString()
+  nameWithType.vb: Result(Of T).ToString()
+- uid: Ubiquity.NET.CodeAnalysis.Utils.Result`1.ToString*
+  name: ToString
+  href: CodeAnalysis/api/Ubiquity.NET.CodeAnalysis.Utils.Result-1.ToString.html
+  commentId: Overload:Ubiquity.NET.CodeAnalysis.Utils.Result`1.ToString
+  fullName: Ubiquity.NET.CodeAnalysis.Utils.Result<T>.ToString
+  fullName.vb: Ubiquity.NET.CodeAnalysis.Utils.Result(Of T).ToString
+  nameWithType: Result<T>.ToString
+  nameWithType.vb: Result(Of T).ToString
 - uid: Ubiquity.NET.CodeAnalysis.Utils.Result`1.Value
   name: Value
   href: CodeAnalysis/api/Ubiquity.NET.CodeAnalysis.Utils.Result-1.Value.html#Ubiquity_NET_CodeAnalysis_Utils_Result_1_Value
@@ -1133,6 +1302,42 @@ references:
   fullName.vb: Ubiquity.NET.CodeAnalysis.Utils.Result(Of T).Value
   nameWithType: Result<T>.Value
   nameWithType.vb: Result(Of T).Value
+- uid: Ubiquity.NET.CodeAnalysis.Utils.Result`1.op_Equality(Ubiquity.NET.CodeAnalysis.Utils.Result{`0},Ubiquity.NET.CodeAnalysis.Utils.Result{`0})
+  name: operator ==(Result<T>, Result<T>)
+  href: CodeAnalysis/api/Ubiquity.NET.CodeAnalysis.Utils.Result-1.op_Equality.html#Ubiquity_NET_CodeAnalysis_Utils_Result_1_op_Equality_Ubiquity_NET_CodeAnalysis_Utils_Result__0__Ubiquity_NET_CodeAnalysis_Utils_Result__0__
+  commentId: M:Ubiquity.NET.CodeAnalysis.Utils.Result`1.op_Equality(Ubiquity.NET.CodeAnalysis.Utils.Result{`0},Ubiquity.NET.CodeAnalysis.Utils.Result{`0})
+  name.vb: =(Result(Of T), Result(Of T))
+  fullName: Ubiquity.NET.CodeAnalysis.Utils.Result<T>.operator ==(Ubiquity.NET.CodeAnalysis.Utils.Result<T>, Ubiquity.NET.CodeAnalysis.Utils.Result<T>)
+  fullName.vb: Ubiquity.NET.CodeAnalysis.Utils.Result(Of T).=(Ubiquity.NET.CodeAnalysis.Utils.Result(Of T), Ubiquity.NET.CodeAnalysis.Utils.Result(Of T))
+  nameWithType: Result<T>.operator ==(Result<T>, Result<T>)
+  nameWithType.vb: Result(Of T).=(Result(Of T), Result(Of T))
+- uid: Ubiquity.NET.CodeAnalysis.Utils.Result`1.op_Equality*
+  name: operator ==
+  href: CodeAnalysis/api/Ubiquity.NET.CodeAnalysis.Utils.Result-1.op_Equality.html
+  commentId: Overload:Ubiquity.NET.CodeAnalysis.Utils.Result`1.op_Equality
+  name.vb: =
+  fullName: Ubiquity.NET.CodeAnalysis.Utils.Result<T>.operator ==
+  fullName.vb: Ubiquity.NET.CodeAnalysis.Utils.Result(Of T).=
+  nameWithType: Result<T>.operator ==
+  nameWithType.vb: Result(Of T).=
+- uid: Ubiquity.NET.CodeAnalysis.Utils.Result`1.op_Inequality(Ubiquity.NET.CodeAnalysis.Utils.Result{`0},Ubiquity.NET.CodeAnalysis.Utils.Result{`0})
+  name: operator !=(Result<T>, Result<T>)
+  href: CodeAnalysis/api/Ubiquity.NET.CodeAnalysis.Utils.Result-1.op_Inequality.html#Ubiquity_NET_CodeAnalysis_Utils_Result_1_op_Inequality_Ubiquity_NET_CodeAnalysis_Utils_Result__0__Ubiquity_NET_CodeAnalysis_Utils_Result__0__
+  commentId: M:Ubiquity.NET.CodeAnalysis.Utils.Result`1.op_Inequality(Ubiquity.NET.CodeAnalysis.Utils.Result{`0},Ubiquity.NET.CodeAnalysis.Utils.Result{`0})
+  name.vb: <>(Result(Of T), Result(Of T))
+  fullName: Ubiquity.NET.CodeAnalysis.Utils.Result<T>.operator !=(Ubiquity.NET.CodeAnalysis.Utils.Result<T>, Ubiquity.NET.CodeAnalysis.Utils.Result<T>)
+  fullName.vb: Ubiquity.NET.CodeAnalysis.Utils.Result(Of T).<>(Ubiquity.NET.CodeAnalysis.Utils.Result(Of T), Ubiquity.NET.CodeAnalysis.Utils.Result(Of T))
+  nameWithType: Result<T>.operator !=(Result<T>, Result<T>)
+  nameWithType.vb: Result(Of T).<>(Result(Of T), Result(Of T))
+- uid: Ubiquity.NET.CodeAnalysis.Utils.Result`1.op_Inequality*
+  name: operator !=
+  href: CodeAnalysis/api/Ubiquity.NET.CodeAnalysis.Utils.Result-1.op_Inequality.html
+  commentId: Overload:Ubiquity.NET.CodeAnalysis.Utils.Result`1.op_Inequality
+  name.vb: <>
+  fullName: Ubiquity.NET.CodeAnalysis.Utils.Result<T>.operator !=
+  fullName.vb: Ubiquity.NET.CodeAnalysis.Utils.Result(Of T).<>
+  nameWithType: Result<T>.operator !=
+  nameWithType.vb: Result(Of T).<>
 - uid: Ubiquity.NET.CodeAnalysis.Utils.RoslynExtensions
   name: RoslynExtensions
   href: CodeAnalysis/api/Ubiquity.NET.CodeAnalysis.Utils.RoslynExtensions.html
@@ -1190,6 +1395,54 @@ references:
   fullName.vb: Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.New
   nameWithType: RuntimeVersion.RuntimeVersion
   nameWithType.vb: RuntimeVersion.New
+- uid: Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.Deconstruct(System.String@,System.Version@)
+  name: Deconstruct(out string, out Version)
+  href: CodeAnalysis/api/Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.Deconstruct.html#Ubiquity_NET_CodeAnalysis_Utils_RuntimeVersion_Deconstruct_System_String__System_Version__
+  commentId: M:Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.Deconstruct(System.String@,System.Version@)
+  name.vb: Deconstruct(String, Version)
+  fullName: Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.Deconstruct(out string, out System.Version)
+  fullName.vb: Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.Deconstruct(String, System.Version)
+  nameWithType: RuntimeVersion.Deconstruct(out string, out Version)
+  nameWithType.vb: RuntimeVersion.Deconstruct(String, Version)
+- uid: Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.Deconstruct*
+  name: Deconstruct
+  href: CodeAnalysis/api/Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.Deconstruct.html
+  commentId: Overload:Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.Deconstruct
+  fullName: Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.Deconstruct
+  nameWithType: RuntimeVersion.Deconstruct
+- uid: Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.Equals(System.Object)
+  name: Equals(object)
+  href: CodeAnalysis/api/Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.Equals.html#Ubiquity_NET_CodeAnalysis_Utils_RuntimeVersion_Equals_System_Object_
+  commentId: M:Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.Equals(System.Object)
+  name.vb: Equals(Object)
+  fullName: Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.Equals(object)
+  fullName.vb: Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.Equals(Object)
+  nameWithType: RuntimeVersion.Equals(object)
+  nameWithType.vb: RuntimeVersion.Equals(Object)
+- uid: Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.Equals(Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion)
+  name: Equals(RuntimeVersion)
+  href: CodeAnalysis/api/Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.Equals.html#Ubiquity_NET_CodeAnalysis_Utils_RuntimeVersion_Equals_Ubiquity_NET_CodeAnalysis_Utils_RuntimeVersion_
+  commentId: M:Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.Equals(Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion)
+  fullName: Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.Equals(Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion)
+  nameWithType: RuntimeVersion.Equals(RuntimeVersion)
+- uid: Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.Equals*
+  name: Equals
+  href: CodeAnalysis/api/Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.Equals.html
+  commentId: Overload:Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.Equals
+  fullName: Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.Equals
+  nameWithType: RuntimeVersion.Equals
+- uid: Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.GetHashCode
+  name: GetHashCode()
+  href: CodeAnalysis/api/Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.GetHashCode.html#Ubiquity_NET_CodeAnalysis_Utils_RuntimeVersion_GetHashCode
+  commentId: M:Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.GetHashCode
+  fullName: Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.GetHashCode()
+  nameWithType: RuntimeVersion.GetHashCode()
+- uid: Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.GetHashCode*
+  name: GetHashCode
+  href: CodeAnalysis/api/Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.GetHashCode.html
+  commentId: Overload:Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.GetHashCode
+  fullName: Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.GetHashCode
+  nameWithType: RuntimeVersion.GetHashCode
 - uid: Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.RuntimeName
   name: RuntimeName
   href: CodeAnalysis/api/Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.RuntimeName.html#Ubiquity_NET_CodeAnalysis_Utils_RuntimeVersion_RuntimeName
@@ -1202,6 +1455,18 @@ references:
   commentId: Overload:Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.RuntimeName
   fullName: Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.RuntimeName
   nameWithType: RuntimeVersion.RuntimeName
+- uid: Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.ToString
+  name: ToString()
+  href: CodeAnalysis/api/Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.ToString.html#Ubiquity_NET_CodeAnalysis_Utils_RuntimeVersion_ToString
+  commentId: M:Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.ToString
+  fullName: Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.ToString()
+  nameWithType: RuntimeVersion.ToString()
+- uid: Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.ToString*
+  name: ToString
+  href: CodeAnalysis/api/Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.ToString.html
+  commentId: Overload:Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.ToString
+  fullName: Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.ToString
+  nameWithType: RuntimeVersion.ToString
 - uid: Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.Version
   name: Version
   href: CodeAnalysis/api/Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.Version.html#Ubiquity_NET_CodeAnalysis_Utils_RuntimeVersion_Version
@@ -1214,6 +1479,42 @@ references:
   commentId: Overload:Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.Version
   fullName: Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.Version
   nameWithType: RuntimeVersion.Version
+- uid: Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.op_Equality(Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion,Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion)
+  name: operator ==(RuntimeVersion, RuntimeVersion)
+  href: CodeAnalysis/api/Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.op_Equality.html#Ubiquity_NET_CodeAnalysis_Utils_RuntimeVersion_op_Equality_Ubiquity_NET_CodeAnalysis_Utils_RuntimeVersion_Ubiquity_NET_CodeAnalysis_Utils_RuntimeVersion_
+  commentId: M:Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.op_Equality(Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion,Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion)
+  name.vb: =(RuntimeVersion, RuntimeVersion)
+  fullName: Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.operator ==(Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion, Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion)
+  fullName.vb: Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.=(Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion, Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion)
+  nameWithType: RuntimeVersion.operator ==(RuntimeVersion, RuntimeVersion)
+  nameWithType.vb: RuntimeVersion.=(RuntimeVersion, RuntimeVersion)
+- uid: Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.op_Equality*
+  name: operator ==
+  href: CodeAnalysis/api/Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.op_Equality.html
+  commentId: Overload:Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.op_Equality
+  name.vb: =
+  fullName: Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.operator ==
+  fullName.vb: Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.=
+  nameWithType: RuntimeVersion.operator ==
+  nameWithType.vb: RuntimeVersion.=
+- uid: Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.op_Inequality(Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion,Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion)
+  name: operator !=(RuntimeVersion, RuntimeVersion)
+  href: CodeAnalysis/api/Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.op_Inequality.html#Ubiquity_NET_CodeAnalysis_Utils_RuntimeVersion_op_Inequality_Ubiquity_NET_CodeAnalysis_Utils_RuntimeVersion_Ubiquity_NET_CodeAnalysis_Utils_RuntimeVersion_
+  commentId: M:Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.op_Inequality(Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion,Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion)
+  name.vb: <>(RuntimeVersion, RuntimeVersion)
+  fullName: Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.operator !=(Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion, Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion)
+  fullName.vb: Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.<>(Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion, Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion)
+  nameWithType: RuntimeVersion.operator !=(RuntimeVersion, RuntimeVersion)
+  nameWithType.vb: RuntimeVersion.<>(RuntimeVersion, RuntimeVersion)
+- uid: Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.op_Inequality*
+  name: operator !=
+  href: CodeAnalysis/api/Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.op_Inequality.html
+  commentId: Overload:Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.op_Inequality
+  name.vb: <>
+  fullName: Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.operator !=
+  fullName.vb: Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.<>
+  nameWithType: RuntimeVersion.operator !=
+  nameWithType.vb: RuntimeVersion.<>
 - uid: Ubiquity.NET.CodeAnalysis.Utils.SourceProductionContextExtensions
   name: SourceProductionContextExtensions
   href: CodeAnalysis/api/Ubiquity.NET.CodeAnalysis.Utils.SourceProductionContextExtensions.html
@@ -1569,40 +1870,40 @@ references:
   fullName: Ubiquity.NET.CommandLine.ArgsParsing.TryParse
   nameWithType: ArgsParsing.TryParse
 - uid: Ubiquity.NET.CommandLine.ArgsParsing.TryParse``1(System.String[],Ubiquity.NET.CommandLine.CmdLineSettings,Ubiquity.NET.CommandLine.IDiagnosticReporter,``0@,System.Int32@)
-  name: TryParse<T>(string[], CmdLineSettings?, IDiagnosticReporter, out T, out int)
+  name: TryParse<T>(string[], CmdLineSettings?, IDiagnosticReporter, out T?, out int)
   href: CommandLine/api/Ubiquity.NET.CommandLine.ArgsParsing.TryParse.html#Ubiquity_NET_CommandLine_ArgsParsing_TryParse__1_System_String___Ubiquity_NET_CommandLine_CmdLineSettings_Ubiquity_NET_CommandLine_IDiagnosticReporter___0__System_Int32__
   commentId: M:Ubiquity.NET.CommandLine.ArgsParsing.TryParse``1(System.String[],Ubiquity.NET.CommandLine.CmdLineSettings,Ubiquity.NET.CommandLine.IDiagnosticReporter,``0@,System.Int32@)
   name.vb: TryParse(Of T)(String(), CmdLineSettings, IDiagnosticReporter, T, Integer)
-  fullName: Ubiquity.NET.CommandLine.ArgsParsing.TryParse<T>(string[], Ubiquity.NET.CommandLine.CmdLineSettings?, Ubiquity.NET.CommandLine.IDiagnosticReporter, out T, out int)
+  fullName: Ubiquity.NET.CommandLine.ArgsParsing.TryParse<T>(string[], Ubiquity.NET.CommandLine.CmdLineSettings?, Ubiquity.NET.CommandLine.IDiagnosticReporter, out T?, out int)
   fullName.vb: Ubiquity.NET.CommandLine.ArgsParsing.TryParse(Of T)(String(), Ubiquity.NET.CommandLine.CmdLineSettings, Ubiquity.NET.CommandLine.IDiagnosticReporter, T, Integer)
-  nameWithType: ArgsParsing.TryParse<T>(string[], CmdLineSettings?, IDiagnosticReporter, out T, out int)
+  nameWithType: ArgsParsing.TryParse<T>(string[], CmdLineSettings?, IDiagnosticReporter, out T?, out int)
   nameWithType.vb: ArgsParsing.TryParse(Of T)(String(), CmdLineSettings, IDiagnosticReporter, T, Integer)
 - uid: Ubiquity.NET.CommandLine.ArgsParsing.TryParse``1(System.String[],Ubiquity.NET.CommandLine.CmdLineSettings,``0@,System.Int32@)
-  name: TryParse<T>(string[], CmdLineSettings, out T, out int)
+  name: TryParse<T>(string[], CmdLineSettings, out T?, out int)
   href: CommandLine/api/Ubiquity.NET.CommandLine.ArgsParsing.TryParse.html#Ubiquity_NET_CommandLine_ArgsParsing_TryParse__1_System_String___Ubiquity_NET_CommandLine_CmdLineSettings___0__System_Int32__
   commentId: M:Ubiquity.NET.CommandLine.ArgsParsing.TryParse``1(System.String[],Ubiquity.NET.CommandLine.CmdLineSettings,``0@,System.Int32@)
   name.vb: TryParse(Of T)(String(), CmdLineSettings, T, Integer)
-  fullName: Ubiquity.NET.CommandLine.ArgsParsing.TryParse<T>(string[], Ubiquity.NET.CommandLine.CmdLineSettings, out T, out int)
+  fullName: Ubiquity.NET.CommandLine.ArgsParsing.TryParse<T>(string[], Ubiquity.NET.CommandLine.CmdLineSettings, out T?, out int)
   fullName.vb: Ubiquity.NET.CommandLine.ArgsParsing.TryParse(Of T)(String(), Ubiquity.NET.CommandLine.CmdLineSettings, T, Integer)
-  nameWithType: ArgsParsing.TryParse<T>(string[], CmdLineSettings, out T, out int)
+  nameWithType: ArgsParsing.TryParse<T>(string[], CmdLineSettings, out T?, out int)
   nameWithType.vb: ArgsParsing.TryParse(Of T)(String(), CmdLineSettings, T, Integer)
 - uid: Ubiquity.NET.CommandLine.ArgsParsing.TryParse``1(System.String[],Ubiquity.NET.CommandLine.IDiagnosticReporter,``0@,System.Int32@)
-  name: TryParse<T>(string[], IDiagnosticReporter, out T, out int)
+  name: TryParse<T>(string[], IDiagnosticReporter, out T?, out int)
   href: CommandLine/api/Ubiquity.NET.CommandLine.ArgsParsing.TryParse.html#Ubiquity_NET_CommandLine_ArgsParsing_TryParse__1_System_String___Ubiquity_NET_CommandLine_IDiagnosticReporter___0__System_Int32__
   commentId: M:Ubiquity.NET.CommandLine.ArgsParsing.TryParse``1(System.String[],Ubiquity.NET.CommandLine.IDiagnosticReporter,``0@,System.Int32@)
   name.vb: TryParse(Of T)(String(), IDiagnosticReporter, T, Integer)
-  fullName: Ubiquity.NET.CommandLine.ArgsParsing.TryParse<T>(string[], Ubiquity.NET.CommandLine.IDiagnosticReporter, out T, out int)
+  fullName: Ubiquity.NET.CommandLine.ArgsParsing.TryParse<T>(string[], Ubiquity.NET.CommandLine.IDiagnosticReporter, out T?, out int)
   fullName.vb: Ubiquity.NET.CommandLine.ArgsParsing.TryParse(Of T)(String(), Ubiquity.NET.CommandLine.IDiagnosticReporter, T, Integer)
-  nameWithType: ArgsParsing.TryParse<T>(string[], IDiagnosticReporter, out T, out int)
+  nameWithType: ArgsParsing.TryParse<T>(string[], IDiagnosticReporter, out T?, out int)
   nameWithType.vb: ArgsParsing.TryParse(Of T)(String(), IDiagnosticReporter, T, Integer)
 - uid: Ubiquity.NET.CommandLine.ArgsParsing.TryParse``1(System.String[],``0@,System.Int32@)
-  name: TryParse<T>(string[], out T, out int)
+  name: TryParse<T>(string[], out T?, out int)
   href: CommandLine/api/Ubiquity.NET.CommandLine.ArgsParsing.TryParse.html#Ubiquity_NET_CommandLine_ArgsParsing_TryParse__1_System_String_____0__System_Int32__
   commentId: M:Ubiquity.NET.CommandLine.ArgsParsing.TryParse``1(System.String[],``0@,System.Int32@)
   name.vb: TryParse(Of T)(String(), T, Integer)
-  fullName: Ubiquity.NET.CommandLine.ArgsParsing.TryParse<T>(string[], out T, out int)
+  fullName: Ubiquity.NET.CommandLine.ArgsParsing.TryParse<T>(string[], out T?, out int)
   fullName.vb: Ubiquity.NET.CommandLine.ArgsParsing.TryParse(Of T)(String(), T, Integer)
-  nameWithType: ArgsParsing.TryParse<T>(string[], out T, out int)
+  nameWithType: ArgsParsing.TryParse<T>(string[], out T?, out int)
   nameWithType.vb: ArgsParsing.TryParse(Of T)(String(), T, Integer)
 - uid: Ubiquity.NET.CommandLine.ArgumentExceptionReporter
   name: ArgumentExceptionReporter
@@ -1682,6 +1983,24 @@ references:
   commentId: T:Ubiquity.NET.CommandLine.CmdLineSettings
   fullName: Ubiquity.NET.CommandLine.CmdLineSettings
   nameWithType: CmdLineSettings
+- uid: Ubiquity.NET.CommandLine.CmdLineSettings.#ctor
+  name: CmdLineSettings()
+  href: CommandLine/api/Ubiquity.NET.CommandLine.CmdLineSettings.-ctor.html#Ubiquity_NET_CommandLine_CmdLineSettings__ctor
+  commentId: M:Ubiquity.NET.CommandLine.CmdLineSettings.#ctor
+  name.vb: New()
+  fullName: Ubiquity.NET.CommandLine.CmdLineSettings.CmdLineSettings()
+  fullName.vb: Ubiquity.NET.CommandLine.CmdLineSettings.New()
+  nameWithType: CmdLineSettings.CmdLineSettings()
+  nameWithType.vb: CmdLineSettings.New()
+- uid: Ubiquity.NET.CommandLine.CmdLineSettings.#ctor*
+  name: CmdLineSettings
+  href: CommandLine/api/Ubiquity.NET.CommandLine.CmdLineSettings.-ctor.html
+  commentId: Overload:Ubiquity.NET.CommandLine.CmdLineSettings.#ctor
+  name.vb: New
+  fullName: Ubiquity.NET.CommandLine.CmdLineSettings.CmdLineSettings
+  fullName.vb: Ubiquity.NET.CommandLine.CmdLineSettings.New
+  nameWithType: CmdLineSettings.CmdLineSettings
+  nameWithType.vb: CmdLineSettings.New
 - uid: Ubiquity.NET.CommandLine.CmdLineSettings.DefaultDirectives
   name: DefaultDirectives
   href: CommandLine/api/Ubiquity.NET.CommandLine.CmdLineSettings.DefaultDirectives.html#Ubiquity_NET_CommandLine_CmdLineSettings_DefaultDirectives
@@ -1859,6 +2178,54 @@ references:
   commentId: Overload:Ubiquity.NET.CommandLine.ColoredConsoleReporter.ReportMessage
   fullName: Ubiquity.NET.CommandLine.ColoredConsoleReporter.ReportMessage
   nameWithType: ColoredConsoleReporter.ReportMessage
+- uid: Ubiquity.NET.CommandLine.CommandLineOptions
+  name: CommandLineOptions
+  href: CommandLine/api/Ubiquity.NET.CommandLine.CommandLineOptions.html
+  commentId: T:Ubiquity.NET.CommandLine.CommandLineOptions
+  fullName: Ubiquity.NET.CommandLine.CommandLineOptions
+  nameWithType: CommandLineOptions
+- uid: Ubiquity.NET.CommandLine.CommandLineOptions.BuildRootCommand*
+  name: BuildRootCommand
+  href: CommandLine/api/Ubiquity.NET.CommandLine.CommandLineOptions.BuildRootCommand.html
+  commentId: Overload:Ubiquity.NET.CommandLine.CommandLineOptions.BuildRootCommand
+  fullName: Ubiquity.NET.CommandLine.CommandLineOptions.BuildRootCommand
+  nameWithType: CommandLineOptions.BuildRootCommand
+- uid: Ubiquity.NET.CommandLine.CommandLineOptions.BuildRootCommand``1(Ubiquity.NET.CommandLine.CmdLineSettings,System.Action{``0})
+  name: BuildRootCommand<T>(CmdLineSettings, Action<T>)
+  href: CommandLine/api/Ubiquity.NET.CommandLine.CommandLineOptions.BuildRootCommand.html#Ubiquity_NET_CommandLine_CommandLineOptions_BuildRootCommand__1_Ubiquity_NET_CommandLine_CmdLineSettings_System_Action___0__
+  commentId: M:Ubiquity.NET.CommandLine.CommandLineOptions.BuildRootCommand``1(Ubiquity.NET.CommandLine.CmdLineSettings,System.Action{``0})
+  name.vb: BuildRootCommand(Of T)(CmdLineSettings, Action(Of T))
+  fullName: Ubiquity.NET.CommandLine.CommandLineOptions.BuildRootCommand<T>(Ubiquity.NET.CommandLine.CmdLineSettings, System.Action<T>)
+  fullName.vb: Ubiquity.NET.CommandLine.CommandLineOptions.BuildRootCommand(Of T)(Ubiquity.NET.CommandLine.CmdLineSettings, System.Action(Of T))
+  nameWithType: CommandLineOptions.BuildRootCommand<T>(CmdLineSettings, Action<T>)
+  nameWithType.vb: CommandLineOptions.BuildRootCommand(Of T)(CmdLineSettings, Action(Of T))
+- uid: Ubiquity.NET.CommandLine.CommandLineOptions.BuildRootCommand``1(Ubiquity.NET.CommandLine.CmdLineSettings,System.Func{``0,System.Int32})
+  name: BuildRootCommand<T>(CmdLineSettings, Func<T, int>)
+  href: CommandLine/api/Ubiquity.NET.CommandLine.CommandLineOptions.BuildRootCommand.html#Ubiquity_NET_CommandLine_CommandLineOptions_BuildRootCommand__1_Ubiquity_NET_CommandLine_CmdLineSettings_System_Func___0_System_Int32__
+  commentId: M:Ubiquity.NET.CommandLine.CommandLineOptions.BuildRootCommand``1(Ubiquity.NET.CommandLine.CmdLineSettings,System.Func{``0,System.Int32})
+  name.vb: BuildRootCommand(Of T)(CmdLineSettings, Func(Of T, Integer))
+  fullName: Ubiquity.NET.CommandLine.CommandLineOptions.BuildRootCommand<T>(Ubiquity.NET.CommandLine.CmdLineSettings, System.Func<T, int>)
+  fullName.vb: Ubiquity.NET.CommandLine.CommandLineOptions.BuildRootCommand(Of T)(Ubiquity.NET.CommandLine.CmdLineSettings, System.Func(Of T, Integer))
+  nameWithType: CommandLineOptions.BuildRootCommand<T>(CmdLineSettings, Func<T, int>)
+  nameWithType.vb: CommandLineOptions.BuildRootCommand(Of T)(CmdLineSettings, Func(Of T, Integer))
+- uid: Ubiquity.NET.CommandLine.CommandLineOptions.BuildRootCommand``1(Ubiquity.NET.CommandLine.CmdLineSettings,System.Func{``0,System.Threading.CancellationToken,System.Threading.Tasks.Task{System.Int32}})
+  name: BuildRootCommand<T>(CmdLineSettings, Func<T, CancellationToken, Task<int>>)
+  href: CommandLine/api/Ubiquity.NET.CommandLine.CommandLineOptions.BuildRootCommand.html#Ubiquity_NET_CommandLine_CommandLineOptions_BuildRootCommand__1_Ubiquity_NET_CommandLine_CmdLineSettings_System_Func___0_System_Threading_CancellationToken_System_Threading_Tasks_Task_System_Int32___
+  commentId: M:Ubiquity.NET.CommandLine.CommandLineOptions.BuildRootCommand``1(Ubiquity.NET.CommandLine.CmdLineSettings,System.Func{``0,System.Threading.CancellationToken,System.Threading.Tasks.Task{System.Int32}})
+  name.vb: BuildRootCommand(Of T)(CmdLineSettings, Func(Of T, CancellationToken, Task(Of Integer)))
+  fullName: Ubiquity.NET.CommandLine.CommandLineOptions.BuildRootCommand<T>(Ubiquity.NET.CommandLine.CmdLineSettings, System.Func<T, System.Threading.CancellationToken, System.Threading.Tasks.Task<int>>)
+  fullName.vb: Ubiquity.NET.CommandLine.CommandLineOptions.BuildRootCommand(Of T)(Ubiquity.NET.CommandLine.CmdLineSettings, System.Func(Of T, System.Threading.CancellationToken, System.Threading.Tasks.Task(Of Integer)))
+  nameWithType: CommandLineOptions.BuildRootCommand<T>(CmdLineSettings, Func<T, CancellationToken, Task<int>>)
+  nameWithType.vb: CommandLineOptions.BuildRootCommand(Of T)(CmdLineSettings, Func(Of T, CancellationToken, Task(Of Integer)))
+- uid: Ubiquity.NET.CommandLine.CommandLineOptions.BuildRootCommand``1(Ubiquity.NET.CommandLine.CmdLineSettings,System.Func{``0,System.Threading.CancellationToken,System.Threading.Tasks.Task})
+  name: BuildRootCommand<T>(CmdLineSettings, Func<T, CancellationToken, Task>)
+  href: CommandLine/api/Ubiquity.NET.CommandLine.CommandLineOptions.BuildRootCommand.html#Ubiquity_NET_CommandLine_CommandLineOptions_BuildRootCommand__1_Ubiquity_NET_CommandLine_CmdLineSettings_System_Func___0_System_Threading_CancellationToken_System_Threading_Tasks_Task__
+  commentId: M:Ubiquity.NET.CommandLine.CommandLineOptions.BuildRootCommand``1(Ubiquity.NET.CommandLine.CmdLineSettings,System.Func{``0,System.Threading.CancellationToken,System.Threading.Tasks.Task})
+  name.vb: BuildRootCommand(Of T)(CmdLineSettings, Func(Of T, CancellationToken, Task))
+  fullName: Ubiquity.NET.CommandLine.CommandLineOptions.BuildRootCommand<T>(Ubiquity.NET.CommandLine.CmdLineSettings, System.Func<T, System.Threading.CancellationToken, System.Threading.Tasks.Task>)
+  fullName.vb: Ubiquity.NET.CommandLine.CommandLineOptions.BuildRootCommand(Of T)(Ubiquity.NET.CommandLine.CmdLineSettings, System.Func(Of T, System.Threading.CancellationToken, System.Threading.Tasks.Task))
+  nameWithType: CommandLineOptions.BuildRootCommand<T>(CmdLineSettings, Func<T, CancellationToken, Task>)
+  nameWithType.vb: CommandLineOptions.BuildRootCommand(Of T)(CmdLineSettings, Func(Of T, CancellationToken, Task))
 - uid: Ubiquity.NET.CommandLine.ConsoleReporter
   name: ConsoleReporter
   href: CommandLine/api/Ubiquity.NET.CommandLine.ConsoleReporter.html
@@ -1937,6 +2304,42 @@ references:
   fullName.vb: Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.New
   nameWithType: DefaultHandlerInvocationResult.DefaultHandlerInvocationResult
   nameWithType.vb: DefaultHandlerInvocationResult.New
+- uid: Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.Deconstruct(System.Boolean@,System.Int32@)
+  name: Deconstruct(out bool, out int)
+  href: CommandLine/api/Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.Deconstruct.html#Ubiquity_NET_CommandLine_DefaultHandlerInvocationResult_Deconstruct_System_Boolean__System_Int32__
+  commentId: M:Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.Deconstruct(System.Boolean@,System.Int32@)
+  name.vb: Deconstruct(Boolean, Integer)
+  fullName: Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.Deconstruct(out bool, out int)
+  fullName.vb: Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.Deconstruct(Boolean, Integer)
+  nameWithType: DefaultHandlerInvocationResult.Deconstruct(out bool, out int)
+  nameWithType.vb: DefaultHandlerInvocationResult.Deconstruct(Boolean, Integer)
+- uid: Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.Deconstruct*
+  name: Deconstruct
+  href: CommandLine/api/Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.Deconstruct.html
+  commentId: Overload:Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.Deconstruct
+  fullName: Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.Deconstruct
+  nameWithType: DefaultHandlerInvocationResult.Deconstruct
+- uid: Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.Equals(System.Object)
+  name: Equals(object)
+  href: CommandLine/api/Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.Equals.html#Ubiquity_NET_CommandLine_DefaultHandlerInvocationResult_Equals_System_Object_
+  commentId: M:Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.Equals(System.Object)
+  name.vb: Equals(Object)
+  fullName: Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.Equals(object)
+  fullName.vb: Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.Equals(Object)
+  nameWithType: DefaultHandlerInvocationResult.Equals(object)
+  nameWithType.vb: DefaultHandlerInvocationResult.Equals(Object)
+- uid: Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.Equals(Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult)
+  name: Equals(DefaultHandlerInvocationResult)
+  href: CommandLine/api/Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.Equals.html#Ubiquity_NET_CommandLine_DefaultHandlerInvocationResult_Equals_Ubiquity_NET_CommandLine_DefaultHandlerInvocationResult_
+  commentId: M:Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.Equals(Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult)
+  fullName: Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.Equals(Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult)
+  nameWithType: DefaultHandlerInvocationResult.Equals(DefaultHandlerInvocationResult)
+- uid: Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.Equals*
+  name: Equals
+  href: CommandLine/api/Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.Equals.html
+  commentId: Overload:Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.Equals
+  fullName: Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.Equals
+  nameWithType: DefaultHandlerInvocationResult.Equals
 - uid: Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.ExitCode
   name: ExitCode
   href: CommandLine/api/Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.ExitCode.html#Ubiquity_NET_CommandLine_DefaultHandlerInvocationResult_ExitCode
@@ -1949,6 +2352,18 @@ references:
   commentId: Overload:Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.ExitCode
   fullName: Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.ExitCode
   nameWithType: DefaultHandlerInvocationResult.ExitCode
+- uid: Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.GetHashCode
+  name: GetHashCode()
+  href: CommandLine/api/Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.GetHashCode.html#Ubiquity_NET_CommandLine_DefaultHandlerInvocationResult_GetHashCode
+  commentId: M:Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.GetHashCode
+  fullName: Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.GetHashCode()
+  nameWithType: DefaultHandlerInvocationResult.GetHashCode()
+- uid: Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.GetHashCode*
+  name: GetHashCode
+  href: CommandLine/api/Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.GetHashCode.html
+  commentId: Overload:Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.GetHashCode
+  fullName: Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.GetHashCode
+  nameWithType: DefaultHandlerInvocationResult.GetHashCode
 - uid: Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.ShouldExit
   name: ShouldExit
   href: CommandLine/api/Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.ShouldExit.html#Ubiquity_NET_CommandLine_DefaultHandlerInvocationResult_ShouldExit
@@ -1961,6 +2376,54 @@ references:
   commentId: Overload:Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.ShouldExit
   fullName: Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.ShouldExit
   nameWithType: DefaultHandlerInvocationResult.ShouldExit
+- uid: Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.ToString
+  name: ToString()
+  href: CommandLine/api/Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.ToString.html#Ubiquity_NET_CommandLine_DefaultHandlerInvocationResult_ToString
+  commentId: M:Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.ToString
+  fullName: Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.ToString()
+  nameWithType: DefaultHandlerInvocationResult.ToString()
+- uid: Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.ToString*
+  name: ToString
+  href: CommandLine/api/Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.ToString.html
+  commentId: Overload:Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.ToString
+  fullName: Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.ToString
+  nameWithType: DefaultHandlerInvocationResult.ToString
+- uid: Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.op_Equality(Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult,Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult)
+  name: operator ==(DefaultHandlerInvocationResult, DefaultHandlerInvocationResult)
+  href: CommandLine/api/Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.op_Equality.html#Ubiquity_NET_CommandLine_DefaultHandlerInvocationResult_op_Equality_Ubiquity_NET_CommandLine_DefaultHandlerInvocationResult_Ubiquity_NET_CommandLine_DefaultHandlerInvocationResult_
+  commentId: M:Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.op_Equality(Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult,Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult)
+  name.vb: =(DefaultHandlerInvocationResult, DefaultHandlerInvocationResult)
+  fullName: Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.operator ==(Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult, Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult)
+  fullName.vb: Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.=(Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult, Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult)
+  nameWithType: DefaultHandlerInvocationResult.operator ==(DefaultHandlerInvocationResult, DefaultHandlerInvocationResult)
+  nameWithType.vb: DefaultHandlerInvocationResult.=(DefaultHandlerInvocationResult, DefaultHandlerInvocationResult)
+- uid: Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.op_Equality*
+  name: operator ==
+  href: CommandLine/api/Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.op_Equality.html
+  commentId: Overload:Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.op_Equality
+  name.vb: =
+  fullName: Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.operator ==
+  fullName.vb: Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.=
+  nameWithType: DefaultHandlerInvocationResult.operator ==
+  nameWithType.vb: DefaultHandlerInvocationResult.=
+- uid: Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.op_Inequality(Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult,Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult)
+  name: operator !=(DefaultHandlerInvocationResult, DefaultHandlerInvocationResult)
+  href: CommandLine/api/Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.op_Inequality.html#Ubiquity_NET_CommandLine_DefaultHandlerInvocationResult_op_Inequality_Ubiquity_NET_CommandLine_DefaultHandlerInvocationResult_Ubiquity_NET_CommandLine_DefaultHandlerInvocationResult_
+  commentId: M:Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.op_Inequality(Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult,Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult)
+  name.vb: <>(DefaultHandlerInvocationResult, DefaultHandlerInvocationResult)
+  fullName: Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.operator !=(Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult, Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult)
+  fullName.vb: Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.<>(Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult, Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult)
+  nameWithType: DefaultHandlerInvocationResult.operator !=(DefaultHandlerInvocationResult, DefaultHandlerInvocationResult)
+  nameWithType.vb: DefaultHandlerInvocationResult.<>(DefaultHandlerInvocationResult, DefaultHandlerInvocationResult)
+- uid: Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.op_Inequality*
+  name: operator !=
+  href: CommandLine/api/Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.op_Inequality.html
+  commentId: Overload:Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.op_Inequality
+  name.vb: <>
+  fullName: Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.operator !=
+  fullName.vb: Ubiquity.NET.CommandLine.DefaultHandlerInvocationResult.<>
+  nameWithType: DefaultHandlerInvocationResult.operator !=
+  nameWithType.vb: DefaultHandlerInvocationResult.<>
 - uid: Ubiquity.NET.CommandLine.DefaultOption
   name: DefaultOption
   href: CommandLine/api/Ubiquity.NET.CommandLine.DefaultOption.html
@@ -2003,6 +2466,39 @@ references:
   commentId: Overload:Ubiquity.NET.CommandLine.DiagnosticMessage.Code
   fullName: Ubiquity.NET.CommandLine.DiagnosticMessage.Code
   nameWithType: DiagnosticMessage.Code
+- uid: Ubiquity.NET.CommandLine.DiagnosticMessage.Equals(System.Object)
+  name: Equals(object)
+  href: CommandLine/api/Ubiquity.NET.CommandLine.DiagnosticMessage.Equals.html#Ubiquity_NET_CommandLine_DiagnosticMessage_Equals_System_Object_
+  commentId: M:Ubiquity.NET.CommandLine.DiagnosticMessage.Equals(System.Object)
+  name.vb: Equals(Object)
+  fullName: Ubiquity.NET.CommandLine.DiagnosticMessage.Equals(object)
+  fullName.vb: Ubiquity.NET.CommandLine.DiagnosticMessage.Equals(Object)
+  nameWithType: DiagnosticMessage.Equals(object)
+  nameWithType.vb: DiagnosticMessage.Equals(Object)
+- uid: Ubiquity.NET.CommandLine.DiagnosticMessage.Equals(Ubiquity.NET.CommandLine.DiagnosticMessage)
+  name: Equals(DiagnosticMessage)
+  href: CommandLine/api/Ubiquity.NET.CommandLine.DiagnosticMessage.Equals.html#Ubiquity_NET_CommandLine_DiagnosticMessage_Equals_Ubiquity_NET_CommandLine_DiagnosticMessage_
+  commentId: M:Ubiquity.NET.CommandLine.DiagnosticMessage.Equals(Ubiquity.NET.CommandLine.DiagnosticMessage)
+  fullName: Ubiquity.NET.CommandLine.DiagnosticMessage.Equals(Ubiquity.NET.CommandLine.DiagnosticMessage)
+  nameWithType: DiagnosticMessage.Equals(DiagnosticMessage)
+- uid: Ubiquity.NET.CommandLine.DiagnosticMessage.Equals*
+  name: Equals
+  href: CommandLine/api/Ubiquity.NET.CommandLine.DiagnosticMessage.Equals.html
+  commentId: Overload:Ubiquity.NET.CommandLine.DiagnosticMessage.Equals
+  fullName: Ubiquity.NET.CommandLine.DiagnosticMessage.Equals
+  nameWithType: DiagnosticMessage.Equals
+- uid: Ubiquity.NET.CommandLine.DiagnosticMessage.GetHashCode
+  name: GetHashCode()
+  href: CommandLine/api/Ubiquity.NET.CommandLine.DiagnosticMessage.GetHashCode.html#Ubiquity_NET_CommandLine_DiagnosticMessage_GetHashCode
+  commentId: M:Ubiquity.NET.CommandLine.DiagnosticMessage.GetHashCode
+  fullName: Ubiquity.NET.CommandLine.DiagnosticMessage.GetHashCode()
+  nameWithType: DiagnosticMessage.GetHashCode()
+- uid: Ubiquity.NET.CommandLine.DiagnosticMessage.GetHashCode*
+  name: GetHashCode
+  href: CommandLine/api/Ubiquity.NET.CommandLine.DiagnosticMessage.GetHashCode.html
+  commentId: Overload:Ubiquity.NET.CommandLine.DiagnosticMessage.GetHashCode
+  fullName: Ubiquity.NET.CommandLine.DiagnosticMessage.GetHashCode
+  nameWithType: DiagnosticMessage.GetHashCode
 - uid: Ubiquity.NET.CommandLine.DiagnosticMessage.Level
   name: Level
   href: CommandLine/api/Ubiquity.NET.CommandLine.DiagnosticMessage.Level.html#Ubiquity_NET_CommandLine_DiagnosticMessage_Level
@@ -2084,6 +2580,42 @@ references:
   commentId: Overload:Ubiquity.NET.CommandLine.DiagnosticMessage.ToString
   fullName: Ubiquity.NET.CommandLine.DiagnosticMessage.ToString
   nameWithType: DiagnosticMessage.ToString
+- uid: Ubiquity.NET.CommandLine.DiagnosticMessage.op_Equality(Ubiquity.NET.CommandLine.DiagnosticMessage,Ubiquity.NET.CommandLine.DiagnosticMessage)
+  name: operator ==(DiagnosticMessage, DiagnosticMessage)
+  href: CommandLine/api/Ubiquity.NET.CommandLine.DiagnosticMessage.op_Equality.html#Ubiquity_NET_CommandLine_DiagnosticMessage_op_Equality_Ubiquity_NET_CommandLine_DiagnosticMessage_Ubiquity_NET_CommandLine_DiagnosticMessage_
+  commentId: M:Ubiquity.NET.CommandLine.DiagnosticMessage.op_Equality(Ubiquity.NET.CommandLine.DiagnosticMessage,Ubiquity.NET.CommandLine.DiagnosticMessage)
+  name.vb: =(DiagnosticMessage, DiagnosticMessage)
+  fullName: Ubiquity.NET.CommandLine.DiagnosticMessage.operator ==(Ubiquity.NET.CommandLine.DiagnosticMessage, Ubiquity.NET.CommandLine.DiagnosticMessage)
+  fullName.vb: Ubiquity.NET.CommandLine.DiagnosticMessage.=(Ubiquity.NET.CommandLine.DiagnosticMessage, Ubiquity.NET.CommandLine.DiagnosticMessage)
+  nameWithType: DiagnosticMessage.operator ==(DiagnosticMessage, DiagnosticMessage)
+  nameWithType.vb: DiagnosticMessage.=(DiagnosticMessage, DiagnosticMessage)
+- uid: Ubiquity.NET.CommandLine.DiagnosticMessage.op_Equality*
+  name: operator ==
+  href: CommandLine/api/Ubiquity.NET.CommandLine.DiagnosticMessage.op_Equality.html
+  commentId: Overload:Ubiquity.NET.CommandLine.DiagnosticMessage.op_Equality
+  name.vb: =
+  fullName: Ubiquity.NET.CommandLine.DiagnosticMessage.operator ==
+  fullName.vb: Ubiquity.NET.CommandLine.DiagnosticMessage.=
+  nameWithType: DiagnosticMessage.operator ==
+  nameWithType.vb: DiagnosticMessage.=
+- uid: Ubiquity.NET.CommandLine.DiagnosticMessage.op_Inequality(Ubiquity.NET.CommandLine.DiagnosticMessage,Ubiquity.NET.CommandLine.DiagnosticMessage)
+  name: operator !=(DiagnosticMessage, DiagnosticMessage)
+  href: CommandLine/api/Ubiquity.NET.CommandLine.DiagnosticMessage.op_Inequality.html#Ubiquity_NET_CommandLine_DiagnosticMessage_op_Inequality_Ubiquity_NET_CommandLine_DiagnosticMessage_Ubiquity_NET_CommandLine_DiagnosticMessage_
+  commentId: M:Ubiquity.NET.CommandLine.DiagnosticMessage.op_Inequality(Ubiquity.NET.CommandLine.DiagnosticMessage,Ubiquity.NET.CommandLine.DiagnosticMessage)
+  name.vb: <>(DiagnosticMessage, DiagnosticMessage)
+  fullName: Ubiquity.NET.CommandLine.DiagnosticMessage.operator !=(Ubiquity.NET.CommandLine.DiagnosticMessage, Ubiquity.NET.CommandLine.DiagnosticMessage)
+  fullName.vb: Ubiquity.NET.CommandLine.DiagnosticMessage.<>(Ubiquity.NET.CommandLine.DiagnosticMessage, Ubiquity.NET.CommandLine.DiagnosticMessage)
+  nameWithType: DiagnosticMessage.operator !=(DiagnosticMessage, DiagnosticMessage)
+  nameWithType.vb: DiagnosticMessage.<>(DiagnosticMessage, DiagnosticMessage)
+- uid: Ubiquity.NET.CommandLine.DiagnosticMessage.op_Inequality*
+  name: operator !=
+  href: CommandLine/api/Ubiquity.NET.CommandLine.DiagnosticMessage.op_Inequality.html
+  commentId: Overload:Ubiquity.NET.CommandLine.DiagnosticMessage.op_Inequality
+  name.vb: <>
+  fullName: Ubiquity.NET.CommandLine.DiagnosticMessage.operator !=
+  fullName.vb: Ubiquity.NET.CommandLine.DiagnosticMessage.<>
+  nameWithType: DiagnosticMessage.operator !=
+  nameWithType.vb: DiagnosticMessage.<>
 - uid: Ubiquity.NET.CommandLine.DiagnosticMessageCollection
   name: DiagnosticMessageCollection
   href: CommandLine/api/Ubiquity.NET.CommandLine.DiagnosticMessageCollection.html
@@ -2237,6 +2769,15 @@ references:
   commentId: M:Ubiquity.NET.CommandLine.DiagnosticReporterExtensions.Error(Ubiquity.NET.CommandLine.IDiagnosticReporter,Ubiquity.NET.CommandLine.InterpolatedStringHandlers.ErrorReportingInterpolatedStringHandler)
   fullName: Ubiquity.NET.CommandLine.DiagnosticReporterExtensions.Error(Ubiquity.NET.CommandLine.IDiagnosticReporter, Ubiquity.NET.CommandLine.InterpolatedStringHandlers.ErrorReportingInterpolatedStringHandler)
   nameWithType: DiagnosticReporterExtensions.Error(IDiagnosticReporter, ErrorReportingInterpolatedStringHandler)
+- uid: Ubiquity.NET.CommandLine.DiagnosticReporterExtensions.Error(Ubiquity.NET.CommandLine.IDiagnosticReporter,Ubiquity.NET.Extensions.LocalizableString,System.IFormatProvider,System.String,Ubiquity.NET.Extensions.SourceRange,System.Uri,System.String)
+  name: Error(IDiagnosticReporter, LocalizableString, IFormatProvider?, string?, SourceRange, Uri?, string?)
+  href: CommandLine/api/Ubiquity.NET.CommandLine.DiagnosticReporterExtensions.Error.html#Ubiquity_NET_CommandLine_DiagnosticReporterExtensions_Error_Ubiquity_NET_CommandLine_IDiagnosticReporter_Ubiquity_NET_Extensions_LocalizableString_System_IFormatProvider_System_String_Ubiquity_NET_Extensions_SourceRange_System_Uri_System_String_
+  commentId: M:Ubiquity.NET.CommandLine.DiagnosticReporterExtensions.Error(Ubiquity.NET.CommandLine.IDiagnosticReporter,Ubiquity.NET.Extensions.LocalizableString,System.IFormatProvider,System.String,Ubiquity.NET.Extensions.SourceRange,System.Uri,System.String)
+  name.vb: Error(IDiagnosticReporter, LocalizableString, IFormatProvider, String, SourceRange, Uri, String)
+  fullName: Ubiquity.NET.CommandLine.DiagnosticReporterExtensions.Error(Ubiquity.NET.CommandLine.IDiagnosticReporter, Ubiquity.NET.Extensions.LocalizableString, System.IFormatProvider?, string?, Ubiquity.NET.Extensions.SourceRange, System.Uri?, string?)
+  fullName.vb: Ubiquity.NET.CommandLine.DiagnosticReporterExtensions.Error(Ubiquity.NET.CommandLine.IDiagnosticReporter, Ubiquity.NET.Extensions.LocalizableString, System.IFormatProvider, String, Ubiquity.NET.Extensions.SourceRange, System.Uri, String)
+  nameWithType: DiagnosticReporterExtensions.Error(IDiagnosticReporter, LocalizableString, IFormatProvider?, string?, SourceRange, Uri?, string?)
+  nameWithType.vb: DiagnosticReporterExtensions.Error(IDiagnosticReporter, LocalizableString, IFormatProvider, String, SourceRange, Uri, String)
 - uid: Ubiquity.NET.CommandLine.DiagnosticReporterExtensions.Error(Ubiquity.NET.CommandLine.IDiagnosticReporter,Ubiquity.NET.Extensions.SourceRange,System.IFormatProvider,System.String,System.Object[])
   name: Error(IDiagnosticReporter, SourceRange, IFormatProvider?, string, params object[])
   href: CommandLine/api/Ubiquity.NET.CommandLine.DiagnosticReporterExtensions.Error.html#Ubiquity_NET_CommandLine_DiagnosticReporterExtensions_Error_Ubiquity_NET_CommandLine_IDiagnosticReporter_Ubiquity_NET_Extensions_SourceRange_System_IFormatProvider_System_String_System_Object___
@@ -2300,6 +2841,15 @@ references:
   commentId: M:Ubiquity.NET.CommandLine.DiagnosticReporterExtensions.Information(Ubiquity.NET.CommandLine.IDiagnosticReporter,Ubiquity.NET.CommandLine.InterpolatedStringHandlers.InformationReportingInterpolatedStringHandler)
   fullName: Ubiquity.NET.CommandLine.DiagnosticReporterExtensions.Information(Ubiquity.NET.CommandLine.IDiagnosticReporter, Ubiquity.NET.CommandLine.InterpolatedStringHandlers.InformationReportingInterpolatedStringHandler)
   nameWithType: DiagnosticReporterExtensions.Information(IDiagnosticReporter, InformationReportingInterpolatedStringHandler)
+- uid: Ubiquity.NET.CommandLine.DiagnosticReporterExtensions.Information(Ubiquity.NET.CommandLine.IDiagnosticReporter,Ubiquity.NET.Extensions.LocalizableString,System.IFormatProvider,System.String,Ubiquity.NET.Extensions.SourceRange,System.Uri,System.String)
+  name: Information(IDiagnosticReporter, LocalizableString, IFormatProvider?, string?, SourceRange, Uri?, string?)
+  href: CommandLine/api/Ubiquity.NET.CommandLine.DiagnosticReporterExtensions.Information.html#Ubiquity_NET_CommandLine_DiagnosticReporterExtensions_Information_Ubiquity_NET_CommandLine_IDiagnosticReporter_Ubiquity_NET_Extensions_LocalizableString_System_IFormatProvider_System_String_Ubiquity_NET_Extensions_SourceRange_System_Uri_System_String_
+  commentId: M:Ubiquity.NET.CommandLine.DiagnosticReporterExtensions.Information(Ubiquity.NET.CommandLine.IDiagnosticReporter,Ubiquity.NET.Extensions.LocalizableString,System.IFormatProvider,System.String,Ubiquity.NET.Extensions.SourceRange,System.Uri,System.String)
+  name.vb: Information(IDiagnosticReporter, LocalizableString, IFormatProvider, String, SourceRange, Uri, String)
+  fullName: Ubiquity.NET.CommandLine.DiagnosticReporterExtensions.Information(Ubiquity.NET.CommandLine.IDiagnosticReporter, Ubiquity.NET.Extensions.LocalizableString, System.IFormatProvider?, string?, Ubiquity.NET.Extensions.SourceRange, System.Uri?, string?)
+  fullName.vb: Ubiquity.NET.CommandLine.DiagnosticReporterExtensions.Information(Ubiquity.NET.CommandLine.IDiagnosticReporter, Ubiquity.NET.Extensions.LocalizableString, System.IFormatProvider, String, Ubiquity.NET.Extensions.SourceRange, System.Uri, String)
+  nameWithType: DiagnosticReporterExtensions.Information(IDiagnosticReporter, LocalizableString, IFormatProvider?, string?, SourceRange, Uri?, string?)
+  nameWithType.vb: DiagnosticReporterExtensions.Information(IDiagnosticReporter, LocalizableString, IFormatProvider, String, SourceRange, Uri, String)
 - uid: Ubiquity.NET.CommandLine.DiagnosticReporterExtensions.Information(Ubiquity.NET.CommandLine.IDiagnosticReporter,Ubiquity.NET.Extensions.SourceRange,System.IFormatProvider,System.String,System.Object[])
   name: Information(IDiagnosticReporter, SourceRange, IFormatProvider?, string, params object[])
   href: CommandLine/api/Ubiquity.NET.CommandLine.DiagnosticReporterExtensions.Information.html#Ubiquity_NET_CommandLine_DiagnosticReporterExtensions_Information_Ubiquity_NET_CommandLine_IDiagnosticReporter_Ubiquity_NET_Extensions_SourceRange_System_IFormatProvider_System_String_System_Object___
@@ -2375,6 +2925,15 @@ references:
   commentId: M:Ubiquity.NET.CommandLine.DiagnosticReporterExtensions.Report(Ubiquity.NET.CommandLine.IDiagnosticReporter,Ubiquity.NET.CommandLine.MsgLevel,Ubiquity.NET.CommandLine.InterpolatedStringHandlers.DiagnosticReporterInterpolatedStringHandler)
   fullName: Ubiquity.NET.CommandLine.DiagnosticReporterExtensions.Report(Ubiquity.NET.CommandLine.IDiagnosticReporter, Ubiquity.NET.CommandLine.MsgLevel, Ubiquity.NET.CommandLine.InterpolatedStringHandlers.DiagnosticReporterInterpolatedStringHandler)
   nameWithType: DiagnosticReporterExtensions.Report(IDiagnosticReporter, MsgLevel, DiagnosticReporterInterpolatedStringHandler)
+- uid: Ubiquity.NET.CommandLine.DiagnosticReporterExtensions.Report(Ubiquity.NET.CommandLine.IDiagnosticReporter,Ubiquity.NET.CommandLine.MsgLevel,Ubiquity.NET.Extensions.LocalizableString,System.IFormatProvider,System.Uri,System.Nullable{Ubiquity.NET.Extensions.SourceRange},System.String,System.String)
+  name: Report(IDiagnosticReporter, MsgLevel, LocalizableString, IFormatProvider?, Uri?, SourceRange?, string?, string?)
+  href: CommandLine/api/Ubiquity.NET.CommandLine.DiagnosticReporterExtensions.Report.html#Ubiquity_NET_CommandLine_DiagnosticReporterExtensions_Report_Ubiquity_NET_CommandLine_IDiagnosticReporter_Ubiquity_NET_CommandLine_MsgLevel_Ubiquity_NET_Extensions_LocalizableString_System_IFormatProvider_System_Uri_System_Nullable_Ubiquity_NET_Extensions_SourceRange__System_String_System_String_
+  commentId: M:Ubiquity.NET.CommandLine.DiagnosticReporterExtensions.Report(Ubiquity.NET.CommandLine.IDiagnosticReporter,Ubiquity.NET.CommandLine.MsgLevel,Ubiquity.NET.Extensions.LocalizableString,System.IFormatProvider,System.Uri,System.Nullable{Ubiquity.NET.Extensions.SourceRange},System.String,System.String)
+  name.vb: Report(IDiagnosticReporter, MsgLevel, LocalizableString, IFormatProvider, Uri, SourceRange?, String, String)
+  fullName: Ubiquity.NET.CommandLine.DiagnosticReporterExtensions.Report(Ubiquity.NET.CommandLine.IDiagnosticReporter, Ubiquity.NET.CommandLine.MsgLevel, Ubiquity.NET.Extensions.LocalizableString, System.IFormatProvider?, System.Uri?, Ubiquity.NET.Extensions.SourceRange?, string?, string?)
+  fullName.vb: Ubiquity.NET.CommandLine.DiagnosticReporterExtensions.Report(Ubiquity.NET.CommandLine.IDiagnosticReporter, Ubiquity.NET.CommandLine.MsgLevel, Ubiquity.NET.Extensions.LocalizableString, System.IFormatProvider, System.Uri, Ubiquity.NET.Extensions.SourceRange?, String, String)
+  nameWithType: DiagnosticReporterExtensions.Report(IDiagnosticReporter, MsgLevel, LocalizableString, IFormatProvider?, Uri?, SourceRange?, string?, string?)
+  nameWithType.vb: DiagnosticReporterExtensions.Report(IDiagnosticReporter, MsgLevel, LocalizableString, IFormatProvider, Uri, SourceRange?, String, String)
 - uid: Ubiquity.NET.CommandLine.DiagnosticReporterExtensions.Report(Ubiquity.NET.CommandLine.IDiagnosticReporter,Ubiquity.NET.CommandLine.MsgLevel,Ubiquity.NET.Extensions.SourceRange,System.String,System.Object[])
   name: Report(IDiagnosticReporter, MsgLevel, SourceRange, string, params object[])
   href: CommandLine/api/Ubiquity.NET.CommandLine.DiagnosticReporterExtensions.Report.html#Ubiquity_NET_CommandLine_DiagnosticReporterExtensions_Report_Ubiquity_NET_CommandLine_IDiagnosticReporter_Ubiquity_NET_CommandLine_MsgLevel_Ubiquity_NET_Extensions_SourceRange_System_String_System_Object___
@@ -2438,6 +2997,15 @@ references:
   commentId: M:Ubiquity.NET.CommandLine.DiagnosticReporterExtensions.Verbose(Ubiquity.NET.CommandLine.IDiagnosticReporter,Ubiquity.NET.CommandLine.InterpolatedStringHandlers.VerboseReportingInterpolatedStringHandler)
   fullName: Ubiquity.NET.CommandLine.DiagnosticReporterExtensions.Verbose(Ubiquity.NET.CommandLine.IDiagnosticReporter, Ubiquity.NET.CommandLine.InterpolatedStringHandlers.VerboseReportingInterpolatedStringHandler)
   nameWithType: DiagnosticReporterExtensions.Verbose(IDiagnosticReporter, VerboseReportingInterpolatedStringHandler)
+- uid: Ubiquity.NET.CommandLine.DiagnosticReporterExtensions.Verbose(Ubiquity.NET.CommandLine.IDiagnosticReporter,Ubiquity.NET.Extensions.LocalizableString,System.IFormatProvider,System.String,Ubiquity.NET.Extensions.SourceRange,System.Uri,System.String)
+  name: Verbose(IDiagnosticReporter, LocalizableString, IFormatProvider?, string?, SourceRange, Uri?, string?)
+  href: CommandLine/api/Ubiquity.NET.CommandLine.DiagnosticReporterExtensions.Verbose.html#Ubiquity_NET_CommandLine_DiagnosticReporterExtensions_Verbose_Ubiquity_NET_CommandLine_IDiagnosticReporter_Ubiquity_NET_Extensions_LocalizableString_System_IFormatProvider_System_String_Ubiquity_NET_Extensions_SourceRange_System_Uri_System_String_
+  commentId: M:Ubiquity.NET.CommandLine.DiagnosticReporterExtensions.Verbose(Ubiquity.NET.CommandLine.IDiagnosticReporter,Ubiquity.NET.Extensions.LocalizableString,System.IFormatProvider,System.String,Ubiquity.NET.Extensions.SourceRange,System.Uri,System.String)
+  name.vb: Verbose(IDiagnosticReporter, LocalizableString, IFormatProvider, String, SourceRange, Uri, String)
+  fullName: Ubiquity.NET.CommandLine.DiagnosticReporterExtensions.Verbose(Ubiquity.NET.CommandLine.IDiagnosticReporter, Ubiquity.NET.Extensions.LocalizableString, System.IFormatProvider?, string?, Ubiquity.NET.Extensions.SourceRange, System.Uri?, string?)
+  fullName.vb: Ubiquity.NET.CommandLine.DiagnosticReporterExtensions.Verbose(Ubiquity.NET.CommandLine.IDiagnosticReporter, Ubiquity.NET.Extensions.LocalizableString, System.IFormatProvider, String, Ubiquity.NET.Extensions.SourceRange, System.Uri, String)
+  nameWithType: DiagnosticReporterExtensions.Verbose(IDiagnosticReporter, LocalizableString, IFormatProvider?, string?, SourceRange, Uri?, string?)
+  nameWithType.vb: DiagnosticReporterExtensions.Verbose(IDiagnosticReporter, LocalizableString, IFormatProvider, String, SourceRange, Uri, String)
 - uid: Ubiquity.NET.CommandLine.DiagnosticReporterExtensions.Verbose(Ubiquity.NET.CommandLine.IDiagnosticReporter,Ubiquity.NET.Extensions.SourceRange,System.IFormatProvider,System.String,System.Object[])
   name: Verbose(IDiagnosticReporter, SourceRange, IFormatProvider?, string, params object[])
   href: CommandLine/api/Ubiquity.NET.CommandLine.DiagnosticReporterExtensions.Verbose.html#Ubiquity_NET_CommandLine_DiagnosticReporterExtensions_Verbose_Ubiquity_NET_CommandLine_IDiagnosticReporter_Ubiquity_NET_Extensions_SourceRange_System_IFormatProvider_System_String_System_Object___
@@ -2501,6 +3069,15 @@ references:
   commentId: M:Ubiquity.NET.CommandLine.DiagnosticReporterExtensions.Warning(Ubiquity.NET.CommandLine.IDiagnosticReporter,Ubiquity.NET.CommandLine.InterpolatedStringHandlers.WarningReportingInterpolatedStringHandler)
   fullName: Ubiquity.NET.CommandLine.DiagnosticReporterExtensions.Warning(Ubiquity.NET.CommandLine.IDiagnosticReporter, Ubiquity.NET.CommandLine.InterpolatedStringHandlers.WarningReportingInterpolatedStringHandler)
   nameWithType: DiagnosticReporterExtensions.Warning(IDiagnosticReporter, WarningReportingInterpolatedStringHandler)
+- uid: Ubiquity.NET.CommandLine.DiagnosticReporterExtensions.Warning(Ubiquity.NET.CommandLine.IDiagnosticReporter,Ubiquity.NET.Extensions.LocalizableString,System.IFormatProvider,System.String,Ubiquity.NET.Extensions.SourceRange,System.Uri,System.String)
+  name: Warning(IDiagnosticReporter, LocalizableString, IFormatProvider?, string?, SourceRange, Uri?, string?)
+  href: CommandLine/api/Ubiquity.NET.CommandLine.DiagnosticReporterExtensions.Warning.html#Ubiquity_NET_CommandLine_DiagnosticReporterExtensions_Warning_Ubiquity_NET_CommandLine_IDiagnosticReporter_Ubiquity_NET_Extensions_LocalizableString_System_IFormatProvider_System_String_Ubiquity_NET_Extensions_SourceRange_System_Uri_System_String_
+  commentId: M:Ubiquity.NET.CommandLine.DiagnosticReporterExtensions.Warning(Ubiquity.NET.CommandLine.IDiagnosticReporter,Ubiquity.NET.Extensions.LocalizableString,System.IFormatProvider,System.String,Ubiquity.NET.Extensions.SourceRange,System.Uri,System.String)
+  name.vb: Warning(IDiagnosticReporter, LocalizableString, IFormatProvider, String, SourceRange, Uri, String)
+  fullName: Ubiquity.NET.CommandLine.DiagnosticReporterExtensions.Warning(Ubiquity.NET.CommandLine.IDiagnosticReporter, Ubiquity.NET.Extensions.LocalizableString, System.IFormatProvider?, string?, Ubiquity.NET.Extensions.SourceRange, System.Uri?, string?)
+  fullName.vb: Ubiquity.NET.CommandLine.DiagnosticReporterExtensions.Warning(Ubiquity.NET.CommandLine.IDiagnosticReporter, Ubiquity.NET.Extensions.LocalizableString, System.IFormatProvider, String, Ubiquity.NET.Extensions.SourceRange, System.Uri, String)
+  nameWithType: DiagnosticReporterExtensions.Warning(IDiagnosticReporter, LocalizableString, IFormatProvider?, string?, SourceRange, Uri?, string?)
+  nameWithType.vb: DiagnosticReporterExtensions.Warning(IDiagnosticReporter, LocalizableString, IFormatProvider, String, SourceRange, Uri, String)
 - uid: Ubiquity.NET.CommandLine.DiagnosticReporterExtensions.Warning(Ubiquity.NET.CommandLine.IDiagnosticReporter,Ubiquity.NET.Extensions.SourceRange,System.IFormatProvider,System.String,System.Object[])
   name: Warning(IDiagnosticReporter, SourceRange, IFormatProvider?, string, params object[])
   href: CommandLine/api/Ubiquity.NET.CommandLine.DiagnosticReporterExtensions.Warning.html#Ubiquity_NET_CommandLine_DiagnosticReporterExtensions_Warning_Ubiquity_NET_CommandLine_IDiagnosticReporter_Ubiquity_NET_Extensions_SourceRange_System_IFormatProvider_System_String_System_Object___
@@ -3136,6 +3713,87 @@ references:
   commentId: Overload:Ubiquity.NET.CommandLine.ParseResultExtensions.HasErrors
   fullName: Ubiquity.NET.CommandLine.ParseResultExtensions.HasErrors
   nameWithType: ParseResultExtensions.HasErrors
+- uid: Ubiquity.NET.CommandLine.ParseResultExtensions.Invoke(System.CommandLine.ParseResult,Ubiquity.NET.CommandLine.IDiagnosticReporter,System.Boolean,System.Nullable{System.TimeSpan})
+  name: Invoke(ParseResult, IDiagnosticReporter, bool, TimeSpan?)
+  href: CommandLine/api/Ubiquity.NET.CommandLine.ParseResultExtensions.Invoke.html#Ubiquity_NET_CommandLine_ParseResultExtensions_Invoke_System_CommandLine_ParseResult_Ubiquity_NET_CommandLine_IDiagnosticReporter_System_Boolean_System_Nullable_System_TimeSpan__
+  commentId: M:Ubiquity.NET.CommandLine.ParseResultExtensions.Invoke(System.CommandLine.ParseResult,Ubiquity.NET.CommandLine.IDiagnosticReporter,System.Boolean,System.Nullable{System.TimeSpan})
+  name.vb: Invoke(ParseResult, IDiagnosticReporter, Boolean, TimeSpan?)
+  fullName: Ubiquity.NET.CommandLine.ParseResultExtensions.Invoke(System.CommandLine.ParseResult, Ubiquity.NET.CommandLine.IDiagnosticReporter, bool, System.TimeSpan?)
+  fullName.vb: Ubiquity.NET.CommandLine.ParseResultExtensions.Invoke(System.CommandLine.ParseResult, Ubiquity.NET.CommandLine.IDiagnosticReporter, Boolean, System.TimeSpan?)
+  nameWithType: ParseResultExtensions.Invoke(ParseResult, IDiagnosticReporter, bool, TimeSpan?)
+  nameWithType.vb: ParseResultExtensions.Invoke(ParseResult, IDiagnosticReporter, Boolean, TimeSpan?)
+- uid: Ubiquity.NET.CommandLine.ParseResultExtensions.Invoke*
+  name: Invoke
+  href: CommandLine/api/Ubiquity.NET.CommandLine.ParseResultExtensions.Invoke.html
+  commentId: Overload:Ubiquity.NET.CommandLine.ParseResultExtensions.Invoke
+  fullName: Ubiquity.NET.CommandLine.ParseResultExtensions.Invoke
+  nameWithType: ParseResultExtensions.Invoke
+- uid: Ubiquity.NET.CommandLine.ParseResultExtensions.InvokeAsync(System.CommandLine.ParseResult,Ubiquity.NET.CommandLine.IDiagnosticReporter,System.Threading.CancellationToken,System.Boolean,System.Nullable{System.TimeSpan})
+  name: InvokeAsync(ParseResult, IDiagnosticReporter, CancellationToken, bool, TimeSpan?)
+  href: CommandLine/api/Ubiquity.NET.CommandLine.ParseResultExtensions.InvokeAsync.html#Ubiquity_NET_CommandLine_ParseResultExtensions_InvokeAsync_System_CommandLine_ParseResult_Ubiquity_NET_CommandLine_IDiagnosticReporter_System_Threading_CancellationToken_System_Boolean_System_Nullable_System_TimeSpan__
+  commentId: M:Ubiquity.NET.CommandLine.ParseResultExtensions.InvokeAsync(System.CommandLine.ParseResult,Ubiquity.NET.CommandLine.IDiagnosticReporter,System.Threading.CancellationToken,System.Boolean,System.Nullable{System.TimeSpan})
+  name.vb: InvokeAsync(ParseResult, IDiagnosticReporter, CancellationToken, Boolean, TimeSpan?)
+  fullName: Ubiquity.NET.CommandLine.ParseResultExtensions.InvokeAsync(System.CommandLine.ParseResult, Ubiquity.NET.CommandLine.IDiagnosticReporter, System.Threading.CancellationToken, bool, System.TimeSpan?)
+  fullName.vb: Ubiquity.NET.CommandLine.ParseResultExtensions.InvokeAsync(System.CommandLine.ParseResult, Ubiquity.NET.CommandLine.IDiagnosticReporter, System.Threading.CancellationToken, Boolean, System.TimeSpan?)
+  nameWithType: ParseResultExtensions.InvokeAsync(ParseResult, IDiagnosticReporter, CancellationToken, bool, TimeSpan?)
+  nameWithType.vb: ParseResultExtensions.InvokeAsync(ParseResult, IDiagnosticReporter, CancellationToken, Boolean, TimeSpan?)
+- uid: Ubiquity.NET.CommandLine.ParseResultExtensions.InvokeAsync*
+  name: InvokeAsync
+  href: CommandLine/api/Ubiquity.NET.CommandLine.ParseResultExtensions.InvokeAsync.html
+  commentId: Overload:Ubiquity.NET.CommandLine.ParseResultExtensions.InvokeAsync
+  fullName: Ubiquity.NET.CommandLine.ParseResultExtensions.InvokeAsync
+  nameWithType: ParseResultExtensions.InvokeAsync
+- uid: Ubiquity.NET.CommandLine.ParseResultExtensions.InvokeDefaultOptions(System.CommandLine.ParseResult,Ubiquity.NET.CommandLine.CmdLineSettings,Ubiquity.NET.CommandLine.IDiagnosticReporter,System.Boolean,System.Nullable{System.TimeSpan})
+  name: InvokeDefaultOptions(ParseResult, CmdLineSettings, IDiagnosticReporter, bool, TimeSpan?)
+  href: CommandLine/api/Ubiquity.NET.CommandLine.ParseResultExtensions.InvokeDefaultOptions.html#Ubiquity_NET_CommandLine_ParseResultExtensions_InvokeDefaultOptions_System_CommandLine_ParseResult_Ubiquity_NET_CommandLine_CmdLineSettings_Ubiquity_NET_CommandLine_IDiagnosticReporter_System_Boolean_System_Nullable_System_TimeSpan__
+  commentId: M:Ubiquity.NET.CommandLine.ParseResultExtensions.InvokeDefaultOptions(System.CommandLine.ParseResult,Ubiquity.NET.CommandLine.CmdLineSettings,Ubiquity.NET.CommandLine.IDiagnosticReporter,System.Boolean,System.Nullable{System.TimeSpan})
+  name.vb: InvokeDefaultOptions(ParseResult, CmdLineSettings, IDiagnosticReporter, Boolean, TimeSpan?)
+  fullName: Ubiquity.NET.CommandLine.ParseResultExtensions.InvokeDefaultOptions(System.CommandLine.ParseResult, Ubiquity.NET.CommandLine.CmdLineSettings, Ubiquity.NET.CommandLine.IDiagnosticReporter, bool, System.TimeSpan?)
+  fullName.vb: Ubiquity.NET.CommandLine.ParseResultExtensions.InvokeDefaultOptions(System.CommandLine.ParseResult, Ubiquity.NET.CommandLine.CmdLineSettings, Ubiquity.NET.CommandLine.IDiagnosticReporter, Boolean, System.TimeSpan?)
+  nameWithType: ParseResultExtensions.InvokeDefaultOptions(ParseResult, CmdLineSettings, IDiagnosticReporter, bool, TimeSpan?)
+  nameWithType.vb: ParseResultExtensions.InvokeDefaultOptions(ParseResult, CmdLineSettings, IDiagnosticReporter, Boolean, TimeSpan?)
+- uid: Ubiquity.NET.CommandLine.ParseResultExtensions.InvokeDefaultOptions*
+  name: InvokeDefaultOptions
+  href: CommandLine/api/Ubiquity.NET.CommandLine.ParseResultExtensions.InvokeDefaultOptions.html
+  commentId: Overload:Ubiquity.NET.CommandLine.ParseResultExtensions.InvokeDefaultOptions
+  fullName: Ubiquity.NET.CommandLine.ParseResultExtensions.InvokeDefaultOptions
+  nameWithType: ParseResultExtensions.InvokeDefaultOptions
+- uid: Ubiquity.NET.CommandLine.RootCommandExtensions
+  name: RootCommandExtensions
+  href: CommandLine/api/Ubiquity.NET.CommandLine.RootCommandExtensions.html
+  commentId: T:Ubiquity.NET.CommandLine.RootCommandExtensions
+  fullName: Ubiquity.NET.CommandLine.RootCommandExtensions
+  nameWithType: RootCommandExtensions
+- uid: Ubiquity.NET.CommandLine.RootCommandExtensions.ParseAndInvokeResult(System.CommandLine.RootCommand,Ubiquity.NET.CommandLine.IDiagnosticReporter,Ubiquity.NET.CommandLine.CmdLineSettings,System.String[])
+  name: ParseAndInvokeResult(RootCommand, IDiagnosticReporter, CmdLineSettings, params string[])
+  href: CommandLine/api/Ubiquity.NET.CommandLine.RootCommandExtensions.ParseAndInvokeResult.html#Ubiquity_NET_CommandLine_RootCommandExtensions_ParseAndInvokeResult_System_CommandLine_RootCommand_Ubiquity_NET_CommandLine_IDiagnosticReporter_Ubiquity_NET_CommandLine_CmdLineSettings_System_String___
+  commentId: M:Ubiquity.NET.CommandLine.RootCommandExtensions.ParseAndInvokeResult(System.CommandLine.RootCommand,Ubiquity.NET.CommandLine.IDiagnosticReporter,Ubiquity.NET.CommandLine.CmdLineSettings,System.String[])
+  name.vb: ParseAndInvokeResult(RootCommand, IDiagnosticReporter, CmdLineSettings, ParamArray String())
+  fullName: Ubiquity.NET.CommandLine.RootCommandExtensions.ParseAndInvokeResult(System.CommandLine.RootCommand, Ubiquity.NET.CommandLine.IDiagnosticReporter, Ubiquity.NET.CommandLine.CmdLineSettings, params string[])
+  fullName.vb: Ubiquity.NET.CommandLine.RootCommandExtensions.ParseAndInvokeResult(System.CommandLine.RootCommand, Ubiquity.NET.CommandLine.IDiagnosticReporter, Ubiquity.NET.CommandLine.CmdLineSettings, ParamArray String())
+  nameWithType: RootCommandExtensions.ParseAndInvokeResult(RootCommand, IDiagnosticReporter, CmdLineSettings, params string[])
+  nameWithType.vb: RootCommandExtensions.ParseAndInvokeResult(RootCommand, IDiagnosticReporter, CmdLineSettings, ParamArray String())
+- uid: Ubiquity.NET.CommandLine.RootCommandExtensions.ParseAndInvokeResult*
+  name: ParseAndInvokeResult
+  href: CommandLine/api/Ubiquity.NET.CommandLine.RootCommandExtensions.ParseAndInvokeResult.html
+  commentId: Overload:Ubiquity.NET.CommandLine.RootCommandExtensions.ParseAndInvokeResult
+  fullName: Ubiquity.NET.CommandLine.RootCommandExtensions.ParseAndInvokeResult
+  nameWithType: RootCommandExtensions.ParseAndInvokeResult
+- uid: Ubiquity.NET.CommandLine.RootCommandExtensions.ParseAndInvokeResultAsync(System.CommandLine.RootCommand,Ubiquity.NET.CommandLine.IDiagnosticReporter,Ubiquity.NET.CommandLine.CmdLineSettings,System.Threading.CancellationToken,System.String[])
+  name: ParseAndInvokeResultAsync(RootCommand, IDiagnosticReporter, CmdLineSettings, CancellationToken, params string[])
+  href: CommandLine/api/Ubiquity.NET.CommandLine.RootCommandExtensions.ParseAndInvokeResultAsync.html#Ubiquity_NET_CommandLine_RootCommandExtensions_ParseAndInvokeResultAsync_System_CommandLine_RootCommand_Ubiquity_NET_CommandLine_IDiagnosticReporter_Ubiquity_NET_CommandLine_CmdLineSettings_System_Threading_CancellationToken_System_String___
+  commentId: M:Ubiquity.NET.CommandLine.RootCommandExtensions.ParseAndInvokeResultAsync(System.CommandLine.RootCommand,Ubiquity.NET.CommandLine.IDiagnosticReporter,Ubiquity.NET.CommandLine.CmdLineSettings,System.Threading.CancellationToken,System.String[])
+  name.vb: ParseAndInvokeResultAsync(RootCommand, IDiagnosticReporter, CmdLineSettings, CancellationToken, ParamArray String())
+  fullName: Ubiquity.NET.CommandLine.RootCommandExtensions.ParseAndInvokeResultAsync(System.CommandLine.RootCommand, Ubiquity.NET.CommandLine.IDiagnosticReporter, Ubiquity.NET.CommandLine.CmdLineSettings, System.Threading.CancellationToken, params string[])
+  fullName.vb: Ubiquity.NET.CommandLine.RootCommandExtensions.ParseAndInvokeResultAsync(System.CommandLine.RootCommand, Ubiquity.NET.CommandLine.IDiagnosticReporter, Ubiquity.NET.CommandLine.CmdLineSettings, System.Threading.CancellationToken, ParamArray String())
+  nameWithType: RootCommandExtensions.ParseAndInvokeResultAsync(RootCommand, IDiagnosticReporter, CmdLineSettings, CancellationToken, params string[])
+  nameWithType.vb: RootCommandExtensions.ParseAndInvokeResultAsync(RootCommand, IDiagnosticReporter, CmdLineSettings, CancellationToken, ParamArray String())
+- uid: Ubiquity.NET.CommandLine.RootCommandExtensions.ParseAndInvokeResultAsync*
+  name: ParseAndInvokeResultAsync
+  href: CommandLine/api/Ubiquity.NET.CommandLine.RootCommandExtensions.ParseAndInvokeResultAsync.html
+  commentId: Overload:Ubiquity.NET.CommandLine.RootCommandExtensions.ParseAndInvokeResultAsync
+  fullName: Ubiquity.NET.CommandLine.RootCommandExtensions.ParseAndInvokeResultAsync
+  nameWithType: RootCommandExtensions.ParseAndInvokeResultAsync
 - uid: Ubiquity.NET.CommandLine.SymbolValidationExtensions
   name: SymbolValidationExtensions
   href: CommandLine/api/Ubiquity.NET.CommandLine.SymbolValidationExtensions.html
@@ -3742,12 +4400,243 @@ references:
   commentId: F:Ubiquity.NET.Extensions.LineEndingKind.MixedOrUnknownEndings
   fullName: Ubiquity.NET.Extensions.LineEndingKind.MixedOrUnknownEndings
   nameWithType: LineEndingKind.MixedOrUnknownEndings
+- uid: Ubiquity.NET.Extensions.LocalizableResourceString
+  name: LocalizableResourceString
+  href: extensions/api/Ubiquity.NET.Extensions.LocalizableResourceString.html
+  commentId: T:Ubiquity.NET.Extensions.LocalizableResourceString
+  fullName: Ubiquity.NET.Extensions.LocalizableResourceString
+  nameWithType: LocalizableResourceString
+- uid: Ubiquity.NET.Extensions.LocalizableResourceString.#ctor(System.String,System.Resources.ResourceManager)
+  name: LocalizableResourceString(string, ResourceManager)
+  href: extensions/api/Ubiquity.NET.Extensions.LocalizableResourceString.-ctor.html#Ubiquity_NET_Extensions_LocalizableResourceString__ctor_System_String_System_Resources_ResourceManager_
+  commentId: M:Ubiquity.NET.Extensions.LocalizableResourceString.#ctor(System.String,System.Resources.ResourceManager)
+  name.vb: New(String, ResourceManager)
+  fullName: Ubiquity.NET.Extensions.LocalizableResourceString.LocalizableResourceString(string, System.Resources.ResourceManager)
+  fullName.vb: Ubiquity.NET.Extensions.LocalizableResourceString.New(String, System.Resources.ResourceManager)
+  nameWithType: LocalizableResourceString.LocalizableResourceString(string, ResourceManager)
+  nameWithType.vb: LocalizableResourceString.New(String, ResourceManager)
+- uid: Ubiquity.NET.Extensions.LocalizableResourceString.#ctor(System.String,System.Resources.ResourceManager,System.Object[])
+  name: LocalizableResourceString(string, ResourceManager, params object?[])
+  href: extensions/api/Ubiquity.NET.Extensions.LocalizableResourceString.-ctor.html#Ubiquity_NET_Extensions_LocalizableResourceString__ctor_System_String_System_Resources_ResourceManager_System_Object___
+  commentId: M:Ubiquity.NET.Extensions.LocalizableResourceString.#ctor(System.String,System.Resources.ResourceManager,System.Object[])
+  name.vb: New(String, ResourceManager, ParamArray Object())
+  fullName: Ubiquity.NET.Extensions.LocalizableResourceString.LocalizableResourceString(string, System.Resources.ResourceManager, params object?[])
+  fullName.vb: Ubiquity.NET.Extensions.LocalizableResourceString.New(String, System.Resources.ResourceManager, ParamArray Object())
+  nameWithType: LocalizableResourceString.LocalizableResourceString(string, ResourceManager, params object?[])
+  nameWithType.vb: LocalizableResourceString.New(String, ResourceManager, ParamArray Object())
+- uid: Ubiquity.NET.Extensions.LocalizableResourceString.#ctor*
+  name: LocalizableResourceString
+  href: extensions/api/Ubiquity.NET.Extensions.LocalizableResourceString.-ctor.html
+  commentId: Overload:Ubiquity.NET.Extensions.LocalizableResourceString.#ctor
+  name.vb: New
+  fullName: Ubiquity.NET.Extensions.LocalizableResourceString.LocalizableResourceString
+  fullName.vb: Ubiquity.NET.Extensions.LocalizableResourceString.New
+  nameWithType: LocalizableResourceString.LocalizableResourceString
+  nameWithType.vb: LocalizableResourceString.New
+- uid: Ubiquity.NET.Extensions.LocalizableResourceString.Equals(System.Object)
+  name: Equals(object?)
+  href: extensions/api/Ubiquity.NET.Extensions.LocalizableResourceString.Equals.html#Ubiquity_NET_Extensions_LocalizableResourceString_Equals_System_Object_
+  commentId: M:Ubiquity.NET.Extensions.LocalizableResourceString.Equals(System.Object)
+  name.vb: Equals(Object)
+  fullName: Ubiquity.NET.Extensions.LocalizableResourceString.Equals(object?)
+  fullName.vb: Ubiquity.NET.Extensions.LocalizableResourceString.Equals(Object)
+  nameWithType: LocalizableResourceString.Equals(object?)
+  nameWithType.vb: LocalizableResourceString.Equals(Object)
+- uid: Ubiquity.NET.Extensions.LocalizableResourceString.Equals*
+  name: Equals
+  href: extensions/api/Ubiquity.NET.Extensions.LocalizableResourceString.Equals.html
+  commentId: Overload:Ubiquity.NET.Extensions.LocalizableResourceString.Equals
+  fullName: Ubiquity.NET.Extensions.LocalizableResourceString.Equals
+  nameWithType: LocalizableResourceString.Equals
+- uid: Ubiquity.NET.Extensions.LocalizableResourceString.GetHashCode
+  name: GetHashCode()
+  href: extensions/api/Ubiquity.NET.Extensions.LocalizableResourceString.GetHashCode.html#Ubiquity_NET_Extensions_LocalizableResourceString_GetHashCode
+  commentId: M:Ubiquity.NET.Extensions.LocalizableResourceString.GetHashCode
+  fullName: Ubiquity.NET.Extensions.LocalizableResourceString.GetHashCode()
+  nameWithType: LocalizableResourceString.GetHashCode()
+- uid: Ubiquity.NET.Extensions.LocalizableResourceString.GetHashCode*
+  name: GetHashCode
+  href: extensions/api/Ubiquity.NET.Extensions.LocalizableResourceString.GetHashCode.html
+  commentId: Overload:Ubiquity.NET.Extensions.LocalizableResourceString.GetHashCode
+  fullName: Ubiquity.NET.Extensions.LocalizableResourceString.GetHashCode
+  nameWithType: LocalizableResourceString.GetHashCode
+- uid: Ubiquity.NET.Extensions.LocalizableResourceString.GetText(System.IFormatProvider,System.Globalization.CultureInfo)
+  name: GetText(IFormatProvider?, CultureInfo?)
+  href: extensions/api/Ubiquity.NET.Extensions.LocalizableResourceString.GetText.html#Ubiquity_NET_Extensions_LocalizableResourceString_GetText_System_IFormatProvider_System_Globalization_CultureInfo_
+  commentId: M:Ubiquity.NET.Extensions.LocalizableResourceString.GetText(System.IFormatProvider,System.Globalization.CultureInfo)
+  name.vb: GetText(IFormatProvider, CultureInfo)
+  fullName: Ubiquity.NET.Extensions.LocalizableResourceString.GetText(System.IFormatProvider?, System.Globalization.CultureInfo?)
+  fullName.vb: Ubiquity.NET.Extensions.LocalizableResourceString.GetText(System.IFormatProvider, System.Globalization.CultureInfo)
+  nameWithType: LocalizableResourceString.GetText(IFormatProvider?, CultureInfo?)
+  nameWithType.vb: LocalizableResourceString.GetText(IFormatProvider, CultureInfo)
+- uid: Ubiquity.NET.Extensions.LocalizableResourceString.GetText*
+  name: GetText
+  href: extensions/api/Ubiquity.NET.Extensions.LocalizableResourceString.GetText.html
+  commentId: Overload:Ubiquity.NET.Extensions.LocalizableResourceString.GetText
+  fullName: Ubiquity.NET.Extensions.LocalizableResourceString.GetText
+  nameWithType: LocalizableResourceString.GetText
+- uid: Ubiquity.NET.Extensions.LocalizableString
+  name: LocalizableString
+  href: extensions/api/Ubiquity.NET.Extensions.LocalizableString.html
+  commentId: T:Ubiquity.NET.Extensions.LocalizableString
+  fullName: Ubiquity.NET.Extensions.LocalizableString
+  nameWithType: LocalizableString
+- uid: Ubiquity.NET.Extensions.LocalizableString.#ctor
+  name: LocalizableString()
+  href: extensions/api/Ubiquity.NET.Extensions.LocalizableString.-ctor.html#Ubiquity_NET_Extensions_LocalizableString__ctor
+  commentId: M:Ubiquity.NET.Extensions.LocalizableString.#ctor
+  name.vb: New()
+  fullName: Ubiquity.NET.Extensions.LocalizableString.LocalizableString()
+  fullName.vb: Ubiquity.NET.Extensions.LocalizableString.New()
+  nameWithType: LocalizableString.LocalizableString()
+  nameWithType.vb: LocalizableString.New()
+- uid: Ubiquity.NET.Extensions.LocalizableString.#ctor*
+  name: LocalizableString
+  href: extensions/api/Ubiquity.NET.Extensions.LocalizableString.-ctor.html
+  commentId: Overload:Ubiquity.NET.Extensions.LocalizableString.#ctor
+  name.vb: New
+  fullName: Ubiquity.NET.Extensions.LocalizableString.LocalizableString
+  fullName.vb: Ubiquity.NET.Extensions.LocalizableString.New
+  nameWithType: LocalizableString.LocalizableString
+  nameWithType.vb: LocalizableString.New
+- uid: Ubiquity.NET.Extensions.LocalizableString.Equals(System.Object)
+  name: Equals(object?)
+  href: extensions/api/Ubiquity.NET.Extensions.LocalizableString.Equals.html#Ubiquity_NET_Extensions_LocalizableString_Equals_System_Object_
+  commentId: M:Ubiquity.NET.Extensions.LocalizableString.Equals(System.Object)
+  name.vb: Equals(Object)
+  fullName: Ubiquity.NET.Extensions.LocalizableString.Equals(object?)
+  fullName.vb: Ubiquity.NET.Extensions.LocalizableString.Equals(Object)
+  nameWithType: LocalizableString.Equals(object?)
+  nameWithType.vb: LocalizableString.Equals(Object)
+- uid: Ubiquity.NET.Extensions.LocalizableString.Equals(Ubiquity.NET.Extensions.LocalizableString)
+  name: Equals(LocalizableString?)
+  href: extensions/api/Ubiquity.NET.Extensions.LocalizableString.Equals.html#Ubiquity_NET_Extensions_LocalizableString_Equals_Ubiquity_NET_Extensions_LocalizableString_
+  commentId: M:Ubiquity.NET.Extensions.LocalizableString.Equals(Ubiquity.NET.Extensions.LocalizableString)
+  name.vb: Equals(LocalizableString)
+  fullName: Ubiquity.NET.Extensions.LocalizableString.Equals(Ubiquity.NET.Extensions.LocalizableString?)
+  fullName.vb: Ubiquity.NET.Extensions.LocalizableString.Equals(Ubiquity.NET.Extensions.LocalizableString)
+  nameWithType: LocalizableString.Equals(LocalizableString?)
+  nameWithType.vb: LocalizableString.Equals(LocalizableString)
+- uid: Ubiquity.NET.Extensions.LocalizableString.Equals*
+  name: Equals
+  href: extensions/api/Ubiquity.NET.Extensions.LocalizableString.Equals.html
+  commentId: Overload:Ubiquity.NET.Extensions.LocalizableString.Equals
+  fullName: Ubiquity.NET.Extensions.LocalizableString.Equals
+  nameWithType: LocalizableString.Equals
+- uid: Ubiquity.NET.Extensions.LocalizableString.From(System.String)
+  name: From(string?)
+  href: extensions/api/Ubiquity.NET.Extensions.LocalizableString.From.html#Ubiquity_NET_Extensions_LocalizableString_From_System_String_
+  commentId: M:Ubiquity.NET.Extensions.LocalizableString.From(System.String)
+  name.vb: From(String)
+  fullName: Ubiquity.NET.Extensions.LocalizableString.From(string?)
+  fullName.vb: Ubiquity.NET.Extensions.LocalizableString.From(String)
+  nameWithType: LocalizableString.From(string?)
+  nameWithType.vb: LocalizableString.From(String)
+- uid: Ubiquity.NET.Extensions.LocalizableString.From*
+  name: From
+  href: extensions/api/Ubiquity.NET.Extensions.LocalizableString.From.html
+  commentId: Overload:Ubiquity.NET.Extensions.LocalizableString.From
+  fullName: Ubiquity.NET.Extensions.LocalizableString.From
+  nameWithType: LocalizableString.From
+- uid: Ubiquity.NET.Extensions.LocalizableString.GetHashCode
+  name: GetHashCode()
+  href: extensions/api/Ubiquity.NET.Extensions.LocalizableString.GetHashCode.html#Ubiquity_NET_Extensions_LocalizableString_GetHashCode
+  commentId: M:Ubiquity.NET.Extensions.LocalizableString.GetHashCode
+  fullName: Ubiquity.NET.Extensions.LocalizableString.GetHashCode()
+  nameWithType: LocalizableString.GetHashCode()
+- uid: Ubiquity.NET.Extensions.LocalizableString.GetHashCode*
+  name: GetHashCode
+  href: extensions/api/Ubiquity.NET.Extensions.LocalizableString.GetHashCode.html
+  commentId: Overload:Ubiquity.NET.Extensions.LocalizableString.GetHashCode
+  fullName: Ubiquity.NET.Extensions.LocalizableString.GetHashCode
+  nameWithType: LocalizableString.GetHashCode
+- uid: Ubiquity.NET.Extensions.LocalizableString.GetText(System.IFormatProvider,System.Globalization.CultureInfo)
+  name: GetText(IFormatProvider?, CultureInfo?)
+  href: extensions/api/Ubiquity.NET.Extensions.LocalizableString.GetText.html#Ubiquity_NET_Extensions_LocalizableString_GetText_System_IFormatProvider_System_Globalization_CultureInfo_
+  commentId: M:Ubiquity.NET.Extensions.LocalizableString.GetText(System.IFormatProvider,System.Globalization.CultureInfo)
+  name.vb: GetText(IFormatProvider, CultureInfo)
+  fullName: Ubiquity.NET.Extensions.LocalizableString.GetText(System.IFormatProvider?, System.Globalization.CultureInfo?)
+  fullName.vb: Ubiquity.NET.Extensions.LocalizableString.GetText(System.IFormatProvider, System.Globalization.CultureInfo)
+  nameWithType: LocalizableString.GetText(IFormatProvider?, CultureInfo?)
+  nameWithType.vb: LocalizableString.GetText(IFormatProvider, CultureInfo)
+- uid: Ubiquity.NET.Extensions.LocalizableString.GetText*
+  name: GetText
+  href: extensions/api/Ubiquity.NET.Extensions.LocalizableString.GetText.html
+  commentId: Overload:Ubiquity.NET.Extensions.LocalizableString.GetText
+  fullName: Ubiquity.NET.Extensions.LocalizableString.GetText
+  nameWithType: LocalizableString.GetText
+- uid: Ubiquity.NET.Extensions.LocalizableString.ToString
+  name: ToString()
+  href: extensions/api/Ubiquity.NET.Extensions.LocalizableString.ToString.html#Ubiquity_NET_Extensions_LocalizableString_ToString
+  commentId: M:Ubiquity.NET.Extensions.LocalizableString.ToString
+  fullName: Ubiquity.NET.Extensions.LocalizableString.ToString()
+  nameWithType: LocalizableString.ToString()
+- uid: Ubiquity.NET.Extensions.LocalizableString.ToString*
+  name: ToString
+  href: extensions/api/Ubiquity.NET.Extensions.LocalizableString.ToString.html
+  commentId: Overload:Ubiquity.NET.Extensions.LocalizableString.ToString
+  fullName: Ubiquity.NET.Extensions.LocalizableString.ToString
+  nameWithType: LocalizableString.ToString
+- uid: Ubiquity.NET.Extensions.LocalizableString.op_Explicit(Ubiquity.NET.Extensions.LocalizableString)~System.String
+  name: explicit operator string?(LocalizableString)
+  href: extensions/api/Ubiquity.NET.Extensions.LocalizableString.op_Explicit.html#Ubiquity_NET_Extensions_LocalizableString_op_Explicit_Ubiquity_NET_Extensions_LocalizableString__System_String
+  commentId: M:Ubiquity.NET.Extensions.LocalizableString.op_Explicit(Ubiquity.NET.Extensions.LocalizableString)~System.String
+  name.vb: CType(LocalizableString)
+  fullName: Ubiquity.NET.Extensions.LocalizableString.explicit operator string?(Ubiquity.NET.Extensions.LocalizableString)
+  fullName.vb: Ubiquity.NET.Extensions.LocalizableString.CType(Ubiquity.NET.Extensions.LocalizableString)
+  nameWithType: LocalizableString.explicit operator string?(LocalizableString)
+  nameWithType.vb: LocalizableString.CType(LocalizableString)
+- uid: Ubiquity.NET.Extensions.LocalizableString.op_Explicit*
+  name: explicit operator
+  href: extensions/api/Ubiquity.NET.Extensions.LocalizableString.op_Explicit.html
+  commentId: Overload:Ubiquity.NET.Extensions.LocalizableString.op_Explicit
+  name.vb: CType
+  fullName: Ubiquity.NET.Extensions.LocalizableString.explicit operator
+  fullName.vb: Ubiquity.NET.Extensions.LocalizableString.CType
+  nameWithType: LocalizableString.explicit operator
+  nameWithType.vb: LocalizableString.CType
+- uid: Ubiquity.NET.Extensions.LocalizableString.op_Implicit(System.String)~Ubiquity.NET.Extensions.LocalizableString
+  name: implicit operator LocalizableString(string?)
+  href: extensions/api/Ubiquity.NET.Extensions.LocalizableString.op_Implicit.html#Ubiquity_NET_Extensions_LocalizableString_op_Implicit_System_String__Ubiquity_NET_Extensions_LocalizableString
+  commentId: M:Ubiquity.NET.Extensions.LocalizableString.op_Implicit(System.String)~Ubiquity.NET.Extensions.LocalizableString
+  name.vb: CType(String)
+  fullName: Ubiquity.NET.Extensions.LocalizableString.implicit operator Ubiquity.NET.Extensions.LocalizableString(string?)
+  fullName.vb: Ubiquity.NET.Extensions.LocalizableString.CType(String)
+  nameWithType: LocalizableString.implicit operator LocalizableString(string?)
+  nameWithType.vb: LocalizableString.CType(String)
+- uid: Ubiquity.NET.Extensions.LocalizableString.op_Implicit*
+  name: implicit operator
+  href: extensions/api/Ubiquity.NET.Extensions.LocalizableString.op_Implicit.html
+  commentId: Overload:Ubiquity.NET.Extensions.LocalizableString.op_Implicit
+  name.vb: CType
+  fullName: Ubiquity.NET.Extensions.LocalizableString.implicit operator
+  fullName.vb: Ubiquity.NET.Extensions.LocalizableString.CType
+  nameWithType: LocalizableString.implicit operator
+  nameWithType.vb: LocalizableString.CType
 - uid: Ubiquity.NET.Extensions.MustUseReturnValueAttribute
   name: MustUseReturnValueAttribute
   href: extensions/api/Ubiquity.NET.Extensions.MustUseReturnValueAttribute.html
   commentId: T:Ubiquity.NET.Extensions.MustUseReturnValueAttribute
   fullName: Ubiquity.NET.Extensions.MustUseReturnValueAttribute
   nameWithType: MustUseReturnValueAttribute
+- uid: Ubiquity.NET.Extensions.MustUseReturnValueAttribute.#ctor
+  name: MustUseReturnValueAttribute()
+  href: extensions/api/Ubiquity.NET.Extensions.MustUseReturnValueAttribute.-ctor.html#Ubiquity_NET_Extensions_MustUseReturnValueAttribute__ctor
+  commentId: M:Ubiquity.NET.Extensions.MustUseReturnValueAttribute.#ctor
+  name.vb: New()
+  fullName: Ubiquity.NET.Extensions.MustUseReturnValueAttribute.MustUseReturnValueAttribute()
+  fullName.vb: Ubiquity.NET.Extensions.MustUseReturnValueAttribute.New()
+  nameWithType: MustUseReturnValueAttribute.MustUseReturnValueAttribute()
+  nameWithType.vb: MustUseReturnValueAttribute.New()
+- uid: Ubiquity.NET.Extensions.MustUseReturnValueAttribute.#ctor*
+  name: MustUseReturnValueAttribute
+  href: extensions/api/Ubiquity.NET.Extensions.MustUseReturnValueAttribute.-ctor.html
+  commentId: Overload:Ubiquity.NET.Extensions.MustUseReturnValueAttribute.#ctor
+  name.vb: New
+  fullName: Ubiquity.NET.Extensions.MustUseReturnValueAttribute.MustUseReturnValueAttribute
+  fullName.vb: Ubiquity.NET.Extensions.MustUseReturnValueAttribute.New
+  nameWithType: MustUseReturnValueAttribute.MustUseReturnValueAttribute
+  nameWithType.vb: MustUseReturnValueAttribute.New
 - uid: Ubiquity.NET.Extensions.ProcessInfo
   name: ProcessInfo
   href: extensions/api/Ubiquity.NET.Extensions.ProcessInfo.html
@@ -3790,65 +4679,59 @@ references:
   commentId: Overload:Ubiquity.NET.Extensions.ProcessInfo.ExecutablePath
   fullName: Ubiquity.NET.Extensions.ProcessInfo.ExecutablePath
   nameWithType: ProcessInfo.ExecutablePath
-- uid: Ubiquity.NET.Extensions.Properties
-  name: Ubiquity.NET.Extensions.Properties
-  href: extensions/api/Ubiquity.NET.Extensions.Properties.html
-  commentId: N:Ubiquity.NET.Extensions.Properties
-  fullName: Ubiquity.NET.Extensions.Properties
-  nameWithType: Ubiquity.NET.Extensions.Properties
-- uid: Ubiquity.NET.Extensions.Properties.ResourceNotFoundException
+- uid: Ubiquity.NET.Extensions.ResourceNotFoundException
   name: ResourceNotFoundException
-  href: extensions/api/Ubiquity.NET.Extensions.Properties.ResourceNotFoundException.html
-  commentId: T:Ubiquity.NET.Extensions.Properties.ResourceNotFoundException
-  fullName: Ubiquity.NET.Extensions.Properties.ResourceNotFoundException
+  href: extensions/api/Ubiquity.NET.Extensions.ResourceNotFoundException.html
+  commentId: T:Ubiquity.NET.Extensions.ResourceNotFoundException
+  fullName: Ubiquity.NET.Extensions.ResourceNotFoundException
   nameWithType: ResourceNotFoundException
-- uid: Ubiquity.NET.Extensions.Properties.ResourceNotFoundException.#ctor
+- uid: Ubiquity.NET.Extensions.ResourceNotFoundException.#ctor
   name: ResourceNotFoundException()
-  href: extensions/api/Ubiquity.NET.Extensions.Properties.ResourceNotFoundException.-ctor.html#Ubiquity_NET_Extensions_Properties_ResourceNotFoundException__ctor
-  commentId: M:Ubiquity.NET.Extensions.Properties.ResourceNotFoundException.#ctor
+  href: extensions/api/Ubiquity.NET.Extensions.ResourceNotFoundException.-ctor.html#Ubiquity_NET_Extensions_ResourceNotFoundException__ctor
+  commentId: M:Ubiquity.NET.Extensions.ResourceNotFoundException.#ctor
   name.vb: New()
-  fullName: Ubiquity.NET.Extensions.Properties.ResourceNotFoundException.ResourceNotFoundException()
-  fullName.vb: Ubiquity.NET.Extensions.Properties.ResourceNotFoundException.New()
+  fullName: Ubiquity.NET.Extensions.ResourceNotFoundException.ResourceNotFoundException()
+  fullName.vb: Ubiquity.NET.Extensions.ResourceNotFoundException.New()
   nameWithType: ResourceNotFoundException.ResourceNotFoundException()
   nameWithType.vb: ResourceNotFoundException.New()
-- uid: Ubiquity.NET.Extensions.Properties.ResourceNotFoundException.#ctor(System.String)
+- uid: Ubiquity.NET.Extensions.ResourceNotFoundException.#ctor(System.String)
   name: ResourceNotFoundException(string)
-  href: extensions/api/Ubiquity.NET.Extensions.Properties.ResourceNotFoundException.-ctor.html#Ubiquity_NET_Extensions_Properties_ResourceNotFoundException__ctor_System_String_
-  commentId: M:Ubiquity.NET.Extensions.Properties.ResourceNotFoundException.#ctor(System.String)
+  href: extensions/api/Ubiquity.NET.Extensions.ResourceNotFoundException.-ctor.html#Ubiquity_NET_Extensions_ResourceNotFoundException__ctor_System_String_
+  commentId: M:Ubiquity.NET.Extensions.ResourceNotFoundException.#ctor(System.String)
   name.vb: New(String)
-  fullName: Ubiquity.NET.Extensions.Properties.ResourceNotFoundException.ResourceNotFoundException(string)
-  fullName.vb: Ubiquity.NET.Extensions.Properties.ResourceNotFoundException.New(String)
+  fullName: Ubiquity.NET.Extensions.ResourceNotFoundException.ResourceNotFoundException(string)
+  fullName.vb: Ubiquity.NET.Extensions.ResourceNotFoundException.New(String)
   nameWithType: ResourceNotFoundException.ResourceNotFoundException(string)
   nameWithType.vb: ResourceNotFoundException.New(String)
-- uid: Ubiquity.NET.Extensions.Properties.ResourceNotFoundException.#ctor(System.String,System.Exception)
+- uid: Ubiquity.NET.Extensions.ResourceNotFoundException.#ctor(System.String,System.Exception)
   name: ResourceNotFoundException(string, Exception)
-  href: extensions/api/Ubiquity.NET.Extensions.Properties.ResourceNotFoundException.-ctor.html#Ubiquity_NET_Extensions_Properties_ResourceNotFoundException__ctor_System_String_System_Exception_
-  commentId: M:Ubiquity.NET.Extensions.Properties.ResourceNotFoundException.#ctor(System.String,System.Exception)
+  href: extensions/api/Ubiquity.NET.Extensions.ResourceNotFoundException.-ctor.html#Ubiquity_NET_Extensions_ResourceNotFoundException__ctor_System_String_System_Exception_
+  commentId: M:Ubiquity.NET.Extensions.ResourceNotFoundException.#ctor(System.String,System.Exception)
   name.vb: New(String, Exception)
-  fullName: Ubiquity.NET.Extensions.Properties.ResourceNotFoundException.ResourceNotFoundException(string, System.Exception)
-  fullName.vb: Ubiquity.NET.Extensions.Properties.ResourceNotFoundException.New(String, System.Exception)
+  fullName: Ubiquity.NET.Extensions.ResourceNotFoundException.ResourceNotFoundException(string, System.Exception)
+  fullName.vb: Ubiquity.NET.Extensions.ResourceNotFoundException.New(String, System.Exception)
   nameWithType: ResourceNotFoundException.ResourceNotFoundException(string, Exception)
   nameWithType.vb: ResourceNotFoundException.New(String, Exception)
-- uid: Ubiquity.NET.Extensions.Properties.ResourceNotFoundException.#ctor*
+- uid: Ubiquity.NET.Extensions.ResourceNotFoundException.#ctor*
   name: ResourceNotFoundException
-  href: extensions/api/Ubiquity.NET.Extensions.Properties.ResourceNotFoundException.-ctor.html
-  commentId: Overload:Ubiquity.NET.Extensions.Properties.ResourceNotFoundException.#ctor
+  href: extensions/api/Ubiquity.NET.Extensions.ResourceNotFoundException.-ctor.html
+  commentId: Overload:Ubiquity.NET.Extensions.ResourceNotFoundException.#ctor
   name.vb: New
-  fullName: Ubiquity.NET.Extensions.Properties.ResourceNotFoundException.ResourceNotFoundException
-  fullName.vb: Ubiquity.NET.Extensions.Properties.ResourceNotFoundException.New
+  fullName: Ubiquity.NET.Extensions.ResourceNotFoundException.ResourceNotFoundException
+  fullName.vb: Ubiquity.NET.Extensions.ResourceNotFoundException.New
   nameWithType: ResourceNotFoundException.ResourceNotFoundException
   nameWithType.vb: ResourceNotFoundException.New
-- uid: Ubiquity.NET.Extensions.Properties.ResourceNotFoundException.ResourceName
+- uid: Ubiquity.NET.Extensions.ResourceNotFoundException.ResourceName
   name: ResourceName
-  href: extensions/api/Ubiquity.NET.Extensions.Properties.ResourceNotFoundException.ResourceName.html#Ubiquity_NET_Extensions_Properties_ResourceNotFoundException_ResourceName
-  commentId: P:Ubiquity.NET.Extensions.Properties.ResourceNotFoundException.ResourceName
-  fullName: Ubiquity.NET.Extensions.Properties.ResourceNotFoundException.ResourceName
+  href: extensions/api/Ubiquity.NET.Extensions.ResourceNotFoundException.ResourceName.html#Ubiquity_NET_Extensions_ResourceNotFoundException_ResourceName
+  commentId: P:Ubiquity.NET.Extensions.ResourceNotFoundException.ResourceName
+  fullName: Ubiquity.NET.Extensions.ResourceNotFoundException.ResourceName
   nameWithType: ResourceNotFoundException.ResourceName
-- uid: Ubiquity.NET.Extensions.Properties.ResourceNotFoundException.ResourceName*
+- uid: Ubiquity.NET.Extensions.ResourceNotFoundException.ResourceName*
   name: ResourceName
-  href: extensions/api/Ubiquity.NET.Extensions.Properties.ResourceNotFoundException.ResourceName.html
-  commentId: Overload:Ubiquity.NET.Extensions.Properties.ResourceNotFoundException.ResourceName
-  fullName: Ubiquity.NET.Extensions.Properties.ResourceNotFoundException.ResourceName
+  href: extensions/api/Ubiquity.NET.Extensions.ResourceNotFoundException.ResourceName.html
+  commentId: Overload:Ubiquity.NET.Extensions.ResourceNotFoundException.ResourceName
+  fullName: Ubiquity.NET.Extensions.ResourceNotFoundException.ResourceName
   nameWithType: ResourceNotFoundException.ResourceName
 - uid: Ubiquity.NET.Extensions.SourcePosition
   name: SourcePosition
@@ -3886,6 +4769,39 @@ references:
   commentId: Overload:Ubiquity.NET.Extensions.SourcePosition.Column
   fullName: Ubiquity.NET.Extensions.SourcePosition.Column
   nameWithType: SourcePosition.Column
+- uid: Ubiquity.NET.Extensions.SourcePosition.Equals(System.Object)
+  name: Equals(object)
+  href: extensions/api/Ubiquity.NET.Extensions.SourcePosition.Equals.html#Ubiquity_NET_Extensions_SourcePosition_Equals_System_Object_
+  commentId: M:Ubiquity.NET.Extensions.SourcePosition.Equals(System.Object)
+  name.vb: Equals(Object)
+  fullName: Ubiquity.NET.Extensions.SourcePosition.Equals(object)
+  fullName.vb: Ubiquity.NET.Extensions.SourcePosition.Equals(Object)
+  nameWithType: SourcePosition.Equals(object)
+  nameWithType.vb: SourcePosition.Equals(Object)
+- uid: Ubiquity.NET.Extensions.SourcePosition.Equals(Ubiquity.NET.Extensions.SourcePosition)
+  name: Equals(SourcePosition)
+  href: extensions/api/Ubiquity.NET.Extensions.SourcePosition.Equals.html#Ubiquity_NET_Extensions_SourcePosition_Equals_Ubiquity_NET_Extensions_SourcePosition_
+  commentId: M:Ubiquity.NET.Extensions.SourcePosition.Equals(Ubiquity.NET.Extensions.SourcePosition)
+  fullName: Ubiquity.NET.Extensions.SourcePosition.Equals(Ubiquity.NET.Extensions.SourcePosition)
+  nameWithType: SourcePosition.Equals(SourcePosition)
+- uid: Ubiquity.NET.Extensions.SourcePosition.Equals*
+  name: Equals
+  href: extensions/api/Ubiquity.NET.Extensions.SourcePosition.Equals.html
+  commentId: Overload:Ubiquity.NET.Extensions.SourcePosition.Equals
+  fullName: Ubiquity.NET.Extensions.SourcePosition.Equals
+  nameWithType: SourcePosition.Equals
+- uid: Ubiquity.NET.Extensions.SourcePosition.GetHashCode
+  name: GetHashCode()
+  href: extensions/api/Ubiquity.NET.Extensions.SourcePosition.GetHashCode.html#Ubiquity_NET_Extensions_SourcePosition_GetHashCode
+  commentId: M:Ubiquity.NET.Extensions.SourcePosition.GetHashCode
+  fullName: Ubiquity.NET.Extensions.SourcePosition.GetHashCode()
+  nameWithType: SourcePosition.GetHashCode()
+- uid: Ubiquity.NET.Extensions.SourcePosition.GetHashCode*
+  name: GetHashCode
+  href: extensions/api/Ubiquity.NET.Extensions.SourcePosition.GetHashCode.html
+  commentId: Overload:Ubiquity.NET.Extensions.SourcePosition.GetHashCode
+  fullName: Ubiquity.NET.Extensions.SourcePosition.GetHashCode
+  nameWithType: SourcePosition.GetHashCode
 - uid: Ubiquity.NET.Extensions.SourcePosition.Index
   name: Index
   href: extensions/api/Ubiquity.NET.Extensions.SourcePosition.Index.html#Ubiquity_NET_Extensions_SourcePosition_Index
@@ -3922,6 +4838,42 @@ references:
   commentId: Overload:Ubiquity.NET.Extensions.SourcePosition.ToString
   fullName: Ubiquity.NET.Extensions.SourcePosition.ToString
   nameWithType: SourcePosition.ToString
+- uid: Ubiquity.NET.Extensions.SourcePosition.op_Equality(Ubiquity.NET.Extensions.SourcePosition,Ubiquity.NET.Extensions.SourcePosition)
+  name: operator ==(SourcePosition, SourcePosition)
+  href: extensions/api/Ubiquity.NET.Extensions.SourcePosition.op_Equality.html#Ubiquity_NET_Extensions_SourcePosition_op_Equality_Ubiquity_NET_Extensions_SourcePosition_Ubiquity_NET_Extensions_SourcePosition_
+  commentId: M:Ubiquity.NET.Extensions.SourcePosition.op_Equality(Ubiquity.NET.Extensions.SourcePosition,Ubiquity.NET.Extensions.SourcePosition)
+  name.vb: =(SourcePosition, SourcePosition)
+  fullName: Ubiquity.NET.Extensions.SourcePosition.operator ==(Ubiquity.NET.Extensions.SourcePosition, Ubiquity.NET.Extensions.SourcePosition)
+  fullName.vb: Ubiquity.NET.Extensions.SourcePosition.=(Ubiquity.NET.Extensions.SourcePosition, Ubiquity.NET.Extensions.SourcePosition)
+  nameWithType: SourcePosition.operator ==(SourcePosition, SourcePosition)
+  nameWithType.vb: SourcePosition.=(SourcePosition, SourcePosition)
+- uid: Ubiquity.NET.Extensions.SourcePosition.op_Equality*
+  name: operator ==
+  href: extensions/api/Ubiquity.NET.Extensions.SourcePosition.op_Equality.html
+  commentId: Overload:Ubiquity.NET.Extensions.SourcePosition.op_Equality
+  name.vb: =
+  fullName: Ubiquity.NET.Extensions.SourcePosition.operator ==
+  fullName.vb: Ubiquity.NET.Extensions.SourcePosition.=
+  nameWithType: SourcePosition.operator ==
+  nameWithType.vb: SourcePosition.=
+- uid: Ubiquity.NET.Extensions.SourcePosition.op_Inequality(Ubiquity.NET.Extensions.SourcePosition,Ubiquity.NET.Extensions.SourcePosition)
+  name: operator !=(SourcePosition, SourcePosition)
+  href: extensions/api/Ubiquity.NET.Extensions.SourcePosition.op_Inequality.html#Ubiquity_NET_Extensions_SourcePosition_op_Inequality_Ubiquity_NET_Extensions_SourcePosition_Ubiquity_NET_Extensions_SourcePosition_
+  commentId: M:Ubiquity.NET.Extensions.SourcePosition.op_Inequality(Ubiquity.NET.Extensions.SourcePosition,Ubiquity.NET.Extensions.SourcePosition)
+  name.vb: <>(SourcePosition, SourcePosition)
+  fullName: Ubiquity.NET.Extensions.SourcePosition.operator !=(Ubiquity.NET.Extensions.SourcePosition, Ubiquity.NET.Extensions.SourcePosition)
+  fullName.vb: Ubiquity.NET.Extensions.SourcePosition.<>(Ubiquity.NET.Extensions.SourcePosition, Ubiquity.NET.Extensions.SourcePosition)
+  nameWithType: SourcePosition.operator !=(SourcePosition, SourcePosition)
+  nameWithType.vb: SourcePosition.<>(SourcePosition, SourcePosition)
+- uid: Ubiquity.NET.Extensions.SourcePosition.op_Inequality*
+  name: operator !=
+  href: extensions/api/Ubiquity.NET.Extensions.SourcePosition.op_Inequality.html
+  commentId: Overload:Ubiquity.NET.Extensions.SourcePosition.op_Inequality
+  name.vb: <>
+  fullName: Ubiquity.NET.Extensions.SourcePosition.operator !=
+  fullName.vb: Ubiquity.NET.Extensions.SourcePosition.<>
+  nameWithType: SourcePosition.operator !=
+  nameWithType.vb: SourcePosition.<>
 - uid: Ubiquity.NET.Extensions.SourceRange
   name: SourceRange
   href: extensions/api/Ubiquity.NET.Extensions.SourceRange.html
@@ -3970,6 +4922,39 @@ references:
   commentId: Overload:Ubiquity.NET.Extensions.SourceRange.End
   fullName: Ubiquity.NET.Extensions.SourceRange.End
   nameWithType: SourceRange.End
+- uid: Ubiquity.NET.Extensions.SourceRange.Equals(System.Object)
+  name: Equals(object)
+  href: extensions/api/Ubiquity.NET.Extensions.SourceRange.Equals.html#Ubiquity_NET_Extensions_SourceRange_Equals_System_Object_
+  commentId: M:Ubiquity.NET.Extensions.SourceRange.Equals(System.Object)
+  name.vb: Equals(Object)
+  fullName: Ubiquity.NET.Extensions.SourceRange.Equals(object)
+  fullName.vb: Ubiquity.NET.Extensions.SourceRange.Equals(Object)
+  nameWithType: SourceRange.Equals(object)
+  nameWithType.vb: SourceRange.Equals(Object)
+- uid: Ubiquity.NET.Extensions.SourceRange.Equals(Ubiquity.NET.Extensions.SourceRange)
+  name: Equals(SourceRange)
+  href: extensions/api/Ubiquity.NET.Extensions.SourceRange.Equals.html#Ubiquity_NET_Extensions_SourceRange_Equals_Ubiquity_NET_Extensions_SourceRange_
+  commentId: M:Ubiquity.NET.Extensions.SourceRange.Equals(Ubiquity.NET.Extensions.SourceRange)
+  fullName: Ubiquity.NET.Extensions.SourceRange.Equals(Ubiquity.NET.Extensions.SourceRange)
+  nameWithType: SourceRange.Equals(SourceRange)
+- uid: Ubiquity.NET.Extensions.SourceRange.Equals*
+  name: Equals
+  href: extensions/api/Ubiquity.NET.Extensions.SourceRange.Equals.html
+  commentId: Overload:Ubiquity.NET.Extensions.SourceRange.Equals
+  fullName: Ubiquity.NET.Extensions.SourceRange.Equals
+  nameWithType: SourceRange.Equals
+- uid: Ubiquity.NET.Extensions.SourceRange.GetHashCode
+  name: GetHashCode()
+  href: extensions/api/Ubiquity.NET.Extensions.SourceRange.GetHashCode.html#Ubiquity_NET_Extensions_SourceRange_GetHashCode
+  commentId: M:Ubiquity.NET.Extensions.SourceRange.GetHashCode
+  fullName: Ubiquity.NET.Extensions.SourceRange.GetHashCode()
+  nameWithType: SourceRange.GetHashCode()
+- uid: Ubiquity.NET.Extensions.SourceRange.GetHashCode*
+  name: GetHashCode
+  href: extensions/api/Ubiquity.NET.Extensions.SourceRange.GetHashCode.html
+  commentId: Overload:Ubiquity.NET.Extensions.SourceRange.GetHashCode
+  fullName: Ubiquity.NET.Extensions.SourceRange.GetHashCode
+  nameWithType: SourceRange.GetHashCode
 - uid: Ubiquity.NET.Extensions.SourceRange.Length
   name: Length
   href: extensions/api/Ubiquity.NET.Extensions.SourceRange.Length.html#Ubiquity_NET_Extensions_SourceRange_Length
@@ -4030,6 +5015,24 @@ references:
   commentId: Overload:Ubiquity.NET.Extensions.SourceRange.ToString
   fullName: Ubiquity.NET.Extensions.SourceRange.ToString
   nameWithType: SourceRange.ToString
+- uid: Ubiquity.NET.Extensions.SourceRange.op_Equality(Ubiquity.NET.Extensions.SourceRange,Ubiquity.NET.Extensions.SourceRange)
+  name: operator ==(SourceRange, SourceRange)
+  href: extensions/api/Ubiquity.NET.Extensions.SourceRange.op_Equality.html#Ubiquity_NET_Extensions_SourceRange_op_Equality_Ubiquity_NET_Extensions_SourceRange_Ubiquity_NET_Extensions_SourceRange_
+  commentId: M:Ubiquity.NET.Extensions.SourceRange.op_Equality(Ubiquity.NET.Extensions.SourceRange,Ubiquity.NET.Extensions.SourceRange)
+  name.vb: =(SourceRange, SourceRange)
+  fullName: Ubiquity.NET.Extensions.SourceRange.operator ==(Ubiquity.NET.Extensions.SourceRange, Ubiquity.NET.Extensions.SourceRange)
+  fullName.vb: Ubiquity.NET.Extensions.SourceRange.=(Ubiquity.NET.Extensions.SourceRange, Ubiquity.NET.Extensions.SourceRange)
+  nameWithType: SourceRange.operator ==(SourceRange, SourceRange)
+  nameWithType.vb: SourceRange.=(SourceRange, SourceRange)
+- uid: Ubiquity.NET.Extensions.SourceRange.op_Equality*
+  name: operator ==
+  href: extensions/api/Ubiquity.NET.Extensions.SourceRange.op_Equality.html
+  commentId: Overload:Ubiquity.NET.Extensions.SourceRange.op_Equality
+  name.vb: =
+  fullName: Ubiquity.NET.Extensions.SourceRange.operator ==
+  fullName.vb: Ubiquity.NET.Extensions.SourceRange.=
+  nameWithType: SourceRange.operator ==
+  nameWithType.vb: SourceRange.=
 - uid: Ubiquity.NET.Extensions.SourceRange.op_Implicit(Ubiquity.NET.Extensions.SourcePosition)~Ubiquity.NET.Extensions.SourceRange
   name: implicit operator SourceRange(SourcePosition)
   href: extensions/api/Ubiquity.NET.Extensions.SourceRange.op_Implicit.html#Ubiquity_NET_Extensions_SourceRange_op_Implicit_Ubiquity_NET_Extensions_SourcePosition__Ubiquity_NET_Extensions_SourceRange
@@ -4048,6 +5051,45 @@ references:
   fullName.vb: Ubiquity.NET.Extensions.SourceRange.CType
   nameWithType: SourceRange.implicit operator
   nameWithType.vb: SourceRange.CType
+- uid: Ubiquity.NET.Extensions.SourceRange.op_Inequality(Ubiquity.NET.Extensions.SourceRange,Ubiquity.NET.Extensions.SourceRange)
+  name: operator !=(SourceRange, SourceRange)
+  href: extensions/api/Ubiquity.NET.Extensions.SourceRange.op_Inequality.html#Ubiquity_NET_Extensions_SourceRange_op_Inequality_Ubiquity_NET_Extensions_SourceRange_Ubiquity_NET_Extensions_SourceRange_
+  commentId: M:Ubiquity.NET.Extensions.SourceRange.op_Inequality(Ubiquity.NET.Extensions.SourceRange,Ubiquity.NET.Extensions.SourceRange)
+  name.vb: <>(SourceRange, SourceRange)
+  fullName: Ubiquity.NET.Extensions.SourceRange.operator !=(Ubiquity.NET.Extensions.SourceRange, Ubiquity.NET.Extensions.SourceRange)
+  fullName.vb: Ubiquity.NET.Extensions.SourceRange.<>(Ubiquity.NET.Extensions.SourceRange, Ubiquity.NET.Extensions.SourceRange)
+  nameWithType: SourceRange.operator !=(SourceRange, SourceRange)
+  nameWithType.vb: SourceRange.<>(SourceRange, SourceRange)
+- uid: Ubiquity.NET.Extensions.SourceRange.op_Inequality*
+  name: operator !=
+  href: extensions/api/Ubiquity.NET.Extensions.SourceRange.op_Inequality.html
+  commentId: Overload:Ubiquity.NET.Extensions.SourceRange.op_Inequality
+  name.vb: <>
+  fullName: Ubiquity.NET.Extensions.SourceRange.operator !=
+  fullName.vb: Ubiquity.NET.Extensions.SourceRange.<>
+  nameWithType: SourceRange.operator !=
+  nameWithType.vb: SourceRange.<>
+- uid: Ubiquity.NET.Extensions.StringExtensions
+  name: StringExtensions
+  href: extensions/api/Ubiquity.NET.Extensions.StringExtensions.html
+  commentId: T:Ubiquity.NET.Extensions.StringExtensions
+  fullName: Ubiquity.NET.Extensions.StringExtensions
+  nameWithType: StringExtensions
+- uid: Ubiquity.NET.Extensions.StringExtensions.HasLineEndings(System.String,System.Boolean)
+  name: HasLineEndings(string, bool)
+  href: extensions/api/Ubiquity.NET.Extensions.StringExtensions.HasLineEndings.html#Ubiquity_NET_Extensions_StringExtensions_HasLineEndings_System_String_System_Boolean_
+  commentId: M:Ubiquity.NET.Extensions.StringExtensions.HasLineEndings(System.String,System.Boolean)
+  name.vb: HasLineEndings(String, Boolean)
+  fullName: Ubiquity.NET.Extensions.StringExtensions.HasLineEndings(string, bool)
+  fullName.vb: Ubiquity.NET.Extensions.StringExtensions.HasLineEndings(String, Boolean)
+  nameWithType: StringExtensions.HasLineEndings(string, bool)
+  nameWithType.vb: StringExtensions.HasLineEndings(String, Boolean)
+- uid: Ubiquity.NET.Extensions.StringExtensions.HasLineEndings*
+  name: HasLineEndings
+  href: extensions/api/Ubiquity.NET.Extensions.StringExtensions.HasLineEndings.html
+  commentId: Overload:Ubiquity.NET.Extensions.StringExtensions.HasLineEndings
+  fullName: Ubiquity.NET.Extensions.StringExtensions.HasLineEndings
+  nameWithType: StringExtensions.HasLineEndings
 - uid: Ubiquity.NET.Extensions.StringNormalizer
   name: StringNormalizer
   href: extensions/api/Ubiquity.NET.Extensions.StringNormalizer.html
@@ -4610,14 +5652,23 @@ references:
   fullName: Ubiquity.NET.InteropHelpers.LazyEncodedString.IsNullOrWhiteSpace
   nameWithType: LazyEncodedString.IsNullOrWhiteSpace
 - uid: Ubiquity.NET.InteropHelpers.LazyEncodedString.Join(System.Char,System.Collections.Generic.IEnumerable{Ubiquity.NET.InteropHelpers.LazyEncodedString})
-  name: Join(char, params IEnumerable<LazyEncodedString>)
+  name: Join(char, IEnumerable<LazyEncodedString>)
   href: interop-helpers/api/Ubiquity.NET.InteropHelpers.LazyEncodedString.Join.html#Ubiquity_NET_InteropHelpers_LazyEncodedString_Join_System_Char_System_Collections_Generic_IEnumerable_Ubiquity_NET_InteropHelpers_LazyEncodedString__
   commentId: M:Ubiquity.NET.InteropHelpers.LazyEncodedString.Join(System.Char,System.Collections.Generic.IEnumerable{Ubiquity.NET.InteropHelpers.LazyEncodedString})
   name.vb: Join(Char, IEnumerable(Of LazyEncodedString))
-  fullName: Ubiquity.NET.InteropHelpers.LazyEncodedString.Join(char, params System.Collections.Generic.IEnumerable<Ubiquity.NET.InteropHelpers.LazyEncodedString>)
+  fullName: Ubiquity.NET.InteropHelpers.LazyEncodedString.Join(char, System.Collections.Generic.IEnumerable<Ubiquity.NET.InteropHelpers.LazyEncodedString>)
   fullName.vb: Ubiquity.NET.InteropHelpers.LazyEncodedString.Join(Char, System.Collections.Generic.IEnumerable(Of Ubiquity.NET.InteropHelpers.LazyEncodedString))
-  nameWithType: LazyEncodedString.Join(char, params IEnumerable<LazyEncodedString>)
+  nameWithType: LazyEncodedString.Join(char, IEnumerable<LazyEncodedString>)
   nameWithType.vb: LazyEncodedString.Join(Char, IEnumerable(Of LazyEncodedString))
+- uid: Ubiquity.NET.InteropHelpers.LazyEncodedString.Join(System.Char,Ubiquity.NET.InteropHelpers.LazyEncodedString[])
+  name: Join(char, params LazyEncodedString[])
+  href: interop-helpers/api/Ubiquity.NET.InteropHelpers.LazyEncodedString.Join.html#Ubiquity_NET_InteropHelpers_LazyEncodedString_Join_System_Char_Ubiquity_NET_InteropHelpers_LazyEncodedString___
+  commentId: M:Ubiquity.NET.InteropHelpers.LazyEncodedString.Join(System.Char,Ubiquity.NET.InteropHelpers.LazyEncodedString[])
+  name.vb: Join(Char, ParamArray LazyEncodedString())
+  fullName: Ubiquity.NET.InteropHelpers.LazyEncodedString.Join(char, params Ubiquity.NET.InteropHelpers.LazyEncodedString[])
+  fullName.vb: Ubiquity.NET.InteropHelpers.LazyEncodedString.Join(Char, ParamArray Ubiquity.NET.InteropHelpers.LazyEncodedString())
+  nameWithType: LazyEncodedString.Join(char, params LazyEncodedString[])
+  nameWithType.vb: LazyEncodedString.Join(Char, ParamArray LazyEncodedString())
 - uid: Ubiquity.NET.InteropHelpers.LazyEncodedString.Join*
   name: Join
   href: interop-helpers/api/Ubiquity.NET.InteropHelpers.LazyEncodedString.Join.html
@@ -4625,14 +5676,23 @@ references:
   fullName: Ubiquity.NET.InteropHelpers.LazyEncodedString.Join
   nameWithType: LazyEncodedString.Join
 - uid: Ubiquity.NET.InteropHelpers.LazyEncodedString.Join``1(System.Char,System.Collections.Generic.IEnumerable{``0})
-  name: Join<T>(char, params IEnumerable<T>)
+  name: Join<T>(char, IEnumerable<T>)
   href: interop-helpers/api/Ubiquity.NET.InteropHelpers.LazyEncodedString.Join.html#Ubiquity_NET_InteropHelpers_LazyEncodedString_Join__1_System_Char_System_Collections_Generic_IEnumerable___0__
   commentId: M:Ubiquity.NET.InteropHelpers.LazyEncodedString.Join``1(System.Char,System.Collections.Generic.IEnumerable{``0})
   name.vb: Join(Of T)(Char, IEnumerable(Of T))
-  fullName: Ubiquity.NET.InteropHelpers.LazyEncodedString.Join<T>(char, params System.Collections.Generic.IEnumerable<T>)
+  fullName: Ubiquity.NET.InteropHelpers.LazyEncodedString.Join<T>(char, System.Collections.Generic.IEnumerable<T>)
   fullName.vb: Ubiquity.NET.InteropHelpers.LazyEncodedString.Join(Of T)(Char, System.Collections.Generic.IEnumerable(Of T))
-  nameWithType: LazyEncodedString.Join<T>(char, params IEnumerable<T>)
+  nameWithType: LazyEncodedString.Join<T>(char, IEnumerable<T>)
   nameWithType.vb: LazyEncodedString.Join(Of T)(Char, IEnumerable(Of T))
+- uid: Ubiquity.NET.InteropHelpers.LazyEncodedString.Join``1(System.Char,``0[])
+  name: Join<T>(char, params T[])
+  href: interop-helpers/api/Ubiquity.NET.InteropHelpers.LazyEncodedString.Join.html#Ubiquity_NET_InteropHelpers_LazyEncodedString_Join__1_System_Char___0___
+  commentId: M:Ubiquity.NET.InteropHelpers.LazyEncodedString.Join``1(System.Char,``0[])
+  name.vb: Join(Of T)(Char, ParamArray T())
+  fullName: Ubiquity.NET.InteropHelpers.LazyEncodedString.Join<T>(char, params T[])
+  fullName.vb: Ubiquity.NET.InteropHelpers.LazyEncodedString.Join(Of T)(Char, ParamArray T())
+  nameWithType: LazyEncodedString.Join<T>(char, params T[])
+  nameWithType.vb: LazyEncodedString.Join(Of T)(Char, ParamArray T())
 - uid: Ubiquity.NET.InteropHelpers.LazyEncodedString.NativeLength
   name: NativeLength
   href: interop-helpers/api/Ubiquity.NET.InteropHelpers.LazyEncodedString.NativeLength.html#Ubiquity_NET_InteropHelpers_LazyEncodedString_NativeLength
@@ -5056,12 +6116,140 @@ references:
   fullName.vb: Ubiquity.NET.InteropHelpers.RefHandleMarshaller.ReturningOp(Of TRetVal)
   nameWithType: RefHandleMarshaller.ReturningOp<TRetVal>
   nameWithType.vb: RefHandleMarshaller.ReturningOp(Of TRetVal)
+- uid: Ubiquity.NET.InteropHelpers.RefHandleMarshaller.ReturningOp`1.#ctor(System.Object,System.IntPtr)
+  name: ReturningOp(object, nint)
+  href: interop-helpers/api/Ubiquity.NET.InteropHelpers.RefHandleMarshaller.ReturningOp-1.-ctor.html#Ubiquity_NET_InteropHelpers_RefHandleMarshaller_ReturningOp_1__ctor_System_Object_System_IntPtr_
+  commentId: M:Ubiquity.NET.InteropHelpers.RefHandleMarshaller.ReturningOp`1.#ctor(System.Object,System.IntPtr)
+  name.vb: New(Object, IntPtr)
+  fullName: Ubiquity.NET.InteropHelpers.RefHandleMarshaller.ReturningOp<TRetVal>.ReturningOp(object, nint)
+  fullName.vb: Ubiquity.NET.InteropHelpers.RefHandleMarshaller.ReturningOp(Of TRetVal).New(Object, System.IntPtr)
+  nameWithType: RefHandleMarshaller.ReturningOp<TRetVal>.ReturningOp(object, nint)
+  nameWithType.vb: RefHandleMarshaller.ReturningOp(Of TRetVal).New(Object, IntPtr)
+- uid: Ubiquity.NET.InteropHelpers.RefHandleMarshaller.ReturningOp`1.#ctor*
+  name: ReturningOp
+  href: interop-helpers/api/Ubiquity.NET.InteropHelpers.RefHandleMarshaller.ReturningOp-1.-ctor.html
+  commentId: Overload:Ubiquity.NET.InteropHelpers.RefHandleMarshaller.ReturningOp`1.#ctor
+  name.vb: New
+  fullName: Ubiquity.NET.InteropHelpers.RefHandleMarshaller.ReturningOp<TRetVal>.ReturningOp
+  fullName.vb: Ubiquity.NET.InteropHelpers.RefHandleMarshaller.ReturningOp(Of TRetVal).New
+  nameWithType: RefHandleMarshaller.ReturningOp<TRetVal>.ReturningOp
+  nameWithType.vb: RefHandleMarshaller.ReturningOp(Of TRetVal).New
+- uid: Ubiquity.NET.InteropHelpers.RefHandleMarshaller.ReturningOp`1.BeginInvoke(System.IntPtr*,System.Int32,System.AsyncCallback,System.Object)
+  name: BeginInvoke(nint*, int, AsyncCallback, object)
+  href: interop-helpers/api/Ubiquity.NET.InteropHelpers.RefHandleMarshaller.ReturningOp-1.BeginInvoke.html#Ubiquity_NET_InteropHelpers_RefHandleMarshaller_ReturningOp_1_BeginInvoke_System_IntPtr__System_Int32_System_AsyncCallback_System_Object_
+  commentId: M:Ubiquity.NET.InteropHelpers.RefHandleMarshaller.ReturningOp`1.BeginInvoke(System.IntPtr*,System.Int32,System.AsyncCallback,System.Object)
+  name.vb: BeginInvoke(IntPtr*, Integer, AsyncCallback, Object)
+  fullName: Ubiquity.NET.InteropHelpers.RefHandleMarshaller.ReturningOp<TRetVal>.BeginInvoke(nint*, int, System.AsyncCallback, object)
+  fullName.vb: Ubiquity.NET.InteropHelpers.RefHandleMarshaller.ReturningOp(Of TRetVal).BeginInvoke(System.IntPtr*, Integer, System.AsyncCallback, Object)
+  nameWithType: RefHandleMarshaller.ReturningOp<TRetVal>.BeginInvoke(nint*, int, AsyncCallback, object)
+  nameWithType.vb: RefHandleMarshaller.ReturningOp(Of TRetVal).BeginInvoke(IntPtr*, Integer, AsyncCallback, Object)
+- uid: Ubiquity.NET.InteropHelpers.RefHandleMarshaller.ReturningOp`1.BeginInvoke*
+  name: BeginInvoke
+  href: interop-helpers/api/Ubiquity.NET.InteropHelpers.RefHandleMarshaller.ReturningOp-1.BeginInvoke.html
+  commentId: Overload:Ubiquity.NET.InteropHelpers.RefHandleMarshaller.ReturningOp`1.BeginInvoke
+  fullName: Ubiquity.NET.InteropHelpers.RefHandleMarshaller.ReturningOp<TRetVal>.BeginInvoke
+  fullName.vb: Ubiquity.NET.InteropHelpers.RefHandleMarshaller.ReturningOp(Of TRetVal).BeginInvoke
+  nameWithType: RefHandleMarshaller.ReturningOp<TRetVal>.BeginInvoke
+  nameWithType.vb: RefHandleMarshaller.ReturningOp(Of TRetVal).BeginInvoke
+- uid: Ubiquity.NET.InteropHelpers.RefHandleMarshaller.ReturningOp`1.EndInvoke(System.IAsyncResult)
+  name: EndInvoke(IAsyncResult)
+  href: interop-helpers/api/Ubiquity.NET.InteropHelpers.RefHandleMarshaller.ReturningOp-1.EndInvoke.html#Ubiquity_NET_InteropHelpers_RefHandleMarshaller_ReturningOp_1_EndInvoke_System_IAsyncResult_
+  commentId: M:Ubiquity.NET.InteropHelpers.RefHandleMarshaller.ReturningOp`1.EndInvoke(System.IAsyncResult)
+  fullName: Ubiquity.NET.InteropHelpers.RefHandleMarshaller.ReturningOp<TRetVal>.EndInvoke(System.IAsyncResult)
+  fullName.vb: Ubiquity.NET.InteropHelpers.RefHandleMarshaller.ReturningOp(Of TRetVal).EndInvoke(System.IAsyncResult)
+  nameWithType: RefHandleMarshaller.ReturningOp<TRetVal>.EndInvoke(IAsyncResult)
+  nameWithType.vb: RefHandleMarshaller.ReturningOp(Of TRetVal).EndInvoke(IAsyncResult)
+- uid: Ubiquity.NET.InteropHelpers.RefHandleMarshaller.ReturningOp`1.EndInvoke*
+  name: EndInvoke
+  href: interop-helpers/api/Ubiquity.NET.InteropHelpers.RefHandleMarshaller.ReturningOp-1.EndInvoke.html
+  commentId: Overload:Ubiquity.NET.InteropHelpers.RefHandleMarshaller.ReturningOp`1.EndInvoke
+  fullName: Ubiquity.NET.InteropHelpers.RefHandleMarshaller.ReturningOp<TRetVal>.EndInvoke
+  fullName.vb: Ubiquity.NET.InteropHelpers.RefHandleMarshaller.ReturningOp(Of TRetVal).EndInvoke
+  nameWithType: RefHandleMarshaller.ReturningOp<TRetVal>.EndInvoke
+  nameWithType.vb: RefHandleMarshaller.ReturningOp(Of TRetVal).EndInvoke
+- uid: Ubiquity.NET.InteropHelpers.RefHandleMarshaller.ReturningOp`1.Invoke(System.IntPtr*,System.Int32)
+  name: Invoke(nint*, int)
+  href: interop-helpers/api/Ubiquity.NET.InteropHelpers.RefHandleMarshaller.ReturningOp-1.Invoke.html#Ubiquity_NET_InteropHelpers_RefHandleMarshaller_ReturningOp_1_Invoke_System_IntPtr__System_Int32_
+  commentId: M:Ubiquity.NET.InteropHelpers.RefHandleMarshaller.ReturningOp`1.Invoke(System.IntPtr*,System.Int32)
+  name.vb: Invoke(IntPtr*, Integer)
+  fullName: Ubiquity.NET.InteropHelpers.RefHandleMarshaller.ReturningOp<TRetVal>.Invoke(nint*, int)
+  fullName.vb: Ubiquity.NET.InteropHelpers.RefHandleMarshaller.ReturningOp(Of TRetVal).Invoke(System.IntPtr*, Integer)
+  nameWithType: RefHandleMarshaller.ReturningOp<TRetVal>.Invoke(nint*, int)
+  nameWithType.vb: RefHandleMarshaller.ReturningOp(Of TRetVal).Invoke(IntPtr*, Integer)
+- uid: Ubiquity.NET.InteropHelpers.RefHandleMarshaller.ReturningOp`1.Invoke*
+  name: Invoke
+  href: interop-helpers/api/Ubiquity.NET.InteropHelpers.RefHandleMarshaller.ReturningOp-1.Invoke.html
+  commentId: Overload:Ubiquity.NET.InteropHelpers.RefHandleMarshaller.ReturningOp`1.Invoke
+  fullName: Ubiquity.NET.InteropHelpers.RefHandleMarshaller.ReturningOp<TRetVal>.Invoke
+  fullName.vb: Ubiquity.NET.InteropHelpers.RefHandleMarshaller.ReturningOp(Of TRetVal).Invoke
+  nameWithType: RefHandleMarshaller.ReturningOp<TRetVal>.Invoke
+  nameWithType.vb: RefHandleMarshaller.ReturningOp(Of TRetVal).Invoke
 - uid: Ubiquity.NET.InteropHelpers.RefHandleMarshaller.VoidOp
   name: RefHandleMarshaller.VoidOp
   href: interop-helpers/api/Ubiquity.NET.InteropHelpers.RefHandleMarshaller.VoidOp.html
   commentId: T:Ubiquity.NET.InteropHelpers.RefHandleMarshaller.VoidOp
   fullName: Ubiquity.NET.InteropHelpers.RefHandleMarshaller.VoidOp
   nameWithType: RefHandleMarshaller.VoidOp
+- uid: Ubiquity.NET.InteropHelpers.RefHandleMarshaller.VoidOp.#ctor(System.Object,System.IntPtr)
+  name: VoidOp(object, nint)
+  href: interop-helpers/api/Ubiquity.NET.InteropHelpers.RefHandleMarshaller.VoidOp.-ctor.html#Ubiquity_NET_InteropHelpers_RefHandleMarshaller_VoidOp__ctor_System_Object_System_IntPtr_
+  commentId: M:Ubiquity.NET.InteropHelpers.RefHandleMarshaller.VoidOp.#ctor(System.Object,System.IntPtr)
+  name.vb: New(Object, IntPtr)
+  fullName: Ubiquity.NET.InteropHelpers.RefHandleMarshaller.VoidOp.VoidOp(object, nint)
+  fullName.vb: Ubiquity.NET.InteropHelpers.RefHandleMarshaller.VoidOp.New(Object, System.IntPtr)
+  nameWithType: RefHandleMarshaller.VoidOp.VoidOp(object, nint)
+  nameWithType.vb: RefHandleMarshaller.VoidOp.New(Object, IntPtr)
+- uid: Ubiquity.NET.InteropHelpers.RefHandleMarshaller.VoidOp.#ctor*
+  name: VoidOp
+  href: interop-helpers/api/Ubiquity.NET.InteropHelpers.RefHandleMarshaller.VoidOp.-ctor.html
+  commentId: Overload:Ubiquity.NET.InteropHelpers.RefHandleMarshaller.VoidOp.#ctor
+  name.vb: New
+  fullName: Ubiquity.NET.InteropHelpers.RefHandleMarshaller.VoidOp.VoidOp
+  fullName.vb: Ubiquity.NET.InteropHelpers.RefHandleMarshaller.VoidOp.New
+  nameWithType: RefHandleMarshaller.VoidOp.VoidOp
+  nameWithType.vb: RefHandleMarshaller.VoidOp.New
+- uid: Ubiquity.NET.InteropHelpers.RefHandleMarshaller.VoidOp.BeginInvoke(System.IntPtr*,System.Int32,System.AsyncCallback,System.Object)
+  name: BeginInvoke(nint*, int, AsyncCallback, object)
+  href: interop-helpers/api/Ubiquity.NET.InteropHelpers.RefHandleMarshaller.VoidOp.BeginInvoke.html#Ubiquity_NET_InteropHelpers_RefHandleMarshaller_VoidOp_BeginInvoke_System_IntPtr__System_Int32_System_AsyncCallback_System_Object_
+  commentId: M:Ubiquity.NET.InteropHelpers.RefHandleMarshaller.VoidOp.BeginInvoke(System.IntPtr*,System.Int32,System.AsyncCallback,System.Object)
+  name.vb: BeginInvoke(IntPtr*, Integer, AsyncCallback, Object)
+  fullName: Ubiquity.NET.InteropHelpers.RefHandleMarshaller.VoidOp.BeginInvoke(nint*, int, System.AsyncCallback, object)
+  fullName.vb: Ubiquity.NET.InteropHelpers.RefHandleMarshaller.VoidOp.BeginInvoke(System.IntPtr*, Integer, System.AsyncCallback, Object)
+  nameWithType: RefHandleMarshaller.VoidOp.BeginInvoke(nint*, int, AsyncCallback, object)
+  nameWithType.vb: RefHandleMarshaller.VoidOp.BeginInvoke(IntPtr*, Integer, AsyncCallback, Object)
+- uid: Ubiquity.NET.InteropHelpers.RefHandleMarshaller.VoidOp.BeginInvoke*
+  name: BeginInvoke
+  href: interop-helpers/api/Ubiquity.NET.InteropHelpers.RefHandleMarshaller.VoidOp.BeginInvoke.html
+  commentId: Overload:Ubiquity.NET.InteropHelpers.RefHandleMarshaller.VoidOp.BeginInvoke
+  fullName: Ubiquity.NET.InteropHelpers.RefHandleMarshaller.VoidOp.BeginInvoke
+  nameWithType: RefHandleMarshaller.VoidOp.BeginInvoke
+- uid: Ubiquity.NET.InteropHelpers.RefHandleMarshaller.VoidOp.EndInvoke(System.IAsyncResult)
+  name: EndInvoke(IAsyncResult)
+  href: interop-helpers/api/Ubiquity.NET.InteropHelpers.RefHandleMarshaller.VoidOp.EndInvoke.html#Ubiquity_NET_InteropHelpers_RefHandleMarshaller_VoidOp_EndInvoke_System_IAsyncResult_
+  commentId: M:Ubiquity.NET.InteropHelpers.RefHandleMarshaller.VoidOp.EndInvoke(System.IAsyncResult)
+  fullName: Ubiquity.NET.InteropHelpers.RefHandleMarshaller.VoidOp.EndInvoke(System.IAsyncResult)
+  nameWithType: RefHandleMarshaller.VoidOp.EndInvoke(IAsyncResult)
+- uid: Ubiquity.NET.InteropHelpers.RefHandleMarshaller.VoidOp.EndInvoke*
+  name: EndInvoke
+  href: interop-helpers/api/Ubiquity.NET.InteropHelpers.RefHandleMarshaller.VoidOp.EndInvoke.html
+  commentId: Overload:Ubiquity.NET.InteropHelpers.RefHandleMarshaller.VoidOp.EndInvoke
+  fullName: Ubiquity.NET.InteropHelpers.RefHandleMarshaller.VoidOp.EndInvoke
+  nameWithType: RefHandleMarshaller.VoidOp.EndInvoke
+- uid: Ubiquity.NET.InteropHelpers.RefHandleMarshaller.VoidOp.Invoke(System.IntPtr*,System.Int32)
+  name: Invoke(nint*, int)
+  href: interop-helpers/api/Ubiquity.NET.InteropHelpers.RefHandleMarshaller.VoidOp.Invoke.html#Ubiquity_NET_InteropHelpers_RefHandleMarshaller_VoidOp_Invoke_System_IntPtr__System_Int32_
+  commentId: M:Ubiquity.NET.InteropHelpers.RefHandleMarshaller.VoidOp.Invoke(System.IntPtr*,System.Int32)
+  name.vb: Invoke(IntPtr*, Integer)
+  fullName: Ubiquity.NET.InteropHelpers.RefHandleMarshaller.VoidOp.Invoke(nint*, int)
+  fullName.vb: Ubiquity.NET.InteropHelpers.RefHandleMarshaller.VoidOp.Invoke(System.IntPtr*, Integer)
+  nameWithType: RefHandleMarshaller.VoidOp.Invoke(nint*, int)
+  nameWithType.vb: RefHandleMarshaller.VoidOp.Invoke(IntPtr*, Integer)
+- uid: Ubiquity.NET.InteropHelpers.RefHandleMarshaller.VoidOp.Invoke*
+  name: Invoke
+  href: interop-helpers/api/Ubiquity.NET.InteropHelpers.RefHandleMarshaller.VoidOp.Invoke.html
+  commentId: Overload:Ubiquity.NET.InteropHelpers.RefHandleMarshaller.VoidOp.Invoke
+  fullName: Ubiquity.NET.InteropHelpers.RefHandleMarshaller.VoidOp.Invoke
+  nameWithType: RefHandleMarshaller.VoidOp.Invoke
 - uid: Ubiquity.NET.InteropHelpers.RefHandleMarshaller.WithNativePointer*
   name: WithNativePointer
   href: interop-helpers/api/Ubiquity.NET.InteropHelpers.RefHandleMarshaller.WithNativePointer.html
@@ -5924,6 +7112,24 @@ references:
   commentId: T:Ubiquity.NET.Runtime.Utils.NullNode
   fullName: Ubiquity.NET.Runtime.Utils.NullNode
   nameWithType: NullNode
+- uid: Ubiquity.NET.Runtime.Utils.NullNode.#ctor
+  name: NullNode()
+  href: runtime-utils/api/Ubiquity.NET.Runtime.Utils.NullNode.-ctor.html#Ubiquity_NET_Runtime_Utils_NullNode__ctor
+  commentId: M:Ubiquity.NET.Runtime.Utils.NullNode.#ctor
+  name.vb: New()
+  fullName: Ubiquity.NET.Runtime.Utils.NullNode.NullNode()
+  fullName.vb: Ubiquity.NET.Runtime.Utils.NullNode.New()
+  nameWithType: NullNode.NullNode()
+  nameWithType.vb: NullNode.New()
+- uid: Ubiquity.NET.Runtime.Utils.NullNode.#ctor*
+  name: NullNode
+  href: runtime-utils/api/Ubiquity.NET.Runtime.Utils.NullNode.-ctor.html
+  commentId: Overload:Ubiquity.NET.Runtime.Utils.NullNode.#ctor
+  name.vb: New
+  fullName: Ubiquity.NET.Runtime.Utils.NullNode.NullNode
+  fullName.vb: Ubiquity.NET.Runtime.Utils.NullNode.New
+  nameWithType: NullNode.NullNode
+  nameWithType.vb: NullNode.New
 - uid: Ubiquity.NET.Runtime.Utils.NullNode.Accept*
   name: Accept
   href: runtime-utils/api/Ubiquity.NET.Runtime.Utils.NullNode.Accept.html
@@ -5990,6 +7196,24 @@ references:
   commentId: T:Ubiquity.NET.Runtime.Utils.ParseErrorCollector
   fullName: Ubiquity.NET.Runtime.Utils.ParseErrorCollector
   nameWithType: ParseErrorCollector
+- uid: Ubiquity.NET.Runtime.Utils.ParseErrorCollector.#ctor
+  name: ParseErrorCollector()
+  href: runtime-utils/api/Ubiquity.NET.Runtime.Utils.ParseErrorCollector.-ctor.html#Ubiquity_NET_Runtime_Utils_ParseErrorCollector__ctor
+  commentId: M:Ubiquity.NET.Runtime.Utils.ParseErrorCollector.#ctor
+  name.vb: New()
+  fullName: Ubiquity.NET.Runtime.Utils.ParseErrorCollector.ParseErrorCollector()
+  fullName.vb: Ubiquity.NET.Runtime.Utils.ParseErrorCollector.New()
+  nameWithType: ParseErrorCollector.ParseErrorCollector()
+  nameWithType.vb: ParseErrorCollector.New()
+- uid: Ubiquity.NET.Runtime.Utils.ParseErrorCollector.#ctor*
+  name: ParseErrorCollector
+  href: runtime-utils/api/Ubiquity.NET.Runtime.Utils.ParseErrorCollector.-ctor.html
+  commentId: Overload:Ubiquity.NET.Runtime.Utils.ParseErrorCollector.#ctor
+  name.vb: New
+  fullName: Ubiquity.NET.Runtime.Utils.ParseErrorCollector.ParseErrorCollector
+  fullName.vb: Ubiquity.NET.Runtime.Utils.ParseErrorCollector.New
+  nameWithType: ParseErrorCollector.ParseErrorCollector
+  nameWithType.vb: ParseErrorCollector.New
 - uid: Ubiquity.NET.Runtime.Utils.ParseErrorCollector.ErrorNodes
   name: ErrorNodes
   href: runtime-utils/api/Ubiquity.NET.Runtime.Utils.ParseErrorCollector.ErrorNodes.html#Ubiquity_NET_Runtime_Utils_ParseErrorCollector_ErrorNodes
@@ -6677,6 +7901,24 @@ references:
   commentId: T:Ubiquity.NET.SourceGenerator.Test.Utils.EnumerableObjectComparer
   fullName: Ubiquity.NET.SourceGenerator.Test.Utils.EnumerableObjectComparer
   nameWithType: EnumerableObjectComparer
+- uid: Ubiquity.NET.SourceGenerator.Test.Utils.EnumerableObjectComparer.#ctor
+  name: EnumerableObjectComparer()
+  href: src-gen-test-utils/api/Ubiquity.NET.SourceGenerator.Test.Utils.EnumerableObjectComparer.-ctor.html#Ubiquity_NET_SourceGenerator_Test_Utils_EnumerableObjectComparer__ctor
+  commentId: M:Ubiquity.NET.SourceGenerator.Test.Utils.EnumerableObjectComparer.#ctor
+  name.vb: New()
+  fullName: Ubiquity.NET.SourceGenerator.Test.Utils.EnumerableObjectComparer.EnumerableObjectComparer()
+  fullName.vb: Ubiquity.NET.SourceGenerator.Test.Utils.EnumerableObjectComparer.New()
+  nameWithType: EnumerableObjectComparer.EnumerableObjectComparer()
+  nameWithType.vb: EnumerableObjectComparer.New()
+- uid: Ubiquity.NET.SourceGenerator.Test.Utils.EnumerableObjectComparer.#ctor*
+  name: EnumerableObjectComparer
+  href: src-gen-test-utils/api/Ubiquity.NET.SourceGenerator.Test.Utils.EnumerableObjectComparer.-ctor.html
+  commentId: Overload:Ubiquity.NET.SourceGenerator.Test.Utils.EnumerableObjectComparer.#ctor
+  name.vb: New
+  fullName: Ubiquity.NET.SourceGenerator.Test.Utils.EnumerableObjectComparer.EnumerableObjectComparer
+  fullName.vb: Ubiquity.NET.SourceGenerator.Test.Utils.EnumerableObjectComparer.New
+  nameWithType: EnumerableObjectComparer.EnumerableObjectComparer
+  nameWithType.vb: EnumerableObjectComparer.New
 - uid: Ubiquity.NET.SourceGenerator.Test.Utils.EnumerableObjectComparer.Default
   name: Default
   href: src-gen-test-utils/api/Ubiquity.NET.SourceGenerator.Test.Utils.EnumerableObjectComparer.Default.html
@@ -7108,117 +8350,120 @@ references:
   commentId: T:Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions
   fullName: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions
   nameWithType: IndentedTextWriterExtensions
-- uid: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.Class(System.CodeDom.Compiler.IndentedTextWriter,System.String,System.String)
-  name: Class(IndentedTextWriter, string?, string)
-  href: SrcGeneration/api/Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.Class.html#Ubiquity_NET_SrcGeneration_CSharp_IndentedTextWriterExtensions_Class_System_CodeDom_Compiler_IndentedTextWriter_System_String_System_String_
-  commentId: M:Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.Class(System.CodeDom.Compiler.IndentedTextWriter,System.String,System.String)
-  name.vb: Class(IndentedTextWriter, String, String)
-  fullName: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.Class(System.CodeDom.Compiler.IndentedTextWriter, string?, string)
-  fullName.vb: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.Class(System.CodeDom.Compiler.IndentedTextWriter, String, String)
-  nameWithType: IndentedTextWriterExtensions.Class(IndentedTextWriter, string?, string)
-  nameWithType.vb: IndentedTextWriterExtensions.Class(IndentedTextWriter, String, String)
+- uid: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.Class(System.CodeDom.Compiler.IndentedTextWriter,System.String,System.String,System.Boolean)
+  name: Class(IndentedTextWriter, string?, string, bool)
+  href: SrcGeneration/api/Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.Class.html#Ubiquity_NET_SrcGeneration_CSharp_IndentedTextWriterExtensions_Class_System_CodeDom_Compiler_IndentedTextWriter_System_String_System_String_System_Boolean_
+  commentId: M:Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.Class(System.CodeDom.Compiler.IndentedTextWriter,System.String,System.String,System.Boolean)
+  name.vb: Class(IndentedTextWriter, String, String, Boolean)
+  fullName: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.Class(System.CodeDom.Compiler.IndentedTextWriter, string?, string, bool)
+  fullName.vb: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.Class(System.CodeDom.Compiler.IndentedTextWriter, String, String, Boolean)
+  nameWithType: IndentedTextWriterExtensions.Class(IndentedTextWriter, string?, string, bool)
+  nameWithType.vb: IndentedTextWriterExtensions.Class(IndentedTextWriter, String, String, Boolean)
 - uid: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.Class*
   name: Class
   href: SrcGeneration/api/Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.Class.html
   commentId: Overload:Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.Class
   fullName: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.Class
   nameWithType: IndentedTextWriterExtensions.Class
-- uid: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.MultiLineComment(System.CodeDom.Compiler.IndentedTextWriter,System.String)
-  name: MultiLineComment(IndentedTextWriter, string?)
-  href: SrcGeneration/api/Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.MultiLineComment.html#Ubiquity_NET_SrcGeneration_CSharp_IndentedTextWriterExtensions_MultiLineComment_System_CodeDom_Compiler_IndentedTextWriter_System_String_
-  commentId: M:Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.MultiLineComment(System.CodeDom.Compiler.IndentedTextWriter,System.String)
-  name.vb: MultiLineComment(IndentedTextWriter, String)
-  fullName: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.MultiLineComment(System.CodeDom.Compiler.IndentedTextWriter, string?)
-  fullName.vb: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.MultiLineComment(System.CodeDom.Compiler.IndentedTextWriter, String)
-  nameWithType: IndentedTextWriterExtensions.MultiLineComment(IndentedTextWriter, string?)
-  nameWithType.vb: IndentedTextWriterExtensions.MultiLineComment(IndentedTextWriter, String)
+- uid: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.MultiLineComment(System.CodeDom.Compiler.IndentedTextWriter,System.String,System.Boolean)
+  name: MultiLineComment(IndentedTextWriter, string?, bool)
+  href: SrcGeneration/api/Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.MultiLineComment.html#Ubiquity_NET_SrcGeneration_CSharp_IndentedTextWriterExtensions_MultiLineComment_System_CodeDom_Compiler_IndentedTextWriter_System_String_System_Boolean_
+  commentId: M:Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.MultiLineComment(System.CodeDom.Compiler.IndentedTextWriter,System.String,System.Boolean)
+  name.vb: MultiLineComment(IndentedTextWriter, String, Boolean)
+  fullName: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.MultiLineComment(System.CodeDom.Compiler.IndentedTextWriter, string?, bool)
+  fullName.vb: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.MultiLineComment(System.CodeDom.Compiler.IndentedTextWriter, String, Boolean)
+  nameWithType: IndentedTextWriterExtensions.MultiLineComment(IndentedTextWriter, string?, bool)
+  nameWithType.vb: IndentedTextWriterExtensions.MultiLineComment(IndentedTextWriter, String, Boolean)
 - uid: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.MultiLineComment*
   name: MultiLineComment
   href: SrcGeneration/api/Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.MultiLineComment.html
   commentId: Overload:Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.MultiLineComment
   fullName: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.MultiLineComment
   nameWithType: IndentedTextWriterExtensions.MultiLineComment
-- uid: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.Namespace(System.CodeDom.Compiler.IndentedTextWriter,System.String)
-  name: Namespace(IndentedTextWriter, string)
-  href: SrcGeneration/api/Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.Namespace.html#Ubiquity_NET_SrcGeneration_CSharp_IndentedTextWriterExtensions_Namespace_System_CodeDom_Compiler_IndentedTextWriter_System_String_
-  commentId: M:Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.Namespace(System.CodeDom.Compiler.IndentedTextWriter,System.String)
-  name.vb: Namespace(IndentedTextWriter, String)
-  fullName: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.Namespace(System.CodeDom.Compiler.IndentedTextWriter, string)
-  fullName.vb: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.Namespace(System.CodeDom.Compiler.IndentedTextWriter, String)
-  nameWithType: IndentedTextWriterExtensions.Namespace(IndentedTextWriter, string)
-  nameWithType.vb: IndentedTextWriterExtensions.Namespace(IndentedTextWriter, String)
+- uid: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.Namespace(System.CodeDom.Compiler.IndentedTextWriter,System.String,System.Boolean)
+  name: Namespace(IndentedTextWriter, string, bool)
+  href: SrcGeneration/api/Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.Namespace.html#Ubiquity_NET_SrcGeneration_CSharp_IndentedTextWriterExtensions_Namespace_System_CodeDom_Compiler_IndentedTextWriter_System_String_System_Boolean_
+  commentId: M:Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.Namespace(System.CodeDom.Compiler.IndentedTextWriter,System.String,System.Boolean)
+  name.vb: Namespace(IndentedTextWriter, String, Boolean)
+  fullName: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.Namespace(System.CodeDom.Compiler.IndentedTextWriter, string, bool)
+  fullName.vb: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.Namespace(System.CodeDom.Compiler.IndentedTextWriter, String, Boolean)
+  nameWithType: IndentedTextWriterExtensions.Namespace(IndentedTextWriter, string, bool)
+  nameWithType.vb: IndentedTextWriterExtensions.Namespace(IndentedTextWriter, String, Boolean)
 - uid: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.Namespace*
   name: Namespace
   href: SrcGeneration/api/Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.Namespace.html
   commentId: Overload:Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.Namespace
   fullName: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.Namespace
   nameWithType: IndentedTextWriterExtensions.Namespace
-- uid: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.Scope(System.CodeDom.Compiler.IndentedTextWriter,System.String)
-  name: Scope(IndentedTextWriter, string?)
-  href: SrcGeneration/api/Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.Scope.html#Ubiquity_NET_SrcGeneration_CSharp_IndentedTextWriterExtensions_Scope_System_CodeDom_Compiler_IndentedTextWriter_System_String_
-  commentId: M:Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.Scope(System.CodeDom.Compiler.IndentedTextWriter,System.String)
-  name.vb: Scope(IndentedTextWriter, String)
-  fullName: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.Scope(System.CodeDom.Compiler.IndentedTextWriter, string?)
-  fullName.vb: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.Scope(System.CodeDom.Compiler.IndentedTextWriter, String)
-  nameWithType: IndentedTextWriterExtensions.Scope(IndentedTextWriter, string?)
-  nameWithType.vb: IndentedTextWriterExtensions.Scope(IndentedTextWriter, String)
+- uid: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.Scope(System.CodeDom.Compiler.IndentedTextWriter,System.String,System.Boolean)
+  name: Scope(IndentedTextWriter, string?, bool)
+  href: SrcGeneration/api/Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.Scope.html#Ubiquity_NET_SrcGeneration_CSharp_IndentedTextWriterExtensions_Scope_System_CodeDom_Compiler_IndentedTextWriter_System_String_System_Boolean_
+  commentId: M:Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.Scope(System.CodeDom.Compiler.IndentedTextWriter,System.String,System.Boolean)
+  name.vb: Scope(IndentedTextWriter, String, Boolean)
+  fullName: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.Scope(System.CodeDom.Compiler.IndentedTextWriter, string?, bool)
+  fullName.vb: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.Scope(System.CodeDom.Compiler.IndentedTextWriter, String, Boolean)
+  nameWithType: IndentedTextWriterExtensions.Scope(IndentedTextWriter, string?, bool)
+  nameWithType.vb: IndentedTextWriterExtensions.Scope(IndentedTextWriter, String, Boolean)
 - uid: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.Scope*
   name: Scope
   href: SrcGeneration/api/Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.Scope.html
   commentId: Overload:Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.Scope
   fullName: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.Scope
   nameWithType: IndentedTextWriterExtensions.Scope
-- uid: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.Struct(System.CodeDom.Compiler.IndentedTextWriter,System.String,System.String)
-  name: Struct(IndentedTextWriter, string?, string)
-  href: SrcGeneration/api/Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.Struct.html#Ubiquity_NET_SrcGeneration_CSharp_IndentedTextWriterExtensions_Struct_System_CodeDom_Compiler_IndentedTextWriter_System_String_System_String_
-  commentId: M:Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.Struct(System.CodeDom.Compiler.IndentedTextWriter,System.String,System.String)
-  name.vb: Struct(IndentedTextWriter, String, String)
-  fullName: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.Struct(System.CodeDom.Compiler.IndentedTextWriter, string?, string)
-  fullName.vb: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.Struct(System.CodeDom.Compiler.IndentedTextWriter, String, String)
-  nameWithType: IndentedTextWriterExtensions.Struct(IndentedTextWriter, string?, string)
-  nameWithType.vb: IndentedTextWriterExtensions.Struct(IndentedTextWriter, String, String)
+- uid: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.Struct(System.CodeDom.Compiler.IndentedTextWriter,System.String,System.String,System.Boolean)
+  name: Struct(IndentedTextWriter, string?, string, bool)
+  href: SrcGeneration/api/Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.Struct.html#Ubiquity_NET_SrcGeneration_CSharp_IndentedTextWriterExtensions_Struct_System_CodeDom_Compiler_IndentedTextWriter_System_String_System_String_System_Boolean_
+  commentId: M:Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.Struct(System.CodeDom.Compiler.IndentedTextWriter,System.String,System.String,System.Boolean)
+  name.vb: Struct(IndentedTextWriter, String, String, Boolean)
+  fullName: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.Struct(System.CodeDom.Compiler.IndentedTextWriter, string?, string, bool)
+  fullName.vb: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.Struct(System.CodeDom.Compiler.IndentedTextWriter, String, String, Boolean)
+  nameWithType: IndentedTextWriterExtensions.Struct(IndentedTextWriter, string?, string, bool)
+  nameWithType.vb: IndentedTextWriterExtensions.Struct(IndentedTextWriter, String, String, Boolean)
 - uid: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.Struct*
   name: Struct
   href: SrcGeneration/api/Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.Struct.html
   commentId: Overload:Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.Struct
   fullName: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.Struct
   nameWithType: IndentedTextWriterExtensions.Struct
-- uid: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.UnsafeScope(System.CodeDom.Compiler.IndentedTextWriter)
-  name: UnsafeScope(IndentedTextWriter)
-  href: SrcGeneration/api/Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.UnsafeScope.html#Ubiquity_NET_SrcGeneration_CSharp_IndentedTextWriterExtensions_UnsafeScope_System_CodeDom_Compiler_IndentedTextWriter_
-  commentId: M:Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.UnsafeScope(System.CodeDom.Compiler.IndentedTextWriter)
-  fullName: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.UnsafeScope(System.CodeDom.Compiler.IndentedTextWriter)
-  nameWithType: IndentedTextWriterExtensions.UnsafeScope(IndentedTextWriter)
+- uid: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.UnsafeScope(System.CodeDom.Compiler.IndentedTextWriter,System.Boolean)
+  name: UnsafeScope(IndentedTextWriter, bool)
+  href: SrcGeneration/api/Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.UnsafeScope.html#Ubiquity_NET_SrcGeneration_CSharp_IndentedTextWriterExtensions_UnsafeScope_System_CodeDom_Compiler_IndentedTextWriter_System_Boolean_
+  commentId: M:Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.UnsafeScope(System.CodeDom.Compiler.IndentedTextWriter,System.Boolean)
+  name.vb: UnsafeScope(IndentedTextWriter, Boolean)
+  fullName: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.UnsafeScope(System.CodeDom.Compiler.IndentedTextWriter, bool)
+  fullName.vb: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.UnsafeScope(System.CodeDom.Compiler.IndentedTextWriter, Boolean)
+  nameWithType: IndentedTextWriterExtensions.UnsafeScope(IndentedTextWriter, bool)
+  nameWithType.vb: IndentedTextWriterExtensions.UnsafeScope(IndentedTextWriter, Boolean)
 - uid: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.UnsafeScope*
   name: UnsafeScope
   href: SrcGeneration/api/Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.UnsafeScope.html
   commentId: Overload:Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.UnsafeScope
   fullName: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.UnsafeScope
   nameWithType: IndentedTextWriterExtensions.UnsafeScope
-- uid: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.WriteAutoGeneratedComment(System.CodeDom.Compiler.IndentedTextWriter,System.String,System.String,System.String)
-  name: WriteAutoGeneratedComment(IndentedTextWriter, string, string, string?)
-  href: SrcGeneration/api/Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.WriteAutoGeneratedComment.html#Ubiquity_NET_SrcGeneration_CSharp_IndentedTextWriterExtensions_WriteAutoGeneratedComment_System_CodeDom_Compiler_IndentedTextWriter_System_String_System_String_System_String_
-  commentId: M:Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.WriteAutoGeneratedComment(System.CodeDom.Compiler.IndentedTextWriter,System.String,System.String,System.String)
-  name.vb: WriteAutoGeneratedComment(IndentedTextWriter, String, String, String)
-  fullName: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.WriteAutoGeneratedComment(System.CodeDom.Compiler.IndentedTextWriter, string, string, string?)
-  fullName.vb: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.WriteAutoGeneratedComment(System.CodeDom.Compiler.IndentedTextWriter, String, String, String)
-  nameWithType: IndentedTextWriterExtensions.WriteAutoGeneratedComment(IndentedTextWriter, string, string, string?)
-  nameWithType.vb: IndentedTextWriterExtensions.WriteAutoGeneratedComment(IndentedTextWriter, String, String, String)
+- uid: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.WriteAutoGeneratedComment(System.CodeDom.Compiler.IndentedTextWriter,System.String,System.String,System.String,System.Boolean)
+  name: WriteAutoGeneratedComment(IndentedTextWriter, string, string, string?, bool)
+  href: SrcGeneration/api/Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.WriteAutoGeneratedComment.html#Ubiquity_NET_SrcGeneration_CSharp_IndentedTextWriterExtensions_WriteAutoGeneratedComment_System_CodeDom_Compiler_IndentedTextWriter_System_String_System_String_System_String_System_Boolean_
+  commentId: M:Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.WriteAutoGeneratedComment(System.CodeDom.Compiler.IndentedTextWriter,System.String,System.String,System.String,System.Boolean)
+  name.vb: WriteAutoGeneratedComment(IndentedTextWriter, String, String, String, Boolean)
+  fullName: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.WriteAutoGeneratedComment(System.CodeDom.Compiler.IndentedTextWriter, string, string, string?, bool)
+  fullName.vb: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.WriteAutoGeneratedComment(System.CodeDom.Compiler.IndentedTextWriter, String, String, String, Boolean)
+  nameWithType: IndentedTextWriterExtensions.WriteAutoGeneratedComment(IndentedTextWriter, string, string, string?, bool)
+  nameWithType.vb: IndentedTextWriterExtensions.WriteAutoGeneratedComment(IndentedTextWriter, String, String, String, Boolean)
 - uid: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.WriteAutoGeneratedComment*
   name: WriteAutoGeneratedComment
   href: SrcGeneration/api/Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.WriteAutoGeneratedComment.html
   commentId: Overload:Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.WriteAutoGeneratedComment
   fullName: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.WriteAutoGeneratedComment
   nameWithType: IndentedTextWriterExtensions.WriteAutoGeneratedComment
-- uid: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.WriteAutoGeneratedCommentBlock(System.CodeDom.Compiler.IndentedTextWriter,System.String,System.String)
-  name: WriteAutoGeneratedCommentBlock(IndentedTextWriter, string, string)
-  href: SrcGeneration/api/Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.WriteAutoGeneratedCommentBlock.html#Ubiquity_NET_SrcGeneration_CSharp_IndentedTextWriterExtensions_WriteAutoGeneratedCommentBlock_System_CodeDom_Compiler_IndentedTextWriter_System_String_System_String_
-  commentId: M:Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.WriteAutoGeneratedCommentBlock(System.CodeDom.Compiler.IndentedTextWriter,System.String,System.String)
-  name.vb: WriteAutoGeneratedCommentBlock(IndentedTextWriter, String, String)
-  fullName: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.WriteAutoGeneratedCommentBlock(System.CodeDom.Compiler.IndentedTextWriter, string, string)
-  fullName.vb: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.WriteAutoGeneratedCommentBlock(System.CodeDom.Compiler.IndentedTextWriter, String, String)
-  nameWithType: IndentedTextWriterExtensions.WriteAutoGeneratedCommentBlock(IndentedTextWriter, string, string)
-  nameWithType.vb: IndentedTextWriterExtensions.WriteAutoGeneratedCommentBlock(IndentedTextWriter, String, String)
+- uid: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.WriteAutoGeneratedCommentBlock(System.CodeDom.Compiler.IndentedTextWriter,System.String,System.String,System.Boolean)
+  name: WriteAutoGeneratedCommentBlock(IndentedTextWriter, string, string, bool)
+  href: SrcGeneration/api/Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.WriteAutoGeneratedCommentBlock.html#Ubiquity_NET_SrcGeneration_CSharp_IndentedTextWriterExtensions_WriteAutoGeneratedCommentBlock_System_CodeDom_Compiler_IndentedTextWriter_System_String_System_String_System_Boolean_
+  commentId: M:Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.WriteAutoGeneratedCommentBlock(System.CodeDom.Compiler.IndentedTextWriter,System.String,System.String,System.Boolean)
+  name.vb: WriteAutoGeneratedCommentBlock(IndentedTextWriter, String, String, Boolean)
+  fullName: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.WriteAutoGeneratedCommentBlock(System.CodeDom.Compiler.IndentedTextWriter, string, string, bool)
+  fullName.vb: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.WriteAutoGeneratedCommentBlock(System.CodeDom.Compiler.IndentedTextWriter, String, String, Boolean)
+  nameWithType: IndentedTextWriterExtensions.WriteAutoGeneratedCommentBlock(IndentedTextWriter, string, string, bool)
+  nameWithType.vb: IndentedTextWriterExtensions.WriteAutoGeneratedCommentBlock(IndentedTextWriter, String, String, Boolean)
 - uid: Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.WriteAutoGeneratedCommentBlock*
   name: WriteAutoGeneratedCommentBlock
   href: SrcGeneration/api/Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.WriteAutoGeneratedCommentBlock.html
@@ -7261,6 +8506,66 @@ references:
   commentId: Overload:Ubiquity.NET.SrcGeneration.CSharp.TextWriterExtensions.WriteAttributeLine
   fullName: Ubiquity.NET.SrcGeneration.CSharp.TextWriterExtensions.WriteAttributeLine
   nameWithType: TextWriterExtensions.WriteAttributeLine
+- uid: Ubiquity.NET.SrcGeneration.CSharp.TextWriterExtensions.WriteCommentLine(System.IO.TextWriter,System.String)
+  name: WriteCommentLine(TextWriter, string)
+  href: SrcGeneration/api/Ubiquity.NET.SrcGeneration.CSharp.TextWriterExtensions.WriteCommentLine.html#Ubiquity_NET_SrcGeneration_CSharp_TextWriterExtensions_WriteCommentLine_System_IO_TextWriter_System_String_
+  commentId: M:Ubiquity.NET.SrcGeneration.CSharp.TextWriterExtensions.WriteCommentLine(System.IO.TextWriter,System.String)
+  name.vb: WriteCommentLine(TextWriter, String)
+  fullName: Ubiquity.NET.SrcGeneration.CSharp.TextWriterExtensions.WriteCommentLine(System.IO.TextWriter, string)
+  fullName.vb: Ubiquity.NET.SrcGeneration.CSharp.TextWriterExtensions.WriteCommentLine(System.IO.TextWriter, String)
+  nameWithType: TextWriterExtensions.WriteCommentLine(TextWriter, string)
+  nameWithType.vb: TextWriterExtensions.WriteCommentLine(TextWriter, String)
+- uid: Ubiquity.NET.SrcGeneration.CSharp.TextWriterExtensions.WriteCommentLine*
+  name: WriteCommentLine
+  href: SrcGeneration/api/Ubiquity.NET.SrcGeneration.CSharp.TextWriterExtensions.WriteCommentLine.html
+  commentId: Overload:Ubiquity.NET.SrcGeneration.CSharp.TextWriterExtensions.WriteCommentLine
+  fullName: Ubiquity.NET.SrcGeneration.CSharp.TextWriterExtensions.WriteCommentLine
+  nameWithType: TextWriterExtensions.WriteCommentLine
+- uid: Ubiquity.NET.SrcGeneration.CSharp.TextWriterExtensions.WriteCommentLines(System.IO.TextWriter,System.Collections.Generic.IEnumerable{System.String})
+  name: WriteCommentLines(TextWriter, IEnumerable<string>)
+  href: SrcGeneration/api/Ubiquity.NET.SrcGeneration.CSharp.TextWriterExtensions.WriteCommentLines.html#Ubiquity_NET_SrcGeneration_CSharp_TextWriterExtensions_WriteCommentLines_System_IO_TextWriter_System_Collections_Generic_IEnumerable_System_String__
+  commentId: M:Ubiquity.NET.SrcGeneration.CSharp.TextWriterExtensions.WriteCommentLines(System.IO.TextWriter,System.Collections.Generic.IEnumerable{System.String})
+  name.vb: WriteCommentLines(TextWriter, IEnumerable(Of String))
+  fullName: Ubiquity.NET.SrcGeneration.CSharp.TextWriterExtensions.WriteCommentLines(System.IO.TextWriter, System.Collections.Generic.IEnumerable<string>)
+  fullName.vb: Ubiquity.NET.SrcGeneration.CSharp.TextWriterExtensions.WriteCommentLines(System.IO.TextWriter, System.Collections.Generic.IEnumerable(Of String))
+  nameWithType: TextWriterExtensions.WriteCommentLines(TextWriter, IEnumerable<string>)
+  nameWithType.vb: TextWriterExtensions.WriteCommentLines(TextWriter, IEnumerable(Of String))
+- uid: Ubiquity.NET.SrcGeneration.CSharp.TextWriterExtensions.WriteCommentLines(System.IO.TextWriter,System.String)
+  name: WriteCommentLines(TextWriter, string)
+  href: SrcGeneration/api/Ubiquity.NET.SrcGeneration.CSharp.TextWriterExtensions.WriteCommentLines.html#Ubiquity_NET_SrcGeneration_CSharp_TextWriterExtensions_WriteCommentLines_System_IO_TextWriter_System_String_
+  commentId: M:Ubiquity.NET.SrcGeneration.CSharp.TextWriterExtensions.WriteCommentLines(System.IO.TextWriter,System.String)
+  name.vb: WriteCommentLines(TextWriter, String)
+  fullName: Ubiquity.NET.SrcGeneration.CSharp.TextWriterExtensions.WriteCommentLines(System.IO.TextWriter, string)
+  fullName.vb: Ubiquity.NET.SrcGeneration.CSharp.TextWriterExtensions.WriteCommentLines(System.IO.TextWriter, String)
+  nameWithType: TextWriterExtensions.WriteCommentLines(TextWriter, string)
+  nameWithType.vb: TextWriterExtensions.WriteCommentLines(TextWriter, String)
+- uid: Ubiquity.NET.SrcGeneration.CSharp.TextWriterExtensions.WriteCommentLines(System.IO.TextWriter,System.String[])
+  name: WriteCommentLines(TextWriter, params string[])
+  href: SrcGeneration/api/Ubiquity.NET.SrcGeneration.CSharp.TextWriterExtensions.WriteCommentLines.html#Ubiquity_NET_SrcGeneration_CSharp_TextWriterExtensions_WriteCommentLines_System_IO_TextWriter_System_String___
+  commentId: M:Ubiquity.NET.SrcGeneration.CSharp.TextWriterExtensions.WriteCommentLines(System.IO.TextWriter,System.String[])
+  name.vb: WriteCommentLines(TextWriter, ParamArray String())
+  fullName: Ubiquity.NET.SrcGeneration.CSharp.TextWriterExtensions.WriteCommentLines(System.IO.TextWriter, params string[])
+  fullName.vb: Ubiquity.NET.SrcGeneration.CSharp.TextWriterExtensions.WriteCommentLines(System.IO.TextWriter, ParamArray String())
+  nameWithType: TextWriterExtensions.WriteCommentLines(TextWriter, params string[])
+  nameWithType.vb: TextWriterExtensions.WriteCommentLines(TextWriter, ParamArray String())
+- uid: Ubiquity.NET.SrcGeneration.CSharp.TextWriterExtensions.WriteCommentLines*
+  name: WriteCommentLines
+  href: SrcGeneration/api/Ubiquity.NET.SrcGeneration.CSharp.TextWriterExtensions.WriteCommentLines.html
+  commentId: Overload:Ubiquity.NET.SrcGeneration.CSharp.TextWriterExtensions.WriteCommentLines
+  fullName: Ubiquity.NET.SrcGeneration.CSharp.TextWriterExtensions.WriteCommentLines
+  nameWithType: TextWriterExtensions.WriteCommentLines
+- uid: Ubiquity.NET.SrcGeneration.CSharp.TextWriterExtensions.WriteEmptyCommentLine(System.IO.TextWriter)
+  name: WriteEmptyCommentLine(TextWriter)
+  href: SrcGeneration/api/Ubiquity.NET.SrcGeneration.CSharp.TextWriterExtensions.WriteEmptyCommentLine.html#Ubiquity_NET_SrcGeneration_CSharp_TextWriterExtensions_WriteEmptyCommentLine_System_IO_TextWriter_
+  commentId: M:Ubiquity.NET.SrcGeneration.CSharp.TextWriterExtensions.WriteEmptyCommentLine(System.IO.TextWriter)
+  fullName: Ubiquity.NET.SrcGeneration.CSharp.TextWriterExtensions.WriteEmptyCommentLine(System.IO.TextWriter)
+  nameWithType: TextWriterExtensions.WriteEmptyCommentLine(TextWriter)
+- uid: Ubiquity.NET.SrcGeneration.CSharp.TextWriterExtensions.WriteEmptyCommentLine*
+  name: WriteEmptyCommentLine
+  href: SrcGeneration/api/Ubiquity.NET.SrcGeneration.CSharp.TextWriterExtensions.WriteEmptyCommentLine.html
+  commentId: Overload:Ubiquity.NET.SrcGeneration.CSharp.TextWriterExtensions.WriteEmptyCommentLine
+  fullName: Ubiquity.NET.SrcGeneration.CSharp.TextWriterExtensions.WriteEmptyCommentLine
+  nameWithType: TextWriterExtensions.WriteEmptyCommentLine
 - uid: Ubiquity.NET.SrcGeneration.CSharp.TextWriterExtensions.WriteRemarksComment(System.IO.TextWriter,System.String)
   name: WriteRemarksComment(TextWriter, string?)
   href: SrcGeneration/api/Ubiquity.NET.SrcGeneration.CSharp.TextWriterExtensions.WriteRemarksComment.html#Ubiquity_NET_SrcGeneration_CSharp_TextWriterExtensions_WriteRemarksComment_System_IO_TextWriter_System_String_
@@ -7327,15 +8632,15 @@ references:
   commentId: T:Ubiquity.NET.SrcGeneration.IndentedTextWriterExtensions
   fullName: Ubiquity.NET.SrcGeneration.IndentedTextWriterExtensions
   nameWithType: IndentedTextWriterExtensions
-- uid: Ubiquity.NET.SrcGeneration.IndentedTextWriterExtensions.Block(System.CodeDom.Compiler.IndentedTextWriter,System.String,System.String,System.String,System.Boolean)
-  name: Block(IndentedTextWriter, string, string, string?, bool)
-  href: SrcGeneration/api/Ubiquity.NET.SrcGeneration.IndentedTextWriterExtensions.Block.html#Ubiquity_NET_SrcGeneration_IndentedTextWriterExtensions_Block_System_CodeDom_Compiler_IndentedTextWriter_System_String_System_String_System_String_System_Boolean_
-  commentId: M:Ubiquity.NET.SrcGeneration.IndentedTextWriterExtensions.Block(System.CodeDom.Compiler.IndentedTextWriter,System.String,System.String,System.String,System.Boolean)
-  name.vb: Block(IndentedTextWriter, String, String, String, Boolean)
-  fullName: Ubiquity.NET.SrcGeneration.IndentedTextWriterExtensions.Block(System.CodeDom.Compiler.IndentedTextWriter, string, string, string?, bool)
-  fullName.vb: Ubiquity.NET.SrcGeneration.IndentedTextWriterExtensions.Block(System.CodeDom.Compiler.IndentedTextWriter, String, String, String, Boolean)
-  nameWithType: IndentedTextWriterExtensions.Block(IndentedTextWriter, string, string, string?, bool)
-  nameWithType.vb: IndentedTextWriterExtensions.Block(IndentedTextWriter, String, String, String, Boolean)
+- uid: Ubiquity.NET.SrcGeneration.IndentedTextWriterExtensions.Block(System.CodeDom.Compiler.IndentedTextWriter,System.String,System.String,System.String,System.Boolean,System.Boolean)
+  name: Block(IndentedTextWriter, string, string, string?, bool, bool)
+  href: SrcGeneration/api/Ubiquity.NET.SrcGeneration.IndentedTextWriterExtensions.Block.html#Ubiquity_NET_SrcGeneration_IndentedTextWriterExtensions_Block_System_CodeDom_Compiler_IndentedTextWriter_System_String_System_String_System_String_System_Boolean_System_Boolean_
+  commentId: M:Ubiquity.NET.SrcGeneration.IndentedTextWriterExtensions.Block(System.CodeDom.Compiler.IndentedTextWriter,System.String,System.String,System.String,System.Boolean,System.Boolean)
+  name.vb: Block(IndentedTextWriter, String, String, String, Boolean, Boolean)
+  fullName: Ubiquity.NET.SrcGeneration.IndentedTextWriterExtensions.Block(System.CodeDom.Compiler.IndentedTextWriter, string, string, string?, bool, bool)
+  fullName.vb: Ubiquity.NET.SrcGeneration.IndentedTextWriterExtensions.Block(System.CodeDom.Compiler.IndentedTextWriter, String, String, String, Boolean, Boolean)
+  nameWithType: IndentedTextWriterExtensions.Block(IndentedTextWriter, string, string, string?, bool, bool)
+  nameWithType.vb: IndentedTextWriterExtensions.Block(IndentedTextWriter, String, String, String, Boolean, Boolean)
 - uid: Ubiquity.NET.SrcGeneration.IndentedTextWriterExtensions.Block*
   name: Block
   href: SrcGeneration/api/Ubiquity.NET.SrcGeneration.IndentedTextWriterExtensions.Block.html

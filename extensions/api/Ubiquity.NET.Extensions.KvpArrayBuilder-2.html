@@ -16,7 +16,7 @@
       
       
       
-      <meta name="docfx:docurl" content="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/new/develop/apiSpec/new?filename=Ubiquity_NET_Extensions_KvpArrayBuilder_2.md&amp;value=---%0Auid%3A%20Ubiquity.NET.Extensions.KvpArrayBuilder%602%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -84,7 +84,7 @@
 
 
   <h1 id="Ubiquity_NET_Extensions_KvpArrayBuilder_2" data-uid="Ubiquity.NET.Extensions.KvpArrayBuilder`2" class="text-break">
-Struct KvpArrayBuilder&lt;TKey, TValue&gt;  <a class="header-action link-secondary" title="View source" href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.8/src/Ubiquity.NET.Extensions/KvpArrayBuilder.cs/#L23"><i class="bi bi-code-slash"></i></a>
+Struct KvpArrayBuilder&lt;TKey, TValue&gt;  <a class="header-action link-secondary" title="View source" href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.9-beta/src/Ubiquity.NET.Extensions/KvpArrayBuilder.cs"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -97,10 +97,7 @@ Struct KvpArrayBuilder&lt;TKey, TValue&gt;  <a class="header-action link-seconda
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[SuppressMessage(&quot;Design&quot;, &quot;CA1010:Generic interface should also be implemented&quot;, Justification = &quot;IEnumerable is unused but must exist to support collection initializers&quot;)]
-[SuppressMessage(&quot;Naming&quot;, &quot;CA1710:Identifiers should have correct suffix&quot;, Justification = &quot;It is the correct suffix; This is NOT a collection it&#39;s a builder&quot;)]
-[SuppressMessage(&quot;Performance&quot;, &quot;CA1815:Override equals and operator equals on value types&quot;, Justification = &quot;Equality not relevant for a builder&quot;)]
-public readonly struct KvpArrayBuilder&lt;TKey, TValue&gt; : IEnumerable where TKey : notnull</code></pre>
+    <pre><code class="lang-csharp hljs">public readonly struct KvpArrayBuilder&lt;TKey, TValue&gt; : IEnumerable where TKey : notnull</code></pre>
   </div>
 
 
@@ -137,10 +134,10 @@ public readonly struct KvpArrayBuilder&lt;TKey, TValue&gt; : IEnumerable where T
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetype.tostring">ValueType.ToString()</a>
     </div>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
     </div>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
@@ -199,13 +196,11 @@ initialization support for a sequence of <a class="xref" href="https://learn.mic
   </dl>
   <dl class="jumplist">
     <dt><a class="xref" href="Ubiquity.NET.Extensions.KvpArrayBuilder-2.GetEnumerator.html#Ubiquity_NET_Extensions_KvpArrayBuilder_2_GetEnumerator">GetEnumerator()</a></dt>
-    <dd><p>Returns an enumerator that iterates through a collection.</p>
-</dd>
+    <dd></dd>
   </dl>
   <dl class="jumplist">
     <dt><a class="xref" href="Ubiquity.NET.Extensions.KvpArrayBuilder-2.ToImmutable.html#Ubiquity_NET_Extensions_KvpArrayBuilder_2_ToImmutable">ToImmutable()</a></dt>
-    <dd><p>Returns an immutable array that contains the current contents of this <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.immutable.immutablearray-1">ImmutableArray&lt;T&gt;.Builder</a>.</p>
-</dd>
+    <dd></dd>
   </dl>
 
 
@@ -217,7 +212,7 @@ initialization support for a sequence of <a class="xref" href="https://learn.mic
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.8/src/Ubiquity.NET.Extensions/KvpArrayBuilder.cs/#L23" class="edit-link">Edit this page</a>
+          <a href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.9-beta/src/Ubiquity.NET.Extensions/KvpArrayBuilder.cs" class="edit-link">Edit this page</a>
         </div>
 
 
@@ -233,7 +228,7 @@ initialization support for a sequence of <a class="xref" href="https://learn.mic
       <div class="container-xxl">
         <div class="flex-fill">
           Copyright (C) 2017-2025, Ubiquity.NET Contributors
-          - Build: 20.1.8
+          - Build: 20.1.9-beta
         </div>
       </div>
     </footer>

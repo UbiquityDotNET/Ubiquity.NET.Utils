@@ -16,7 +16,7 @@
       
       
       
-      <meta name="docfx:docurl" content="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/new/develop/apiSpec/new?filename=Ubiquity_NET_SrcGeneration_CSharp_IndentedTextWriterExtensions_MultiLineComment_.md&amp;value=---%0Auid%3A%20Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.MultiLineComment*%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -86,7 +86,7 @@
 
 
 <h1 id="Ubiquity_NET_SrcGeneration_CSharp_IndentedTextWriterExtensions_MultiLineComment_" data-uid="Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.MultiLineComment*" class="text-break">
-Method MultiLineComment  <a class="header-action link-secondary" title="View source" href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.8/src/Ubiquity.NET.SrcGeneration/CSharp/IndentedTextWriterExtensions.cs/#L133"><i class="bi bi-code-slash"></i></a>
+Method MultiLineComment  <a class="header-action link-secondary" title="View source" href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.9-beta/src/Ubiquity.NET.SrcGeneration/CSharp/IndentedTextWriterExtensions.cs"><i class="bi bi-code-slash"></i></a>
 </h1>
 
 <div class="facts text-secondary">
@@ -114,9 +114,9 @@ Method MultiLineComment  <a class="header-action link-secondary" title="View sou
 
 <a id="Ubiquity_NET_SrcGeneration_CSharp_IndentedTextWriterExtensions_MultiLineComment_" data-uid="Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.MultiLineComment*"></a>
 
-<h3 id="Ubiquity_NET_SrcGeneration_CSharp_IndentedTextWriterExtensions_MultiLineComment_System_CodeDom_Compiler_IndentedTextWriter_System_String_" data-uid="Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.MultiLineComment(System.CodeDom.Compiler.IndentedTextWriter,System.String)">
-  MultiLineComment(IndentedTextWriter, string?)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.8/src/Ubiquity.NET.SrcGeneration/CSharp/IndentedTextWriterExtensions.cs/#L133"><i class="bi bi-code-slash"></i></a>
+<h3 id="Ubiquity_NET_SrcGeneration_CSharp_IndentedTextWriterExtensions_MultiLineComment_System_CodeDom_Compiler_IndentedTextWriter_System_String_System_Boolean_" data-uid="Ubiquity.NET.SrcGeneration.CSharp.IndentedTextWriterExtensions.MultiLineComment(System.CodeDom.Compiler.IndentedTextWriter,System.String,System.Boolean)">
+  MultiLineComment(IndentedTextWriter, string?, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.9-beta/src/Ubiquity.NET.SrcGeneration/CSharp/IndentedTextWriterExtensions.cs"><i class="bi bi-code-slash"></i></a>
 </h3>
 
 <div class="markdown level1 summary"><p>Writes <code class="paramref">txt</code> as a multi-line comment</p>
@@ -124,7 +124,7 @@ Method MultiLineComment  <a class="header-action link-secondary" title="View sou
 <div class="markdown level1 conceptual"></div>
 
 <div class="codewrapper">
-  <pre><code class="lang-csharp hljs">public static void MultiLineComment(this IndentedTextWriter self, string? txt)</code></pre>
+  <pre><code class="lang-csharp hljs">public static void MultiLineComment(this IndentedTextWriter self, string? txt, bool writeClosingNewLine = false)</code></pre>
 </div>
 
 <h4 class="section">Parameters</h4>
@@ -135,6 +135,9 @@ Method MultiLineComment  <a class="header-action link-secondary" title="View sou
   <dt><code>txt</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
   <dd><p>Text of the comment</p>
 </dd>
+  <dt><code>writeClosingNewLine</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+  <dd><p>Indicates if the scope is closed with a newline</p>
+</dd>
 </dl>
 
 
@@ -144,7 +147,7 @@ Method MultiLineComment  <a class="header-action link-secondary" title="View sou
 
 
 
-<h4 class="section" id="Ubiquity_NET_SrcGeneration_CSharp_IndentedTextWriterExtensions_MultiLineComment_System_CodeDom_Compiler_IndentedTextWriter_System_String__remarks">Remarks</h4>
+<h4 class="section" id="Ubiquity_NET_SrcGeneration_CSharp_IndentedTextWriterExtensions_MultiLineComment_System_CodeDom_Compiler_IndentedTextWriter_System_String_System_Boolean__remarks">Remarks</h4>
 <div class="markdown level1 remarks"><p>If <code class="paramref">txt</code> is <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>, empty, or all whitespace then this is a NOP</p>
 </div>
 
@@ -154,7 +157,7 @@ Method MultiLineComment  <a class="header-action link-secondary" title="View sou
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.8/src/Ubiquity.NET.SrcGeneration/CSharp/IndentedTextWriterExtensions.cs/#L133" class="edit-link">Edit this page</a>
+          <a href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.9-beta/src/Ubiquity.NET.SrcGeneration/CSharp/IndentedTextWriterExtensions.cs" class="edit-link">Edit this page</a>
         </div>
 
 
@@ -170,7 +173,7 @@ Method MultiLineComment  <a class="header-action link-secondary" title="View sou
       <div class="container-xxl">
         <div class="flex-fill">
           Copyright (C) 2017-2025, Ubiquity.NET Contributors
-          - Build: 20.1.8
+          - Build: 20.1.9-beta
         </div>
       </div>
     </footer>

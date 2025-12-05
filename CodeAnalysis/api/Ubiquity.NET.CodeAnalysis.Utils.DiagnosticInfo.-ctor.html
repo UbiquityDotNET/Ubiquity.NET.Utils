@@ -16,7 +16,7 @@
       
       
       
-      <meta name="docfx:docurl" content="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/new/develop/apiSpec/new?filename=Ubiquity_NET_CodeAnalysis_Utils_DiagnosticInfo__ctor_.md&amp;value=---%0Auid%3A%20Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.%23ctor*%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -86,7 +86,7 @@
 
 
 <h1 id="Ubiquity_NET_CodeAnalysis_Utils_DiagnosticInfo__ctor_" data-uid="Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.#ctor*" class="text-break">
-Constructor DiagnosticInfo  <a class="header-action link-secondary" title="View source" href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.8/src/Ubiquity.NET.CodeAnalysis.Utils/DiagnosticInfo.cs/#L20"><i class="bi bi-code-slash"></i></a>
+Constructor DiagnosticInfo  <a class="header-action link-secondary" title="View source" href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.9-beta/src/Ubiquity.NET.CodeAnalysis.Utils/DiagnosticInfo.cs"><i class="bi bi-code-slash"></i></a>
 </h1>
 
 <div class="facts text-secondary">
@@ -114,30 +114,61 @@ Constructor DiagnosticInfo  <a class="header-action link-secondary" title="View 
 
 <a id="Ubiquity_NET_CodeAnalysis_Utils_DiagnosticInfo__ctor_" data-uid="Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.#ctor*"></a>
 
-<h3 id="Ubiquity_NET_CodeAnalysis_Utils_DiagnosticInfo__ctor_Microsoft_CodeAnalysis_DiagnosticDescriptor_Microsoft_CodeAnalysis_Location_System_Collections_Generic_IEnumerable_System_String__" data-uid="Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.#ctor(Microsoft.CodeAnalysis.DiagnosticDescriptor,Microsoft.CodeAnalysis.Location,System.Collections.Generic.IEnumerable{System.String})">
-  DiagnosticInfo(DiagnosticDescriptor, Location?, params IEnumerable&lt;string&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.8/src/Ubiquity.NET.CodeAnalysis.Utils/DiagnosticInfo.cs/#L20"><i class="bi bi-code-slash"></i></a>
+<h3 id="Ubiquity_NET_CodeAnalysis_Utils_DiagnosticInfo__ctor_Microsoft_CodeAnalysis_DiagnosticDescriptor_Microsoft_CodeAnalysis_Location_System_String___" data-uid="Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.#ctor(Microsoft.CodeAnalysis.DiagnosticDescriptor,Microsoft.CodeAnalysis.Location,System.String[])">
+  DiagnosticInfo(DiagnosticDescriptor, Location?, params string[])
+  <a class="header-action link-secondary" title="View source" href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.9-beta/src/Ubiquity.NET.CodeAnalysis.Utils/DiagnosticInfo.cs"><i class="bi bi-code-slash"></i></a>
 </h3>
 
-<div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.html">DiagnosticInfo</a> class.</p>
-</div>
+<div class="markdown level1 summary"></div>
 <div class="markdown level1 conceptual"></div>
 
 <div class="codewrapper">
-  <pre><code class="lang-csharp hljs">public DiagnosticInfo(DiagnosticDescriptor descriptor, Location? location, params IEnumerable&lt;string&gt; msgArgs)</code></pre>
+  <pre><code class="lang-csharp hljs">public DiagnosticInfo(DiagnosticDescriptor descriptor, Location? location, params string[] msgArgs)</code></pre>
 </div>
 
 <h4 class="section">Parameters</h4>
 <dl class="parameters">
-  <dt><code>descriptor</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.diagnosticdescriptor">DiagnosticDescriptor</a></dt>
-  <dd><p>Descriptor for the diagnostic</p>
-</dd>
-  <dt><code>location</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.codeanalysis.location">Location</a></dt>
-  <dd><p>Location in the source file that triggered this diagnostic</p>
-</dd>
+  <dt><code>descriptor</code> <span class="xref">DiagnosticDescriptor</span></dt>
+  <dd></dd>
+  <dt><code>location</code> <span class="xref">Location</span></dt>
+  <dd></dd>
+  <dt><code>msgArgs</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+  <dd></dd>
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+<a id="Ubiquity_NET_CodeAnalysis_Utils_DiagnosticInfo__ctor_" data-uid="Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.#ctor*"></a>
+
+<h3 id="Ubiquity_NET_CodeAnalysis_Utils_DiagnosticInfo__ctor_Microsoft_CodeAnalysis_DiagnosticDescriptor_Microsoft_CodeAnalysis_Location_System_Collections_Generic_IEnumerable_System_String__" data-uid="Ubiquity.NET.CodeAnalysis.Utils.DiagnosticInfo.#ctor(Microsoft.CodeAnalysis.DiagnosticDescriptor,Microsoft.CodeAnalysis.Location,System.Collections.Generic.IEnumerable{System.String})">
+  DiagnosticInfo(DiagnosticDescriptor, Location?, IEnumerable&lt;string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.9-beta/src/Ubiquity.NET.CodeAnalysis.Utils/DiagnosticInfo.cs"><i class="bi bi-code-slash"></i></a>
+</h3>
+
+<div class="markdown level1 summary"></div>
+<div class="markdown level1 conceptual"></div>
+
+<div class="codewrapper">
+  <pre><code class="lang-csharp hljs">public DiagnosticInfo(DiagnosticDescriptor descriptor, Location? location, IEnumerable&lt;string&gt; msgArgs)</code></pre>
+</div>
+
+<h4 class="section">Parameters</h4>
+<dl class="parameters">
+  <dt><code>descriptor</code> <span class="xref">DiagnosticDescriptor</span></dt>
+  <dd></dd>
+  <dt><code>location</code> <span class="xref">Location</span></dt>
+  <dd></dd>
   <dt><code>msgArgs</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
-  <dd><p>Args for the message</p>
-</dd>
+  <dd></dd>
 </dl>
 
 
@@ -154,7 +185,7 @@ Constructor DiagnosticInfo  <a class="header-action link-secondary" title="View 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.8/src/Ubiquity.NET.CodeAnalysis.Utils/DiagnosticInfo.cs/#L20" class="edit-link">Edit this page</a>
+          <a href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.9-beta/src/Ubiquity.NET.CodeAnalysis.Utils/DiagnosticInfo.cs" class="edit-link">Edit this page</a>
         </div>
 
 
@@ -170,7 +201,7 @@ Constructor DiagnosticInfo  <a class="header-action link-secondary" title="View 
       <div class="container-xxl">
         <div class="flex-fill">
           Copyright (C) 2017-2025, Ubiquity.NET Contributors
-          - Build: 20.1.8
+          - Build: 20.1.9-beta
         </div>
       </div>
     </footer>

@@ -16,7 +16,7 @@
       
       
       
-      <meta name="docfx:docurl" content="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/new/develop/apiSpec/new?filename=Ubiquity_NET_InteropHelpers_LazyEncodedString.md&amp;value=---%0Auid%3A%20Ubiquity.NET.InteropHelpers.LazyEncodedString%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -84,7 +84,7 @@
 
 
   <h1 id="Ubiquity_NET_InteropHelpers_LazyEncodedString" data-uid="Ubiquity.NET.InteropHelpers.LazyEncodedString" class="text-break">
-Class LazyEncodedString  <a class="header-action link-secondary" title="View source" href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.8/src/Ubiquity.NET.InteropHelpers/LazyEncodedString.cs/#L23"><i class="bi bi-code-slash"></i></a>
+Class LazyEncodedString  <a class="header-action link-secondary" title="View source" href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.9-beta/src/Ubiquity.NET.InteropHelpers/LazyEncodedString.cs"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -126,10 +126,10 @@ public sealed class LazyEncodedString : IEquatable&lt;LazyEncodedString?&gt;, IE
     <dt>Inherited Members</dt>
     <dd>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
     </div>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
@@ -215,18 +215,15 @@ so why not be nice and robust at the cost of one byte of allocated space)</p>
 
   <dl class="jumplist">
     <dt><a class="xref" href="Ubiquity.NET.InteropHelpers.LazyEncodedString.Equals.html#Ubiquity_NET_InteropHelpers_LazyEncodedString_Equals_System_Object_">Equals(object?)</a></dt>
-    <dd><p>Determines whether the specified object is equal to the current object.</p>
-</dd>
+    <dd></dd>
   </dl>
   <dl class="jumplist">
     <dt><a class="xref" href="Ubiquity.NET.InteropHelpers.LazyEncodedString.Equals.html#Ubiquity_NET_InteropHelpers_LazyEncodedString_Equals_System_String_">Equals(string?)</a></dt>
-    <dd><p>Indicates whether the current object is equal to another object of the same type.</p>
-</dd>
+    <dd></dd>
   </dl>
   <dl class="jumplist">
     <dt><a class="xref" href="Ubiquity.NET.InteropHelpers.LazyEncodedString.Equals.html#Ubiquity_NET_InteropHelpers_LazyEncodedString_Equals_Ubiquity_NET_InteropHelpers_LazyEncodedString_">Equals(LazyEncodedString?)</a></dt>
-    <dd><p>Indicates whether the current object is equal to another object of the same type.</p>
-</dd>
+    <dd></dd>
   </dl>
   <dl class="jumplist">
     <dt><a class="xref" href="Ubiquity.NET.InteropHelpers.LazyEncodedString.From.html#Ubiquity_NET_InteropHelpers_LazyEncodedString_From_System_String_">From(string?)</a></dt>
@@ -245,8 +242,7 @@ so why not be nice and robust at the cost of one byte of allocated space)</p>
   </dl>
   <dl class="jumplist">
     <dt><a class="xref" href="Ubiquity.NET.InteropHelpers.LazyEncodedString.GetHashCode.html#Ubiquity_NET_InteropHelpers_LazyEncodedString_GetHashCode">GetHashCode()</a></dt>
-    <dd><p>Serves as the default hash function.</p>
-</dd>
+    <dd></dd>
   </dl>
   <dl class="jumplist">
     <dt><a class="xref" href="Ubiquity.NET.InteropHelpers.LazyEncodedString.IsNullOrEmpty.html#Ubiquity_NET_InteropHelpers_LazyEncodedString_IsNullOrEmpty_Ubiquity_NET_InteropHelpers_LazyEncodedString_">IsNullOrEmpty(LazyEncodedString?)</a></dt>
@@ -259,14 +255,22 @@ so why not be nice and robust at the cost of one byte of allocated space)</p>
 </dd>
   </dl>
   <dl class="jumplist">
-    <dt><a class="xref" href="Ubiquity.NET.InteropHelpers.LazyEncodedString.Join.html#Ubiquity_NET_InteropHelpers_LazyEncodedString_Join_System_Char_System_Collections_Generic_IEnumerable_Ubiquity_NET_InteropHelpers_LazyEncodedString__">Join(char, params IEnumerable&lt;LazyEncodedString&gt;)</a></dt>
+    <dt><a class="xref" href="Ubiquity.NET.InteropHelpers.LazyEncodedString.Join.html#Ubiquity_NET_InteropHelpers_LazyEncodedString_Join_System_Char_System_Collections_Generic_IEnumerable_Ubiquity_NET_InteropHelpers_LazyEncodedString__">Join(char, IEnumerable&lt;LazyEncodedString&gt;)</a></dt>
     <dd><p>Specialized join that optimizes for <a class="xref" href="Ubiquity.NET.InteropHelpers.LazyEncodedString.html">LazyEncodedString</a> values</p>
 </dd>
   </dl>
   <dl class="jumplist">
-    <dt><a class="xref" href="Ubiquity.NET.InteropHelpers.LazyEncodedString.Join.html#Ubiquity_NET_InteropHelpers_LazyEncodedString_Join__1_System_Char_System_Collections_Generic_IEnumerable___0__">Join&lt;T&gt;(char, params IEnumerable&lt;T&gt;)</a></dt>
-    <dd><p>Concatenates the members of a collection, using the specified separator between each member.</p>
+    <dt><a class="xref" href="Ubiquity.NET.InteropHelpers.LazyEncodedString.Join.html#Ubiquity_NET_InteropHelpers_LazyEncodedString_Join_System_Char_Ubiquity_NET_InteropHelpers_LazyEncodedString___">Join(char, params LazyEncodedString[])</a></dt>
+    <dd><p>Specialized join that optimizes for <a class="xref" href="Ubiquity.NET.InteropHelpers.LazyEncodedString.html">LazyEncodedString</a> values</p>
 </dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="Ubiquity.NET.InteropHelpers.LazyEncodedString.Join.html#Ubiquity_NET_InteropHelpers_LazyEncodedString_Join__1_System_Char_System_Collections_Generic_IEnumerable___0__">Join&lt;T&gt;(char, IEnumerable&lt;T&gt;)</a></dt>
+    <dd></dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="Ubiquity.NET.InteropHelpers.LazyEncodedString.Join.html#Ubiquity_NET_InteropHelpers_LazyEncodedString_Join__1_System_Char___0___">Join&lt;T&gt;(char, params T[])</a></dt>
+    <dd></dd>
   </dl>
   <dl class="jumplist">
     <dt><a class="xref" href="Ubiquity.NET.InteropHelpers.LazyEncodedString.Pin.html#Ubiquity_NET_InteropHelpers_LazyEncodedString_Pin">Pin()</a></dt>
@@ -280,18 +284,12 @@ so why not be nice and robust at the cost of one byte of allocated space)</p>
   </dl>
   <dl class="jumplist">
     <dt><a class="xref" href="Ubiquity.NET.InteropHelpers.LazyEncodedString.ToString.html#Ubiquity_NET_InteropHelpers_LazyEncodedString_ToString">ToString()</a></dt>
-    <dd><p>Returns a string that represents the current object.</p>
-</dd>
+    <dd></dd>
   </dl>
 
   <h2 class="section" id="operators">Operators
 </h2>
 
-  <dl class="jumplist">
-    <dt><a class="xref" href="Ubiquity.NET.InteropHelpers.LazyEncodedString.op_Equality.html#Ubiquity_NET_InteropHelpers_LazyEncodedString_op_Equality_Ubiquity_NET_InteropHelpers_LazyEncodedString_Ubiquity_NET_InteropHelpers_LazyEncodedString_">operator ==(LazyEncodedString?, LazyEncodedString?)</a></dt>
-    <dd><p>Compares two values to determine equality.</p>
-</dd>
-  </dl>
   <dl class="jumplist">
     <dt><a class="xref" href="Ubiquity.NET.InteropHelpers.LazyEncodedString.op_Implicit.html#Ubiquity_NET_InteropHelpers_LazyEncodedString_op_Implicit_System_ReadOnlySpan_System_Byte___Ubiquity_NET_InteropHelpers_LazyEncodedString">implicit operator LazyEncodedString(ReadOnlySpan&lt;byte&gt;)</a></dt>
     <dd><p>Convenient implicit conversion of a managed string into a Lazily encoded string</p>
@@ -312,10 +310,17 @@ so why not be nice and robust at the cost of one byte of allocated space)</p>
     <dd><p>Implicit cast to a string via <a class="xref" href="Ubiquity.NET.InteropHelpers.LazyEncodedString.ToString.html#Ubiquity_NET_InteropHelpers_LazyEncodedString_ToString">ToString()</a></p>
 </dd>
   </dl>
+
+  <h2 class="section" id="eii">Explicit Interface Implementations
+</h2>
+
+  <dl class="jumplist">
+    <dt><a class="xref" href="Ubiquity.NET.InteropHelpers.LazyEncodedString.op_Equality.html#Ubiquity_NET_InteropHelpers_LazyEncodedString_op_Equality_Ubiquity_NET_InteropHelpers_LazyEncodedString_Ubiquity_NET_InteropHelpers_LazyEncodedString_">operator ==(LazyEncodedString?, LazyEncodedString?)</a></dt>
+    <dd></dd>
+  </dl>
   <dl class="jumplist">
     <dt><a class="xref" href="Ubiquity.NET.InteropHelpers.LazyEncodedString.op_Inequality.html#Ubiquity_NET_InteropHelpers_LazyEncodedString_op_Inequality_Ubiquity_NET_InteropHelpers_LazyEncodedString_Ubiquity_NET_InteropHelpers_LazyEncodedString_">operator !=(LazyEncodedString?, LazyEncodedString?)</a></dt>
-    <dd><p>Compares two values to determine inequality.</p>
-</dd>
+    <dd></dd>
   </dl>
 
 
@@ -323,7 +328,7 @@ so why not be nice and robust at the cost of one byte of allocated space)</p>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.8/src/Ubiquity.NET.InteropHelpers/LazyEncodedString.cs/#L23" class="edit-link">Edit this page</a>
+          <a href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.9-beta/src/Ubiquity.NET.InteropHelpers/LazyEncodedString.cs" class="edit-link">Edit this page</a>
         </div>
 
 
@@ -339,7 +344,7 @@ so why not be nice and robust at the cost of one byte of allocated space)</p>
       <div class="container-xxl">
         <div class="flex-fill">
           Copyright (C) 2017-2025, Ubiquity.NET Contributors
-          - Build: 20.1.8
+          - Build: 20.1.9-beta
         </div>
       </div>
     </footer>

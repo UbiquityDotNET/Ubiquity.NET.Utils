@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Property ResourceName | Ubiquity.NET </title>
+      <title>Method InvokeAsync | Ubiquity.NET </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Property ResourceName | Ubiquity.NET ">
+      <meta name="title" content="Method InvokeAsync | Ubiquity.NET ">
       
       
       <link rel="icon" href="../../favicon.ico">
@@ -16,7 +16,7 @@
       
       
       
-      <meta name="docfx:docurl" content="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/new/develop/apiSpec/new?filename=Ubiquity_NET_Extensions_Properties_ResourceNotFoundException_ResourceName_.md&amp;value=---%0Auid%3A%20Ubiquity.NET.Extensions.Properties.ResourceNotFoundException.ResourceName*%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -79,19 +79,19 @@
 
         </div>
 
-        <article data-uid="Ubiquity.NET.Extensions.Properties.ResourceNotFoundException.ResourceName*">
+        <article data-uid="Ubiquity.NET.CommandLine.ParseResultExtensions.InvokeAsync*">
 
 
 
 
 
-<h1 id="Ubiquity_NET_Extensions_Properties_ResourceNotFoundException_ResourceName_" data-uid="Ubiquity.NET.Extensions.Properties.ResourceNotFoundException.ResourceName*" class="text-break">
-Property ResourceName  <a class="header-action link-secondary" title="View source" href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.8/src/Ubiquity.NET.Extensions/Properties/ResourceNotFoundException.cs/#L35"><i class="bi bi-code-slash"></i></a>
+<h1 id="Ubiquity_NET_CommandLine_ParseResultExtensions_InvokeAsync_" data-uid="Ubiquity.NET.CommandLine.ParseResultExtensions.InvokeAsync*" class="text-break">
+Method InvokeAsync  <a class="header-action link-secondary" title="View source" href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.9-beta/src/Ubiquity.NET.CommandLine/ParseResultExtensions.cs"><i class="bi bi-code-slash"></i></a>
 </h1>
 
 <div class="facts text-secondary">
-  <dl><dt>Namespace</dt><dd><a class="xref" href="Ubiquity.html">Ubiquity</a>.<a class="xref" href="Ubiquity.NET.html">NET</a>.<a class="xref" href="Ubiquity.NET.Extensions.html">Extensions</a>.<a class="xref" href="Ubiquity.NET.Extensions.Properties.html">Properties</a></dd></dl>
-  <dl><dt>Assembly</dt><dd>Ubiquity.NET.Extensions.dll</dd></dl>
+  <dl><dt>Namespace</dt><dd><a class="xref" href="Ubiquity.html">Ubiquity</a>.<a class="xref" href="Ubiquity.NET.html">NET</a>.<a class="xref" href="Ubiquity.NET.CommandLine.html">CommandLine</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Ubiquity.NET.CommandLine.dll</dd></dl>
 </div>
 
 <div class="markdown summary"></div>
@@ -112,30 +112,49 @@ Property ResourceName  <a class="header-action link-secondary" title="View sourc
 
 
 
-<a id="Ubiquity_NET_Extensions_Properties_ResourceNotFoundException_ResourceName_" data-uid="Ubiquity.NET.Extensions.Properties.ResourceNotFoundException.ResourceName*"></a>
+<a id="Ubiquity_NET_CommandLine_ParseResultExtensions_InvokeAsync_" data-uid="Ubiquity.NET.CommandLine.ParseResultExtensions.InvokeAsync*"></a>
 
-<h3 id="Ubiquity_NET_Extensions_Properties_ResourceNotFoundException_ResourceName" data-uid="Ubiquity.NET.Extensions.Properties.ResourceNotFoundException.ResourceName">
-  ResourceName
-  <a class="header-action link-secondary" title="View source" href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.8/src/Ubiquity.NET.Extensions/Properties/ResourceNotFoundException.cs/#L35"><i class="bi bi-code-slash"></i></a>
+<h3 id="Ubiquity_NET_CommandLine_ParseResultExtensions_InvokeAsync_System_CommandLine_ParseResult_Ubiquity_NET_CommandLine_IDiagnosticReporter_System_Threading_CancellationToken_System_Boolean_System_Nullable_System_TimeSpan__" data-uid="Ubiquity.NET.CommandLine.ParseResultExtensions.InvokeAsync(System.CommandLine.ParseResult,Ubiquity.NET.CommandLine.IDiagnosticReporter,System.Threading.CancellationToken,System.Boolean,System.Nullable{System.TimeSpan})">
+  InvokeAsync(ParseResult, IDiagnosticReporter, CancellationToken, bool, TimeSpan?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.9-beta/src/Ubiquity.NET.CommandLine/ParseResultExtensions.cs"><i class="bi bi-code-slash"></i></a>
 </h3>
 
-<div class="markdown level1 summary"><p>Gets the name of the resource missing</p>
+<div class="markdown level1 summary"><p>Invokes the results with re-directing writers that use <code class="paramref">reporter</code> to write messages</p>
 </div>
 <div class="markdown level1 conceptual"></div>
 
 <div class="codewrapper">
-  <pre><code class="lang-csharp hljs">public string ResourceName { get; }</code></pre>
+  <pre><code class="lang-csharp hljs">public static Task&lt;int&gt; InvokeAsync(this ParseResult self, IDiagnosticReporter reporter, CancellationToken ct, bool enableDefaultHandler = true, TimeSpan? timeout = null)</code></pre>
 </div>
 
-
-
-
-
-<h4 class="section">Property Value</h4>
+<h4 class="section">Parameters</h4>
 <dl class="parameters">
-  <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-  <dd></dd>
+  <dt><code>self</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.commandline.parseresult">ParseResult</a></dt>
+  <dd><p>Results to invoke</p>
+</dd>
+  <dt><code>reporter</code> <a class="xref" href="Ubiquity.NET.CommandLine.IDiagnosticReporter.html">IDiagnosticReporter</a></dt>
+  <dd><p>Reporter to report information/errors to</p>
+</dd>
+  <dt><code>ct</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+  <dd><p>Cancellation token to use for the async operation</p>
+</dd>
+  <dt><code>enableDefaultHandler</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+  <dd><p>Enable the default handler (Converts exceptions to an exit code of 1)</p>
+</dd>
+  <dt><code>timeout</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.timespan">TimeSpan</a>?</dt>
+  <dd><p>Timeout for the invocation [Default: null (2s)]</p>
+</dd>
 </dl>
+
+<h4 class="section">Returns</h4>
+<dl class="parameters">
+  <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+  <dd><p>Exit code from invoking the results</p>
+</dd>
+</dl>
+
+
+
 
 
 
@@ -147,7 +166,7 @@ Property ResourceName  <a class="header-action link-secondary" title="View sourc
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.8/src/Ubiquity.NET.Extensions/Properties/ResourceNotFoundException.cs/#L35" class="edit-link">Edit this page</a>
+          <a href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.9-beta/src/Ubiquity.NET.CommandLine/ParseResultExtensions.cs" class="edit-link">Edit this page</a>
         </div>
 
 
@@ -163,7 +182,7 @@ Property ResourceName  <a class="header-action link-secondary" title="View sourc
       <div class="container-xxl">
         <div class="flex-fill">
           Copyright (C) 2017-2025, Ubiquity.NET Contributors
-          - Build: 20.1.8
+          - Build: 20.1.9-beta
         </div>
       </div>
     </footer>

@@ -16,7 +16,7 @@
       
       
       
-      <meta name="docfx:docurl" content="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/new/develop/apiSpec/new?filename=Ubiquity_NET_Extensions_SourceRange.md&amp;value=---%0Auid%3A%20Ubiquity.NET.Extensions.SourceRange%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -84,7 +84,7 @@
 
 
   <h1 id="Ubiquity_NET_Extensions_SourceRange" data-uid="Ubiquity.NET.Extensions.SourceRange" class="text-break">
-Struct SourceRange  <a class="header-action link-secondary" title="View source" href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.8/src/Ubiquity.NET.Extensions/SourceRange.cs/#L12"><i class="bi bi-code-slash"></i></a>
+Struct SourceRange  <a class="header-action link-secondary" title="View source" href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.9-beta/src/Ubiquity.NET.Extensions/SourceRange.cs"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -97,7 +97,7 @@ Struct SourceRange  <a class="header-action link-secondary" title="View source" 
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public readonly record struct SourceRange : IFormattable, IEquatable&lt;SourceRange&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public readonly struct SourceRange : IFormattable, IEquatable&lt;SourceRange&gt;</code></pre>
   </div>
 
 
@@ -117,16 +117,10 @@ Struct SourceRange  <a class="header-action link-secondary" title="View source" 
     <dt>Inherited Members</dt>
     <dd>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetype.equals">ValueType.Equals(object)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode">ValueType.GetHashCode()</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
@@ -186,28 +180,46 @@ contain the start point (Looking at you <a class="xref" href="https://learn.micr
 </h2>
 
   <dl class="jumplist">
+    <dt><a class="xref" href="Ubiquity.NET.Extensions.SourceRange.Equals.html#Ubiquity_NET_Extensions_SourceRange_Equals_System_Object_">Equals(object)</a></dt>
+    <dd></dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="Ubiquity.NET.Extensions.SourceRange.Equals.html#Ubiquity_NET_Extensions_SourceRange_Equals_Ubiquity_NET_Extensions_SourceRange_">Equals(SourceRange)</a></dt>
+    <dd></dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="Ubiquity.NET.Extensions.SourceRange.GetHashCode.html#Ubiquity_NET_Extensions_SourceRange_GetHashCode">GetHashCode()</a></dt>
+    <dd></dd>
+  </dl>
+  <dl class="jumplist">
     <dt><a class="xref" href="Ubiquity.NET.Extensions.SourceRange.Slice.html#Ubiquity_NET_Extensions_SourceRange_Slice_System_ReadOnlySpan_System_Char__">Slice(ReadOnlySpan&lt;char&gt;)</a></dt>
     <dd><p>Forms a slice out of the given read-only span based on this range</p>
 </dd>
   </dl>
   <dl class="jumplist">
     <dt><a class="xref" href="Ubiquity.NET.Extensions.SourceRange.ToString.html#Ubiquity_NET_Extensions_SourceRange_ToString">ToString()</a></dt>
-    <dd><p>Returns the fully qualified type name of this instance.</p>
-</dd>
+    <dd></dd>
   </dl>
   <dl class="jumplist">
     <dt><a class="xref" href="Ubiquity.NET.Extensions.SourceRange.ToString.html#Ubiquity_NET_Extensions_SourceRange_ToString_System_String_System_IFormatProvider_">ToString(string?, IFormatProvider?)</a></dt>
-    <dd><p>Formats the value of the current instance using the specified format.</p>
-</dd>
+    <dd></dd>
   </dl>
 
   <h2 class="section" id="operators">Operators
 </h2>
 
   <dl class="jumplist">
+    <dt><a class="xref" href="Ubiquity.NET.Extensions.SourceRange.op_Equality.html#Ubiquity_NET_Extensions_SourceRange_op_Equality_Ubiquity_NET_Extensions_SourceRange_Ubiquity_NET_Extensions_SourceRange_">operator ==(SourceRange, SourceRange)</a></dt>
+    <dd></dd>
+  </dl>
+  <dl class="jumplist">
     <dt><a class="xref" href="Ubiquity.NET.Extensions.SourceRange.op_Implicit.html#Ubiquity_NET_Extensions_SourceRange_op_Implicit_Ubiquity_NET_Extensions_SourcePosition__Ubiquity_NET_Extensions_SourceRange">implicit operator SourceRange(SourcePosition)</a></dt>
     <dd><p>Implicitly Converts a position to a single point range</p>
 </dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="Ubiquity.NET.Extensions.SourceRange.op_Inequality.html#Ubiquity_NET_Extensions_SourceRange_op_Inequality_Ubiquity_NET_Extensions_SourceRange_Ubiquity_NET_Extensions_SourceRange_">operator !=(SourceRange, SourceRange)</a></dt>
+    <dd></dd>
   </dl>
 
 
@@ -215,7 +227,7 @@ contain the start point (Looking at you <a class="xref" href="https://learn.micr
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.8/src/Ubiquity.NET.Extensions/SourceRange.cs/#L12" class="edit-link">Edit this page</a>
+          <a href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.9-beta/src/Ubiquity.NET.Extensions/SourceRange.cs" class="edit-link">Edit this page</a>
         </div>
 
 
@@ -231,7 +243,7 @@ contain the start point (Looking at you <a class="xref" href="https://learn.micr
       <div class="container-xxl">
         <div class="flex-fill">
           Copyright (C) 2017-2025, Ubiquity.NET Contributors
-          - Build: 20.1.8
+          - Build: 20.1.9-beta
         </div>
       </div>
     </footer>

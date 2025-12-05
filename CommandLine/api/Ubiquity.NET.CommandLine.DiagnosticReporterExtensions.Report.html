@@ -16,7 +16,7 @@
       
       
       
-      <meta name="docfx:docurl" content="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/new/develop/apiSpec/new?filename=Ubiquity_NET_CommandLine_DiagnosticReporterExtensions_Report_.md&amp;value=---%0Auid%3A%20Ubiquity.NET.CommandLine.DiagnosticReporterExtensions.Report*%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -86,7 +86,7 @@
 
 
 <h1 id="Ubiquity_NET_CommandLine_DiagnosticReporterExtensions_Report_" data-uid="Ubiquity.NET.CommandLine.DiagnosticReporterExtensions.Report*" class="text-break">
-Method Report  <a class="header-action link-secondary" title="View source" href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.8/src/Ubiquity.NET.CommandLine/DiagnosticReporterExtensions.cs/#L24"><i class="bi bi-code-slash"></i></a>
+Method Report  <a class="header-action link-secondary" title="View source" href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.9-beta/src/Ubiquity.NET.CommandLine/DiagnosticReporterExtensions.cs"><i class="bi bi-code-slash"></i></a>
 </h1>
 
 <div class="facts text-secondary">
@@ -114,9 +114,63 @@ Method Report  <a class="header-action link-secondary" title="View source" href=
 
 <a id="Ubiquity_NET_CommandLine_DiagnosticReporterExtensions_Report_" data-uid="Ubiquity.NET.CommandLine.DiagnosticReporterExtensions.Report*"></a>
 
+<h3 id="Ubiquity_NET_CommandLine_DiagnosticReporterExtensions_Report_Ubiquity_NET_CommandLine_IDiagnosticReporter_Ubiquity_NET_CommandLine_MsgLevel_Ubiquity_NET_Extensions_LocalizableString_System_IFormatProvider_System_Uri_System_Nullable_Ubiquity_NET_Extensions_SourceRange__System_String_System_String_" data-uid="Ubiquity.NET.CommandLine.DiagnosticReporterExtensions.Report(Ubiquity.NET.CommandLine.IDiagnosticReporter,Ubiquity.NET.CommandLine.MsgLevel,Ubiquity.NET.Extensions.LocalizableString,System.IFormatProvider,System.Uri,System.Nullable{Ubiquity.NET.Extensions.SourceRange},System.String,System.String)">
+  Report(IDiagnosticReporter, MsgLevel, LocalizableString, IFormatProvider?, Uri?, SourceRange?, string?, string?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.9-beta/src/Ubiquity.NET.CommandLine/DiagnosticReporterExtensions.cs"><i class="bi bi-code-slash"></i></a>
+</h3>
+
+<div class="markdown level1 summary"><p>Reports a message</p>
+</div>
+<div class="markdown level1 conceptual"></div>
+
+<div class="codewrapper">
+  <pre><code class="lang-csharp hljs">public static void Report(this IDiagnosticReporter self, MsgLevel level, LocalizableString locStr, IFormatProvider? formatProvider = null, Uri? origin = null, SourceRange? location = null, string? subCategory = null, string? code = null)</code></pre>
+</div>
+
+<h4 class="section">Parameters</h4>
+<dl class="parameters">
+  <dt><code>self</code> <a class="xref" href="Ubiquity.NET.CommandLine.IDiagnosticReporter.html">IDiagnosticReporter</a></dt>
+  <dd><p>Reporter to use in reporting the message</p>
+</dd>
+  <dt><code>level</code> <a class="xref" href="Ubiquity.NET.CommandLine.MsgLevel.html">MsgLevel</a></dt>
+  <dd><p>Message level</p>
+</dd>
+  <dt><code>locStr</code> <a class="xref" href="../../extensions/api/Ubiquity.NET.Extensions.LocalizableString.html">LocalizableString</a></dt>
+  <dd><p>Localizable string for the message</p>
+</dd>
+  <dt><code>formatProvider</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iformatprovider">IFormatProvider</a></dt>
+  <dd><p>Format provider to use for the message</p>
+</dd>
+  <dt><code>origin</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uri">Uri</a></dt>
+  <dd><p>Origin of the message</p>
+</dd>
+  <dt><code>location</code> <a class="xref" href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.9-beta/src/Ubiquity.NET.Extensions/SourceRange.cs">SourceRange</a>?</dt>
+  <dd><p>Location of the report in <code class="paramref">origin</code></p>
+</dd>
+  <dt><code>subCategory</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+  <dd><p>Sub category for the message</p>
+</dd>
+  <dt><code>code</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+  <dd><p>code for the message</p>
+</dd>
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+<a id="Ubiquity_NET_CommandLine_DiagnosticReporterExtensions_Report_" data-uid="Ubiquity.NET.CommandLine.DiagnosticReporterExtensions.Report*"></a>
+
 <h3 id="Ubiquity_NET_CommandLine_DiagnosticReporterExtensions_Report_Ubiquity_NET_CommandLine_IDiagnosticReporter_Ubiquity_NET_CommandLine_MsgLevel_System_String_" data-uid="Ubiquity.NET.CommandLine.DiagnosticReporterExtensions.Report(Ubiquity.NET.CommandLine.IDiagnosticReporter,Ubiquity.NET.CommandLine.MsgLevel,System.String)">
   Report(IDiagnosticReporter, MsgLevel, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.8/src/Ubiquity.NET.CommandLine/DiagnosticReporterExtensions.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.9-beta/src/Ubiquity.NET.CommandLine/DiagnosticReporterExtensions.cs"><i class="bi bi-code-slash"></i></a>
 </h3>
 
 <div class="markdown level1 summary"><p>Reports a message</p>
@@ -155,7 +209,7 @@ Method Report  <a class="header-action link-secondary" title="View source" href=
 
 <h3 id="Ubiquity_NET_CommandLine_DiagnosticReporterExtensions_Report_Ubiquity_NET_CommandLine_IDiagnosticReporter_Ubiquity_NET_CommandLine_MsgLevel_System_Uri_Ubiquity_NET_Extensions_SourceRange_Ubiquity_NET_CommandLine_InterpolatedStringHandlers_DiagnosticReporterInterpolatedStringHandler_" data-uid="Ubiquity.NET.CommandLine.DiagnosticReporterExtensions.Report(Ubiquity.NET.CommandLine.IDiagnosticReporter,Ubiquity.NET.CommandLine.MsgLevel,System.Uri,Ubiquity.NET.Extensions.SourceRange,Ubiquity.NET.CommandLine.InterpolatedStringHandlers.DiagnosticReporterInterpolatedStringHandler)">
   Report(IDiagnosticReporter, MsgLevel, Uri?, SourceRange, DiagnosticReporterInterpolatedStringHandler)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.8/src/Ubiquity.NET.CommandLine/DiagnosticReporterExtensions.cs/#L53"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.9-beta/src/Ubiquity.NET.CommandLine/DiagnosticReporterExtensions.cs"><i class="bi bi-code-slash"></i></a>
 </h3>
 
 <div class="markdown level1 summary"><p>Reports a message using an interpolated string</p>
@@ -206,7 +260,7 @@ in all cases.</p>
 
 <h3 id="Ubiquity_NET_CommandLine_DiagnosticReporterExtensions_Report_Ubiquity_NET_CommandLine_IDiagnosticReporter_Ubiquity_NET_CommandLine_MsgLevel_Ubiquity_NET_Extensions_SourceRange_Ubiquity_NET_CommandLine_InterpolatedStringHandlers_DiagnosticReporterInterpolatedStringHandler_" data-uid="Ubiquity.NET.CommandLine.DiagnosticReporterExtensions.Report(Ubiquity.NET.CommandLine.IDiagnosticReporter,Ubiquity.NET.CommandLine.MsgLevel,Ubiquity.NET.Extensions.SourceRange,Ubiquity.NET.CommandLine.InterpolatedStringHandlers.DiagnosticReporterInterpolatedStringHandler)">
   Report(IDiagnosticReporter, MsgLevel, SourceRange, DiagnosticReporterInterpolatedStringHandler)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.8/src/Ubiquity.NET.CommandLine/DiagnosticReporterExtensions.cs/#L90"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.9-beta/src/Ubiquity.NET.CommandLine/DiagnosticReporterExtensions.cs"><i class="bi bi-code-slash"></i></a>
 </h3>
 
 <div class="markdown level1 summary"><p>Reports a message using an interpolated string</p>
@@ -254,7 +308,7 @@ in all cases.</p>
 
 <h3 id="Ubiquity_NET_CommandLine_DiagnosticReporterExtensions_Report_Ubiquity_NET_CommandLine_IDiagnosticReporter_Ubiquity_NET_CommandLine_MsgLevel_Ubiquity_NET_CommandLine_InterpolatedStringHandlers_DiagnosticReporterInterpolatedStringHandler_" data-uid="Ubiquity.NET.CommandLine.DiagnosticReporterExtensions.Report(Ubiquity.NET.CommandLine.IDiagnosticReporter,Ubiquity.NET.CommandLine.MsgLevel,Ubiquity.NET.CommandLine.InterpolatedStringHandlers.DiagnosticReporterInterpolatedStringHandler)">
   Report(IDiagnosticReporter, MsgLevel, DiagnosticReporterInterpolatedStringHandler)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.8/src/Ubiquity.NET.CommandLine/DiagnosticReporterExtensions.cs/#L110"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.9-beta/src/Ubiquity.NET.CommandLine/DiagnosticReporterExtensions.cs"><i class="bi bi-code-slash"></i></a>
 </h3>
 
 <div class="markdown level1 summary"><p>Reports a message using an interpolated string</p>
@@ -299,7 +353,7 @@ in all cases.</p>
 
 <h3 id="Ubiquity_NET_CommandLine_DiagnosticReporterExtensions_Report_Ubiquity_NET_CommandLine_IDiagnosticReporter_Ubiquity_NET_CommandLine_MsgLevel_System_Uri_Ubiquity_NET_Extensions_SourceRange_System_String_System_Object___" data-uid="Ubiquity.NET.CommandLine.DiagnosticReporterExtensions.Report(Ubiquity.NET.CommandLine.IDiagnosticReporter,Ubiquity.NET.CommandLine.MsgLevel,System.Uri,Ubiquity.NET.Extensions.SourceRange,System.String,System.Object[])">
   Report(IDiagnosticReporter, MsgLevel, Uri?, SourceRange, string, params object[])
-  <a class="header-action link-secondary" title="View source" href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.8/src/Ubiquity.NET.CommandLine/DiagnosticReporterExtensions.cs/#L141"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.9-beta/src/Ubiquity.NET.CommandLine/DiagnosticReporterExtensions.cs"><i class="bi bi-code-slash"></i></a>
 </h3>
 
 <div class="markdown level1 summary"><p>Reports a message using classic string formatting</p>
@@ -347,7 +401,7 @@ in all cases.</p>
 
 <h3 id="Ubiquity_NET_CommandLine_DiagnosticReporterExtensions_Report_Ubiquity_NET_CommandLine_IDiagnosticReporter_Ubiquity_NET_CommandLine_MsgLevel_Ubiquity_NET_Extensions_SourceRange_System_String_System_Object___" data-uid="Ubiquity.NET.CommandLine.DiagnosticReporterExtensions.Report(Ubiquity.NET.CommandLine.IDiagnosticReporter,Ubiquity.NET.CommandLine.MsgLevel,Ubiquity.NET.Extensions.SourceRange,System.String,System.Object[])">
   Report(IDiagnosticReporter, MsgLevel, SourceRange, string, params object[])
-  <a class="header-action link-secondary" title="View source" href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.8/src/Ubiquity.NET.CommandLine/DiagnosticReporterExtensions.cs/#L171"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.9-beta/src/Ubiquity.NET.CommandLine/DiagnosticReporterExtensions.cs"><i class="bi bi-code-slash"></i></a>
 </h3>
 
 <div class="markdown level1 summary"><p>Reports a message using classic string formatting</p>
@@ -392,7 +446,7 @@ in all cases.</p>
 
 <h3 id="Ubiquity_NET_CommandLine_DiagnosticReporterExtensions_Report_Ubiquity_NET_CommandLine_IDiagnosticReporter_System_Collections_Generic_IEnumerable_Ubiquity_NET_CommandLine_DiagnosticMessage__" data-uid="Ubiquity.NET.CommandLine.DiagnosticReporterExtensions.Report(Ubiquity.NET.CommandLine.IDiagnosticReporter,System.Collections.Generic.IEnumerable{Ubiquity.NET.CommandLine.DiagnosticMessage})">
   Report(IDiagnosticReporter, params IEnumerable&lt;DiagnosticMessage&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.8/src/Ubiquity.NET.CommandLine/DiagnosticReporterExtensions.cs/#L185"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.9-beta/src/Ubiquity.NET.CommandLine/DiagnosticReporterExtensions.cs"><i class="bi bi-code-slash"></i></a>
 </h3>
 
 <div class="markdown level1 summary"><p>Reports multiple diagnostics to the reporter</p>
@@ -427,7 +481,7 @@ in all cases.</p>
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.8/src/Ubiquity.NET.CommandLine/DiagnosticReporterExtensions.cs/#L24" class="edit-link">Edit this page</a>
+          <a href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.9-beta/src/Ubiquity.NET.CommandLine/DiagnosticReporterExtensions.cs" class="edit-link">Edit this page</a>
         </div>
 
 
@@ -443,7 +497,7 @@ in all cases.</p>
       <div class="container-xxl">
         <div class="flex-fill">
           Copyright (C) 2017-2025, Ubiquity.NET Contributors
-          - Build: 20.1.8
+          - Build: 20.1.9-beta
         </div>
       </div>
     </footer>

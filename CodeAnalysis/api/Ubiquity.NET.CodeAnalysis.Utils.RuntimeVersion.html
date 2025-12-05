@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Struct RuntimeVersion | Ubiquity.NET ">
       
-      <meta name="description" content="Structure for a runtime version">
+      
       <link rel="icon" href="../../favicon.ico">
       <link rel="stylesheet" href="../../public/docfx.min.css">
       <link rel="stylesheet" href="../../public/main.css">
@@ -16,7 +16,7 @@
       
       
       
-      <meta name="docfx:docurl" content="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/new/develop/apiSpec/new?filename=Ubiquity_NET_CodeAnalysis_Utils_RuntimeVersion.md&amp;value=---%0Auid%3A%20Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -84,7 +84,7 @@
 
 
   <h1 id="Ubiquity_NET_CodeAnalysis_Utils_RuntimeVersion" data-uid="Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion" class="text-break">
-Struct RuntimeVersion  <a class="header-action link-secondary" title="View source" href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.8/src/Ubiquity.NET.CodeAnalysis.Utils/CompilationExtensions.cs/#L14"><i class="bi bi-code-slash"></i></a>
+Struct RuntimeVersion  <a class="header-action link-secondary" title="View source" href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.9-beta/src/Ubiquity.NET.CodeAnalysis.Utils/CompilationExtensions.cs"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -92,13 +92,11 @@ Struct RuntimeVersion  <a class="header-action link-secondary" title="View sourc
   <dl><dt>Assembly</dt><dd>Ubiquity.NET.CodeAnalysis.Utils.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Structure for a runtime version</p>
-</div>
+  <div class="markdown summary"></div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[SuppressMessage(&quot;StyleCop.CSharp.DocumentationRules&quot;, &quot;SA1649:File name should match first type name&quot;, Justification = &quot;Simple record&quot;)]
-public readonly record struct RuntimeVersion : IEquatable&lt;RuntimeVersion&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public readonly struct RuntimeVersion : IEquatable&lt;RuntimeVersion&gt;</code></pre>
   </div>
 
 
@@ -117,19 +115,10 @@ public readonly record struct RuntimeVersion : IEquatable&lt;RuntimeVersion&gt;<
     <dt>Inherited Members</dt>
     <dd>
     <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetype.equals">ValueType.Equals(object)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode">ValueType.GetHashCode()</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetype.tostring">ValueType.ToString()</a>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
@@ -145,8 +134,7 @@ public readonly record struct RuntimeVersion : IEquatable&lt;RuntimeVersion&gt;<
 
   <dl class="jumplist">
     <dt><a class="xref" href="Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.-ctor.html#Ubiquity_NET_CodeAnalysis_Utils_RuntimeVersion__ctor_System_String_System_Version_">RuntimeVersion(string, Version)</a></dt>
-    <dd><p>Structure for a runtime version</p>
-</dd>
+    <dd></dd>
   </dl>
 
   <h2 class="section" id="properties">Properties
@@ -154,13 +142,47 @@ public readonly record struct RuntimeVersion : IEquatable&lt;RuntimeVersion&gt;<
 
   <dl class="jumplist">
     <dt><a class="xref" href="Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.RuntimeName.html#Ubiquity_NET_CodeAnalysis_Utils_RuntimeVersion_RuntimeName">RuntimeName</a></dt>
-    <dd><p>Name of the runtime</p>
-</dd>
+    <dd></dd>
   </dl>
   <dl class="jumplist">
     <dt><a class="xref" href="Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.Version.html#Ubiquity_NET_CodeAnalysis_Utils_RuntimeVersion_Version">Version</a></dt>
-    <dd><p>Version of the runtime</p>
-</dd>
+    <dd></dd>
+  </dl>
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+  <dl class="jumplist">
+    <dt><a class="xref" href="Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.Deconstruct.html#Ubiquity_NET_CodeAnalysis_Utils_RuntimeVersion_Deconstruct_System_String__System_Version__">Deconstruct(out string, out Version)</a></dt>
+    <dd></dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.Equals.html#Ubiquity_NET_CodeAnalysis_Utils_RuntimeVersion_Equals_System_Object_">Equals(object)</a></dt>
+    <dd></dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.Equals.html#Ubiquity_NET_CodeAnalysis_Utils_RuntimeVersion_Equals_Ubiquity_NET_CodeAnalysis_Utils_RuntimeVersion_">Equals(RuntimeVersion)</a></dt>
+    <dd></dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.GetHashCode.html#Ubiquity_NET_CodeAnalysis_Utils_RuntimeVersion_GetHashCode">GetHashCode()</a></dt>
+    <dd></dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.ToString.html#Ubiquity_NET_CodeAnalysis_Utils_RuntimeVersion_ToString">ToString()</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h2 class="section" id="operators">Operators
+</h2>
+
+  <dl class="jumplist">
+    <dt><a class="xref" href="Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.op_Equality.html#Ubiquity_NET_CodeAnalysis_Utils_RuntimeVersion_op_Equality_Ubiquity_NET_CodeAnalysis_Utils_RuntimeVersion_Ubiquity_NET_CodeAnalysis_Utils_RuntimeVersion_">operator ==(RuntimeVersion, RuntimeVersion)</a></dt>
+    <dd></dd>
+  </dl>
+  <dl class="jumplist">
+    <dt><a class="xref" href="Ubiquity.NET.CodeAnalysis.Utils.RuntimeVersion.op_Inequality.html#Ubiquity_NET_CodeAnalysis_Utils_RuntimeVersion_op_Inequality_Ubiquity_NET_CodeAnalysis_Utils_RuntimeVersion_Ubiquity_NET_CodeAnalysis_Utils_RuntimeVersion_">operator !=(RuntimeVersion, RuntimeVersion)</a></dt>
+    <dd></dd>
   </dl>
 
 
@@ -168,7 +190,7 @@ public readonly record struct RuntimeVersion : IEquatable&lt;RuntimeVersion&gt;<
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.8/src/Ubiquity.NET.CodeAnalysis.Utils/CompilationExtensions.cs/#L14" class="edit-link">Edit this page</a>
+          <a href="https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/blob/v20.1.9-beta/src/Ubiquity.NET.CodeAnalysis.Utils/CompilationExtensions.cs" class="edit-link">Edit this page</a>
         </div>
 
 
@@ -184,7 +206,7 @@ public readonly record struct RuntimeVersion : IEquatable&lt;RuntimeVersion&gt;<
       <div class="container-xxl">
         <div class="flex-fill">
           Copyright (C) 2017-2025, Ubiquity.NET Contributors
-          - Build: 20.1.8
+          - Build: 20.1.9-beta
         </div>
       </div>
     </footer>
