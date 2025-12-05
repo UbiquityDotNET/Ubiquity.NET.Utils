@@ -7,7 +7,7 @@ namespace Ubiquity.NET.Extensions.FluentValidation
     //       so that use of the full type name can disambiguate with any existing
     //       method of the same name exists (or an extension). [i.e., An extension type
     //       with a static method that has the same arity and type of args but different
-    //       return type is ambiguous. So without explicit]
+    //       return type is ambiguous.]
     /*
     internal abstract class SampleBase
     {
