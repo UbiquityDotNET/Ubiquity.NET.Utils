@@ -7,14 +7,14 @@ indent_size = 4
 insert_final_newline = true
 tab_width = 4
 end_of_line = crlf
+
+# VSSPELL: Spell checker settings for all files
+vsspell_section_id = bc80fe46ff7a40189dee3f3476198102
 # until [VSSpellChecker bug 277](https://github.com/EWSoftware/VSSpellChecker/issues/277)
 # is fixed, disable the analyzers. It's more of a PITA than a help
 # VSSPELL: Disable the analyzers until Bug 277 is fixed.
 vsspell_code_analyzers_enabled = false
-
-# VSSPELL: Spell checker settings for all files
-vsspell_section_id = 1c7003ec377c4bd9bb3c509d29770210
-vsspell_ignored_words_1c7003ec377c4bd9bb3c509d29770210 = File:.\IgnoredWords.dic|bar
+vsspell_ignored_words_bc80fe46ff7a40189dee3f3476198102 = File:.\IgnoredWords.dic
 
 # match VS generated formatting for MSBuild project files
 [*.*proj,*.props,*.targets]
@@ -104,6 +104,10 @@ dotnet_diagnostic.SA1202.severity = none
 csharp_style_prefer_local_over_anonymous_function = true:error
 csharp_style_prefer_index_operator = true:error
 csharp_style_prefer_range_operator = true:error
+
+# CS0618: Type or member is obsolete
+dotnet_diagnostic.CS0618.severity = error
+csharp_style_prefer_simple_property_accessors = true:suggestion
 
 # Analysis and refactoring rules for Ubiquity.NET
 # Description: Code analysis rules for Ubiquity.NET projects
@@ -983,7 +987,8 @@ dotnet_diagnostic.CA1303.severity = silent
 
 dotnet_diagnostic.CA1304.severity = warning
 
-dotnet_diagnostic.CA1305.severity = warning
+// CA1305: Specify IFormatProvider
+dotnet_diagnostic.CA1305.severity = silent
 
 dotnet_diagnostic.CA1306.severity = warning
 

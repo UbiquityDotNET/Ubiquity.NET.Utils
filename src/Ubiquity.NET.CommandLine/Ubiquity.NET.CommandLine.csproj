@@ -2,7 +2,6 @@
 
     <PropertyGroup>
         <TargetFrameworks>net10.0;net8.0</TargetFrameworks>
-        <LangVersion>14</LangVersion>
         <Nullable>enable</Nullable>
         <GenerateDocumentationFile>True</GenerateDocumentationFile>
 
@@ -29,10 +28,10 @@
     <ItemGroup>
         <PackageReference Include="System.CommandLine" />
         <PackageReference Include="AnsiCodes" />
+        <PackageReference Include="Microsoft.Bcl.HashCode" PrivateAssets="all" ExcludeAssets="all" />
     </ItemGroup>
 
     <ItemGroup>
         <ProjectReference Include="..\Ubiquity.NET.Extensions\Ubiquity.NET.Extensions.csproj" />
     </ItemGroup>
-
 </Project>

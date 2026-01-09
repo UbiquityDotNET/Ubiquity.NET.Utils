@@ -3,7 +3,7 @@ This library provides support for source generation using
 `System.CodeDom.Compiler.IndentedTextWriter`.
 While .NET does have support for T4 to generate source that is used at runtime to generate
 a final source this can easily get VERY terse and hard to use. (Let alone debug, especially
-with respect to correct white space.) Thus, while it is useful for simpler templating when
+with respect to correct white space.) Thus, while it is useful for simpler templating, when
 things get complicated and there are lots of "decisions" to make based on the input it can
 get downright unruly.
 

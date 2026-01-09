@@ -47,6 +47,7 @@ Cmp
 Comdat
 Comdats
 Committers
+comparand
 compat
 Concat
 Config
@@ -67,9 +68,11 @@ downcasts
 endian
 endianess
 endif
+endregion
 enum
 Enums
 env
+equatability
 exe
 facepalm
 fallback
@@ -170,6 +173,7 @@ stdcall
 struct
 structs
 Subrange
+suppressions
 Sym
 Tag
 telliam
@@ -205,6 +209,7 @@ Users
 usings
 utils
 validator
+validators
 varargs
 variadic
 vcxproj

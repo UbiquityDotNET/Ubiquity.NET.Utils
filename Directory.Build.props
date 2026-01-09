@@ -91,6 +91,11 @@
             <ItemGroup Condition="'$(NoCommonAnalyzers)'!='true'">
                 <AdditionalFiles Include="$(MSBuildThisFileDirectory)stylecop.json" Link="stylecop.json" />
             </ItemGroup>
+
+            <!-- ALWAYS generate the path property; Though this appears to be a default now, there's no harm in being explicit -->
+            <ItemDefinitionGroup>
+                <PackageReference GeneratePathProperty="true" />
+            </ItemDefinitionGroup>
         </When>
         <When Condition="'$(MSBuildProjectExtension)'=='.vcxproj'">
             <!-- vcxproj uses a different pattern for output paths -->

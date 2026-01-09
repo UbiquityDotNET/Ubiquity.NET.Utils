@@ -46,11 +46,11 @@ namespace Ubiquity.NET.CommandLine
     /// <para>The default values follows the default behaviors of the underlying library. This ensures the
     /// principle of least surprise while allowing for explicit overrides</para>
     /// </remarks>
-    public class CmdLineSettings
+    public class CommandLineSettings
     {
         /// <summary>Gets a value indicating whether errors reported should also show the help message [Default: <see langword="false"/>]</summary>
         /// <remarks>This has a <see langword="false"/> default, which is the opposite of the default from <see cref="ParserConfiguration"/></remarks>
-        public bool ShowHelpOnErrors { get; init; } = true;
+        public bool ShowHelpOnErrors { get; init; } = false;
 
         /// <summary>Gets a value indicating whether errors reported should also show Typo corrections [Default: <see langword="false"/>]</summary>
         /// <remarks>This has a <see langword="false"/> default, which is the opposite of the default from <see cref="ParserConfiguration"/></remarks>
@@ -128,9 +128,9 @@ namespace Ubiquity.NET.CommandLine
 
         private bool HasCustomeResponseFileBehavior = false;
 
-        /// <summary>Implicitly constructs a new <see cref="ParserConfiguration"/> based on an instance of <see cref="CmdLineSettings"/></summary>
+        /// <summary>Implicitly constructs a new <see cref="ParserConfiguration"/> based on an instance of <see cref="CommandLineSettings"/></summary>
         /// <param name="self">The settings to build the configuration from</param>
-        public static implicit operator ParserConfiguration( CmdLineSettings self )
+        public static implicit operator ParserConfiguration( CommandLineSettings self )
         {
             return self.ToParserConfiguration();
         }
@@ -143,7 +143,7 @@ namespace Ubiquity.NET.CommandLine
         /// specify them explicitly as a custom option. Then validation is customized to handle
         /// behavior as desired by the app.
         /// </remarks>
-        public static CmdLineSettings NoDefaults { get; }
+        public static CommandLineSettings NoDefaults { get; }
             = new()
             {
                 DefaultDirectives = DefaultDirective.None,

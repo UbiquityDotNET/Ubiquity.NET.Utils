@@ -78,7 +78,7 @@ namespace Ubiquity.NET.CodeAnalysis.Utils
 
         /// <summary>Gets the diagnostics produced for this result (if any)</summary>
         /// <remarks>This may provide an empty array but is never <see langword="null"/></remarks>
-        public EquatableArray<DiagnosticInfo> Diagnostics { get; init; } = ImmutableArray<DiagnosticInfo>.Empty;
+        public ImmutableArray<DiagnosticInfo> Diagnostics { get; init; } = [];
 
         /// <summary>Gets a value indicating whether this result contains any diagnostics</summary>
         /// <remarks>This is a shorthand for testing the length of the <see cref="Diagnostics"/> property</remarks>

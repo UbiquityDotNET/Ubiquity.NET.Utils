@@ -20,8 +20,8 @@ namespace Ubiquity.NET.CodeAnalysis.Utils
         /// <remarks>
         /// <paramref name="keyword"/> is normally one of ("class", "struct", "interface", "record [class|struct]?").
         /// </remarks>
-        public NestedClassName(string keyword, string name, string constraints, params NestedClassName[] children)
-            : this( keyword, name, constraints, (IEnumerable<NestedClassName>)children)
+        public NestedClassName( string keyword, string name, string constraints, params NestedClassName[] children )
+            : this( keyword, name, constraints, (IEnumerable<NestedClassName>)children )
         {
         }
 
@@ -33,7 +33,7 @@ namespace Ubiquity.NET.CodeAnalysis.Utils
         /// <remarks>
         /// <paramref name="keyword"/> is normally one of ("class", "struct", "interface", "record [class|struct]?").
         /// </remarks>
-        public NestedClassName(string keyword, string name, string constraints, IEnumerable<NestedClassName> children)
+        public NestedClassName( string keyword, string name, string constraints, IEnumerable<NestedClassName> children )
 #else
         /// <summary>Initializes a new instance of the <see cref="NestedClassName"/> class.</summary>
         /// <param name="keyword">Keyword for this declaration</param>
@@ -49,11 +49,11 @@ namespace Ubiquity.NET.CodeAnalysis.Utils
             Keyword = keyword;
             Name = name;
             Constraints = constraints;
-            Children = children.ToImmutableArray().AsEquatableArray();
+            Children = [ .. children ];
         }
 
         /// <summary>Gets child nested types</summary>
-        public EquatableArray<NestedClassName> Children { get; }
+        public ImmutableArray<NestedClassName> Children { get; }
 
         /// <summary>Gets the keyword for this type</summary>
         /// <remarks>
@@ -68,7 +68,7 @@ namespace Ubiquity.NET.CodeAnalysis.Utils
         public string Constraints { get; }
 
         /// <summary>Gets a value indicating whether this name contains constraints</summary>
-        public bool HasConstraints => !string.IsNullOrWhiteSpace(Constraints);
+        public bool HasConstraints => !string.IsNullOrWhiteSpace( Constraints );
 
         /// <summary>Compares this instance with another <see cref="NestedClassName"/></summary>
         /// <param name="other">Value to compare this instance with</param>
@@ -78,34 +78,41 @@ namespace Ubiquity.NET.CodeAnalysis.Utils
         /// the actual depth is statistically rather small and nearly always 0 (Children is empty).
         /// Deeply nested type declarations is a VERY rare anti-pattern so not a real world problem.
         /// </remarks>
-        public bool Equals(NestedClassName other)
+        [SuppressMessage( "Style", "IDE0046:Convert to conditional expression", Justification = "NOT simpler" )]
+        public bool Equals( NestedClassName other )
         {
-            if (other == null)
+            if(other is null)
             {
                 return false;
             }
 
-            if (ReferenceEquals(this, other))
+            if(ReferenceEquals( this, other ))
             {
                 return true;
             }
 
-            // NOTE: This is a recursive O(n) operation!
-            return Equals(Children, other.Children)
-                && Name.Equals( other.Name, StringComparison.Ordinal )
-                && Constraints.Equals( other.Constraints, StringComparison.Ordinal );
+            return Keyword == other.Keyword
+                && Name == other.Name
+                && Constraints == other.Constraints
+                && StructuralComparisons.StructuralEqualityComparer.Equals( Children, other.Children );
         }
 
         /// <inheritdoc/>
-        public override bool Equals(object obj)
+        public override bool Equals( object obj )
         {
-            return obj is NestedClassName parentClass && Equals(parentClass);
+            return obj is NestedClassName other
+                && Equals( other );
         }
 
         /// <inheritdoc/>
-        public override int GetHashCode()
+        public override int GetHashCode( )
         {
-            return HashCode.Combine(Children, Keyword, Name, Constraints);
+            return HashCode.Combine(
+                Keyword,
+                Name,
+                Constraints,
+                StructuralComparisons.StructuralEqualityComparer.GetHashCode( Children )
+            );
         }
     }
 }

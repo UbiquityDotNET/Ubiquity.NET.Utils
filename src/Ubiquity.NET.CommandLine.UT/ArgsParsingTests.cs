@@ -15,13 +15,14 @@ namespace Ubiquity.NET.CommandLine.UT
         [TestMethod]
         public void ArgsParsing_Methods_handle_args_correctly( )
         {
-            var settings = new CmdLineSettings();
+            var settings = new CommandLineSettings();
             var reporter = new TestReporter();
             ParseResult parseResult = new RootCommand().Parse([]);
 
             var nullArgEx = Assert.ThrowsExactly<ArgumentNullException>(()=> _ = ArgsParsing.Parse<TestOptions>( null, null ) );
             Assert.AreEqual( "args", nullArgEx.ParamName );
 
+#pragma warning disable CS0618 // Type or member is obsolete
             // Overload 1
             nullArgEx = Assert.ThrowsExactly<ArgumentNullException>( ( ) => _ = ArgsParsing.TryParse<TestOptions>( null, out var _, out int _ ) );
             Assert.AreEqual( "args", nullArgEx.ParamName );
@@ -31,7 +32,7 @@ namespace Ubiquity.NET.CommandLine.UT
             Assert.AreEqual( "args", nullArgEx.ParamName );
 
             // Overload 2 [param 2]
-            nullArgEx = Assert.ThrowsExactly<ArgumentNullException>( ( ) => _ = ArgsParsing.TryParse<TestOptions>( [], (CmdLineSettings?)null, out var _, out int _ ) );
+            nullArgEx = Assert.ThrowsExactly<ArgumentNullException>( ( ) => _ = ArgsParsing.TryParse<TestOptions>( [], (CommandLineSettings?)null, out var _, out int _ ) );
             Assert.AreEqual( "settings", nullArgEx.ParamName );
 
             // Overload 3
@@ -49,6 +50,7 @@ namespace Ubiquity.NET.CommandLine.UT
             // Overload 4 [param 3] (param 2 [settings] is nullable)
             nullArgEx = Assert.ThrowsExactly<ArgumentNullException>( ( ) => _ = ArgsParsing.TryParse<TestOptions>( [], null, null, out var _, out int _ ) );
             Assert.AreEqual( "diagnosticReporter", nullArgEx.ParamName );
+#pragma warning restore CS0618 // Type or member is obsolete
         }
 #pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
 
@@ -66,10 +68,11 @@ namespace Ubiquity.NET.CommandLine.UT
         {
             // semantics of the return is "should exit" to disambiguate from
             // parsed correctly AND invoked default option (like help).
-            var settings = new CmdLineSettings();
+            var settings = new CommandLineSettings();
             var reporter = new TestReporter();
             string[] args = ["--option1", "value"];
 
+#pragma warning disable CS0618 // Type or member is obsolete
             bool shouldExit = ArgsParsing.TryParse<TestOptions>( args, out TestOptions? options, out int exitCode );
             Assert.IsFalse( shouldExit );
             Assert.IsNotNull( options );
@@ -115,6 +118,7 @@ namespace Ubiquity.NET.CommandLine.UT
             Assert.IsTrue( shouldExit );
             Assert.IsNull( options );
             Assert.AreEqual( 0, exitCode );
+#pragma warning restore CS0618 // Type or member is obsolete
         }
     }
 }

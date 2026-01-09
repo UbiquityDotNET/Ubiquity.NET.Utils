@@ -12,6 +12,26 @@ namespace Ubiquity.NET.SrcGeneration.CSharp
         /// <summary>Closing of a scope for C#</summary>
         public const string ScopeClose = "}";
 
+        /// <summary>Gets a literal value for a <see cref="bool"/> that is specific to the C# language</summary>
+        /// <param name="value">value to get as a literal</param>
+        /// <returns>literal string suitable for output to a writer for the C# language as-is</returns>
+        public static string AsLiteral(bool value)
+        {
+            return value ? "true" : "false";
+        }
+
+        /// <summary>Gets a literal value for a <see cref="string"/> that is specific to the C# language</summary>
+        /// <param name="value">value to get as a literal</param>
+        /// <returns>literal string suitable for output to a writer for the C# language as-is</returns>
+        /// <remarks>This, basically, surrounds <paramref name="value"/> with quotes</remarks>
+        public static string AsLiteral( string value )
+        {
+            return $"\"{value}\"";
+        }
+
+        // TODO: char value
+        //       This requires either simple single quotes OR, it needs conversion to a hex representation if not printable
+
         /// <summary>Gets the language keywords</summary>
         /// <remarks>
         /// This is normally used from within <see cref="MakeIdentifier(string)"/>

@@ -10,6 +10,7 @@
 #pragma warning disable IDE0130 // Namespace does not match folder structure
 
 using global::System.Diagnostics;
+using global::System.Collections.Generic;
 
 namespace System
 {
