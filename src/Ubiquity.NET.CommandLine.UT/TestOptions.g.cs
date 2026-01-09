@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 
 namespace Ubiquity.NET.CommandLine.UT
 {
-    // FUTURE: Generate this with source generator from attributes in other partial declaration
+    // FUTURE: TEST Generation of this with source generator from attributes in other partial declaration
     internal partial class TestOptions
-        : ICommandLineOptions<TestOptions>
+        : IRootCommandBuilder
+        , ICommandBinder<TestOptions>
     {
         public static TestOptions Bind( ParseResult parseResult )
         {
@@ -19,7 +20,7 @@ namespace Ubiquity.NET.CommandLine.UT
             };
         }
 
-        public static AppControlledDefaultsRootCommand BuildRootCommand( CmdLineSettings settings )
+        public static AppControlledDefaultsRootCommand Build( CommandLineSettings settings )
         {
             return new( settings, "Test option root command")
             {

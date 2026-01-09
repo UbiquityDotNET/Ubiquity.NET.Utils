@@ -19,13 +19,13 @@ namespace Ubiquity.NET.CommandLine
         /// </para>
         /// <para>If the <see cref="Command.Action"/> is an asynchronous command action then this will
         /// BLOCK the current thread until it completes. If that is NOT the desired behavior then
-        /// callers should use <see cref="ParseAndInvokeResultAsync(RootCommand, IDiagnosticReporter, CmdLineSettings, CancellationToken, string[])"/>
+        /// callers should use <see cref="ParseAndInvokeResultAsync(RootCommand, IDiagnosticReporter, CommandLineSettings, CancellationToken, string[])"/>
         /// instead for explicitly async operation.</para>
         /// </remarks>
         public static int ParseAndInvokeResult(
             this RootCommand rootCommand,
             IDiagnosticReporter reporter,
-            CmdLineSettings settings,
+            CommandLineSettings settings,
             params string[] args
             )
         {
@@ -65,13 +65,13 @@ namespace Ubiquity.NET.CommandLine
         /// </para>
         /// <para>If the <see cref="Command.Action"/> is an synchronous command action then this will
         /// run the action asynchronously. If that is NOT the desired behavior then callers should
-        /// use <see cref="ParseAndInvokeResult(RootCommand, IDiagnosticReporter, CmdLineSettings, string[])"/>
+        /// use <see cref="ParseAndInvokeResult(RootCommand, IDiagnosticReporter, CommandLineSettings, string[])"/>
         /// instead for explicitly sync operation.</para>
         /// </remarks>
         public static async Task<int> ParseAndInvokeResultAsync(
             this RootCommand rootCommand,
             IDiagnosticReporter reporter,
-            CmdLineSettings settings,
+            CommandLineSettings settings,
             CancellationToken ct,
             params string[] args
             )

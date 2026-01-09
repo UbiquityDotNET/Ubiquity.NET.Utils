@@ -28,7 +28,8 @@ namespace TestSample
     }
 }
 ```
-Options.g.cs
+
+Options.g.cs:
 ``` C#
 using System;
 using System.Collections.Generic;

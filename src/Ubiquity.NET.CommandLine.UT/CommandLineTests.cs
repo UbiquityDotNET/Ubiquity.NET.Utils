@@ -83,7 +83,7 @@ namespace Ubiquity.NET.CommandLine.UT
 
 #if NET10_0_OR_GREATER
             // With C# 14 extensions the type of options is known, so more inference is possible
-            var cmd = TestOptions.BuildRootCommand( settings, o => { } );
+            var cmd = TestOptions.BuildRootCommand( settings, ( o ) => { } );
             Assert.IsNotNull( cmd );
 
             cmd = TestOptions.BuildRootCommand( settings, ( o ) => 1 );
@@ -95,16 +95,16 @@ namespace Ubiquity.NET.CommandLine.UT
             cmd = TestOptions.BuildRootCommand( settings, ( o, ct ) => Task.FromResult(1) );
             Assert.IsNotNull( cmd );
 #else
-            var cmd = CommandLineOptions.BuildRootCommand( settings, ( TestOptions o ) => { } );
+            var cmd = RootCommandBuilder.BuildRootCommand( settings, ( TestOptions o ) => { } );
             Assert.IsNotNull( cmd );
 
-            cmd = CommandLineOptions.BuildRootCommand( settings, ( TestOptions o ) => 1 );
+            cmd = RootCommandBuilder.BuildRootCommand( settings, ( TestOptions o ) => 1 );
             Assert.IsNotNull( cmd );
 
-            cmd = CommandLineOptions.BuildRootCommand( settings, ( TestOptions o, CancellationToken ct ) => Task.CompletedTask );
+            cmd = RootCommandBuilder.BuildRootCommand( settings, ( TestOptions o, CancellationToken ct ) => Task.CompletedTask );
             Assert.IsNotNull( cmd );
 
-            cmd = CommandLineOptions.BuildRootCommand( settings, ( TestOptions o, CancellationToken ct ) => Task.FromResult( 1 ) );
+            cmd = RootCommandBuilder.BuildRootCommand( settings, ( TestOptions o, CancellationToken ct ) => Task.FromResult( 1 ) );
             Assert.IsNotNull( cmd );
 #endif
         }
@@ -147,31 +147,31 @@ namespace Ubiquity.NET.CommandLine.UT
 #else
 
             // overload 1
-            var ex = Assert.ThrowsExactly<ArgumentNullException>( ( ) =>_ = CommandLineOptions.BuildRootCommand( null, ( TestOptions o ) => { }));
+            var ex = Assert.ThrowsExactly<ArgumentNullException>( ( ) =>_ = RootCommandBuilder.BuildRootCommand( null, ( TestOptions o ) => { }));
             Assert.AreEqual( "settings", ex.ParamName );
 
-            ex = Assert.ThrowsExactly<ArgumentNullException>( ( ) => _ = CommandLineOptions.BuildRootCommand( settings, (Action<TestOptions>?)null ) );
+            ex = Assert.ThrowsExactly<ArgumentNullException>( ( ) => _ = RootCommandBuilder.BuildRootCommand( settings, (Action<TestOptions>?)null ) );
             Assert.AreEqual( "action", ex.ParamName );
 
             // overload 2
-            ex = Assert.ThrowsExactly<ArgumentNullException>( ( ) => _ = CommandLineOptions.BuildRootCommand( null, ( TestOptions o ) => 1 ) );
+            ex = Assert.ThrowsExactly<ArgumentNullException>( ( ) => _ = RootCommandBuilder.BuildRootCommand( null, ( TestOptions o ) => 1 ) );
             Assert.AreEqual( "settings", ex.ParamName );
 
-            ex = Assert.ThrowsExactly<ArgumentNullException>( ( ) => _ = CommandLineOptions.BuildRootCommand( settings, (Func<TestOptions, int>?)null ) );
+            ex = Assert.ThrowsExactly<ArgumentNullException>( ( ) => _ = RootCommandBuilder.BuildRootCommand( settings, (Func<TestOptions, int>?)null ) );
             Assert.AreEqual( "action", ex.ParamName );
 
             // overload 3
-            ex = Assert.ThrowsExactly<ArgumentNullException>( ( ) => _ = CommandLineOptions.BuildRootCommand( null, ( TestOptions o, CancellationToken ct ) => Task.CompletedTask ) );
+            ex = Assert.ThrowsExactly<ArgumentNullException>( ( ) => _ = RootCommandBuilder.BuildRootCommand( null, ( TestOptions o, CancellationToken ct ) => Task.CompletedTask ) );
             Assert.AreEqual( "settings", ex.ParamName );
 
-            ex = Assert.ThrowsExactly<ArgumentNullException>( ( ) => _ = CommandLineOptions.BuildRootCommand( settings, (Func<TestOptions, CancellationToken, Task>?)null ) );
+            ex = Assert.ThrowsExactly<ArgumentNullException>( ( ) => _ = RootCommandBuilder.BuildRootCommand( settings, (Func<TestOptions, CancellationToken, Task>?)null ) );
             Assert.AreEqual( "action", ex.ParamName );
 
             // overload 4
-            ex = Assert.ThrowsExactly<ArgumentNullException>( ( ) => _ = CommandLineOptions.BuildRootCommand( null, ( TestOptions o, CancellationToken ct ) => Task.FromResult( 1 ) ) );
+            ex = Assert.ThrowsExactly<ArgumentNullException>( ( ) => _ = RootCommandBuilder.BuildRootCommand( null, ( TestOptions o, CancellationToken ct ) => Task.FromResult( 1 ) ) );
             Assert.AreEqual( "settings", ex.ParamName );
 
-            ex = Assert.ThrowsExactly<ArgumentNullException>( ( ) => _ = CommandLineOptions.BuildRootCommand( settings, (Func<TestOptions, CancellationToken, Task<int>>?)null ) );
+            ex = Assert.ThrowsExactly<ArgumentNullException>( ( ) => _ = RootCommandBuilder.BuildRootCommand( settings, (Func<TestOptions, CancellationToken, Task<int>>?)null ) );
             Assert.AreEqual( "action", ex.ParamName );
 #endif
         }
@@ -192,7 +192,7 @@ namespace Ubiquity.NET.CommandLine.UT
             var cmd = TestOptions.BuildRootCommand( settings, ( o ) => actionCalled = true);
             Assert.IsNotNull( cmd );
             int exitCode = cmd.ParseAndInvokeResult( reporter, settings, testArgs );
-            Assert.IsTrue( actionCalled );
+            Assert.IsTrue( actionCalled, "action should be called" );
             Assert.AreEqual( 0, exitCode );
 
             // Overload 2
@@ -205,7 +205,7 @@ namespace Ubiquity.NET.CommandLine.UT
 
             actionCalled = false;
             exitCode = cmd.ParseAndInvokeResult( reporter, settings, testArgs );
-            Assert.IsTrue( actionCalled );
+            Assert.IsTrue( actionCalled, "action should be called" );
             Assert.AreEqual( 1, exitCode );
 
             // Overload 3
@@ -218,7 +218,7 @@ namespace Ubiquity.NET.CommandLine.UT
 
             actionCalled = false;
             exitCode = cmd.ParseAndInvokeResult( reporter, settings, testArgs );
-            Assert.IsTrue( actionCalled );
+            Assert.IsTrue( actionCalled, "action should be called" );
             Assert.AreEqual( 0, exitCode );
 
             // Overload 4
@@ -235,14 +235,14 @@ namespace Ubiquity.NET.CommandLine.UT
             Assert.AreEqual( 1, exitCode );
 #else
             // Overload 1
-            var cmd = CommandLineOptions.BuildRootCommand( settings, ( TestOptions o ) => actionCalled = true);
+            var cmd = RootCommandBuilder.BuildRootCommand( settings, ( TestOptions o ) => actionCalled = true);
             Assert.IsNotNull( cmd );
             int exitCode = cmd.ParseAndInvokeResult( reporter, settings, testArgs );
             Assert.IsTrue( actionCalled );
             Assert.AreEqual( 0, exitCode );
 
             // Overload 2
-            cmd = CommandLineOptions.BuildRootCommand( settings, ( TestOptions o ) =>
+            cmd = RootCommandBuilder.BuildRootCommand( settings, ( TestOptions o ) =>
             {
                 actionCalled = true;
                 return 1;
@@ -255,7 +255,7 @@ namespace Ubiquity.NET.CommandLine.UT
             Assert.AreEqual( 1, exitCode );
 
             // Overload 3
-            cmd = CommandLineOptions.BuildRootCommand( settings, ( TestOptions o, CancellationToken ct ) =>
+            cmd = RootCommandBuilder.BuildRootCommand( settings, ( TestOptions o, CancellationToken ct ) =>
             {
                 actionCalled = true;
                 return Task.CompletedTask;
@@ -268,7 +268,7 @@ namespace Ubiquity.NET.CommandLine.UT
             Assert.AreEqual( 0, exitCode );
 
             // Overload 4
-            cmd = CommandLineOptions.BuildRootCommand( settings, ( TestOptions o, CancellationToken ct ) =>
+            cmd = RootCommandBuilder.BuildRootCommand( settings, ( TestOptions o, CancellationToken ct ) =>
             {
                 actionCalled = true;
                 return Task.FromResult( 1 );
@@ -340,14 +340,14 @@ namespace Ubiquity.NET.CommandLine.UT
             Assert.AreEqual( 1, exitCode );
 #else
             // Overload 1
-            var cmd = CommandLineOptions.BuildRootCommand( settings, ( TestOptions o ) => actionCalled = true);
+            var cmd = RootCommandBuilder.BuildRootCommand( settings, ( TestOptions o ) => actionCalled = true);
             Assert.IsNotNull( cmd );
             int exitCode = await cmd.ParseAndInvokeResultAsync( reporter, settings, TestContext.CancellationToken, testArgs );
             Assert.IsTrue( actionCalled );
             Assert.AreEqual( 0, exitCode );
 
             // Overload 2
-            cmd = CommandLineOptions.BuildRootCommand( settings, ( TestOptions o ) =>
+            cmd = RootCommandBuilder.BuildRootCommand( settings, ( TestOptions o ) =>
             {
                 actionCalled = true;
                 return 1;
@@ -360,7 +360,7 @@ namespace Ubiquity.NET.CommandLine.UT
             Assert.AreEqual( 1, exitCode );
 
             // Overload 3
-            cmd = CommandLineOptions.BuildRootCommand( settings, ( TestOptions o, CancellationToken ct ) =>
+            cmd = RootCommandBuilder.BuildRootCommand( settings, ( TestOptions o, CancellationToken ct ) =>
             {
                 actionCalled = true;
                 return Task.CompletedTask;
@@ -373,7 +373,7 @@ namespace Ubiquity.NET.CommandLine.UT
             Assert.AreEqual( 0, exitCode );
 
             // Overload 4
-            cmd = CommandLineOptions.BuildRootCommand( settings, ( TestOptions o, CancellationToken ct ) =>
+            cmd = RootCommandBuilder.BuildRootCommand( settings, ( TestOptions o, CancellationToken ct ) =>
             {
                 actionCalled = true;
                 return Task.FromResult( 1 );
@@ -387,9 +387,9 @@ namespace Ubiquity.NET.CommandLine.UT
 #endif
         }
 
-        internal static CmdLineSettings CreateTestSettings( DefaultOption defaultOptions = DefaultOption.Help | DefaultOption.Version )
+        internal static CommandLineSettings CreateTestSettings( DefaultOption defaultOptions = DefaultOption.Help | DefaultOption.Version )
         {
-            return new CmdLineSettings()
+            return new CommandLineSettings()
             {
                 DefaultOptions = defaultOptions,
             };

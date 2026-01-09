@@ -43,6 +43,7 @@ namespace Ubiquity.NET.CommandLine
         /// <summary>Gets the location in source for the origin of this message</summary>
         public SourceRange? Location { get; init; }
 
+#if NET10_0_OR_GREATER
         /// <summary>Gets the subcategory of the message</summary>
         public string? Subcategory
         {
@@ -99,6 +100,69 @@ namespace Ubiquity.NET.CommandLine
                 field = value;
             }
         }
+#else
+        /// <summary>Gets the subcategory of the message</summary>
+        public string? Subcategory
+        {
+            get => SubcategoryBackingField;
+            init
+            {
+                if(value is not null && value.Any( ( c ) => char.IsWhiteSpace( c ) ))
+                {
+                    throw new ArgumentException( "If provided, value must not contain whitespace", nameof( value ) );
+                }
+
+                SubcategoryBackingField = value;
+            }
+        }
+
+        /// <summary>Gets the Level/Category of the message</summary>
+        public MsgLevel Level
+        {
+            get => LevelBackingField;
+            init
+            {
+                value.ThrowIfNotDefined();
+                if(value == MsgLevel.None)
+                {
+                    throw new InvalidEnumArgumentException( nameof( value ), 0, typeof( MsgLevel ) );
+                }
+
+                LevelBackingField = value;
+            }
+        }
+
+        /// <summary>Gets the code for the message (No spaces)</summary>
+        public string? Code
+        {
+            get => CodeBackingField;
+            init
+            {
+                if(value is not null && value.Any( ( c ) => char.IsWhiteSpace( c ) ))
+                {
+                    throw new ArgumentException( "If provided, value must not contain whitespace", nameof( value ) );
+                }
+
+                CodeBackingField = value;
+            }
+        }
+
+        /// <summary>Gets the text of the message</summary>
+        public string Text
+        {
+            get => TextBackingField;
+            init
+            {
+                ArgumentException.ThrowIfNullOrWhiteSpace( value );
+                TextBackingField = value;
+            }
+        }
+
+        private readonly string? SubcategoryBackingField;
+        private readonly MsgLevel LevelBackingField;
+        private readonly string? CodeBackingField;
+        private readonly string TextBackingField;
+#endif
 
         /// <summary>Formats this instance using the general runtime specific format</summary>
         /// <returns>Formatted string for the message</returns>

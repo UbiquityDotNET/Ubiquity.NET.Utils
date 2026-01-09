@@ -11,7 +11,8 @@ namespace Ubiquity.NET.CodeAnalysis.Utils
     /// that is needed for caching. A <see cref="Diagnostic"/> is not, so this record bundles
     /// the parameters needed for creation of one and defers the construction until needed.
     /// </remarks>
-    public sealed record DiagnosticInfo
+    public sealed class DiagnosticInfo
+        : IEquatable<DiagnosticInfo>
     {
 #if !NET9_0_OR_GREATER
         /// <summary>Initializes a new instance of the <see cref="DiagnosticInfo"/> class.</summary>
@@ -38,17 +39,17 @@ namespace Ubiquity.NET.CodeAnalysis.Utils
         {
             Descriptor = descriptor;
             Location = location;
-            Params = msgArgs.ToImmutableArray();
+            Params = [ .. msgArgs ];
         }
 
         /// <summary>Gets the parameters for this diagnostic</summary>
-        public EquatableArray<string> Params { get; }
+        public ImmutableArray<string> Params { get; }
 
         /// <summary>Gets the descriptor for this diagnostic</summary>
         public DiagnosticDescriptor Descriptor { get; }
 
-        // Location is an abstract type but all derived types implement IEquatable<T> where T is Location
-        // Thus a location is equatable even though the base abstract type doesn't implement that interface.
+        // Microsoft.CodeAnalysis.Location is an abstract type but all derived types implement `IEquatable<T> where T is Location`
+        // Thus, a location is equatable even though the base abstract type doesn't implement that interface.
 
         /// <summary>Gets the location of the source of this diagnostic</summary>
         public Location? Location { get; }
@@ -58,6 +59,38 @@ namespace Ubiquity.NET.CodeAnalysis.Utils
         public Diagnostic CreateDiagnostic()
         {
             return Diagnostic.Create(Descriptor, Location, Params.ToArray());
+        }
+
+        /// <inheritdoc/>
+        public bool Equals( DiagnosticInfo other )
+        {
+            return other is not null
+                && StructuralComparisons.StructuralEqualityComparer.Equals(Params, other.Params)
+                && Descriptor.Equals(other.Descriptor)
+                && ( ReferenceEquals(Location, other.Location)
+                  || (Location is not null && Location.Equals(other.Location))
+                   );
+        }
+
+        /// <inheritdoc/>
+        public override bool Equals( object obj )
+        {
+            return obj is DiagnosticInfo other
+                && Equals( other );
+        }
+
+        /// <inheritdoc/>
+        public override int GetHashCode( )
+        {
+            // sadly this will re-hash the hashcode computed for the structure, but there is no way
+            // to combine the result of a hash with other things. (The overload of Add(int) is private)
+            // The generic Add<T>() will call the type's GetHashCode() and ignores the implementation of
+            // IStructuralEquatable.
+            return HashCode.Combine(
+                StructuralComparisons.StructuralEqualityComparer.GetHashCode( Params ),
+                Descriptor,
+                Location
+            );
         }
     }
 }

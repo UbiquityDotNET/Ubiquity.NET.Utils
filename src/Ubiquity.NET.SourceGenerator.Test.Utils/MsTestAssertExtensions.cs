@@ -39,8 +39,8 @@ namespace Ubiquity.NET.SourceGenerator.Test.Utils
 
             // Assert the static requirements
             Assert.AreNotEqual(0, trackedSteps1.Count, "Should not be an empty set of steps matching tracked names");
-            Assert.HasCount( trackedSteps1.Count, trackedSteps2, "Both runs should have same number of tracked steps");
-            bool hasSameKeys = trackedSteps1.Zip(trackedSteps2, (s1, s2) => trackedSteps2.ContainsKey(s1.Key) && trackedSteps1.ContainsKey(s2.Key))
+            Assert.HasCount(trackedSteps1.Count, trackedSteps2, "Both runs should have same number of tracked steps");
+            bool hasSameKeys = trackedSteps1.Zip(trackedSteps2, ( s1, s2 ) => trackedSteps2.ContainsKey(s1.Key) && trackedSteps1.ContainsKey(s2.Key))
                                             .All(x => x);
             Assert.IsTrue(hasSameKeys, "Both sets of runs should have the same keys");
 
@@ -73,7 +73,7 @@ namespace Ubiquity.NET.SourceGenerator.Test.Utils
             string stepTrackingName
             )
         {
-            Assert.HasCount( steps1.Length, steps2, "Step lengths should be equal");
+            Assert.HasCount(steps1.Length, steps2, "Step lengths should be equal");
             for (int i = 0; i < steps1.Length; ++i)
             {
                 var runStep1 = steps1[i];
@@ -91,7 +91,7 @@ namespace Ubiquity.NET.SourceGenerator.Test.Utils
         /// <summary>Extension method for use with <see cref="Assert.That"/> to assert all of the tracked output steps are cached</summary>
         /// <param name="_">Unused, provides <see cref="Assert.That"/> extension support</param>
         /// <param name="driverRunResult">Run results to test for cached outputs</param>
-        public static void Cached(this Assert _, GeneratorDriverRunResult driverRunResult)
+        public static void Cached( this Assert _, GeneratorDriverRunResult driverRunResult )
         {
             // verify the second run only generated cached source outputs
             var uncachedSteps = from generatorRunResult in driverRunResult.Results
@@ -207,7 +207,7 @@ namespace Ubiquity.NET.SourceGenerator.Test.Utils
                 }
 
                 // If the object is a collection, check each of the values
-                if (node is IEnumerable collection and not string)
+                if (node is IEnumerable collection and not string && !IsDefaultImmutable(node))
                 {
                     foreach (object element in collection)
                     {
@@ -225,6 +225,33 @@ namespace Ubiquity.NET.SourceGenerator.Test.Utils
                     }
                 }
             }
+        }
+
+        // This prevents visiting an Immutable collection that is default constructed
+        // Sadly, that will throw an exception on enumeration instead of just completing.
+        // So it is NOT safe to just cast to object to IEnumerable and party on - it might throw!
+        private static bool IsDefaultImmutable( object? o )
+        {
+            if( o is null )
+            {
+                return false;
+            }
+
+            // This applies to a pattern of types that implement the IsDefault
+            // property. The most common is ImmutableArray<T> but there are many
+            // others. This will skip all the generic type cruft and try to get
+            // the common property - if it isn't there. Then it's not one of the
+            // types to care about for this check.
+            PropertyInfo? propInfo = o.GetType().GetProperty("IsDefault");
+            if( propInfo is null)
+            {
+                return false;
+            }
+
+            object? propVal = propInfo.GetValue(o);
+            return propVal != null
+                && propVal is bool propBoolVal
+                && propBoolVal;
         }
     }
 }

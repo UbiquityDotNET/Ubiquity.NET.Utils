@@ -106,7 +106,7 @@ namespace Ubiquity.NET.CommandLine
         /// </remarks>
         public static DefaultHandlerInvocationResult InvokeDefaultOptions(
             this ParseResult parseResult,
-            CmdLineSettings settings,
+            CommandLineSettings settings,
             IDiagnosticReporter diagnosticReporter,
             bool enableDefaultHandler,
             TimeSpan? timeout = null

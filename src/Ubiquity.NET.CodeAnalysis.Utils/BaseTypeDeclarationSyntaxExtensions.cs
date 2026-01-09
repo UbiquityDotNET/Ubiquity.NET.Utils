@@ -60,27 +60,26 @@ namespace Ubiquity.NET.CodeAnalysis.Utils
         /// <param name="syntax">Syntax to get the name for</param>
         /// <param name="includeSelf">Flag to indicate if the type itself is included in the name [Default: <see langword="false"/></param>
         /// <returns><see cref="NestedClassName"/> of the syntax or <see langword="null"/></returns>
+        /// <remarks>
+        /// <note type="information">
+        /// The return type is never null if <paramref name="includeSelf"/> is true AND it is a structural type (reference or value)
+        /// as the name of the type itself is included.
+        /// </note>
+        /// </remarks>
         public static NestedClassName? GetNestedClassName( this BaseTypeDeclarationSyntax syntax, bool includeSelf = false)
         {
             // Try and get the parent syntax. If it isn't a type like class/struct, this will be null
-            TypeDeclarationSyntax? parentSyntax = includeSelf ? syntax as TypeDeclarationSyntax : syntax.Parent as TypeDeclarationSyntax;
+            TypeDeclarationSyntax? parentSyntax = includeSelf
+                                                ? syntax as TypeDeclarationSyntax
+                                                : syntax.Parent as TypeDeclarationSyntax;
+
             NestedClassName? parentClassInfo = null;
 
             // We can only be nested in class/struct/record
-
             // Keep looping while we're in a supported nested type
             while (parentSyntax is not null)
             {
-                // NOTE: due to bug https://github.com/dotnet/roslyn/issues/78042 this
-                // is not using a local static function to evaluate this in the condition
-                // of the while loop [Workaround: go back to "old" extension syntax...]
-                var rawKind = parentSyntax.Kind();
-                bool isAllowedKind
-                    = rawKind == SyntaxKind.ClassDeclaration
-                    || rawKind == SyntaxKind.StructDeclaration
-                    || rawKind == SyntaxKind.RecordDeclaration;
-
-                if (!isAllowedKind)
+                if(!IsAllowedKind( parentSyntax ))
                 {
                     break;
                 }
@@ -90,7 +89,8 @@ namespace Ubiquity.NET.CodeAnalysis.Utils
                     keyword: parentSyntax.Keyword.ValueText,
                     name: parentSyntax.Identifier.ToString() + parentSyntax.TypeParameterList,
                     constraints: parentSyntax.ConstraintClauses.ToString(),
-                    children: parentClassInfo is null ? [] : [parentClassInfo]); // set the child link (null initially)
+                    children: parentClassInfo is null ? [] : [ parentClassInfo ]
+                ); // set the child link (null initially)
 
                 // Move to the next outer type
                 parentSyntax = parentSyntax.Parent as TypeDeclarationSyntax;
@@ -98,6 +98,15 @@ namespace Ubiquity.NET.CodeAnalysis.Utils
 
             // return a link to the outermost parent type
             return parentClassInfo;
+
+            // local static function to test for allowed kinds
+            static bool IsAllowedKind( TypeDeclarationSyntax parentSyntax )
+            {
+                var rawKind = parentSyntax.Kind();
+                return rawKind == SyntaxKind.ClassDeclaration
+                    || rawKind == SyntaxKind.StructDeclaration
+                    || rawKind == SyntaxKind.RecordDeclaration;
+            }
         }
     }
 }

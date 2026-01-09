@@ -1,6 +1,5 @@
 <Solution>
   <Folder Name="/Repo Items/">
-    <File Path="../.editorconfig" />
     <File Path="../.gitignore" />
     <File Path="../Build-Docs.ps1" />
     <File Path="../Build-Source.ps1" />
@@ -18,6 +17,7 @@
     <File Path="../README.md" />
     <File Path="../Show-Docs.ps1" />
     <File Path="../stylecop.json" />
+    <File Path=".editorconfig" />
     <File Path="x64.runsettings" />
   </Folder>
   <Folder Name="/Repo Items/GitHub/" />

@@ -7,11 +7,9 @@
 // .NET 7 added the various exception static methods for parameter validation
 // This will back fill them for earlier versions.
 //
-// NOTE: C #14 extension keyword support is required to make this work.
+
 
 #pragma warning disable IDE0130 // Namespace does not match folder structure
-
-#if !NET7_0_OR_GREATER
 
 namespace System
 {
@@ -311,4 +309,3 @@ namespace System
         }
     }
 }
-#endif

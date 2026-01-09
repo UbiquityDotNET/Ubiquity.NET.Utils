@@ -4,6 +4,10 @@ of functionality used by but not actually part of multiple other Ubiquity.NET pr
 core principal is that this library has NO dependencies beyond the runtime itself. That is,
 this library should remain at the bottom of any dependency chain.
 
+>[!NOTE]
+> The library does have dependencies on `Microsoft.Bcl.HashCode` and
+> `System.Collections.Immutable` as runtime "polyfills".
+
 ## Key support
 * Computing a hash code for a ReadOnlySpan of bytes using
   [System.IO.System.IO.Hashing.XxHash3](https://learn.microsoft.com/en-us/dotnet/api/system.io.hashing.xxhash3)
@@ -13,8 +17,6 @@ this library should remain at the bottom of any dependency chain.
   package.
 * StringNormalizer extensions to support converting line endings of strings
   for interoperability across OS platforms and compatibility with "on disk" representations.
-* A custom ValidatedNotNullAttribute to allow compiler to assume a parameter
-  value is validated as not null.
 * DictionaryBuilder to enable dictionary initializer style initialization of
   `ImmutableDictionary<TKey, TValue>` with significantly reduced overhead.
     - This leverages an `ImmutableDictionary<TKey, TValue>.Builder` under the hood to build

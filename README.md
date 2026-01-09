@@ -15,6 +15,6 @@ of multiple small libraries that didn't warrant a distinct repository.
 
 >[!IMPORTANT]
 > When editing code in this repository make certain that any extensions or tooling that
-> automatically removes trailing whitespace is disabled. It is fine to highlight such cases
-> and most of the time remove any. However, there are some tests where a trailing whitespace
-> is required and a critical part of the tests.
+> ***automatically*** removes trailing whitespace is disabled. It is fine to highlight such
+> cases and most of the time remove any. However, there are some tests where a trailing
+> whitespace is required and a critical part of the tests.
