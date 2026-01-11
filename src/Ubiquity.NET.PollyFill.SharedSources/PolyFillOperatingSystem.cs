@@ -16,6 +16,7 @@ namespace System
 #if !NET5_0_OR_GREATER
         /// <summary>Indicates whether the current application is running on Windows.</summary>
         /// <returns><see langword="true"/> if the current application is running on Windows; <see langword="false"/> otherwise.</returns>
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessage( "MicrosoftCodeAnalysis", "RS1035:Banned Symbol", Justification = "Poly Fill extension API" )]
         public static bool IsWindows()
         {
             return global::System.Environment.OSVersion.Platform switch

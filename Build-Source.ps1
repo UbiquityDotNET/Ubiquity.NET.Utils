@@ -30,9 +30,15 @@ try
     # script. But for a local "inner loop" development this might be the only script used.
     $buildInfo = Initialize-BuildEnvironment -FullInit:$FullInit
 
-    # build the Managed code support
+    # build the core library support
     Write-Information "dotnet build --tl:off 'src\Ubiquity.NET.Utils.slnx' -c $Configuration"
     Invoke-External dotnet build --tl:off 'src\Ubiquity.NET.Utils.slnx' '-c' $Configuration
+
+    # build the demo that consumes the output packages as a package reference only.
+    # This ensures that the proper references are present and work. The demo uses the
+    # library and the source generation to validate it is actually functional.
+    Write-Information "dotnet build --tl:off 'src\DemoCommandLineSrcGen\DemoCommandLineSrcGen.slnx' -c $Configuration"
+    Invoke-External dotnet build --tl:off 'src\DemoCommandLineSrcGen\DemoCommandLineSrcGen.slnx' '-c' $Configuration
 }
 catch
 {

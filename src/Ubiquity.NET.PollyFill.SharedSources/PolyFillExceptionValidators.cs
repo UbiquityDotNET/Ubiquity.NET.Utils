@@ -34,7 +34,8 @@ namespace System
     // The actual strings used are the same as the values in the official runtime
     // support so are at least compatible for "en-us". This fakes it to make it
     // more readable AND make it easier to shift if a means of injecting resources
-    // is found.
+    // is found. Also until such a mechanism is found this suppresses the warnings
+    // (RS1035) about use of banned APIs when used by a Roslyn component.
     file static class ResourceIdExtensions
     {
         internal static string GetResourceString(this ResourceId id)
@@ -188,6 +189,7 @@ namespace System
         }
 
         [global::System.Diagnostics.CodeAnalysis.DoesNotReturn]
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessage("MicrosoftCodeAnalysis", "RS1035:Banned Symbol", Justification="Poly Fill extension API")]
         private static void ThrowZero<T>( T value, string? paramName )
         {
             string msg = string.Format( global::System.Globalization.CultureInfo.CurrentCulture
@@ -200,6 +202,7 @@ namespace System
         }
 
         [global::System.Diagnostics.CodeAnalysis.DoesNotReturn]
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessage( "MicrosoftCodeAnalysis", "RS1035:Banned Symbol", Justification = "Poly Fill extension API" )]
         private static void ThrowNegative<T>( T value, string? paramName )
         {
             string msg = string.Format( global::System.Globalization.CultureInfo.CurrentCulture
@@ -212,6 +215,7 @@ namespace System
         }
 
         [global::System.Diagnostics.CodeAnalysis.DoesNotReturn]
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessage( "MicrosoftCodeAnalysis", "RS1035:Banned Symbol", Justification = "Poly Fill extension API" )]
         private static void ThrowNegativeOrZero<T>( T value, string? paramName )
         {
             string msg = string.Format( global::System.Globalization.CultureInfo.CurrentCulture
@@ -224,6 +228,7 @@ namespace System
         }
 
         [global::System.Diagnostics.CodeAnalysis.DoesNotReturn]
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessage( "MicrosoftCodeAnalysis", "RS1035:Banned Symbol", Justification = "Poly Fill extension API" )]
         private static void ThrowGreater<T>( T value, T other, string? paramName )
         {
             var msg = string.Format(
@@ -238,6 +243,7 @@ namespace System
         }
 
         [global::System.Diagnostics.CodeAnalysis.DoesNotReturn]
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessage( "MicrosoftCodeAnalysis", "RS1035:Banned Symbol", Justification = "Poly Fill extension API" )]
         private static void ThrowGreaterEqual<T>( T value, T other, string? paramName )
         {
 
@@ -253,6 +259,7 @@ namespace System
         }
 
         [global::System.Diagnostics.CodeAnalysis.DoesNotReturn]
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessage( "MicrosoftCodeAnalysis", "RS1035:Banned Symbol", Justification = "Poly Fill extension API" )]
         private static void ThrowLess<T>( T value, T other, string? paramName )
         {
             var msg = string.Format(
@@ -267,6 +274,7 @@ namespace System
         }
 
         [global::System.Diagnostics.CodeAnalysis.DoesNotReturn]
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessage( "MicrosoftCodeAnalysis", "RS1035:Banned Symbol", Justification = "Poly Fill extension API" )]
         private static void ThrowLessEqual<T>( T value, T other, string? paramName )
         {
             var msg = string.Format(
@@ -281,6 +289,7 @@ namespace System
         }
 
         [global::System.Diagnostics.CodeAnalysis.DoesNotReturn]
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessage( "MicrosoftCodeAnalysis", "RS1035:Banned Symbol", Justification = "Poly Fill extension API" )]
         private static void ThrowEqual<T>( T value, T other, string? paramName )
         {
             var msg = string.Format(
@@ -295,6 +304,7 @@ namespace System
         }
 
         [global::System.Diagnostics.CodeAnalysis.DoesNotReturn]
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessage( "MicrosoftCodeAnalysis", "RS1035:Banned Symbol", Justification = "Poly Fill extension API" )]
         private static void ThrowNotEqual<T>( T value, T other, string? paramName )
         {
             var msg = string.Format(

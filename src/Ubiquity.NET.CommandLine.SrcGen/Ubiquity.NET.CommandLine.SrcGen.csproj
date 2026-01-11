@@ -1,0 +1,99 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <!--
+  NOTE:
+  This is a ROSLYN component and therefore has LOTS of restrictions and hair-brained dependency support.
+  It must not use any banned APIs, types or properties. Otherwise, the Roslyn analyzer will complain. It sucks
+  that there is virtually no documentation on the errors, why they exist, or how to fix them...
+  See: https://github.com/dotnet/roslyn-analyzers/issues/6467#issuecomment-1450803039
+       for some of the frustration users are expressing...
+  -->
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <!--This version at least enable nullable AND record structs in the language-->
+    <LangVersion>12</LangVersion>
+    <Nullable>enable</Nullable>
+    <IsRoslynComponent>true</IsRoslynComponent>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+
+    <!--NuGet packaging support -->
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <MinClientVersion>4.9.0</MinClientVersion>
+    <Authors>.NET Foundation,Ubiquity.NET</Authors>
+    <PackageReadmeFile>PackageReadMe.md</PackageReadmeFile>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <Description>Roslyn source generator for Ubiquity.NET.CommandLine</Description>
+    <PackageTags>generator,.NET,Ubiquity.NET, Console</PackageTags>
+    <PackageProjectUrl>https://github.com/UbiquityDotNET/Ubiquity.NET.Utils</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/UbiquityDotNET/Ubiquity.NET.Utils.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseExpression>Apache-2.0 WITH LLVM-exception</PackageLicenseExpression>
+    <!-- Silence NuGet warning (NU5128) about no libs - it's an analyzer-->
+    <NoWarn>$(NoWarn);NU5128</NoWarn>
+  </PropertyGroup>
+
+   <ItemGroup>
+     <None Update="PackageReadMe.md" Pack="true" PackagePath="\" />
+   </ItemGroup>
+
+    <!-- Compile time dependencies; not generation runtime -->
+  <ItemGroup>
+    <PackageReference Include="PolySharp">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <!--
+    Sadly, there is no way to get the target assembly or any transitive dependencies for a "PackageReference".
+    So each requires an explicit __AssemblyPath metadata item to identify the actual path of the assembly.
+    This uses a '*.dll' glob to collect any additional dependencies pulled in with the package.
+    -->
+    <PackageReference Include="Microsoft.Bcl.HashCode" PrivateAssets="all" >
+        <__AssemblyPath>$(PkgMicrosoft_Bcl_HashCode)\lib\$(TargetFramework)\*.dll</__AssemblyPath>
+    </PackageReference>
+
+    <!-- [Microsoft.CodeAnalysis.* assumed present already for a Roslyn source generator] -->
+    <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.CodeAnalysis.VisualBasic" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Ubiquity.NET.CodeAnalysis.Utils\Ubiquity.NET.CodeAnalysis.Utils.csproj" PrivateAssets="all" />
+    <ProjectReference Include="..\Ubiquity.NET.Extensions\Ubiquity.NET.Extensions.csproj" PrivateAssets="all" />
+    <ProjectReference Include="..\Ubiquity.NET.SrcGeneration\Ubiquity.NET.SrcGeneration.csproj" PrivateAssets="all" />
+  </ItemGroup>
+
+  <!--
+  Roslyn generators MUST include any dependencies used at code generation runtime.
+  This should include transitive dependencies too!... [Why?, Why, MS? Why is this so @#$%^ hard!]
+  -->
+  <ItemGroup>
+    <None Include="$(OutDir)$(AssemblyName).dll" Visible="false" Pack="true" PackagePath="analyzers/dotnet/cs" />
+    <None Include="@(ProjectReference->'$(OutDir)%(filename).dll')" Visible="false" Pack="true" PackagePath="analyzers/dotnet/cs" />
+  </ItemGroup>
+
+  <Target Name="GetDependencyTargetPaths" BeforeTargets="GetTargetPath">
+    <ItemGroup>
+      <TargetPathWithTargetPlatformMoniker Include="@(ProjectReference->'$(OutDir)%(filename).dll')" IncludeRuntimeDependency="false" />
+      <TargetPathWithTargetPlatformMoniker Include="$(OutDir)$(AssemblyName).dll" IncludeRuntimeDependency="false" />
+      <TargetPathWithTargetPlatformMoniker Condition="'%(PackageReference.__AssemblyPath)' != ''" Include="%(PackageReference.__AssemblyPath)" IncludeRuntimeDependency="false" />
+    </ItemGroup>
+
+    <!-- Pack all PackageReferences with _AssemblyPath metadata -->
+    <!-- For reasons unknown, this syntax is ONLY valid within a target, so do it here -->
+    <!--
+        NOTE: There is a built-in function HasMetadata, but every incantation tried landed in an error...
+        The semantics intended here is IFF the _AssemblyPath metadata exists transform the result to an item that is THAT value.
+        The resulting set should include ONLY the _AssemblyPath values for PackageReferences that include one.
+    -->
+    <ItemGroup>
+      <None Condition="'%(PackageReference.__AssemblyPath)' != ''" Include="%(PackageReference.__AssemblyPath)" Visible="false" Pack="true" PackagePath="analyzers/dotnet/cs" />
+    </ItemGroup>
+  </Target>
+
+  <Import Project="..\Ubiquity.NET.PollyFill.SharedSources\Ubiquity.NET.PollyFill.SharedSources.projitems" Label="Shared" />
+</Project>

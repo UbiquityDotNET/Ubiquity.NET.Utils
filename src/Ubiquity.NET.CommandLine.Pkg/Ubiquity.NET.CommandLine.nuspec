@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+<!--
+NOTE: NuSpec Substitution macros all include a leading and trailing `$`. That syntax is
+      not used in this comment to prevent build failures. The substitution is done before
+      XML validation of this file, which could cause these comments to include invalid
+      chars and break the build. The substitution ignores the fact that any such occurrences
+      are in a comment. This is especially problematic for Local, CI, and PR builds of this
+      library as the version could contain a double dash, which is invalid within an XML comment.
+      Because substitution is done in memory the resulting in memory string contains the
+      invalid chars, but the error is reported with a location in the generating project.
+      That is, a completely incorrect source location is reported making it VERY difficult
+      to find the root cause.
+
+INPUT:
+    packageID => ID of the package
+    version => Version of this package
+    authors => Authors of the package
+    description => Description of the package
+    tags => Tags to mark this package (Helps searching)
+    licExpression => License expression
+    projectUrl => URL for the project
+    tfmGroup => minimum Target Framework needed for the source files
+    config => Configuration for the build (Debug/Release)
+-->
+    <metadata minClientVersion="4.9.0">
+        <id>$packageID$</id>
+        <version>$version$</version>
+        <authors>$authors$</authors>
+        <description>$description$</description>
+        <tags>$tags$</tags>
+        <license type="expression">$licExpression$</license>
+        <projectUrl>$projectUrl$</projectUrl>
+        <readme>PackageReadMe.md</readme>
+        <dependencies>
+            <group>
+                <dependency id="Ubiquity.NET.CommandLine.Lib" version="$version$" exclude="Build,Analyzers" />
+                <dependency id="Ubiquity.NET.CommandLine.SrcGen" version="$version$" include="Analyzers" />
+            </group>
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="PackageReadMe.md" target=".\"/>
+    </files>
+</package>

@@ -4,8 +4,11 @@
         <TargetFrameworks>net10.0;net8.0</TargetFrameworks>
         <Nullable>enable</Nullable>
         <GenerateDocumentationFile>True</GenerateDocumentationFile>
+        <IsAotCompatible>True</IsAotCompatible>
 
         <!--NuGet packaging support -->
+        <!-- Override the name as this is referenced by an "Meta" package that also references the analyzers -->
+        <PackageId>Ubiquity.NET.CommandLine.Lib</PackageId>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <MinClientVersion>4.9.0</MinClientVersion>
         <Authors>.NET Foundation,Ubiquity.NET</Authors>
@@ -28,10 +31,13 @@
     <ItemGroup>
         <PackageReference Include="System.CommandLine" />
         <PackageReference Include="AnsiCodes" />
-        <PackageReference Include="Microsoft.Bcl.HashCode" PrivateAssets="all" ExcludeAssets="all" />
     </ItemGroup>
 
     <ItemGroup>
         <ProjectReference Include="..\Ubiquity.NET.Extensions\Ubiquity.NET.Extensions.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="GeneratorAttributes\" />
     </ItemGroup>
 </Project>
