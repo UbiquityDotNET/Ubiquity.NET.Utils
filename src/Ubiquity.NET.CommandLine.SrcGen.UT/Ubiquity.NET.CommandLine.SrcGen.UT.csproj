@@ -25,7 +25,9 @@
     Project reference with `ReferenceOutputAssembly="false"` ensures build dependency but doesn't reference the output.
     A `None` item is still needed to get a copy of the library in the output folder though...
     -->
-    <ProjectReference Include="..\Ubiquity.NET.CommandLine\Ubiquity.NET.CommandLine.csproj" ReferenceOutputAssembly="false" />
+    <ProjectReference Include="..\Ubiquity.NET.CommandLine\Ubiquity.NET.CommandLine.csproj" ReferenceOutputAssembly="false">
+      <Private>True</Private>
+    </ProjectReference>
   </ItemGroup>
 
   <ItemGroup>
