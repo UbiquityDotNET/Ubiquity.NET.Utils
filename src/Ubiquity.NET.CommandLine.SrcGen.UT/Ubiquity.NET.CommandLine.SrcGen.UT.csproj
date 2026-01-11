@@ -25,16 +25,7 @@
     Project reference with `ReferenceOutputAssembly="false"` ensures build dependency but doesn't reference the output.
     A `None` item is still needed to get a copy of the library in the output folder though...
     -->
-    <ProjectReference Include="..\Ubiquity.NET.CommandLine\Ubiquity.NET.CommandLine.csproj" ReferenceOutputAssembly="false">
-      <Private>True</Private>
-    </ProjectReference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <!-- This ensures the assembly is present even if not directly used by this test (It is referenced by the test compilations) -->
-    <None Include="$(BaseBuildOutputBinPath)Ubiquity.NET.CommandLine\$(Configuration)\$(TargetFramework)\Ubiquity.NET.CommandLine.*" Pack="false" Visible="false">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <ProjectReference Include="..\Ubiquity.NET.CommandLine\Ubiquity.NET.CommandLine.csproj" ReferenceOutputAssembly="false" />
   </ItemGroup>
 
   <ItemGroup>
@@ -46,4 +37,12 @@
     <EmbeddedResource Include="TestFiles\RootCommandAttributeTests\expected.cs" />
     <EmbeddedResource Include="TestFiles\RootCommandAttributeTests\input.cs" />
   </ItemGroup>
+
+  <Target Name="ForceCopyTestDependency" BeforeTargets="AfterBuild">
+    <!-- This ensures the assembly is present even if not directly used by this test (It is referenced by the test compilations) -->
+    <Copy
+        SourceFiles="$(BaseBuildOutputBinPath)Ubiquity.NET.CommandLine\$(Configuration)\$(TargetFramework)\Ubiquity.NET.CommandLine.dll"
+        DestinationFolder="$(BaseBuildOutputBinPath)$(AssemblyName)\$(Configuration)\$(TargetFramework)\"
+        />
+  </Target>
 </Project>
