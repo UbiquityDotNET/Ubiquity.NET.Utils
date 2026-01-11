@@ -49,6 +49,13 @@ namespace System
         /// <summary>Replace line endings in the string with environment specific forms</summary>
         /// <param name="self">string to change line endings for</param>
         /// <returns>string with environment specific line endings</returns>
+        /// <remarks>
+        /// This API will explicitly replace line endings using the Runtime newline format. In most cases that is
+        /// what is desired. However, when generating files or content consumed by something other than the
+        /// current runtime it is usually not what is desired. In such a case the more explicit <see cref="ReplaceLineEndings(string, string)"/>
+        /// is used to specify the precise line ending form to use. (Or Better yet, use <c>Ubiquity.NET.Extensions.StringNormalizer.NormalizeLineEndings(string?, LineEndingKind))</c> />
+        /// </remarks>
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessage( "MicrosoftCodeAnalysis", "RS1035:Banned Symbol", Justification = "This form explicitly uses the runtime form" )]
         public static string ReplaceLineEndings( this string self )
         {
             return ReplaceLineEndings( self, global::System.Environment.NewLine );
