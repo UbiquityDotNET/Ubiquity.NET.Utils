@@ -18,7 +18,7 @@
     <File Path="../Show-Docs.ps1" />
     <File Path="../stylecop.json" />
     <File Path=".editorconfig" />
-    <File Path="x64.runsettings" />
+    <File Path=".runsettings" />
   </Folder>
   <Folder Name="/Repo Items/GitHub/" />
   <Folder Name="/Repo Items/GitHub/workflow/">

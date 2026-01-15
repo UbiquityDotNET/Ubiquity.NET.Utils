@@ -7,7 +7,7 @@ To support a meta package where the referenced packages may not exist at build t
 The Build process for CSPROJ files will require resolving the referenced packages before it "generates" the NuSpec file.
 The CSPROJ system for MSBUILD will try to restore referenced packages etc... and ultimately requires the ability to find
 the listed dependencies. (They won't exist yet for this build/repo!) so either a mechanism to control build ordering EVEN
-on NuGetRestore is needed, or this approach is used. Given the complexities of trying the former, this approach is used
+on NuGet Restore is needed, or this approach is used. Given the complexities of trying the former, this approach is used
 as it is simpler.
 -->
 <Project Sdk="Microsoft.Build.NoTargets">

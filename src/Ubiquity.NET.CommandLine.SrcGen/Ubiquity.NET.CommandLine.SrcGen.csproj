@@ -9,7 +9,7 @@
   -->
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <!--This version at least enable nullable AND record structs in the language-->
+    <!--This version at least allows nullable AND record structs in the language-->
     <LangVersion>12</LangVersion>
     <Nullable>enable</Nullable>
     <IsRoslynComponent>true</IsRoslynComponent>
@@ -31,6 +31,7 @@
     <PackageLicenseExpression>Apache-2.0 WITH LLVM-exception</PackageLicenseExpression>
     <!-- Silence NuGet warning (NU5128) about no libs - it's an analyzer-->
     <NoWarn>$(NoWarn);NU5128</NoWarn>
+    <NeutralLanguage>en-US</NeutralLanguage>
   </PropertyGroup>
 
    <ItemGroup>
@@ -57,8 +58,6 @@
 
     <!-- [Microsoft.CodeAnalysis.* assumed present already for a Roslyn source generator] -->
     <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" PrivateAssets="all" />
-    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" PrivateAssets="all" />
-    <PackageReference Include="Microsoft.CodeAnalysis.VisualBasic" PrivateAssets="all" />
   </ItemGroup>
 
   <ItemGroup>
@@ -74,6 +73,19 @@
   <ItemGroup>
     <None Include="$(OutDir)$(AssemblyName).dll" Visible="false" Pack="true" PackagePath="analyzers/dotnet/cs" />
     <None Include="@(ProjectReference->'$(OutDir)%(filename).dll')" Visible="false" Pack="true" PackagePath="analyzers/dotnet/cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
   <Target Name="GetDependencyTargetPaths" BeforeTargets="GetTargetPath">

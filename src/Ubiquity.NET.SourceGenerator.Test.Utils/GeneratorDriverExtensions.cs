@@ -5,8 +5,7 @@ using System;
 using System.Collections.Immutable;
 
 using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.CodeAnalysis.Testing;
 
 namespace Ubiquity.NET.SourceGenerator.Test.Utils
 {
@@ -15,6 +14,7 @@ namespace Ubiquity.NET.SourceGenerator.Test.Utils
     {
         /// <summary>Runs a source generator twice and validates the results</summary>
         /// <param name="driver">Driver to use for the run</param>
+        /// <param name="verify">Verifier to use for asserting the results</param>
         /// <param name="compilation">Compilation to use for the run</param>
         /// <param name="trackingNames">Array of names to filter all of the internal tracking names</param>
         /// <returns>Results of first run</returns>
@@ -25,7 +25,8 @@ namespace Ubiquity.NET.SourceGenerator.Test.Utils
         /// </remarks>
         public static GeneratorDriverRunResult RunGeneratorAndAssertResults(
             this GeneratorDriver driver,
-            CSharpCompilation compilation,
+            IVerifier verify,
+            Compilation compilation,
             ImmutableArray<string> trackingNames
             )
         {
@@ -38,8 +39,9 @@ namespace Ubiquity.NET.SourceGenerator.Test.Utils
             GeneratorDriverRunResult runResult1 = driver.GetRunResult();
             GeneratorDriverRunResult runResult2 = driver.RunGenerators(compilationClone)
                                                         .GetRunResult();
-            Assert.That.AreEqual(runResult1, runResult2, trackingNames);
-            Assert.That.Cached(runResult2);
+
+            verify.AreEqual(runResult1, runResult2, trackingNames);
+            verify.Cached(runResult2);
             return runResult1;
         }
     }

@@ -35,8 +35,8 @@
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
 
-      <PackageReference Include="System.Collections.Immutable" />
-      <PackageReference Include="Microsoft.Bcl.HashCode" />
+      <PackageReference Include="System.Collections.Immutable" PrivateAssets="all" />
+      <PackageReference Include="Microsoft.Bcl.HashCode" PrivateAssets="all" />
     </ItemGroup>
 
     <ItemGroup>

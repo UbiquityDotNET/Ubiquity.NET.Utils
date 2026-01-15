@@ -38,10 +38,11 @@ namespace Ubiquity.NET.CommandLine.SrcGen
         {
             // Do nothing if the target doesn't support what the generated code needs or something is wrong.
             // Errors are detected by a distinct analyzer; code generators just NOP as fast as possible.
+            // see: https://csharp-evolution.com/guides/language-by-platform
             var compilation = context.SemanticModel.Compilation;
             if( context.Attributes.Length != 1 // Multiple instances not allowed and 0 is just broken.
              || compilation.Language != "C#"
-             || !compilation.HasLanguageVersionAtLeastEqualTo(LanguageVersion.CSharp13)
+             || !compilation.HasLanguageVersionAtLeastEqualTo( LanguageVersion.CSharp12 ) // C# 12 => .NET 8.0 => supported until 2026-11-10 (LTS)
              || context.TargetSymbol is not INamedTypeSymbol namedTypeSymbol
              || context.TargetNode is not ClassDeclarationSyntax commandClass
             )
@@ -82,7 +83,8 @@ namespace Ubiquity.NET.CommandLine.SrcGen
         {
             var template = new Templates.RootCommandClassTemplate(source);
             var generatedSource = template.GenerateText();
-            context.AddSource( $"{source.TargetName:R}.g.cs", generatedSource );
+            string hintPath = $"{source.TargetName:R}.g.cs";
+            context.AddSource( hintPath, generatedSource );
         }
     }
 }

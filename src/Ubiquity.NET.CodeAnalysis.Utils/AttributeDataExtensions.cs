@@ -27,5 +27,13 @@ namespace Ubiquity.NET.CodeAnalysis.Utils
                  ? new( [], string.Empty )
                  : self.AttributeClass.GetNamespaceQualifiedName();
         }
+
+        /// <summary>Gets the location from the <see cref="AttributeData.ApplicationSyntaxReference"/> if available</summary>
+        /// <param name="self"><see cref="AttributeData"/> to get the location from</param>
+        /// <returns>Location of the attribute or null if not available</returns>
+        public static Location? GetLocation( this AttributeData self )
+        {
+            return self.ApplicationSyntaxReference?.SyntaxTree.GetLocation( self.ApplicationSyntaxReference.Span );
+        }
     }
 }

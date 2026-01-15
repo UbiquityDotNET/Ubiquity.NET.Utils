@@ -39,7 +39,7 @@ try
     try
     {
         dir (Join-Path $BuildInfo['BuildOutputPath'] 'bin' 'Ubiquity.NET.CommandLine.SrcGen.UT' "$Configuration" 'net10.0' 'Ubiquity.NET.CommandLine.*')
-        Invoke-External dotnet test Ubiquity.NET.Utils.slnx '-c' $Configuration '-tl:off' '--logger:trx' '--no-build' '-s' '.\x64.runsettings'
+        Invoke-External dotnet test Ubiquity.NET.Utils.slnx '-c' $Configuration '-tl:off' '--logger:trx' '--no-build' '-s' '.\.runsettings'
     }
     finally
     {
