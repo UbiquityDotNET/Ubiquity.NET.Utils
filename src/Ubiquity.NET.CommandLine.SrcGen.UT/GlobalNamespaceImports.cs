@@ -6,14 +6,15 @@ global using System.Collections.Generic;
 global using System.Collections.Immutable;
 global using System.Diagnostics.CodeAnalysis;
 global using System.IO;
+global using System.Linq;
 global using System.Runtime.InteropServices;
-global using System.Text;
-
-global using Basic.Reference.Assemblies;
+global using System.Threading.Tasks;
 
 global using Microsoft.CodeAnalysis;
 global using Microsoft.CodeAnalysis.CSharp;
+global using Microsoft.CodeAnalysis.Testing;
 global using Microsoft.CodeAnalysis.Text;
 global using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 global using Ubiquity.NET.SourceGenerator.Test.Utils;
+global using Ubiquity.NET.SourceGenerator.Test.Utils.CSharp;

@@ -34,10 +34,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Bcl.HashCode" />
-    <PackageReference Include="Microsoft.CodeAnalysis.Common" />
+    <PackageReference Include="Microsoft.Bcl.HashCode" PrivateAssets="all" />
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp" />
-    <PackageReference Include="Microsoft.CodeAnalysis.VisualBasic" />
+    <!--
+    Support of VB is problematic as [RS1038](https://github.com/dotnet/roslyn/blob/main/docs/roslyn-analyzers/rules/RS1038.md)
+    is aggressive and tests for ALL dependencies. So inclusion of a reference in a dependent assembly will trigger that
+    To fully resolve this in a general means the language specific parts would need to pull out of this assembly and
+    into a distinct one for that language. This is a bit overkill given the need to target any language other than C#
+    is rather limited... Until such is needed, just leave out the VB support
+    -->
+    <!--<PackageReference Include="Microsoft.CodeAnalysis.VisualBasic" />-->
     <PackageReference Include="Microsoft.CodeAnalysis.Analyzers">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

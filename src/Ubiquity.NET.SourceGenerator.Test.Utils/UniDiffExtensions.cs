@@ -3,7 +3,9 @@
 
 using DiffPlex.Renderer;
 
-namespace Ubiquity.NET.CommandLine.SrcGen.UT
+using Microsoft.CodeAnalysis.Text;
+
+namespace Ubiquity.NET.SourceGenerator.Test.Utils
 {
     internal static class UniDiffExtensions
     {

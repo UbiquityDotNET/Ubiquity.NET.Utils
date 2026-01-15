@@ -32,7 +32,7 @@
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
 
-        <PackageReference Include="System.Collections.Immutable" />
+        <PackageReference Include="System.Collections.Immutable" PrivateAssets="all"/>
     </ItemGroup>
 
     <ItemGroup>

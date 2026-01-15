@@ -4,7 +4,9 @@
 // Mostly from: https://github.com/Sergio0694/PolySharp/blob/main/src/PolySharp.SourceGenerators/Extensions/CompilationExtensions.cs
 // Reformatted and adapted to support repo guidelines
 
+#if SUPPORT_VB
 using Microsoft.CodeAnalysis.VisualBasic;
+#endif
 
 namespace Ubiquity.NET.CodeAnalysis.Utils
 {
@@ -28,6 +30,12 @@ namespace Ubiquity.NET.CodeAnalysis.Utils
                 : csharpCompilation.LanguageVersion >= languageVersion;
         }
 
+// Support of VB is problematic as [RS1038](https://github.com/dotnet/roslyn/blob/main/docs/roslyn-analyzers/rules/RS1038.md)
+// is aggressive and tests for ALL dependencies. So inclusion of a reference in a dependent assembly will trigger that
+// To fully resolve this in a general means the language specific parts would need to pull out of this assembly and
+// into a distinct one for that language. This is a bit overkill given the need to target any language other than C#
+// is rather limited... Until such is needed, just leave out the VB support
+#if SUPPORT_VB
         /// <summary>Checks whether a given VB compilation is using at least a given language version.</summary>
         /// <param name="compilation">The <see cref="Compilation"/> to consider for analysis.</param>
         /// <param name="languageVersion">The minimum language version to check.</param>
@@ -39,6 +47,7 @@ namespace Ubiquity.NET.CodeAnalysis.Utils
                 ? throw new ArgumentNullException( nameof( compilation ) )
                 : vbCompilation.LanguageVersion >= languageVersion;
         }
+#endif
 
         /// <summary>Gets the runtime version by extracting the version from the assembly implementing <see cref="System.Object"/></summary>
         /// <param name="self">Compilation to get the version information from</param>

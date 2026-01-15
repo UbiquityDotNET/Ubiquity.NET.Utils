@@ -7,15 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-      <PackageReference Include="DiffPlex" />
       <PackageReference Include="Microsoft.NET.Test.Sdk" />
       <PackageReference Include="MSTest.TestFramework" />
       <PackageReference Include="MSTest.TestAdapter" />
-      <PackageReference Include="Microsoft.CodeAnalysis" />
-      <PackageReference Include="Basic.Reference.Assemblies" />
-      <!-- Until https://github.com/jaredpar/basic-reference-assemblies/issues/78 is resolved these are a specific version ref -->
-      <PackageReference Include="Basic.Reference.Assemblies.Net90" />
-      <PackageReference Include="Basic.Reference.Assemblies.Net100" />
+
+      <!-- Testing references for analyzers and code fixes -->
+      <!--<PackageReference Include="Microsoft.CodeAnalysis.VisualBasic.Features" />-->
+      <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Analyzer.Testing" />
+      <PackageReference Include="Microsoft.CodeAnalysis.CSharp.CodeFix.Testing" />
+      <PackageReference Include="Microsoft.CodeAnalysis.CSharp.CodeRefactoring.Testing" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,20 +29,25 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="TestFiles\RootCommandAttributeTests\expected.cs" />
-    <Compile Remove="TestFiles\RootCommandAttributeTests\Input.cs" />
+    <Compile Remove="TestFiles\CommandAnalyzerTests\FolderValidation_attribute_without_command_triggers_diagnostic\input.cs" />
+    <Compile Remove="TestFiles\CommandAnalyzerTests\FileValidation_attribute_without_command_triggers_diagnostic\input.cs" />
+    <Compile Remove="TestFiles\CommandAnalyzerTests\GoldenPath_produces_no_diagnostics\input.cs" />
+    <Compile Remove="TestFiles\CommandAnalyzerTests\Option_attribute_without_command_triggers_diagnostic\input.cs" />
+    <Compile Remove="TestFiles\RootCommandAttributeTests\Basic_golden_path_succeeds\expected.cs" />
+    <Compile Remove="TestFiles\RootCommandAttributeTests\Basic_golden_path_succeeds\Input.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="TestFiles\RootCommandAttributeTests\expected.cs" />
-    <EmbeddedResource Include="TestFiles\RootCommandAttributeTests\input.cs" />
+    <EmbeddedResource Include="TestFiles\CommandAnalyzerTests\FolderValidation_attribute_without_command_triggers_diagnostic\input.cs" />
+    <EmbeddedResource Include="TestFiles\CommandAnalyzerTests\FileValidation_attribute_without_command_triggers_diagnostic\input.cs" />
+    <EmbeddedResource Include="TestFiles\CommandAnalyzerTests\GoldenPath_produces_no_diagnostics\input.cs" />
+    <EmbeddedResource Include="TestFiles\CommandAnalyzerTests\Option_attribute_without_command_triggers_diagnostic\input.cs" />
+    <EmbeddedResource Include="TestFiles\RootCommandAttributeTests\Basic_golden_path_succeeds\expected.cs" />
+    <EmbeddedResource Include="TestFiles\RootCommandAttributeTests\Basic_golden_path_succeeds\input.cs" />
   </ItemGroup>
 
   <Target Name="ForceCopyTestDependency" BeforeTargets="AfterBuild">
     <!-- This ensures the assembly is present even if not directly used by this test (It is referenced by the test compilations) -->
-    <Copy
-        SourceFiles="$(BaseBuildOutputBinPath)Ubiquity.NET.CommandLine\$(Configuration)\$(TargetFramework)\Ubiquity.NET.CommandLine.dll"
-        DestinationFolder="$(BaseBuildOutputBinPath)$(AssemblyName)\$(Configuration)\$(TargetFramework)\"
-        />
+    <Copy SourceFiles="$(BaseBuildOutputBinPath)Ubiquity.NET.CommandLine\$(Configuration)\$(TargetFramework)\Ubiquity.NET.CommandLine.dll" DestinationFolder="$(BaseBuildOutputBinPath)$(AssemblyName)\$(Configuration)\$(TargetFramework)\" />
   </Target>
 </Project>

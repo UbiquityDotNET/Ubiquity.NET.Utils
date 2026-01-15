@@ -9,77 +9,53 @@ namespace Ubiquity.NET.CommandLine.SrcGen.UT
         public TestContext TestContext { get; set; }
 
         [TestMethod]
-        public void Basic_golden_path_succeeds( )
+        [DataRow( TestRuntime.Net8_0 )]
+        [DataRow( TestRuntime.Net10_0 )]
+        public async Task Basic_golden_path_succeeds( TestRuntime testRuntime )
         {
-            var sourceGenerator = new CommandGenerator().AsSourceGenerator();
-            GeneratorDriver driver = CSharpGeneratorDriver.Create(
-                generators: [sourceGenerator],
-                driverOptions: new GeneratorDriverOptions(default, trackIncrementalGeneratorSteps: true)
-            );
+            const string inputFileName = "input.cs";
+            const string expectedFileName = "expected.cs";
+            string hintPath = Path.Combine("Ubiquity.NET.CommandLine.SrcGen", "Ubiquity.NET.CommandLine.SrcGen.CommandGenerator", "TestNamespace.TestOptions.g.cs");
 
-            SourceText input = TestHelpers.GetTestText(nameof(RootCommandAttributeTests), "input.cs");
-            SourceText expected = TestHelpers.GetTestText(nameof(RootCommandAttributeTests), "expected.cs");
+            SourceText input = GetSourceText( nameof(Basic_golden_path_succeeds), inputFileName );
+            SourceText expected = GetSourceText( nameof(Basic_golden_path_succeeds), expectedFileName );
 
-            CSharpCompilation compilation = CreateCompilation(input, TestProgramCSPath);
-            var diagnostics = compilation.GetDiagnostics( TestContext.CancellationToken );
-            foreach(var diagnostic in diagnostics)
-            {
-                TestContext.WriteLine( diagnostic.ToString() );
-            }
-
-            Assert.HasCount( 0, diagnostics );
-
-            var results = driver.RunGeneratorAndAssertResults(compilation, [TrackingNames.CommandClass]);
-            Assert.IsEmpty( results.Diagnostics, "Should not have ANY diagnostics reported during generation" );
-
-            // validate the generated trees have the correct count and names
-            Assert.HasCount( 1, results.GeneratedTrees, "Should create 1 'files' during generation" );
-            for(int i = 0; i < results.GeneratedTrees.Length; ++i)
-            {
-                string expectedName = GeneratedFilePaths[i];
-                SyntaxTree tree = results.GeneratedTrees[i];
-
-                Assert.AreEqual( expectedName, tree.FilePath, "Generated files should use correct name" );
-                Assert.AreEqual( Encoding.UTF8, tree.Encoding, $"Generated files should use UTF8. [{expectedName}]" );
-            }
-
-            SourceText actual = results.GeneratedTrees[0].GetText( TestContext.CancellationToken );
-            string uniDiff = expected.UniDiff(actual);
-            if(!string.IsNullOrWhiteSpace( uniDiff ))
-            {
-                TestContext.WriteLine( uniDiff );
-                Assert.Fail( "No Differences Expected" );
-            }
+            var runner = CreateTestRunner(input, testRuntime, [TrackingNames.CommandClass], hintPath, expected );
+            await runner.RunAsync( TestContext.CancellationToken );
         }
 
-        // simple helper for these tests to create a C# Compilation
-        internal static CSharpCompilation CreateCompilation(
+        private SourceGeneratorTest<MsTestVerifier> CreateTestRunner(
             SourceText source,
-            string path,
-            CSharpParseOptions? parseOptions = default,
-            CSharpCompilationOptions? compileOptions = default,
-            List<MetadataReference>? references = default
+            TestRuntime testRuntime,
+            ImmutableArray<string> trackingNames,
+            string expectedHintPath,
+            SourceText expectedContent
             )
         {
-            parseOptions ??= new CSharpParseOptions(LanguageVersion.CSharp14, DocumentationMode.None);
-            compileOptions ??= new CSharpCompilationOptions( OutputKind.DynamicallyLinkedLibrary, nullableContextOptions: NullableContextOptions.Enable );
+            // Use a test runner with Caching, language and reference assemblies that match the runtime for the test run
+            return new CachedSourceGeneratorTest<CommandGenerator, MsTestVerifier>( trackingNames, testRuntime.DefaultLangVersion )
+            {
+                TestState =
+                {
+                    Sources = { source },
+                    ReferenceAssemblies = testRuntime.ReferenceAssemblies,
+                    AdditionalReferences =
+                    {
+                        TestContext.GetUbiquityNetCommandLineLib( testRuntime )
+                    },
+                    OutputKind = OutputKind.DynamicallyLinkedLibrary, // Don't require a Main() method
+                    GeneratedSources = { (expectedHintPath, expectedContent) }
+                },
 
-            // Default to .NET 10 if not specified.
-            references ??= [ .. Net100.References.All ];
-            references.Add( MetadataReference.CreateFromFile( Path.Combine( Environment.CurrentDirectory, "Ubiquity.NET.CommandLine.dll" ) ) );
-
-            return CSharpCompilation.Create( "TestAssembly",
-                                             [ CSharpSyntaxTree.ParseText( source, parseOptions, path ) ],
-                                             references,
-                                             compileOptions
-                                           );
+                // Allow ALL diagnostics for testing, input source should contain valid C# code
+                // but might otherwise trigger the tested analyzer.
+                CompilerDiagnostics = CompilerDiagnostics.All,
+            };
         }
 
-        private const string TestProgramCSPath = @"input.cs";
-
-        private readonly ImmutableArray<string> GeneratedFilePaths
-        = [
-            @"Ubiquity.NET.CommandLine.SrcGen\Ubiquity.NET.CommandLine.SrcGen.CommandGenerator\TestNamespace.TestOptions.g.cs",
-        ];
+        private static SourceText GetSourceText(params string[] nameParts)
+        {
+            return TestHelpers.GetTestText( nameof( RootCommandAttributeTests ), nameParts );
+        }
     }
 }
