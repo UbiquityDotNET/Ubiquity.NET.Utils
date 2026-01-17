@@ -25,52 +25,52 @@ namespace Ubiquity.NET.CommandLine.SrcGen
 
         internal static string UbiquityNETCommandLineNamespaceName { get; } = string.Join(".", UbiquityNETCommandLineNamespaceParts);
 
-        internal static readonly NamespaceQualifiedName RootCommandAttribute
+        internal static readonly NamespaceQualifiedTypeName RootCommandAttribute
             = new( GeneratorAttributesNamespaceParts, nameof(RootCommandAttribute));
 
-        internal static readonly NamespaceQualifiedName OptionAttribute
-            = new( GeneratorAttributesNamespaceParts, nameof(OptionAttribute));
+        internal static readonly NamespaceQualifiedTypeName OptionAttribute
+            = new( GeneratorAttributesNamespaceParts, nameof(OptionAttribute) );
 
-        internal static readonly NamespaceQualifiedName FileValidationAttribute
+        internal static readonly NamespaceQualifiedTypeName FileValidationAttribute
             = new( GeneratorAttributesNamespaceParts, nameof(FileValidationAttribute));
 
-        internal static readonly NamespaceQualifiedName FolderValidationAttribute
+        internal static readonly NamespaceQualifiedTypeName FolderValidationAttribute
             = new( GeneratorAttributesNamespaceParts, nameof(FolderValidationAttribute));
 
-        internal static readonly NamespaceQualifiedName IRootCommandBuilderWithSettings
+        internal static readonly NamespaceQualifiedTypeName IRootCommandBuilderWithSettings
             = new( UbiquityNETCommandLineNamespaceParts, nameof(IRootCommandBuilderWithSettings));
 
         [SuppressMessage( "StyleCop.CSharp.NamingRules", "SA1310:Field names should not contain underscore", Justification = "Generic type - no other way to represent name in C# literal" )]
-        internal static readonly NamespaceQualifiedName ICommandBinder
+        internal static readonly NamespaceQualifiedTypeName ICommandBinder
             = new( UbiquityNETCommandLineNamespaceParts, nameof(ICommandBinder)); // Actual name is ICommandBinder`1, but that is not needed for code gen
 
-        internal static readonly NamespaceQualifiedName AppControlledDefaultsRootCommand
+        internal static readonly NamespaceQualifiedTypeName AppControlledDefaultsRootCommand
             = new( UbiquityNETCommandLineNamespaceParts, nameof(AppControlledDefaultsRootCommand));
 
-        internal static readonly NamespaceQualifiedName SymbolValidationExtensions
+        internal static readonly NamespaceQualifiedTypeName SymbolValidationExtensions
             = new( UbiquityNETCommandLineNamespaceParts, nameof(SymbolValidationExtensions));
 
-        internal static readonly NamespaceQualifiedName CommandLineSettings
+        internal static readonly NamespaceQualifiedTypeName CommandLineSettings
             = new( UbiquityNETCommandLineNamespaceParts, nameof(CommandLineSettings));
 
-        internal static readonly NamespaceQualifiedName ArgumentArity
+        internal static readonly NamespaceQualifiedTypeName ArgumentArity
             = new( SystemCommandLineNamespaceParts, nameof(ArgumentArity));
 
-        internal static readonly NamespaceQualifiedName Option
+        internal static readonly NamespaceQualifiedTypeName Option
             = new( SystemCommandLineNamespaceParts, nameof(Option));
 
-        internal static readonly NamespaceQualifiedName ParseResult
+        internal static readonly NamespaceQualifiedTypeName ParseResult
             = new( SystemCommandLineNamespaceParts, nameof(ParseResult));
 
-        internal static readonly NamespaceQualifiedName DirectoryInfo
+        internal static readonly NamespaceQualifiedTypeName DirectoryInfo
             = new( SystemIONamespaceParts, nameof(DirectoryInfo));
 
-        internal static readonly NamespaceQualifiedName FileInfo
+        internal static readonly NamespaceQualifiedTypeName FileInfo
             = new( SystemIONamespaceParts, nameof(FileInfo));
 
         // Names for the attributes to allow quickly filtering to a matching
         // simple name before testing if it's full name is a match
-        internal static readonly ImmutableArray<NamespaceQualifiedName> GeneratingAttributeNames
+        internal static readonly ImmutableArray<NamespaceQualifiedTypeName> GeneratingAttributeNames
         = [
             RootCommandAttribute,
             OptionAttribute,

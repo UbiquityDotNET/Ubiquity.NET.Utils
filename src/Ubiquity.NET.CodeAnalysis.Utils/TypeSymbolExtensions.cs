@@ -27,12 +27,21 @@ namespace Ubiquity.NET.CodeAnalysis.Utils
             return new NamespacePartReverseIterator(self);
         }
 
-        /// <summary>Gets the <see cref="NamespaceQualifiedName"/> for a symbol</summary>
+        /// <summary>Gets the <see cref="NamespaceQualifiedTypeName"/> for a symbol</summary>
         /// <param name="self">Symbol to get the name from</param>
-        /// <returns><see cref="NamespaceQualifiedName"/> for the symbol</returns>
-        public static NamespaceQualifiedName GetNamespaceQualifiedName( this ITypeSymbol self )
+        /// <returns><see cref="NamespaceQualifiedTypeName"/> for the symbol</returns>
+        public static NamespaceQualifiedTypeName GetNamespaceQualifiedName( this ITypeSymbol self )
         {
-            return new( GetNamespaceNames( self ), self.Name );
+            return new( self );
+        }
+
+        /// <summary>Gets a value that indicates whether a given type is a nullable value type</summary>
+        /// <param name="self">Type to test</param>
+        /// <returns>true if the type is a nullable value type and false if not</returns>
+        public static bool IsNullableValueType( this ITypeSymbol self )
+        {
+            return self.NullableAnnotation == NullableAnnotation.Annotated
+                && self.IsValueType;
         }
 
         // private iterator to defer the perf hit for reverse walk until the names
