@@ -3,10 +3,11 @@
 
 namespace Ubiquity.NET.CodeAnalysis.Utils
 {
-    /// <summary>Custom formatter for <see cref="NamespaceQualifiedName"/></summary>
+    /// <summary>Custom formatter for <see cref="NamespaceQualifiedName"/> and <see cref="NamespaceQualifiedTypeName"/></summary>
     public class NamespaceQualifiedNameFormatter
         : IFormatProvider
         , ICustomFormatter<NamespaceQualifiedName>
+        , ICustomFormatter<NamespaceQualifiedTypeName>
     {
         /// <summary>Initializes a new instance of the <see cref="NamespaceQualifiedNameFormatter"/> class.</summary>
         /// <param name="globalPrefix">Global prefix for the language this formatter will produce</param>
@@ -14,7 +15,7 @@ namespace Ubiquity.NET.CodeAnalysis.Utils
         public NamespaceQualifiedNameFormatter( string globalPrefix, IReadOnlyDictionary<string, string> aliasMap )
         {
             GlobalPrefix = globalPrefix ?? string.Empty;
-            AliasMap = aliasMap ?? throw new ArgumentNullException(nameof(aliasMap));
+            AliasMap = aliasMap ?? throw new ArgumentNullException( nameof( aliasMap ) );
         }
 
         /// <summary>Gets the global prefix for the language formatting (example: "global::")</summary>
@@ -30,12 +31,24 @@ namespace Ubiquity.NET.CodeAnalysis.Utils
         /// <inheritdoc/>
         public string Format( string format, object arg, IFormatProvider? formatProvider )
         {
-            return arg is not NamespaceQualifiedName self
-                 ? string.Empty
-                 : Format(format, self, formatProvider);
+            if(arg is NamespaceQualifiedName name)
+            {
+                return Format( format, name, formatProvider );
+            }
+
+            if(arg is NamespaceQualifiedTypeName typeName)
+            {
+                return Format( format, typeName, formatProvider );
+            }
+
+            // Not a type supported; use the type to do it, if it's formattable itself use that
+            // otherwise fall back to simple Object.ToString().
+            return arg is IFormattable formattable
+                 ? formattable.ToString( format, formatProvider )
+                 : arg.ToString();
         }
 
-        /// <summary>Formats this instance according to the args</summary>
+        /// <summary>Formats <paramref name="arg"/> according to <paramref name="format"/></summary>
         /// <param name="format">Format string for this instance (see remarks)</param>
         /// <param name="arg">The value to format</param>
         /// <param name="formatProvider">[ignored]</param>
@@ -76,10 +89,39 @@ namespace Ubiquity.NET.CodeAnalysis.Utils
                  : rawName;
         }
 
+        /// <summary>Formats <paramref name="arg"/> according to <paramref name="format"/></summary>
+        /// <param name="format">Format string for this instance (see remarks)</param>
+        /// <param name="arg">The value to format</param>
+        /// <param name="formatProvider">[ignored]</param>
+        /// <returns>Formatted string representation of this instance</returns>
+        /// <remarks>
+        /// The supported values for <paramref name="format"/> are:
+        /// <list type="table">
+        /// <listheader><term>Value</term><description>Description</description></listheader>
+        /// <item><term>A</term><description>Format as a language specific alias if possible</description></item>
+        /// <item><term>G</term><description>Format with a language specific global prefix.</description></item>
+        /// <item><term>AG</term><description>Format with a language specific alias if possible, otherwise include a global prefix.</description></item>
+        /// <item><term>R</term><description>The raw full name without any qualifications</description></item>
+        /// </list>
+        /// <note type="important">
+        /// This will always append a <c>?</c> to the end of the formatted value IF the <see cref="NamespaceQualifiedTypeName.NullableAnnotation"/>
+        /// indicates the value is nullable.
+        /// </note>
+        /// </remarks>
+        /// <exception cref="NotSupportedException"><paramref name="format"/> is not supported</exception>
+        public string Format( string format, NamespaceQualifiedTypeName arg, IFormatProvider? formatProvider )
+        {
+            string formattedString = Format(format, (NamespaceQualifiedName)arg, formatProvider);
+            return arg.NullableAnnotation == NullableAnnotation.Annotated
+                 ? $"{formattedString}?"
+                 : formattedString;
+        }
+
         /// <inheritdoc/>
         public object? GetFormat( Type formatType )
         {
             return formatType == typeof( ICustomFormatter<NamespaceQualifiedName> )
+                || formatType == typeof( ICustomFormatter<NamespaceQualifiedTypeName> )
                   ? this
                   : null;
         }

@@ -31,6 +31,11 @@ namespace TestNamespace
                                     .ParseAndInvokeResultAsync( reporter, cts.Token, args );
         }
 
+        /// <summary>Asynchronous main entry point</summary>
+        /// <param name="options">Parsed command line options</param>
+        /// <param name="reporter">Reporter to use for reporting diagnostics for this app</param>
+        /// <param name="ct">Cancellation token to indicate cancellation of the entire app</param>
+        /// <returns>Exit code for the app; 0=NOERROR; any other value MAY indicate an error (App defined)</returns>
         private static async Task<int> AppMainAsync(
                 TestOptions options,
                 ColoredConsoleReporter reporter,
@@ -43,13 +48,17 @@ namespace TestNamespace
                 reporter = new ColoredConsoleReporter( options.Verbosity );
             }
 
-            reporter.Verbose( "AppMainAsync" );
-
-            // Core application code here...
-
             // Use the cancellation token to indicate cancellation
             // This is set when CTRL-C is pressed in Main() above.
             ct.ThrowIfCancellationRequested();
+
+            // For demo, Report the full parsed args to the "Verbose" channel
+            // in a normal app this isn't done or would use some sort of logging
+            // and not a UX reporter, but it is useful for validation scripts
+            reporter.Verbose( $"TestOptions:\n{options}" );
+
+            // Core application code here...
+            // app should use/test ct for cancellation of long operations.
             return 0;
         }
     }

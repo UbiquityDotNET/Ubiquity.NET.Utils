@@ -18,14 +18,12 @@ namespace Ubiquity.NET.CodeAnalysis.Utils
                                       .SequenceEqual( fullName.NamespaceNames );
         }
 
-        /// <summary>Gets the <see cref="NamespaceQualifiedName"/> for the attribute</summary>
+        /// <summary>Gets the <see cref="NamespaceQualifiedTypeName"/> for the attribute</summary>
         /// <param name="self">self</param>
-        /// <returns><see cref="NamespaceQualifiedName"/> for the attribute</returns>
-        public static NamespaceQualifiedName GetNamespaceQualifiedName( this AttributeData self )
+        /// <returns><see cref="NamespaceQualifiedTypeName"/> for the attribute</returns>
+        public static NamespaceQualifiedTypeName GetNamespaceQualifiedName( this AttributeData self )
         {
-            return self.AttributeClass is null
-                 ? new( [], string.Empty )
-                 : self.AttributeClass.GetNamespaceQualifiedName();
+            return self.AttributeClass?.GetNamespaceQualifiedName() ?? new();
         }
 
         /// <summary>Gets the location from the <see cref="AttributeData.ApplicationSyntaxReference"/> if available</summary>

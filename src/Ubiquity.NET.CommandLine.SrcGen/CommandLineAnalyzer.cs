@@ -99,6 +99,9 @@ namespace Ubiquity.NET.CommandLine.SrcGen
                     handler( context, propSymbol, attrib.GetLocation(), attribs );
                 }
             }
+
+            // TODO: WARN if type of property is nullable AND marked as required. That won't produce an error but probably
+            // not the behavior intended...
         }
 
         private static void OnOptionAttribute( SymbolAnalysisContext context, IPropertySymbol symbol, Location? attribLoc, EquatableAttributeDataCollection _ )

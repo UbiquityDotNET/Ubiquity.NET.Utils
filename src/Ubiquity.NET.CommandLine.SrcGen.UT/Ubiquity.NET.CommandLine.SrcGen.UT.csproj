@@ -35,6 +35,8 @@
     <Compile Remove="TestFiles\CommandAnalyzerTests\Option_attribute_without_command_triggers_diagnostic\input.cs" />
     <Compile Remove="TestFiles\RootCommandAttributeTests\Basic_golden_path_succeeds\expected.cs" />
     <Compile Remove="TestFiles\RootCommandAttributeTests\Basic_golden_path_succeeds\Input.cs" />
+    <Compile Remove="TestFiles\RootCommandAttributeTests\Generator_handles_nullable_types\expected.cs" />
+    <Compile Remove="TestFiles\RootCommandAttributeTests\Generator_handles_nullable_types\input.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -44,6 +46,8 @@
     <EmbeddedResource Include="TestFiles\CommandAnalyzerTests\Option_attribute_without_command_triggers_diagnostic\input.cs" />
     <EmbeddedResource Include="TestFiles\RootCommandAttributeTests\Basic_golden_path_succeeds\expected.cs" />
     <EmbeddedResource Include="TestFiles\RootCommandAttributeTests\Basic_golden_path_succeeds\input.cs" />
+    <EmbeddedResource Include="TestFiles\RootCommandAttributeTests\Generator_handles_nullable_types\expected.cs" />
+    <EmbeddedResource Include="TestFiles\RootCommandAttributeTests\Generator_handles_nullable_types\input.cs" />
   </ItemGroup>
 
   <Target Name="ForceCopyTestDependency" BeforeTargets="AfterBuild">

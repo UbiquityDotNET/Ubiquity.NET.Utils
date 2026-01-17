@@ -15,11 +15,17 @@ namespace Ubiquity.NET.CommandLine.SrcGen.Templates
         internal RootCommandClassTemplate( RootCommandInfo info )
         {
             Info = info;
+
+            // filter out properties that don't have any relevant attributes
+            Properties = [ .. from prop in info.Properties
+                              where prop.Attributes.Count > 0
+                              select prop
+                         ];
         }
 
         public RootCommandInfo Info { get; }
 
-        public ImmutableArray<PropertyInfo> Properties => Info.Properties;
+        public ImmutableArray<PropertyInfo> Properties { get; }
 
         public string ClassName => Info.TargetName.SimpleName;
 
@@ -176,8 +182,6 @@ namespace Ubiquity.NET.CommandLine.SrcGen.Templates
             using (writer.PushIndent()) // property initializer indentation
             {
                 // Aliases are only set via the constructor
-                // CONSIDER: Should this match behavior for the attribute?
-                //           What does syntax look like for named parameters AND the params keyword...
                 writer.Write( $"= new {propTypeName}({CSharpLanguage.AsLiteral( info.Name )}" );
                 var aliases = info.Aliases;
                 if(aliases.HasValue)

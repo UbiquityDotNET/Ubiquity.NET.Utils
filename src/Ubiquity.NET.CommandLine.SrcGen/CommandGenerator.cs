@@ -61,14 +61,11 @@ namespace Ubiquity.NET.CommandLine.SrcGen
             foreach(ISymbol member in members)
             {
                 // filter to referenceable properties
-                if(member.CanBeReferencedByName && member is IPropertySymbol propSym)
+                // ignore nullable value types as that would produce an error
+                // (Can't use nullable annotations for generic types
+                if(member.CanBeReferencedByName && member is IPropertySymbol propSym /*&& !propSym.Type.IsNullableValueType()*/)
                 {
-                    var attributes = propSym.CaptureMatchingAttributes( Constants.GeneratingAttributeNames );
-                    if(attributes.Length > 0 )
-                    {
-                        var propInfo = new PropertyInfo( propSym.Name, propSym.Type.GetNamespaceQualifiedName(), attributes );
-                        propertyInfoBuilder.Add( propInfo );
-                    }
+                    propertyInfoBuilder.Add( new PropertyInfo( propSym, Constants.GeneratingAttributeNames ) );
                 }
             }
 
