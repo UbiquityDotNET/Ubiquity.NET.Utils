@@ -86,6 +86,10 @@ namespace Ubiquity.NET.CommandLine.SrcGen.UT
             await analyzerTest.RunAsync( TestContext.CancellationToken );
         }
 
+        // TODO: Test that a nullable value is not marked as required. (That's a conflicting claim, if it's required it can't be null)
+        //       A nullable type MAY have a default value handler to provide a null default. Additional test - anything with a default
+        //       value provider shouldn't be "required" it's also nonsensical.
+
         private AnalyzerTest<MsTestVerifier> CreateTestRunner( string source, TestRuntime testRuntime )
         {
             return CreateTestRunner( SourceText.From( source ), testRuntime );

@@ -22,6 +22,7 @@ namespace TestNamespace
             return new()
             {
                 Thing1 = parseResult.GetValue( Descriptors.Thing1 ),
+                Thing2 = parseResult.GetRequiredValue( Descriptors.Thing2 ),
             };
         }
 
@@ -30,6 +31,7 @@ namespace TestNamespace
             return new global::Ubiquity.NET.CommandLine.AppControlledDefaultsRootCommand( Settings, "Root command for tests" )
             {
                 Descriptors.Thing1,
+                Descriptors.Thing2,
             };
         }
     }
@@ -41,6 +43,13 @@ namespace TestNamespace
             {
                 HelpName = "Help name for thing1",
                 Description = "Test Thing1",
+            };
+
+        internal static readonly global::System.CommandLine.Option<bool> Thing2
+            = new global::System.CommandLine.Option<bool>("--thing2", "-t")
+            {
+                HelpName = "Help name for thing2",
+                Description = "Test Thing2",
             };
     }
 }

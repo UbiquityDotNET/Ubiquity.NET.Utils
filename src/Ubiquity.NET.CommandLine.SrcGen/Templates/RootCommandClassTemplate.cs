@@ -79,7 +79,7 @@ namespace Ubiquity.NET.CommandLine.SrcGen.Templates
             {
                 foreach (PropertyInfo info in Properties)
                 {
-                    string methodName = info.IsRequired ? "GetRequiredValue" : "GetValue";
+                    string methodName = info.TypeName.IsNullable ? "GetValue" : "GetRequiredValue";
                     writer.WriteLine($"{info.SimpleName} = parseResult.{methodName}( Descriptors.{info.SimpleName} ),");
                 }
             }

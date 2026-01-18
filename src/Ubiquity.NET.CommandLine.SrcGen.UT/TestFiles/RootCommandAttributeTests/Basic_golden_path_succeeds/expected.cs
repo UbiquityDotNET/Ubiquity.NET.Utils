@@ -21,10 +21,10 @@ namespace TestNamespace
         {
             return new()
             {
-                SomePath = parseResult.GetValue( Descriptors.SomePath ),
-                SomeExistingPath = parseResult.GetValue( Descriptors.SomeExistingPath ),
+                SomePath = parseResult.GetRequiredValue( Descriptors.SomePath ),
+                SomeExistingPath = parseResult.GetRequiredValue( Descriptors.SomeExistingPath ),
                 Thing1 = parseResult.GetRequiredValue( Descriptors.Thing1 ),
-                SomeOtherPath = parseResult.GetValue( Descriptors.SomeOtherPath ),
+                SomeOtherPath = parseResult.GetRequiredValue( Descriptors.SomeOtherPath ),
             };
         }
 
