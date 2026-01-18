@@ -9,12 +9,28 @@ namespace Ubiquity.NET.CommandLine.SrcGen
         : IEquatable<PropertyInfo>
     {
         /// <summary>Initializes a new instance of the <see cref="PropertyInfo"/> class.</summary>
+        /// <param name="property">Property symbol to capture</param>
+        /// <param name="attributeNames">Names of attributes to capture</param>
+        /// <remarks>
+        /// Typically, a generator is only dealing with a subset of all attributes for a property.
+        /// and may ignore the property outright if it doesn't have any of the requisite attributes.
+        /// </remarks>
+        public PropertyInfo( IPropertySymbol property, IEnumerable<NamespaceQualifiedName> attributeNames )
+            : this(
+                property.Name,
+                property.Type.GetNamespaceQualifiedName(),
+                property.CaptureMatchingAttributes( attributeNames )
+              )
+        {
+        }
+
+        /// <summary>Initializes a new instance of the <see cref="PropertyInfo"/> class.</summary>
         /// <param name="simpleName">Simple name of this property</param>
         /// <param name="typeName">Name of the type of this property</param>
         /// <param name="attributes">Map of Attributes for this property, keyed by the name of the attribute</param>
         public PropertyInfo(
             string simpleName,
-            NamespaceQualifiedName typeName,
+            NamespaceQualifiedTypeName typeName,
             EquatableAttributeDataCollection attributes
             )
         {
@@ -32,7 +48,7 @@ namespace Ubiquity.NET.CommandLine.SrcGen
         public string SimpleName { get; }
 
         /// <summary>Gets the namespace qualified name of the type of <em><b>this</b></em> property</summary>
-        public NamespaceQualifiedName TypeName { get; }
+        public NamespaceQualifiedTypeName TypeName { get; }
 
         /// <summary>Gets a dictionary of generating attributes for this property</summary>
         /// <remarks>
@@ -89,7 +105,7 @@ namespace Ubiquity.NET.CommandLine.SrcGen
             return HashCode.Combine(
                 SimpleName,
                 TypeName,
-                StructuralComparisons.StructuralEqualityComparer.GetHashCode(Attributes)
+                StructuralComparisons.StructuralEqualityComparer.GetHashCode( Attributes )
                 );
         }
     }

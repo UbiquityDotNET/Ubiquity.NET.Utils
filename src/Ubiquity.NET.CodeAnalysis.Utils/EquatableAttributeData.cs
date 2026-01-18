@@ -33,8 +33,8 @@ namespace Ubiquity.NET.CodeAnalysis.Utils
             NamedArguments = namedArgs.ToImmutableDictionary();
         }
 
-        /// <summary>Gets the full namespace qualified name for this attribute</summary>
-        public NamespaceQualifiedName Name { get; }
+        /// <summary>Gets the full namespace qualified name for the type of this attribute</summary>
+        public NamespaceQualifiedTypeName Name { get; }
 
         /// <summary>Gets the unnamed constructor arguments for this attribute</summary>
         public ImmutableArray<StructurallyEquatableTypedConstant> ConstructorArguments { get; }

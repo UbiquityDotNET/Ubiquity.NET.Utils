@@ -20,16 +20,22 @@ namespace Ubiquity.NET.CodeAnalysis.Utils
         , IFormattable
     {
         /// <summary>Initializes a new instance of the <see cref="NamespaceQualifiedName"/> class.</summary>
+        public NamespaceQualifiedName()
+        {
+            NamespaceNames = [];
+            SimpleName = string.Empty;
+        }
+
+        /// <summary>Initializes a new instance of the <see cref="NamespaceQualifiedName"/> class.</summary>
         /// <param name="namespaceNames">sequence of namespace names (outermost to innermost)</param>
         /// <param name="simpleName">Unqualified name of the symbol</param>
-        public NamespaceQualifiedName(IEnumerable<string> namespaceNames, string simpleName )
+        public NamespaceQualifiedName( IEnumerable<string> namespaceNames, string simpleName )
         {
             PolyFillExceptionValidators.ThrowIfNull(namespaceNames);
             PolyFillExceptionValidators.ThrowIfNullOrWhiteSpace(simpleName);
 
             SimpleName = simpleName;
             NamespaceNames = [ .. namespaceNames.Select( s => ValidateNamespacePart(s) ) ];
-
             static string ValidateNamespacePart( string s, [CallerArgumentExpression(nameof(s))] string? exp = null )
             {
                 PolyFillExceptionValidators.ThrowIfNullOrWhiteSpace( s, exp );
@@ -68,6 +74,8 @@ namespace Ubiquity.NET.CodeAnalysis.Utils
                 yield return SimpleName;
             }
         }
+
+        #region Equality
 
         /// <inheritdoc/>
         public bool Equals( NamespaceQualifiedName other )
@@ -124,6 +132,7 @@ namespace Ubiquity.NET.CodeAnalysis.Utils
         {
             return ToString() == other.FullName;
         }
+        #endregion
 
         /// <summary>Gets the string representation of the full namespace using '.' as the delimiter</summary>
         /// <returns>Full namespace qualified name as a string (with a global prefix or an alias if available)</returns>
@@ -155,7 +164,7 @@ namespace Ubiquity.NET.CodeAnalysis.Utils
         /// </remarks>
         /// <exception cref="NotSupportedException"><paramref name="format"/> is not supported</exception>
         [SuppressMessage( "Style", "IDE0046:Convert to conditional expression", Justification = "Result is anything but simpler" )]
-        public string ToString( string format, IFormatProvider? formatProvider )
+        public virtual string ToString( string format, IFormatProvider? formatProvider )
         {
             // default to the C# formatter unless specified.
             formatProvider ??= NamespaceQualifiedNameFormatter.CSharp;

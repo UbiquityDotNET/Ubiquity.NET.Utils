@@ -24,6 +24,27 @@ namespace Ubiquity.NET.CommandLine.SrcGen.UT
             await runner.RunAsync( TestContext.CancellationToken );
         }
 
+        [TestMethod]
+        [DataRow( TestRuntime.Net8_0 )]
+        [DataRow( TestRuntime.Net10_0 )]
+        public async Task Generator_handles_nullable_types( TestRuntime testRuntime )
+        {
+            const string inputFileName = "input.cs";
+            const string expectedFileName = "expected.cs";
+            string hintPath = Path.Combine("Ubiquity.NET.CommandLine.SrcGen", "Ubiquity.NET.CommandLine.SrcGen.CommandGenerator", "TestNamespace.TestOptions.g.cs");
+
+            SourceText input = GetSourceText( nameof(Generator_handles_nullable_types), inputFileName );
+            SourceText expected = GetSourceText( nameof(Generator_handles_nullable_types), expectedFileName );
+
+            var runner = CreateTestRunner(input, testRuntime, [TrackingNames.CommandClass], hintPath, expected );
+            await runner.RunAsync( TestContext.CancellationToken );
+        }
+
+        // TODO: Test GetOption[Required]Value() for correct behavior
+        //       Nullable types always use GetOptionValue(). // Null is a valid value so it is truly optional.
+        //       non-nullable ref types use GetOptionRequiredValue() // no default is plausible (may provide one using a delegate)
+        //       non-nullable value types use GetOptionValue()       // value types have a default value of 0; (May override with delegate)
+
         private SourceGeneratorTest<MsTestVerifier> CreateTestRunner(
             SourceText source,
             TestRuntime testRuntime,
