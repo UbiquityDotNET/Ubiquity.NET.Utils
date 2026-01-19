@@ -104,18 +104,29 @@ namespace Ubiquity.NET.CommandLine.SrcGen
             // not the behavior intended...
         }
 
-        private static void OnOptionAttribute( SymbolAnalysisContext context, IPropertySymbol symbol, Location? attribLoc, EquatableAttributeDataCollection _ )
+        private static void OnOptionAttribute(
+            SymbolAnalysisContext context,
+            IPropertySymbol symbol,
+            Location? attribLoc,
+            EquatableAttributeDataCollection attributes
+            )
         {
             // Verify it is applied to a property in a type with a command attribute
             VerifyCommandAttribute( context, attribLoc, Constants.OptionAttribute.SimpleName );
 
+            EquatableAttributeData attribute = attributes[Constants.OptionAttribute];
+            VerifyNotNullableRequired( context, symbol, attribute, attribLoc, Constants.OptionAttribute.SimpleName );
+
             // Additional validations...
         }
 
-        private static void OnFileValidationAttribute( SymbolAnalysisContext context, IPropertySymbol symbol, Location? attribLoc, EquatableAttributeDataCollection attribs )
+        private static void OnFileValidationAttribute(
+            SymbolAnalysisContext context,
+            IPropertySymbol symbol,
+            Location? attribLoc,
+            EquatableAttributeDataCollection attribs
+            )
         {
-            Location? propertyLoc = symbol.Locations.Length < 1 ? default : symbol.Locations[0];
-
             // Verify it is applied to a property in a type with a command attribute
             VerifyCommandAttribute( context, attribLoc, Constants.FileValidationAttribute.SimpleName );
 
@@ -123,23 +134,26 @@ namespace Ubiquity.NET.CommandLine.SrcGen
             VerifyHasConstrainedAttribute( context, attribLoc, attribs );
 
             // Verify type of the property is System.IO.FileInfo.
-            VerifyPropertyType( context, symbol, Constants.FileInfo, propertyLoc, Constants.FileValidationAttribute.SimpleName );
+            VerifyRequiredPropertyType( context, symbol, Constants.FileInfo, attribLoc, Constants.FileValidationAttribute.SimpleName );
 
             // Additional validations...
         }
 
-        private static void OnFolderValidationAttribute( SymbolAnalysisContext context, IPropertySymbol symbol, Location? attribLoc, EquatableAttributeDataCollection attribs )
+        private static void OnFolderValidationAttribute(
+            SymbolAnalysisContext context,
+            IPropertySymbol symbol,
+            Location? attribLoc,
+            EquatableAttributeDataCollection attribs
+            )
         {
-            Location? propertyLoc = symbol.Locations.Length < 1 ? default : symbol.Locations[0];
-
             // Verify it is applied to a property in a type with a command attribute
             VerifyCommandAttribute( context, attribLoc, Constants.FolderValidationAttribute.SimpleName );
 
             // Verify an Option property (or maybe an argument attribute once supported) exists
-            VerifyHasConstrainedAttribute( context, propertyLoc, attribs );
+            VerifyHasConstrainedAttribute( context, attribLoc, attribs );
 
             // Verify type of the property is System.IO.FileInfo.
-            VerifyPropertyType( context, symbol, Constants.DirectoryInfo, propertyLoc, Constants.FolderValidationAttribute.SimpleName );
+            VerifyRequiredPropertyType( context, symbol, Constants.DirectoryInfo, attribLoc, Constants.FolderValidationAttribute.SimpleName );
 
             // Additional validations...
         }
@@ -167,19 +181,19 @@ namespace Ubiquity.NET.CommandLine.SrcGen
 
         /// <summary>Verifies (and reports a diagnostic if not) that a set of attributes contains a required constraint</summary>
         /// <param name="context">Context to use for reporting diagnostics</param>
-        /// <param name="diagnosticLoc">Location to use for any diagnostics reported</param>
+        /// <param name="attribLoc">Location to use for any diagnostics reported</param>
         /// <param name="attribs">Set of attributes to check</param>
         /// <remarks>
-        /// The <paramref name="diagnosticLoc"/> is used to report diagnostics that normally references the attribute
+        /// The <paramref name="attribLoc"/> is used to report diagnostics that normally references the attribute
         /// that is missing the constrained attribute. (ex. The `FileValidation` or `FolderValidation` that does NOT
         /// have an `OptionAttribute` that it validates.
         /// </remarks>
-        private static void VerifyHasConstrainedAttribute( SymbolAnalysisContext context, Location? diagnosticLoc, EquatableAttributeDataCollection attribs )
+        private static void VerifyHasConstrainedAttribute( SymbolAnalysisContext context, Location? attribLoc, EquatableAttributeDataCollection attribs )
         {
             // Verify an Option property (or maybe an argument attribute once supported) exists
             if(!attribs.TryGetValue( Constants.OptionAttribute, out _ ))
             {
-                ReportDiagnostic( context, Diagnostics.MissingConstraintAttribute, diagnosticLoc, Constants.FileValidationAttribute.SimpleName );
+                ReportDiagnostic( context, Diagnostics.MissingConstraintAttribute, attribLoc, Constants.FileValidationAttribute.SimpleName );
             }
         }
 
@@ -194,11 +208,36 @@ namespace Ubiquity.NET.CommandLine.SrcGen
         /// reported. That is, they reference the attribute that requires a specific type. It is debatable
         /// if the location of the return type is wrong or the attribute is wrong...
         /// </remarks>
-        private static void VerifyPropertyType( SymbolAnalysisContext context, IPropertySymbol symbol, NamespaceQualifiedName expectedType, Location? attribLoc, string attribName )
+        private static void VerifyRequiredPropertyType(
+            SymbolAnalysisContext context,
+            IPropertySymbol symbol,
+            NamespaceQualifiedName expectedType,
+            Location? attribLoc,
+            string attribName
+            )
         {
             if(symbol.Type.GetNamespaceQualifiedName() != expectedType)
             {
                 ReportDiagnostic( context, Diagnostics.IncorrectPropertyType, attribLoc, attribName, expectedType.ToString( "A", null ) );
+            }
+        }
+
+        private static void VerifyNotNullableRequired(
+            SymbolAnalysisContext context,
+            IPropertySymbol property,
+            EquatableAttributeData attribute,
+            Location? attribLoc,
+            string simpleName
+            )
+        {
+            if(attribute.NamedArguments.TryGetValue( Constants.CommonAttributeNamedArgs.Required, out StructurallyEquatableTypedConstant tc ))
+            {
+                bool isRequired = !tc.IsNull && (bool)tc.Value!;
+                NamespaceQualifiedTypeName propType = property.Type.GetNamespaceQualifiedName();
+                if(isRequired && propType.IsNullable)
+                {
+                    ReportDiagnostic( context, Diagnostics.RequiredNullableType, attribLoc, $"{propType:A}", simpleName );
+                }
             }
         }
 

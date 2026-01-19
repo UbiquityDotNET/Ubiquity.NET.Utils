@@ -1,0 +1,34 @@
+#Primary settings apply to all files unless overridden below
+root = true
+
+[*]
+indent_style = space
+indent_size = 4
+insert_final_newline = true
+tab_width = 4
+end_of_line = crlf
+
+# VSSPELL: Spell checker settings for all files
+vsspell_section_id = 869f688c36354e788f0a0b53ab42cf41
+
+# [VSSpellChecker bug 277](https://github.com/EWSoftware/VSSpellChecker/issues/277)
+# VSSPELL: Disable the analyzers until Bug 277 is fixed.
+vsspell_code_analyzers_enabled = false
+vsspell_ignored_words_869f688c36354e788f0a0b53ab42cf41 = File:.\IgnoredWords.dic
+
+# match VS generated formatting for MSBuild project files
+[*.*proj,*.props,*.targets]
+indent_style = space
+indent_size = 2
+tab_width = 2
+
+[*.yml,*.yaml]
+indent_style = space
+indent_size = 2
+tab_width = 2
+
+[*.md]
+# mark left margin for split screen preview of markdown files
+# requires: https://marketplace.visualstudio.com/items?itemName=PaulHarrington.EditorGuidelinesPreview
+guidelines = 92
+

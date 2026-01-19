@@ -74,6 +74,7 @@
   <Target Name="AlwaysRun" BeforeTargets="AfterBuild">
     <Message Importance="High" Text="NOTE: Building $(MSBuildProjectFile) does NOTHING, docs are built using the docfx tool. This project is simply a convenient placeholder for organizing/editing files" />
   </Target>
+
   <!--
   Target to generate the versioning JSON file for consumption by the docs scripts. This target is explicitly called out
   by the build scripts to generate the JSON file with all the version details from Ubiquity.NET.Versioning.Build.Tasks.

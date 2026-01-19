@@ -9,7 +9,7 @@ namespace Ubiquity.NET.CodeAnalysis.Utils
         /// <summary>Gets the full name of the symbol (Including namespace names)</summary>
         /// <param name="self">Symbol to get the name from</param>
         /// <returns>Enumerable collection of the name parts with outer most namespace first</returns>
-        public static IEnumerable<string> GetFullName( this ITypeSymbol self )
+        public static IEnumerable<string> GetFullNameParts( this ITypeSymbol self )
         {
             foreach(string namespacePart in GetNamespaceNames( self ))
             {
@@ -17,6 +17,14 @@ namespace Ubiquity.NET.CodeAnalysis.Utils
             }
 
             yield return self.Name;
+        }
+
+        /// <summary>Gets the fill name (including namespaces) of a <see cref="ITypeSymbol"/></summary>
+        /// <param name="self"><see cref="ITypeSymbol"/> to get the name from</param>
+        /// <returns>full name for the type</returns>
+        public static string GetFullName(this ITypeSymbol self)
+        {
+            return string.Join(".", GetFullNameParts(self));
         }
 
         /// <summary>Gets the sequence of namespaces names of the symbol (outermost to innermost)</summary>

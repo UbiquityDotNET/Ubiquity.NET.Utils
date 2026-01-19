@@ -29,23 +29,27 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="TestFiles\CommandAnalyzerTests\FileValidation_with_wrong_type_produces_UNC002\input.cs" />
     <Compile Remove="TestFiles\CommandAnalyzerTests\FolderValidation_attribute_without_command_triggers_diagnostic\input.cs" />
     <Compile Remove="TestFiles\CommandAnalyzerTests\FileValidation_attribute_without_command_triggers_diagnostic\input.cs" />
     <Compile Remove="TestFiles\CommandAnalyzerTests\GoldenPath_produces_no_diagnostics\input.cs" />
     <Compile Remove="TestFiles\CommandAnalyzerTests\Option_attribute_without_command_triggers_diagnostic\input.cs" />
     <Compile Remove="TestFiles\RootCommandAttributeTests\Basic_golden_path_succeeds\expected.cs" />
     <Compile Remove="TestFiles\RootCommandAttributeTests\Basic_golden_path_succeeds\Input.cs" />
+    <Compile Remove="TestFiles\CommandAnalyzerTests\Required_nullable_types_produce_diagnostic\input.cs" />
     <Compile Remove="TestFiles\RootCommandAttributeTests\Generator_handles_nullable_types\expected.cs" />
     <Compile Remove="TestFiles\RootCommandAttributeTests\Generator_handles_nullable_types\input.cs" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="TestFiles\CommandAnalyzerTests\FileValidation_with_wrong_type_produces_UNC002\input.cs" />
     <EmbeddedResource Include="TestFiles\CommandAnalyzerTests\FolderValidation_attribute_without_command_triggers_diagnostic\input.cs" />
     <EmbeddedResource Include="TestFiles\CommandAnalyzerTests\FileValidation_attribute_without_command_triggers_diagnostic\input.cs" />
     <EmbeddedResource Include="TestFiles\CommandAnalyzerTests\GoldenPath_produces_no_diagnostics\input.cs" />
     <EmbeddedResource Include="TestFiles\CommandAnalyzerTests\Option_attribute_without_command_triggers_diagnostic\input.cs" />
     <EmbeddedResource Include="TestFiles\RootCommandAttributeTests\Basic_golden_path_succeeds\expected.cs" />
     <EmbeddedResource Include="TestFiles\RootCommandAttributeTests\Basic_golden_path_succeeds\input.cs" />
+    <EmbeddedResource Include="TestFiles\CommandAnalyzerTests\Required_nullable_types_produce_diagnostic\input.cs" />
     <EmbeddedResource Include="TestFiles\RootCommandAttributeTests\Generator_handles_nullable_types\expected.cs" />
     <EmbeddedResource Include="TestFiles\RootCommandAttributeTests\Generator_handles_nullable_types\input.cs" />
   </ItemGroup>

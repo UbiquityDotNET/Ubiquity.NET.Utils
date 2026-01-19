@@ -6,7 +6,8 @@ namespace TestNamespace;
 
 internal class testInput1
 {
-    // This attribute alone should trigger UNC002 - Property attribute FileValidation is not allowed on a property independent of a qualifying attribute such as OptionAttribute.
-    [FileValidation( FileValidation.ExistingOnly )]
-    public required FileInfo SomePath { get; init; }
+    // UNC001 - Property attribute 'FolderValidation' is only allowed on a property in a type attributed with a command attribute. This use will be ignored by the generator.
+    // UNC002 - Property attribute 'FolderValidationAttribute' is not allowed on a property independent of a qualifying attribute such as OptionAttribute.
+    [FolderValidation( FolderValidation.ExistingOnly )]
+    public required DirectoryInfo SomePath { get; init; }
 }
