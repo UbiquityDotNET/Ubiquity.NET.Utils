@@ -115,7 +115,7 @@ namespace Ubiquity.NET.CommandLine.SrcGen
             VerifyCommandAttribute( context, attribLoc, Constants.OptionAttribute.SimpleName );
 
             EquatableAttributeData attribute = attributes[Constants.OptionAttribute];
-            VerifyNotNullableRequired( context, symbol, attribute, attribLoc, Constants.OptionAttribute.SimpleName );
+            VerifyNotNullableRequired( context, symbol, attribute, attribLoc );
 
             // Additional validations...
         }
@@ -131,7 +131,7 @@ namespace Ubiquity.NET.CommandLine.SrcGen
             VerifyCommandAttribute( context, attribLoc, Constants.FileValidationAttribute.SimpleName );
 
             // Verify an Option property (or maybe an argument attribute once supported) exists
-            VerifyHasConstrainedAttribute( context, attribLoc, attribs );
+            VerifyHasConstrainedAttribute( context, attribLoc, attribs, Constants.FileValidationAttribute.SimpleName );
 
             // Verify type of the property is System.IO.FileInfo.
             VerifyRequiredPropertyType( context, symbol, Constants.FileInfo, attribLoc, Constants.FileValidationAttribute.SimpleName );
@@ -150,9 +150,9 @@ namespace Ubiquity.NET.CommandLine.SrcGen
             VerifyCommandAttribute( context, attribLoc, Constants.FolderValidationAttribute.SimpleName );
 
             // Verify an Option property (or maybe an argument attribute once supported) exists
-            VerifyHasConstrainedAttribute( context, attribLoc, attribs );
+            VerifyHasConstrainedAttribute( context, attribLoc, attribs, Constants.FolderValidationAttribute.SimpleName );
 
-            // Verify type of the property is System.IO.FileInfo.
+            // Verify type of the property is System.IO.DirectoryInfo.
             VerifyRequiredPropertyType( context, symbol, Constants.DirectoryInfo, attribLoc, Constants.FolderValidationAttribute.SimpleName );
 
             // Additional validations...
@@ -183,18 +183,26 @@ namespace Ubiquity.NET.CommandLine.SrcGen
         /// <param name="context">Context to use for reporting diagnostics</param>
         /// <param name="attribLoc">Location to use for any diagnostics reported</param>
         /// <param name="attribs">Set of attributes to check</param>
+        /// <param name="typeConstraintName">Name of the attribute that requires a constraint (For diagnostic message)</param>
         /// <remarks>
         /// The <paramref name="attribLoc"/> is used to report diagnostics that normally references the attribute
         /// that is missing the constrained attribute. (ex. The `FileValidation` or `FolderValidation` that does NOT
         /// have an `OptionAttribute` that it validates.
         /// </remarks>
-        private static void VerifyHasConstrainedAttribute( SymbolAnalysisContext context, Location? attribLoc, EquatableAttributeDataCollection attribs )
+        private static void VerifyHasConstrainedAttribute(
+            SymbolAnalysisContext context,
+            Location? attribLoc,
+            EquatableAttributeDataCollection attribs,
+            string typeConstraintName
+            )
         {
-            // Verify an Option property (or maybe an argument attribute once supported) exists
+            // Verify an Option property
             if(!attribs.TryGetValue( Constants.OptionAttribute, out _ ))
             {
-                ReportDiagnostic( context, Diagnostics.MissingConstraintAttribute, attribLoc, Constants.FileValidationAttribute.SimpleName );
+                ReportDiagnostic( context, Diagnostics.MissingConstraintAttribute, attribLoc, typeConstraintName );
             }
+
+            // TODO: validate an Argument attribute or Option attribute
         }
 
         /// <summary>Verifies a property has an expected type</summary>
@@ -226,9 +234,7 @@ namespace Ubiquity.NET.CommandLine.SrcGen
             SymbolAnalysisContext context,
             IPropertySymbol property,
             EquatableAttributeData attribute,
-            Location? attribLoc,
-            string simpleName
-            )
+            Location? attribLoc )
         {
             if(attribute.NamedArguments.TryGetValue( Constants.CommonAttributeNamedArgs.Required, out StructurallyEquatableTypedConstant tc ))
             {
@@ -236,7 +242,7 @@ namespace Ubiquity.NET.CommandLine.SrcGen
                 NamespaceQualifiedTypeName propType = property.Type.GetNamespaceQualifiedName();
                 if(isRequired && propType.IsNullable)
                 {
-                    ReportDiagnostic( context, Diagnostics.RequiredNullableType, attribLoc, $"{propType:A}", simpleName );
+                    ReportDiagnostic( context, Diagnostics.RequiredNullableType, attribLoc, $"{propType:A}", property.Name );
                 }
             }
         }

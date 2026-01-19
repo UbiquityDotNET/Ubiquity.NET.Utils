@@ -29,8 +29,8 @@ namespace Ubiquity.NET.CommandLine.SrcGen.UT
             analyzerTest.ExpectedDiagnostics.AddRange(
                [
                    new DiagnosticResult("UNC001", DiagnosticSeverity.Error)
-                       .WithSpan(9, 6, 9, 93)
-                       .WithArguments("OptionAttribute"),
+                       .WithArguments("OptionAttribute")
+                       .WithSpan(9, 6, 9, 93),
                ]
            );
 
@@ -75,12 +75,12 @@ namespace Ubiquity.NET.CommandLine.SrcGen.UT
             analyzerTest.ExpectedDiagnostics.AddRange(
                [
                    new DiagnosticResult("UNC001", DiagnosticSeverity.Error)
-                       .WithSpan(11, 6, 11, 55)
-                       .WithArguments("FolderValidationAttribute"),
+                       .WithArguments("FolderValidationAttribute")
+                       .WithSpan(11, 6, 11, 55),
 
                    new DiagnosticResult("UNC002", DiagnosticSeverity.Error)
-                       .WithSpan(11, 6, 11, 55)
-                       .WithArguments("FolderValidationAttribute"),
+                       .WithArguments("FolderValidationAttribute")
+                       .WithSpan(11, 6, 11, 55),
                ]
              );
 
@@ -110,6 +110,7 @@ namespace Ubiquity.NET.CommandLine.SrcGen.UT
             analyzerTest.ExpectedDiagnostics.AddRange(
                [
                    new DiagnosticResult("UNC003", DiagnosticSeverity.Error)
+                      .WithArguments("FileValidationAttribute", "System.IO.FileInfo")
                       .WithSpan(9, 6, 9, 51),
                ]
              );
@@ -129,8 +130,8 @@ namespace Ubiquity.NET.CommandLine.SrcGen.UT
             analyzerTest.ExpectedDiagnostics.AddRange(
                [
                    new DiagnosticResult("UNC004", DiagnosticSeverity.Warning)
-                      .WithSpan(9, 6, 9, 127)
-                      .WithArguments("bool?", "OptionAttribute"),
+                      .WithArguments("bool?", "Thing1")
+                      .WithSpan(9, 6, 9, 127),
                ]
              );
 
@@ -165,15 +166,29 @@ namespace Ubiquity.NET.CommandLine.SrcGen.UT
                 // Allow ALL diagnostics for testing, input source should contain valid C# code
                 // but might otherwise trigger the tested analyzer.
                 CompilerDiagnostics = CompilerDiagnostics.All,
+
+                // Add custom verification to handle cases not covered in default verifications
+                DiagnosticVerifier = DiagnosticVerifier,
             };
         }
 
-        // Sadly, at this time the test infrastructure doesn't provide support for
-        // testing the help URI
-        //private static string FormatHelpUri( string id )
-        //{
-        //    return $"https://ubiquitydotnet.github.io/Ubiquity.NET.Utils/CommandLine/diagnostics/{id}.html";
-        //}
+        /// <summary>Custom diagnostic verifier</summary>
+        /// <param name="diagnostic">diagnostic to verify (actual)</param>
+        /// <param name="result">Diagnostic result containing the expected results</param>
+        /// <param name="verifier">Implementation of <see cref="IVerifier"/> to use for verification</param>
+        /// <seealso href="https://github.com/dotnet/roslyn-sdk/issues/1246"/>
+        private void DiagnosticVerifier( Diagnostic diagnostic, DiagnosticResult result, IVerifier verifier )
+        {
+            DiagnosticVerifiers.VerifyMessageArguments( diagnostic, result, verifier );
+
+            // verify the help URI matches the expected form
+            verifier.EqualOrDiff( diagnostic.Descriptor.HelpLinkUri, FormatHelpUri( diagnostic.Id ) );
+        }
+
+        private static string FormatHelpUri( string id )
+        {
+            return $"https://ubiquitydotnet.github.io/Ubiquity.NET.Utils/CommandLine/diagnostics/{id}.html";
+        }
 
         private static SourceText GetSourceText( params string[] nameParts )
         {

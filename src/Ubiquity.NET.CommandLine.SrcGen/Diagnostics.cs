@@ -32,6 +32,7 @@ namespace Ubiquity.NET.CommandLine.SrcGen
                 RequiredNullableType,
             ];
 
+        // Exception message is: '{0}'
         internal static readonly DiagnosticDescriptor InternalError = new(
             id: IDs.InternalError,
             title: Localized(nameof(Resources.InternalError_Title)),
@@ -44,6 +45,7 @@ namespace Ubiquity.NET.CommandLine.SrcGen
             WellKnownDiagnosticTags.NotConfigurable
             );
 
+        // Property attribute '{0}' is only allowed on a property in a type attributed with a command attribute. This use will be ignored by the generator.
         internal static readonly DiagnosticDescriptor MissingCommandAttribute = new(
             id: IDs.MissingCommandAttribute,
             title: Localized(nameof(Resources.MissingCommandAttribute_Title)),
@@ -57,6 +59,7 @@ namespace Ubiquity.NET.CommandLine.SrcGen
             WellKnownDiagnosticTags.Compiler
             );
 
+        // Property attribute '{0}' is not allowed on a property independent of a qualifying attribute such as OptionAttribute.
         internal static readonly DiagnosticDescriptor MissingConstraintAttribute = new(
             id: IDs.MissingConstraintAttribute,
             title: Localized(nameof(Resources.MissingConstraintAttribute_Title)),
@@ -69,6 +72,7 @@ namespace Ubiquity.NET.CommandLine.SrcGen
             WellKnownDiagnosticTags.Compiler
             );
 
+        // Property attribute '{0}' requires a property of type '{1}'.
         internal static readonly DiagnosticDescriptor IncorrectPropertyType = new(
             id: IDs.IncorrectPropertyType,
             title: Localized(nameof(Resources.IncorrectPropertyType_Title)),
