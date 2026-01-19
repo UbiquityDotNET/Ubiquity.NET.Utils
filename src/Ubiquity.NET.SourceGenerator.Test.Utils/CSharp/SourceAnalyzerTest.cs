@@ -13,7 +13,8 @@ namespace Ubiquity.NET.SourceGenerator.Test.Utils.CSharp
     /// <summary>Source analyzer tests for C# that allows specification of the language</summary>
     /// <typeparam name="TAnalyzer">Analyzer type</typeparam>
     /// <typeparam name="TVerifier">Verifier type</typeparam>
-    public class SourceAnalyzerTest<TAnalyzer, TVerifier> : AnalyzerTest<TVerifier>
+    public class SourceAnalyzerTest<TAnalyzer, TVerifier>
+        : AnalyzerTest<TVerifier>
         where TAnalyzer : DiagnosticAnalyzer, new()
         where TVerifier : IVerifier, new()
     {
