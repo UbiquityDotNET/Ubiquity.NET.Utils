@@ -15,6 +15,7 @@ namespace Ubiquity.NET.CommandLine.SrcGen
             internal const string MissingCommandAttribute = "UNC001";
             internal const string MissingConstraintAttribute = "UNC002";
             internal const string IncorrectPropertyType = "UNC003";
+            internal const string RequiredNullableType = "UNC004";
         }
 
         private static LocalizableResourceString Localized( string resName )
@@ -27,7 +28,8 @@ namespace Ubiquity.NET.CommandLine.SrcGen
                 InternalError,
                 MissingCommandAttribute,
                 MissingConstraintAttribute,
-                IncorrectPropertyType
+                IncorrectPropertyType,
+                RequiredNullableType,
             ];
 
         internal static readonly DiagnosticDescriptor InternalError = new(
@@ -38,6 +40,7 @@ namespace Ubiquity.NET.CommandLine.SrcGen
             defaultSeverity: DiagnosticSeverity.Error,
             isEnabledByDefault: true,
             description: Localized(nameof(Resources.InternalError_Description)),
+            helpLinkUri: FormatHelpUri(IDs.InternalError),
             WellKnownDiagnosticTags.NotConfigurable
             );
 
@@ -46,9 +49,10 @@ namespace Ubiquity.NET.CommandLine.SrcGen
             title: Localized(nameof(Resources.MissingCommandAttribute_Title)),
             messageFormat: Localized(nameof(Resources.MissingCommandAttribute_MessageFormat)),
             category: "Usage",
-            defaultSeverity: DiagnosticSeverity.Warning,
+            defaultSeverity: DiagnosticSeverity.Error,
             isEnabledByDefault: true,
             description: Localized(nameof(Resources.MissingCommandAttribute_Description)),
+            helpLinkUri: FormatHelpUri(IDs.MissingCommandAttribute),
             WellKnownDiagnosticTags.Unnecessary,
             WellKnownDiagnosticTags.Compiler
             );
@@ -61,6 +65,7 @@ namespace Ubiquity.NET.CommandLine.SrcGen
             defaultSeverity: DiagnosticSeverity.Error,
             isEnabledByDefault: true,
             description: Localized(nameof(Resources.MissingConstraintAttribute_Description)),
+            helpLinkUri: FormatHelpUri(IDs.MissingConstraintAttribute),
             WellKnownDiagnosticTags.Compiler
             );
 
@@ -72,8 +77,27 @@ namespace Ubiquity.NET.CommandLine.SrcGen
             defaultSeverity: DiagnosticSeverity.Error,
             isEnabledByDefault: true,
             description: Localized(nameof(Resources.IncorrectPropertyType_Description)),
+            helpLinkUri: FormatHelpUri(IDs.IncorrectPropertyType),
             WellKnownDiagnosticTags.Compiler,
             WellKnownDiagnosticTags.NotConfigurable
             );
+
+        // Type '{0}' for property '{1}' is nullable but marked as required; These annotations conflict resulting in behavior that is explicitly UNDEFINED.
+        internal static readonly DiagnosticDescriptor RequiredNullableType = new(
+            id: IDs.RequiredNullableType,
+            title: Localized(nameof(Resources.RequiredNullableType_Title)),
+            messageFormat: Localized(nameof(Resources.RequiredNullableType_MessageFormat)),
+            category: "Usage",
+            defaultSeverity: DiagnosticSeverity.Warning,
+            isEnabledByDefault: true,
+            description: Localized(nameof(Resources.RequiredNullableType_Description)),
+            helpLinkUri: FormatHelpUri(IDs.RequiredNullableType),
+            WellKnownDiagnosticTags.Compiler
+            );
+
+        private static string FormatHelpUri(string id)
+        {
+            return $"https://ubiquitydotnet.github.io/Ubiquity.NET.Utils/CommandLine/diagnostics/{id}.html";
+        }
     }
 }

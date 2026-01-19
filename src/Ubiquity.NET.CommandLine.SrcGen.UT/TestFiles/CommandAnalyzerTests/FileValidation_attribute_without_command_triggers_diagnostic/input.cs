@@ -6,7 +6,7 @@ namespace TestNamespace;
 
 internal class testInput1
 {
-    // This attribute alone should trigger UNC002 - Property attribute FileValidation is not allowed on a property independent of a qualifying attribute such as OptionAttribute.
-    [FileValidation( FileValidation.ExistingOnly )]
+    [Option( "-o", Description = "Test SomePath" )]
+    [FileValidation( FileValidation.ExistingOnly )] // UNC002 : Property attribute not allowed standalone
     public required FileInfo SomePath { get; init; }
 }

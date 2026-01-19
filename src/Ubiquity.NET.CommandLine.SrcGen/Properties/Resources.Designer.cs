@@ -167,5 +167,32 @@ namespace Ubiquity.NET.CommandLine.SrcGen.Properties {
                 return ResourceManager.GetString("MissingConstraintAttribute_Title", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Property type is nullable but marked as required; These annotations conflict resulting in behavior that is explicitly UNDEFINED..
+        /// </summary>
+        internal static string RequiredNullableType_Description {
+            get {
+                return ResourceManager.GetString("RequiredNullableType_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to attrib.NamedArguments.
+        /// </summary>
+        internal static string RequiredNullableType_MessageFormat {
+            get {
+                return ResourceManager.GetString("RequiredNullableType_MessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Property type is nullable but marked as required..
+        /// </summary>
+        internal static string RequiredNullableType_Title {
+            get {
+                return ResourceManager.GetString("RequiredNullableType_Title", resourceCulture);
+            }
+        }
     }
 }

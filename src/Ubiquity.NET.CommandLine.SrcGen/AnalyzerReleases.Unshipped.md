@@ -6,6 +6,7 @@
 Rule ID | Category | Severity | Notes
 --------|----------|----------|-------
 UNC000 | Internal | Error | Diagnostics, [Documentation](NotConfigurable)
-UNC001 | Usage | Warning | Diagnostics, [Documentation](Unnecessary)
+UNC001 | Usage | Error | Diagnostics
 UNC002 | Usage | Error | Diagnostics, [Documentation](NotConfigurable)
 UNC003 | Usage | Error | Diagnostics, [Documentation](NotConfigurable)
+UNC004 | Usage | Warning | Diagnostics, [Documentation](Compiler)
