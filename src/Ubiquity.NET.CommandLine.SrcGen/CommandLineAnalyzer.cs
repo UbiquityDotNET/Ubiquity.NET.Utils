@@ -64,7 +64,7 @@ namespace Ubiquity.NET.CommandLine.SrcGen
             catch(Exception ex)
             {
                 Location? loc = context.Symbol.Locations.Length < 1 ? default : context.Symbol.Locations[0];
-                ReportDiagnostic( context, Diagnostics.InternalError, loc, ex.Message );
+                context.ReportDiagnostic( Diagnostics.InternalError( loc, ex ) );
             }
         }
 
@@ -116,6 +116,8 @@ namespace Ubiquity.NET.CommandLine.SrcGen
 
             EquatableAttributeData attribute = attributes[Constants.OptionAttribute];
             VerifyNotNullableRequired( context, symbol, attribute, attribLoc );
+
+            VerifyArity( context, symbol, attribLoc, attribute );
 
             // Additional validations...
         }
@@ -175,7 +177,7 @@ namespace Ubiquity.NET.CommandLine.SrcGen
             var parentAttributes = context.Symbol.ContainingType.MatchingAttributes([Constants.RootCommandAttribute]);
             if(parentAttributes.IsDefaultOrEmpty)
             {
-                ReportDiagnostic( context, Diagnostics.MissingCommandAttribute, attribLoc, attribName );
+                context.ReportDiagnostic( Diagnostics.MissingCommandAttribute( attribLoc, attribName ) );
             }
         }
 
@@ -199,7 +201,7 @@ namespace Ubiquity.NET.CommandLine.SrcGen
             // Verify an Option property
             if(!attribs.TryGetValue( Constants.OptionAttribute, out _ ))
             {
-                ReportDiagnostic( context, Diagnostics.MissingConstraintAttribute, attribLoc, typeConstraintName );
+                context.ReportDiagnostic( Diagnostics.MissingConstraintAttribute( attribLoc, typeConstraintName ) );
             }
 
             // TODO: validate an Argument attribute or Option attribute
@@ -226,7 +228,7 @@ namespace Ubiquity.NET.CommandLine.SrcGen
         {
             if(symbol.Type.GetNamespaceQualifiedName() != expectedType)
             {
-                ReportDiagnostic( context, Diagnostics.IncorrectPropertyType, attribLoc, attribName, expectedType.ToString( "A", null ) );
+                context.ReportDiagnostic( Diagnostics.IncorrectPropertyType( attribLoc, attribName, expectedType.ToString( "A", null ) ) );
             }
         }
 
@@ -242,14 +244,27 @@ namespace Ubiquity.NET.CommandLine.SrcGen
                 NamespaceQualifiedTypeName propType = property.Type.GetNamespaceQualifiedName();
                 if(isRequired && propType.IsNullable)
                 {
-                    ReportDiagnostic( context, Diagnostics.RequiredNullableType, attribLoc, $"{propType:A}", property.Name );
+                    context.ReportDiagnostic( Diagnostics.RequiredNullableType( attribLoc, propType, property.Name ) );
                 }
             }
         }
 
-        private static void ReportDiagnostic( SymbolAnalysisContext context, DiagnosticDescriptor descriptor, Location? loc, params object[] args )
+        private static void VerifyArity( SymbolAnalysisContext context, IPropertySymbol propSym, Location? attribLoc, EquatableAttributeData attribute )
         {
-            context.ReportDiagnostic( Diagnostic.Create( descriptor, loc, args ) );
+            // if arity is provided for non enumerable type, that's an error
+            // Except: 0|1 (normal default for an optional bool)
+            // Except: 1 (normal default for !bool && !collection)
+            var optionalArity = attribute.GetArity();
+            if(optionalArity.HasValue)
+            {
+                (int minArity, int maxArity) = optionalArity.Value;
+
+                // collectionRequired = arityMin > 1 || arityMax > 1;
+                if((minArity > 1 || maxArity > 1) && !propSym.Type.IsCollection())
+                {
+                    context.ReportDiagnostic( Diagnostics.PropertyTypeArityMismatch( attribLoc, propSym, minArity, maxArity ));
+                }
+            }
         }
 
         private static readonly SymbolHandlerMap SymbolHandlerMap

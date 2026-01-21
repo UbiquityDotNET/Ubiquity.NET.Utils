@@ -138,9 +138,25 @@ namespace Ubiquity.NET.CommandLine.SrcGen.UT
             await analyzerTest.RunAsync( TestContext.CancellationToken );
         }
 
-        // TODO: Test that a nullable value is not marked as required. (That's a conflicting claim, if it's required it can't be null)
-        //       A nullable type MAY have a default value handler to provide a null default. Additional test - anything with a default
-        //       value provider shouldn't be "required" it's also nonsensical.
+        [TestMethod]
+        [DataRow( TestRuntime.Net8_0 )]
+        [DataRow( TestRuntime.Net10_0 )]
+        public async Task OptionArity_Not_matching_type_produces_diagnostic( TestRuntime testRuntime )
+        {
+            SourceText txt = GetSourceText( nameof(OptionArity_Not_matching_type_produces_diagnostic), "input.cs" );
+            var analyzerTest = CreateTestRunner( txt, testRuntime );
+
+            // (9,6): error UNC005: Property '{0}' has type of '{1}' does not support arity of ({2}, {3}).
+            analyzerTest.ExpectedDiagnostics.AddRange(
+               [
+                   new DiagnosticResult("UNC005", DiagnosticSeverity.Error)
+                      .WithArguments("Thing1", "bool", 3, 5)
+                      .WithSpan(10, 6, 10, 138),
+               ]
+             );
+
+            await analyzerTest.RunAsync( TestContext.CancellationToken );
+        }
 
         private AnalyzerTest<MsTestVerifier> CreateTestRunner( string source, TestRuntime testRuntime )
         {

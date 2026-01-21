@@ -49,13 +49,25 @@ namespace Ubiquity.NET.CodeAnalysis.Utils
         public NamespaceQualifiedTypeName( ITypeSymbol sym )
             : this( GetNullableNamespaceNames( sym ), GetNullableSimpleName( sym ), sym.NullableAnnotation )
         {
+            if(sym is IArrayTypeSymbol arrayType)
+            {
+                IsArray = true;
+                ElementType = arrayType.ElementType.GetNamespaceQualifiedName();
+            }
         }
 
         /// <summary>Gets a value indicating whether this type has nullability annotation (and a generator should use a language specific nullability form)</summary>
         public bool IsNullable => NullableAnnotation == NullableAnnotation.Annotated;
 
         /// <summary>Gets the nullability annotation state for this type</summary>
-        public NullableAnnotation NullableAnnotation { get; init; }
+        public NullableAnnotation NullableAnnotation { get; }
+
+        /// <summary>Gets a value indicating whether this name is an array</summary>
+        [MemberNotNullWhen( true, nameof( ElementType ) )]
+        public bool IsArray { get; }
+
+        /// <summary>Gets the array element type (Only valid if <see cref="IsArray"/> is true)</summary>
+        public NamespaceQualifiedTypeName? ElementType { get; }
 
         /// <summary>Formats this instance according to the args</summary>
         /// <param name="format">Format string for this instance (see remarks)</param>
@@ -132,15 +144,27 @@ namespace Ubiquity.NET.CodeAnalysis.Utils
         #endregion
 
         // IFF sym is a Nullable<T> (Nullable value type) this will get the simple name of T
+        [SuppressMessage( "Style", "IDE0046:Convert to conditional expression", Justification = "Nested conditionals != simpler" )]
         private static string GetNullableSimpleName( ITypeSymbol sym )
         {
+            if(sym is IArrayTypeSymbol arrayTypeSymbol)
+            {
+                return "Array";
+            }
+
             return sym.IsNullableValueType() && sym is INamedTypeSymbol ns
                 ? ns.TypeArguments[ 0 ].Name
                 : sym.Name;
         }
 
+        [SuppressMessage( "Style", "IDE0046:Convert to conditional expression", Justification = "Nested conditionals != simpler" )]
         private static IEnumerable<string> GetNullableNamespaceNames( ITypeSymbol sym )
         {
+            if(sym is IArrayTypeSymbol arrayTypeSymbol)
+            {
+                return ["System"];
+            }
+
             return sym.IsNullableValueType() && sym is INamedTypeSymbol ns
                  ? ns.TypeArguments[ 0 ].GetNamespaceNames()
                  : sym.GetNamespaceNames();

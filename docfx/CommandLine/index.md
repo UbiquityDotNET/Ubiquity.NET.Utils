@@ -14,3 +14,4 @@ Rule ID | Title |
 [UNC002](https://ubiquitydotnet.github.io/Ubiquity.NET.Utils/CommandLine/diagnostics/UNC002.html) | Property attribute not allowed standalone. |
 [UNC003](https://ubiquitydotnet.github.io/Ubiquity.NET.Utils/CommandLine/diagnostics/UNC003.html) | Property has incorrect type for attribute. |
 [UNC004](https://ubiquitydotnet.github.io/Ubiquity.NET.Utils/CommandLine/diagnostics/UNC004.html) | Property type is nullable but marked as required. |
+[UNC005](https://ubiquitydotnet.github.io/Ubiquity.NET.Utils/CommandLine/diagnostics/UNC004.html) | Arity specified for property type is invalid. |

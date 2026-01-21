@@ -38,23 +38,11 @@ namespace Ubiquity.NET.CommandLine.SrcGen
 
         public Optional<string> Description => AttributeInfo.GetNamedArgValue<string>( Constants.OptionAttributeNamedArgs.Description );
 
-        public Optional<bool> Required => AttributeInfo.GetNamedArgValue<bool>( Constants.OptionAttributeNamedArgs.Required );
+        public Optional<bool> Required => AttributeInfo.IsRequired();
 
         public Optional<bool> Hidden => AttributeInfo.GetNamedArgValue<bool>( Constants.OptionAttributeNamedArgs.Hidden );
 
-        public Optional<(int Min, int Max)> Arity
-        {
-            get
-            {
-                // ignore argument if both aren't available
-                Optional<int> min = AttributeInfo.GetNamedArgValue<int>( Constants.OptionAttributeNamedArgs.ArityMin);
-                Optional<int> max = AttributeInfo.GetNamedArgValue<int>( Constants.OptionAttributeNamedArgs.ArityMax);
-
-                return min.HasValue && max.HasValue
-                     ? new((min.Value, max.Value))
-                     : default;
-            }
-        }
+        public Optional<(int Min, int Max)> Arity => AttributeInfo.GetArity();
 
         private readonly EquatableAttributeData AttributeInfo;
 

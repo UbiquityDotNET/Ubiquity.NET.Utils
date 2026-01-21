@@ -169,6 +169,33 @@ namespace Ubiquity.NET.CommandLine.SrcGen.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Property type does not support the arity specified.
+        /// </summary>
+        internal static string PropertyTypeArityMismatch_Description {
+            get {
+                return ResourceManager.GetString("PropertyTypeArityMismatch_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Property &apos;{0}&apos; has type of &apos;{1}&apos; which does not support an arity of ({2}, {3})..
+        /// </summary>
+        internal static string PropertyTypeArityMismatch_MessageFormat {
+            get {
+                return ResourceManager.GetString("PropertyTypeArityMismatch_MessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Arity specified for property type is invalid..
+        /// </summary>
+        internal static string PropertyTypeArityMismatch_Title {
+            get {
+                return ResourceManager.GetString("PropertyTypeArityMismatch_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Property type is nullable but marked as required; These annotations conflict resulting in behavior that is explicitly UNDEFINED..
         /// </summary>
         internal static string RequiredNullableType_Description {
@@ -178,7 +205,7 @@ namespace Ubiquity.NET.CommandLine.SrcGen.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to attrib.NamedArguments.
+        ///   Looks up a localized string similar to Type &apos;{0}&apos; for property &apos;{1}&apos; is nullable but marked as required; These annotations conflict resulting in behavior that is explicitly UNDEFINED..
         /// </summary>
         internal static string RequiredNullableType_MessageFormat {
             get {

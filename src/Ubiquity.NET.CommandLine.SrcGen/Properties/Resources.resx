@@ -163,4 +163,13 @@
   <data name="RequiredNullableType_Title" xml:space="preserve">
     <value>Property type is nullable but marked as required.</value>
   </data>
+  <data name="PropertyTypeArityMismatch_Description" xml:space="preserve">
+    <value>Property type does not support the arity specified</value>
+  </data>
+  <data name="PropertyTypeArityMismatch_MessageFormat" xml:space="preserve">
+    <value>Property '{0}' has type of '{1}' which does not support an arity of ({2}, {3}).</value>
+  </data>
+  <data name="PropertyTypeArityMismatch_Title" xml:space="preserve">
+    <value>Arity specified for property type is invalid.</value>
+  </data>
 </root>
