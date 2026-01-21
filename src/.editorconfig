@@ -32,6 +32,20 @@ tab_width = 2
 # requires: https://marketplace.visualstudio.com/items?itemName=PaulHarrington.EditorGuidelinesPreview
 guidelines = 92
 
+# Settings for https://marketplace.visualstudio.com/items?itemName=MadsKristensen.MarkdownLint
+# Sadly, that is dragged in by https://marketplace.visualstudio.com/items?itemName=MadsKristensen.MarkdownEditor2
+# while there is a built-in version that doesn't support mermaid diagrams without all the CoPilot cruft.
+#    see: https://developercommunity.visualstudio.com/t/Mermaid-rendering-does-not-work/10968192#T-N10986717
+# so the "third party" (not really) one is used.
+# The linter is NOT used in this repo as it is not flexible enough and inconsistently complains about perfectly valid markdown as not consistent.
+# sadly, the mdlint package doesn't have configuration for the `lines_above` or 'lines_below` parameters so disable the rule (MD022)
+#md_blanks_around_headings = false
+#md_ul_indent = 4
+#md_fenced_code_language = false # fenced "code" may just be text and no language exists
+#md_code_fence_style = backtick
+#md_emphasis_style = asterisk
+#md_strong_style = asterisk
+
 # match ISO standard requirement for C/C++
 [*.c,*.h,*.cpp]
 insert_final_newline = true

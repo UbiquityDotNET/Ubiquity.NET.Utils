@@ -8,6 +8,7 @@ things get complicated and there are lots of "decisions" to make based on the in
 get downright unruly.
 
 ## Support includes
+
 * `StringExtensions` to support manipulations of strings commonly used by source generators
     * Method to split a string into lines fit for use in XML doc comments
     * Method to escape processing for a single string for comments
@@ -31,8 +32,10 @@ get downright unruly.
         [additional lines of text]
         <Scope End - emmitted on Dispose of return (RAII pattern)>
         ```
+
 ### C# target language specific support
 While other languages are possible this is the only one currently "built-in".
+
 * `CSharpLanguage` contains constants and statics for generating C# source
     * Constants for the open/close of a scope ("{","}")
     * Array of known keywords to allow escaping text that uses them

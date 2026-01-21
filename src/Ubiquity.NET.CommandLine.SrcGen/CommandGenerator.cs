@@ -31,21 +31,12 @@ namespace Ubiquity.NET.CommandLine.SrcGen
                         .Select( static (m, ct) => (RootCommandInfo)m! ) // convert nullable type to non null as preceding where clause filters out null values
                         .WithTrackingName( TrackingNames.CommandClass );
 
-            context.RegisterSourceOutput( optionClasses, Execute );
+            context.RegisterSourceOutput( optionClasses, Generate );
         }
 
         private static RootCommandInfo? CollectCommandAttributeData( GeneratorAttributeSyntaxContext context )
         {
-            // Do nothing if the target doesn't support what the generated code needs or something is wrong.
-            // Errors are detected by a distinct analyzer; code generators just NOP as fast as possible.
-            // see: https://csharp-evolution.com/guides/language-by-platform
-            var compilation = context.SemanticModel.Compilation;
-            if( context.Attributes.Length != 1 // Multiple instances not allowed and 0 is just broken.
-                || compilation.Language != "C#"
-                || !compilation.HasLanguageVersionAtLeastEqualTo( LanguageVersion.CSharp12 ) // C# 12 => .NET 8.0 => supported until 2026-11-10 (LTS)
-                || context.TargetSymbol is not INamedTypeSymbol namedTypeSymbol
-                || context.TargetNode is not ClassDeclarationSyntax commandClass
-            )
+            if(!TryGetNamedTypeSymbol(context, out INamedTypeSymbol? namedTypeSymbol))
             {
                 return null;
             }
@@ -61,9 +52,7 @@ namespace Ubiquity.NET.CommandLine.SrcGen
             foreach(ISymbol member in members)
             {
                 // filter to referenceable properties
-                // ignore nullable value types as that would produce an error
-                // (Can't use nullable annotations for generic types
-                if(member.CanBeReferencedByName && member is IPropertySymbol propSym /*&& !propSym.Type.IsNullableValueType()*/)
+                if(member.CanBeReferencedByName && member is IPropertySymbol propSym)
                 {
                     propertyInfoBuilder.Add( new PropertyInfo( propSym, Constants.GeneratingAttributeNames ) );
                 }
@@ -76,12 +65,33 @@ namespace Ubiquity.NET.CommandLine.SrcGen
                    );
         }
 
-        private static void Execute( SourceProductionContext context, RootCommandInfo source )
+        private static void Generate( SourceProductionContext context, RootCommandInfo source )
         {
             var template = new Templates.RootCommandClassTemplate(source);
             var generatedSource = template.GenerateText();
             string hintPath = $"{source.TargetName:R}.g.cs";
             context.AddSource( hintPath, generatedSource );
+        }
+
+        // Do nothing if the target doesn't support what the generated code needs or something is wrong.
+        // Errors are detected by a distinct analyzer; code generators just NOP as fast as possible.
+        // see: https://csharp-evolution.com/guides/language-by-platform
+        private static bool TryGetNamedTypeSymbol( GeneratorAttributeSyntaxContext context, [MaybeNullWhen(false)] out INamedTypeSymbol nts)
+        {
+            var compilation = context.SemanticModel.Compilation;
+            if(context.Attributes.Length != 1 // Multiple instances not allowed and 0 is just broken.
+             || compilation.Language != LanguageNames.CSharp
+             || !compilation.HasLanguageVersionAtLeastEqualTo( LanguageVersion.CSharp12 ) // C# 12 => .NET 8.0 => supported until 2026-11-10 (LTS)
+             || context.TargetSymbol is not INamedTypeSymbol namedTypeSymbol
+             || context.TargetNode is not ClassDeclarationSyntax
+            )
+            {
+                nts = null;
+                return false;
+            }
+
+            nts = namedTypeSymbol;
+            return true;
         }
     }
 }

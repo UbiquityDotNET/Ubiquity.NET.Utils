@@ -1,6 +1,8 @@
 ﻿// Copyright (c) Ubiquity.NET Contributors. All rights reserved.
 // Licensed under the Apache-2.0 WITH LLVM-exception license. See the LICENSE.md file in the project root for full license information.
 
+using Microsoft.CodeAnalysis.CSharp;
+
 namespace Ubiquity.NET.SrcGeneration.CSharp
 {
     /// <summary>Support for generating source files in the C# language</summary>
@@ -17,20 +19,26 @@ namespace Ubiquity.NET.SrcGeneration.CSharp
         /// <returns>literal string suitable for output to a writer for the C# language as-is</returns>
         public static string AsLiteral(bool value)
         {
-            return value ? "true" : "false";
+            return SymbolDisplay.FormatPrimitive( value, quoteStrings: false, useHexadecimalNumbers: false )
+                ?? throw new NotSupportedException("Internal error, bool formatting is not supported!?");
         }
 
         /// <summary>Gets a literal value for a <see cref="string"/> that is specific to the C# language</summary>
         /// <param name="value">value to get as a literal</param>
         /// <returns>literal string suitable for output to a writer for the C# language as-is</returns>
-        /// <remarks>This, basically, surrounds <paramref name="value"/> with quotes</remarks>
+        /// <remarks>This, basically, surrounds <paramref name="value"/> with quotes, while handling any escape characters etc...</remarks>
         public static string AsLiteral( string value )
         {
-            return $"\"{value}\"";
+            return SymbolDisplay.FormatLiteral( value, true );
         }
 
-        // TODO: char value
-        //       This requires either simple single quotes OR, it needs conversion to a hex representation if not printable
+        /// <summary>Generates a literal for the character, which may require escaping to form a proper literal</summary>
+        /// <param name="value">Character value to make as a literal</param>
+        /// <returns>Literal as a string</returns>
+        public static string AsLiteral( char value )
+        {
+            return SymbolDisplay.FormatLiteral( value, true );
+        }
 
         /// <summary>Gets the language keywords</summary>
         /// <remarks>

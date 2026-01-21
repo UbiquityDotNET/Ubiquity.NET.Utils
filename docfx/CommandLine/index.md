@@ -7,6 +7,7 @@ parsing and binding. Additionally an analyzer is provided to aid in identifying 
 with usage of the attributes for generation.
 
 ## Analyzer Diagnostics
+
 Rule ID | Title |
 --------|-------|
 [UNC000](https://ubiquitydotnet.github.io/Ubiquity.NET.Utils/CommandLine/diagnostics/UNC000.html) | An internal analyzer exception occurred. |
