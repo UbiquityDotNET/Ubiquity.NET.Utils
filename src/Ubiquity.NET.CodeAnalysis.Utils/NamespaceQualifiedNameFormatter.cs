@@ -111,6 +111,12 @@ namespace Ubiquity.NET.CodeAnalysis.Utils
         /// <exception cref="NotSupportedException"><paramref name="format"/> is not supported</exception>
         public string Format( string format, NamespaceQualifiedTypeName arg, IFormatProvider? formatProvider )
         {
+            if(arg.IsArray)
+            {
+                string formattedElement = Format(format, arg.ElementType, formatProvider);
+                return $"{formattedElement}[]";
+            }
+
             string formattedString = Format(format, (NamespaceQualifiedName)arg, formatProvider);
             return arg.NullableAnnotation == NullableAnnotation.Annotated
                  ? $"{formattedString}?"

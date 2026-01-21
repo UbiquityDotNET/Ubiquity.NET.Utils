@@ -80,6 +80,7 @@ namespace Ubiquity.NET.SourceGenerator.Test.Utils.CSharp
             // save the resulting immutable driver for use in second run.
             driver = driver.RunGenerators( compilation, cancellationToken );
             GeneratorDriverRunResult runResult1 = driver.GetRunResult();
+
             Verify.Empty( "Result diagnostics", runResult1.Diagnostics );
 
             // validate the generated trees have the correct count and names

@@ -81,6 +81,8 @@ namespace Ubiquity.NET.CommandLine.SrcGen
         internal static class CommonAttributeNamedArgs
         {
             internal const string Required = nameof(Required);
+            internal const string ArityMin = nameof(ArityMin);
+            internal const string ArityMax = nameof(ArityMax);
         }
 
         internal static class RootCommandAttributeNamedArgs

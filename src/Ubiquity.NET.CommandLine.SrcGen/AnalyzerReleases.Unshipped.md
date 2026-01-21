@@ -5,8 +5,9 @@
 
 Rule ID | Category | Severity | Notes
 --------|----------|----------|-------
-UNC000 | Internal | Error | Diagnostics, [Documentation](NotConfigurable)
-UNC001 | Usage | Error | Diagnostics
-UNC002 | Usage | Error | Diagnostics, [Documentation](NotConfigurable)
-UNC003 | Usage | Error | Diagnostics, [Documentation](NotConfigurable)
-UNC004 | Usage | Warning | Diagnostics, [Documentation](Compiler)
+UNC000 | Internal | Error | Diagnostics, [Documentation](https://ubiquitydotnet.github.io/Ubiquity.NET.Utils/CommandLine/diagnostics/UNC000.html)
+UNC001 | Usage | Error | Diagnostics, [Documentation](https://ubiquitydotnet.github.io/Ubiquity.NET.Utils/CommandLine/diagnostics/UNC001.html)
+UNC002 | Usage | Error | Diagnostics, [Documentation](https://ubiquitydotnet.github.io/Ubiquity.NET.Utils/CommandLine/diagnostics/UNC002.html)
+UNC003 | Usage | Error | Diagnostics, [Documentation](https://ubiquitydotnet.github.io/Ubiquity.NET.Utils/CommandLine/diagnostics/UNC003.html)
+UNC004 | Usage | Warning | Diagnostics, [Documentation](https://ubiquitydotnet.github.io/Ubiquity.NET.Utils/CommandLine/diagnostics/UNC004.html)
+UNC005 | Usage | Error | Diagnostics, [Documentation](https://ubiquitydotnet.github.io/Ubiquity.NET.Utils/CommandLine/diagnostics/UNC005.html)

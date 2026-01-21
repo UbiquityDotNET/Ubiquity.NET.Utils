@@ -20,7 +20,7 @@ namespace Ubiquity.NET.CommandLine.SrcGen.UT
             SourceText input = GetSourceText( nameof(Basic_golden_path_succeeds), inputFileName );
             SourceText expected = GetSourceText( nameof(Basic_golden_path_succeeds), expectedFileName );
 
-            var runner = CreateTestRunner(input, testRuntime, [TrackingNames.CommandClass], hintPath, expected );
+            var runner = CreateTestRunner( input, testRuntime, [TrackingNames.CommandClass], hintPath, expected );
             await runner.RunAsync( TestContext.CancellationToken );
         }
 
@@ -36,7 +36,23 @@ namespace Ubiquity.NET.CommandLine.SrcGen.UT
             SourceText input = GetSourceText( nameof(Generator_handles_nullable_types), inputFileName );
             SourceText expected = GetSourceText( nameof(Generator_handles_nullable_types), expectedFileName );
 
-            var runner = CreateTestRunner(input, testRuntime, [TrackingNames.CommandClass], hintPath, expected );
+            var runner = CreateTestRunner( input, testRuntime, [TrackingNames.CommandClass], hintPath, expected );
+            await runner.RunAsync( TestContext.CancellationToken );
+        }
+
+        [TestMethod]
+        [DataRow( TestRuntime.Net8_0 )]
+        [DataRow( TestRuntime.Net10_0 )]
+        public async Task DemoSource_succeeds( TestRuntime testRuntime )
+        {
+            const string inputFileName = "TestOptions.cs";
+            const string expectedFileName = "expected.cs";
+            string hintPath = Path.Combine("Ubiquity.NET.CommandLine.SrcGen", "Ubiquity.NET.CommandLine.SrcGen.CommandGenerator", "TestNamespace.TestOptions.g.cs");
+
+            SourceText input = GetSourceText( nameof(DemoSource_succeeds), inputFileName );
+            SourceText expected = GetSourceText( nameof(DemoSource_succeeds), expectedFileName );
+
+            var runner = CreateTestRunner( input, testRuntime, [TrackingNames.CommandClass], hintPath, expected );
             await runner.RunAsync( TestContext.CancellationToken );
         }
 
@@ -69,7 +85,7 @@ namespace Ubiquity.NET.CommandLine.SrcGen.UT
             };
         }
 
-        private static SourceText GetSourceText(params string[] nameParts)
+        private static SourceText GetSourceText( params string[] nameParts )
         {
             return TestHelpers.GetTestText( nameof( RootCommandAttributeTests ), nameParts );
         }

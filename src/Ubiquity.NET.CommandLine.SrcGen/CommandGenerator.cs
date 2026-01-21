@@ -41,10 +41,10 @@ namespace Ubiquity.NET.CommandLine.SrcGen
             // see: https://csharp-evolution.com/guides/language-by-platform
             var compilation = context.SemanticModel.Compilation;
             if( context.Attributes.Length != 1 // Multiple instances not allowed and 0 is just broken.
-             || compilation.Language != "C#"
-             || !compilation.HasLanguageVersionAtLeastEqualTo( LanguageVersion.CSharp12 ) // C# 12 => .NET 8.0 => supported until 2026-11-10 (LTS)
-             || context.TargetSymbol is not INamedTypeSymbol namedTypeSymbol
-             || context.TargetNode is not ClassDeclarationSyntax commandClass
+                || compilation.Language != "C#"
+                || !compilation.HasLanguageVersionAtLeastEqualTo( LanguageVersion.CSharp12 ) // C# 12 => .NET 8.0 => supported until 2026-11-10 (LTS)
+                || context.TargetSymbol is not INamedTypeSymbol namedTypeSymbol
+                || context.TargetNode is not ClassDeclarationSyntax commandClass
             )
             {
                 return null;

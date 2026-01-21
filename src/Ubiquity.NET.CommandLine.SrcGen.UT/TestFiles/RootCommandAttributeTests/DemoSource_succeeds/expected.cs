@@ -24,9 +24,11 @@ namespace TestNamespace
             return new()
             {
                 SomePath = parseResult.GetRequiredValue( Descriptors.SomePath ),
+                Verbosity = parseResult.GetRequiredValue( Descriptors.Verbosity ),
                 SomeExistingPath = parseResult.GetRequiredValue( Descriptors.SomeExistingPath ),
-                Thing1 = parseResult.GetRequiredValue( Descriptors.Thing1 ),
-                SomeOtherPath = parseResult.GetRequiredValue( Descriptors.SomeOtherPath ),
+                Thing1 = parseResult.GetValue( Descriptors.Thing1 ),
+                IncludePath = parseResult.GetRequiredValue( Descriptors.IncludePath ),
+                SomeOtherPath = parseResult.GetValue( Descriptors.SomeOtherPath ),
             };
         }
 
@@ -35,8 +37,10 @@ namespace TestNamespace
             return new global::Ubiquity.NET.CommandLine.AppControlledDefaultsRootCommand( Settings, "Root command for tests" )
             {
                 Descriptors.SomePath,
+                Descriptors.Verbosity,
                 Descriptors.SomeExistingPath,
                 Descriptors.Thing1,
+                Descriptors.IncludePath,
                 Descriptors.SomeOtherPath,
             };
         }
@@ -48,29 +52,41 @@ namespace TestNamespace
             = new global::System.CommandLine.Option<global::System.IO.DirectoryInfo>("-o")
             {
                 Description = "Test SomePath",
+                Required = true,
             }.EnsureFolder();
+
+        internal static readonly global::System.CommandLine.Option<global::Ubiquity.NET.CommandLine.MsgLevel> Verbosity
+            = new global::System.CommandLine.Option<global::Ubiquity.NET.CommandLine.MsgLevel>("-v")
+            {
+                Description = "Verbosity Level",
+            };
 
         internal static readonly global::System.CommandLine.Option<global::System.IO.DirectoryInfo> SomeExistingPath
             = new global::System.CommandLine.Option<global::System.IO.DirectoryInfo>("-b")
             {
                 Description = "Test Some existing Path",
+                Required = true,
             }.AcceptExistingFolderOnly();
 
-        internal static readonly global::System.CommandLine.Option<bool> Thing1
-            = new global::System.CommandLine.Option<bool>("--thing1", "-t")
+        internal static readonly global::System.CommandLine.Option<bool?> Thing1
+            = new global::System.CommandLine.Option<bool?>("--thing1", "-t")
             {
                 HelpName = "Help name for thing1",
                 Description = "Test Thing1",
-                Required = true,
             };
 
-        internal static readonly global::System.CommandLine.Option<global::System.IO.FileInfo> SomeOtherPath
-            = new global::System.CommandLine.Option<global::System.IO.FileInfo>("-a")
+        internal static readonly global::System.CommandLine.Option<global::System.IO.DirectoryInfo[]> IncludePath
+            = new global::System.CommandLine.Option<global::System.IO.DirectoryInfo[]>("-i")
+            {
+                Description = "include path",
+            };
+
+        internal static readonly global::System.CommandLine.Option<global::System.IO.FileInfo?> SomeOtherPath
+            = new global::System.CommandLine.Option<global::System.IO.FileInfo?>("-a")
             {
                 Description = "Test SomeOtherPath",
                 Required = false,
                 Hidden = true,
-                Arity = new global::System.CommandLine.ArgumentArity(0, 3),
-            }.AcceptExistingFileOnly();
+            };
     }
 }

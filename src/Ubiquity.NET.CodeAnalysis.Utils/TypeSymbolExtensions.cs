@@ -52,6 +52,24 @@ namespace Ubiquity.NET.CodeAnalysis.Utils
                 && self.IsValueType;
         }
 
+        /// <summary>Determines if this type symbol is a collection</summary>
+        /// <param name="self">Type symbol to test</param>
+        /// <returns>true if the type is a collection and false if not</returns>
+        public static bool IsCollection( this ITypeSymbol self )
+        {
+            var collectionItf = new NamespaceQualifiedTypeName(["System", "Collections"], "ICollection");
+            for(int i = 0; i < self.AllInterfaces.Length; ++i)
+            {
+                var itf = self.AllInterfaces[i];
+                if(itf.GetNamespaceQualifiedName() == collectionItf)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         // private iterator to defer the perf hit for reverse walk until the names
         // are iterated. The call to GetEnumerator() will take the hit to reverse walk
         // the names.

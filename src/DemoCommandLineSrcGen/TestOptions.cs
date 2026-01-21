@@ -3,8 +3,8 @@
 
 #pragma warning disable IDE0130 // Namespace does not match folder structure
 
-using System.CommandLine;
 using System.IO;
+using System.Linq;
 
 using Ubiquity.NET.CommandLine;
 using Ubiquity.NET.CommandLine.GeneratorAttributes;
@@ -18,14 +18,14 @@ namespace TestNamespace
     [RootCommand( Description = "Root command for tests" )]
     internal partial class TestOptions
     {
-        [Option( "-o", Description = "Test SomePath" )]
+        [Option( "-o", Description = "Test SomePath", Required = true )]
         [FolderValidation( FolderValidation.CreateIfNotExist )]
         public required DirectoryInfo SomePath { get; init; }
 
         [Option( "-v", Description = "Verbosity Level" )]
         public MsgLevel Verbosity { get; init; } = MsgLevel.Information;
 
-        [Option( "-b", Description = "Test Some existing Path" )]
+        [Option( "-b", Description = "Test Some existing Path", Required = true )]
         [FolderValidation( FolderValidation.ExistingOnly )]
         public required DirectoryInfo SomeExistingPath { get; init; }
 
@@ -35,9 +35,12 @@ namespace TestNamespace
         // This should be ignored by generator
         public string? NotAnOption { get; set; }
 
-        [Option( "-a", Hidden = true, Required = false, ArityMin = 0, ArityMax = 3, Description = "Test SomeOtherPath" )]
+        [Option( "-i", ArityMin = 0, Description = "include path" )]
+        public required DirectoryInfo[] IncludePath { get; init; }
+
+        [Option( "-a", Hidden = true, Required = false, Description = "Test SomeOtherPath" )]
         [FileValidation( FileValidation.ExistingOnly )]
-        public required FileInfo SomeOtherPath { get; init; }
+        public required FileInfo? SomeOtherPath { get; init; }
 
         public override string ToString( )
         {
@@ -48,6 +51,7 @@ namespace TestNamespace
                 Thing1 = {Thing1}
                 NotAnOption = {NotAnOption ?? "<null>"}
                 SomeOtherPath = '{SomeOtherPath?.FullName ?? "<null>"}'
+                IncludePath = '{string.Join(";", IncludePath.Select(di=>di.FullName))}'
             """;
         }
     }

@@ -20,7 +20,7 @@ internal partial class TestOptions
     // This should be ignored by generator
     public string? NotAnOption { get; set; }
 
-    [Option( "-a", Hidden = true, Required = false, ArityMin = 0, ArityMax = 3, Description = "Test SomeOtherPath" )]
+    [Option( "-a", Hidden = true, Required = false, ArityMin = 0, ArityMax = 1, Description = "Test SomeOtherPath" )]
     [FileValidation( FileValidation.ExistingOnly )]
     public required FileInfo SomeOtherPath { get; init; }
 }

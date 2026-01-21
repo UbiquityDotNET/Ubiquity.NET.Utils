@@ -19,8 +19,8 @@ namespace Ubiquity.NET.CodeAnalysis.Utils
         /// <param name="descriptor">Descriptor for the diagnostic</param>
         /// <param name="location">Location in the source file that triggered this diagnostic</param>
         /// <param name="msgArgs">Args for the message</param>
-        public DiagnosticInfo(DiagnosticDescriptor descriptor, Location? location, params string[] msgArgs)
-            : this(descriptor, location, (IEnumerable<string>)msgArgs)
+        public DiagnosticInfo(DiagnosticDescriptor descriptor, Location? location, params object[] msgArgs)
+            : this(descriptor, location, (IEnumerable<object>)msgArgs)
         {
         }
 
@@ -28,7 +28,7 @@ namespace Ubiquity.NET.CodeAnalysis.Utils
         /// <param name="descriptor">Descriptor for the diagnostic</param>
         /// <param name="location">Location in the source file that triggered this diagnostic</param>
         /// <param name="msgArgs">Args for the message</param>
-        public DiagnosticInfo(DiagnosticDescriptor descriptor, Location? location, IEnumerable<string> msgArgs)
+        public DiagnosticInfo(DiagnosticDescriptor descriptor, Location? location, IEnumerable<object> msgArgs)
 #else
         /// <summary>Initializes a new instance of the <see cref="DiagnosticInfo"/> class.</summary>
         /// <param name="descriptor">Descriptor for the diagnostic</param>
@@ -43,7 +43,7 @@ namespace Ubiquity.NET.CodeAnalysis.Utils
         }
 
         /// <summary>Gets the parameters for this diagnostic</summary>
-        public ImmutableArray<string> Params { get; }
+        public ImmutableArray<object> Params { get; }
 
         /// <summary>Gets the descriptor for this diagnostic</summary>
         public DiagnosticDescriptor Descriptor { get; }
