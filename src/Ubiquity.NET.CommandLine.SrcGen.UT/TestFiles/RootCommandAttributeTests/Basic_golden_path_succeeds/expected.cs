@@ -7,6 +7,8 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
+#nullable enable
+
 using static global::Ubiquity.NET.CommandLine.SymbolValidationExtensions;
 
 namespace TestNamespace
