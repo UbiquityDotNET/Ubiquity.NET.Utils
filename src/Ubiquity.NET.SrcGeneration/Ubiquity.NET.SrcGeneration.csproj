@@ -39,6 +39,7 @@
       </PackageReference>
 
       <PackageReference Include="System.Collections.Immutable" Condition="$(TargetFramework)=='netstandard2.0'" PrivateAssets="all" />
+      <PackageReference Include="Microsoft.CodeAnalysis.CSharp" />
     </ItemGroup>
 
     <Import Condition="'$(TargetFramework)'=='netstandard2.0'" Project="..\Ubiquity.NET.PollyFill.SharedSources\Ubiquity.NET.PollyFill.SharedSources.projitems" Label="Shared" />

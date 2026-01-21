@@ -15,9 +15,11 @@ For an explanation of the benefits of the language feature see: https://www.hans
 global using System;
 global using System.CodeDom.Compiler;
 global using System.Collections.Generic;
+global using System.Collections.Immutable;
 global using System.Diagnostics.CodeAnalysis;
 global using System.Globalization;
 global using System.IO;
+global using System.Linq;
 
 global using Microsoft.VisualStudio.TestTools.UnitTesting;
 
