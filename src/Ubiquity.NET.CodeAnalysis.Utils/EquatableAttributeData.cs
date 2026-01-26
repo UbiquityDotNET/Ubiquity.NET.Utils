@@ -44,7 +44,7 @@ namespace Ubiquity.NET.CodeAnalysis.Utils
 
         /// <summary>Gets the constant for a named argument</summary>
         /// <param name="argName">Name of the argument to fetch</param>
-        /// <returns>Optional value for the named argument (<see cref="Optional.HasValue"/> is false if <paramref name="argName"/> isn't provided)</returns>
+        /// <returns>Optional value for the named argument (<see cref="Optional{T}.HasValue"/> is false if <paramref name="argName"/> isn't provided)</returns>
         public Optional<StructurallyEquatableTypedConstant> GetNamedArgValue( string argName )
         {
             return NamedArguments.TryGetValue( argName, out StructurallyEquatableTypedConstant typedConst )
@@ -76,7 +76,7 @@ namespace Ubiquity.NET.CodeAnalysis.Utils
         /// <param name="argName">Name of the attribute argument</param>
         /// <returns><see cref="Optional{T}"/> for the array of values</returns>
         /// <remarks>
-        /// The <paramref name="name"/> name may not be specified in which case the result
+        /// The <paramref name="argName"/> name may not be specified in which case the result
         /// will have not value (<see cref="Optional{T}.HasValue"/> is false). It is also
         /// possible that it was specified AND that the value is null (if T is a nullable type
         /// or a default instance if it is not.) Thus it is important to examine the return
@@ -139,6 +139,8 @@ namespace Ubiquity.NET.CodeAnalysis.Utils
                 && Equals( other );
         }
 
+        /// <summary>Implicit cast from <see cref="AttributeData"/></summary>
+        /// <param name="data">Dat to convert</param>
         [SuppressMessage( "Usage", "CA2225:Operator overloads have named alternates", Justification = "Implicit cast for public constructor" )]
         public static implicit operator EquatableAttributeData( AttributeData data )
         {

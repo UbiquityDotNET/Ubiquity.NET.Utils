@@ -99,9 +99,6 @@ namespace Ubiquity.NET.CommandLine.SrcGen
                     handler( context, propSymbol, attrib.GetLocation(), attribs );
                 }
             }
-
-            // TODO: WARN if type of property is nullable AND marked as required. That won't produce an error but probably
-            // not the behavior intended...
         }
 
         private static void OnOptionAttribute(
@@ -204,7 +201,7 @@ namespace Ubiquity.NET.CommandLine.SrcGen
                 context.ReportDiagnostic( Diagnostics.MissingConstraintAttribute( attribLoc, typeConstraintName ) );
             }
 
-            // TODO: validate an Argument attribute or Option attribute
+            // TODO: validate an Argument attribute OR Option attribute
         }
 
         /// <summary>Verifies a property has an expected type</summary>

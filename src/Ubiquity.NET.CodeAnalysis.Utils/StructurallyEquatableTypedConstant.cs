@@ -64,11 +64,19 @@ namespace Ubiquity.NET.CodeAnalysis.Utils
             return StructuralTypedConstantComparer.Default.GetHashCode(InnerConst);
         }
 
+        /// <summary>Test two instances for equality</summary>
+        /// <param name="left">Left side of the comparison</param>
+        /// <param name="right">Right side of the comparison</param>
+        /// <returns>True if the values are equal and false if not</returns>
         public static bool operator ==( StructurallyEquatableTypedConstant left, StructurallyEquatableTypedConstant right )
         {
             return left.Equals(right);
         }
 
+        /// <summary>Test two instances for inequality</summary>
+        /// <param name="left">Left side of the comparison</param>
+        /// <param name="right">Right side of the comparison</param>
+        /// <returns>False if the values are not equal and true if not</returns>
         public static bool operator !=( StructurallyEquatableTypedConstant left, StructurallyEquatableTypedConstant right )
         {
             return !(left == right);
@@ -87,12 +95,16 @@ namespace Ubiquity.NET.CodeAnalysis.Utils
 
         private readonly TypedConstant InnerConst;
 
+        /// <summary>Implicit cast from <see cref="TypedConstant"/></summary>
+        /// <param name="other">Constant to cast</param>
         [SuppressMessage( "Usage", "CA2225:Operator overloads have named alternates", Justification = "Simple alternate for existing constructor" )]
         public static implicit operator StructurallyEquatableTypedConstant( TypedConstant other )
         {
             return new( other );
         }
 
+        /// <summary>Implicit cast from <see cref="StructurallyEquatableTypedConstant"/></summary>
+        /// <param name="other">Constant to cast</param>
         public static explicit operator TypedConstant( StructurallyEquatableTypedConstant other )
         {
             return other.ToTypedConstant();

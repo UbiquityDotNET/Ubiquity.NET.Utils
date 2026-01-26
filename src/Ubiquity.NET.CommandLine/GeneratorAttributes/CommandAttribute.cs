@@ -3,6 +3,8 @@
 
 namespace Ubiquity.NET.CommandLine.GeneratorAttributes
 {
+// Feature not supported yet
+#if SUPPORT_SUB_COMMANDS
     /// <summary>Attribute to mark a command for generation of the backing implementation</summary>
     [AttributeUsage( AttributeTargets.Class, Inherited = false, AllowMultiple = false )]
     public sealed class CommandAttribute
@@ -18,4 +20,5 @@ namespace Ubiquity.NET.CommandLine.GeneratorAttributes
         /// <summary>Gets the Description for this command</summary>
         public string Description { get; }
     }
+#endif
 }

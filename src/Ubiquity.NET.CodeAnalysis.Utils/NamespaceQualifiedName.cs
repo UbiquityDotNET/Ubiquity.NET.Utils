@@ -176,7 +176,7 @@ namespace Ubiquity.NET.CodeAnalysis.Utils
                  : customFormatter.Format(format, this, formatProvider);
         }
 
-        /// <summary>Implicit conversion to a string (Shorthand for calling <see cref="ToString"/></summary>
+        /// <summary>Implicit conversion to a string (Shorthand for calling <see cref="ToString()"/></summary>
         /// <param name="self">Name to convert</param>
         public static implicit operator string( NamespaceQualifiedName self )
         {
