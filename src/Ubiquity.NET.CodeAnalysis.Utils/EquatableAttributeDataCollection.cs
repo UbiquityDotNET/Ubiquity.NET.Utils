@@ -83,7 +83,7 @@ namespace Ubiquity.NET.CodeAnalysis.Utils
 
         /// <summary>Gets a sequence of the names of all values.</summary>
         /// <remarks>
-        /// These names are keys for the values used in <see cref="this[]"/> and
+        /// These names are keys for the values used in <see cref="this[NamespaceQualifiedName]"/> and
         /// <see cref="TryGetValue(NamespaceQualifiedName, out EquatableAttributeData)"/>.
         /// </remarks>
         public IEnumerable<NamespaceQualifiedName> Keys => InnerDictionary.Keys;
@@ -104,6 +104,8 @@ namespace Ubiquity.NET.CodeAnalysis.Utils
             return InnerDictionary.TryGetValue( key, out item );
         }
 
+        /// <summary>Implicit cast from <see cref="ImmutableArray{T}"/></summary>
+        /// <param name="attributes">Immutable array of attribute data to form a keyed collection from</param>
         [SuppressMessage( "Usage", "CA2225:Operator overloads have named alternates", Justification = "Simple wrapper over public constructor" )]
         public static implicit operator EquatableAttributeDataCollection( ImmutableArray<EquatableAttributeData> attributes )
         {

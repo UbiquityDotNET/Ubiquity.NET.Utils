@@ -13,7 +13,7 @@ This library provides general extensions to ANTLR including adapter bindings for
   `Ubiquity.NET.Runtime.IParseErrorListener`.
   - This allows building consumers that deal with errors and remain independent of the
     parsing technology.
-* Extension functions that provides commonly used support for ANTLR
+* Extension functions that provide commonly used support for ANTLR
     -  Get a character interval from a ParserRuleContext with support for the standard EOF
        rule.
     - Gets the source stream from an IRecognizer

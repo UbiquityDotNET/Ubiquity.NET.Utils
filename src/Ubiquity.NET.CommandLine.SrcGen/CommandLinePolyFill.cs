@@ -7,7 +7,7 @@ namespace Ubiquity.NET.CommandLine.SrcGen
     // only supports .NET 8.0 and .NET 10. So this fills in the gaps on enumerations as the
     // library with the declarations can't be referenced directly.
 
-    /// <summary>Flags to determine the default Options for an <see cref="AppControlledDefaultsRootCommand"/></summary>
+    /// <summary>Flags to determine the default Options for an <c>AppControlledDefaultsRootCommand</c></summary>
     [Flags]
     internal enum DefaultOption
     {
@@ -21,20 +21,20 @@ namespace Ubiquity.NET.CommandLine.SrcGen
         Version,
     }
 
-    /// <summary>Flags to determine the default directives supported for an <see cref="AppControlledDefaultsRootCommand"/></summary>
+    /// <summary>Flags to determine the default directives supported for an <c>AppControlledDefaultsRootCommand</c></summary>
     [Flags]
     internal enum DefaultDirective
     {
         /// <summary>No default directives included</summary>
         None = 0,
 
-        /// <summary>Include support for <see cref="SuggestDirective"/></summary>
+        /// <summary>Include support for <c>SuggestDirective</c></summary>
         Suggest,
 
-        /// <summary>Include support for <see cref="DiagramDirective"/></summary>
+        /// <summary>Include support for <c>DiagramDirective</c></summary>
         Diagram,
 
-        /// <summary>Include support for <see cref="EnvironmentVariablesDirective"/></summary>
+        /// <summary>Include support for <c>EnvironmentVariablesDirective</c></summary>
         EnvironmentVariables,
     }
 

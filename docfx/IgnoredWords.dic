@@ -1,6 +1,7 @@
 antlr
 arity
 bool
+cacheable
 initializer
 interop
 marshalling

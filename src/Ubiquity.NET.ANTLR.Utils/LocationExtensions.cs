@@ -58,12 +58,10 @@ namespace Ubiquity.NET.ANTLR.Utils
         {
             ArgumentNullException.ThrowIfNull( token );
 
-            // TODO: Q: Should this account for a newline in the token?
-            //       A: Probably not, as a token can't span a newline.
             return new SourceRange(
                 new(token.Line, token.Column, token.StartIndex),
                 new(token.Line, token.Column + token.Text.Length, token.StopIndex)
-                );
+            );
         }
     }
 }

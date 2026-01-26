@@ -10,6 +10,7 @@
       errors in most cases, but sometimes can end up as runtime errors! BEWARE!
     -->
     <LangVersion>12</LangVersion>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
 
     <!--NuGet packaging support -->
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -26,7 +27,6 @@
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
-
   </PropertyGroup>
 
   <ItemGroup>

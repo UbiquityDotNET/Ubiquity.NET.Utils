@@ -45,11 +45,19 @@ namespace Ubiquity.NET.CodeAnalysis.Utils
             return ((IStructuralEquatable)this).Equals( other, EqualityComparer<KeyValuePair<TKey, TValue>>.Default);
         }
 
+        /// <summary>Test two instances for equality</summary>
+        /// <param name="left">Left side of the comparison</param>
+        /// <param name="right">Right side of the comparison</param>
+        /// <returns>True if the values are equal and false if not</returns>
         public static bool operator ==( EquatableDictionary<TKey, TValue> left, EquatableDictionary<TKey, TValue> right )
         {
             return left.Equals( right );
         }
 
+        /// <summary>Test two instances for inequality</summary>
+        /// <param name="left">Left side of the comparison</param>
+        /// <param name="right">Right side of the comparison</param>
+        /// <returns>False if the values are not equal and true if not</returns>
         public static bool operator !=( EquatableDictionary<TKey, TValue> left, EquatableDictionary<TKey, TValue> right )
         {
             return !(left == right);
@@ -206,12 +214,16 @@ namespace Ubiquity.NET.CodeAnalysis.Utils
 
         #endregion
 
+        /// <summary>Implicit cast from <see cref="ImmutableDictionary{TKey, TValue}"/></summary>
+        /// <param name="dictionaryToWrap">Dictionary to wrap</param>
         [SuppressMessage( "Usage", "CA2225:Operator overloads have named alternates", Justification = "Implicit cast for public constructor" )]
         public static implicit operator EquatableDictionary<TKey, TValue>( ImmutableDictionary<TKey, TValue> dictionaryToWrap )
         {
             return new(dictionaryToWrap);
         }
 
+        /// <summary>Implicit cast from <see cref="ImmutableSortedDictionary{TKey, TValue}"/></summary>
+        /// <param name="dictionaryToWrap">Dictionary to wrap</param>
         [SuppressMessage( "Usage", "CA2225:Operator overloads have named alternates", Justification = "Implicit cast for public constructor" )]
         public static implicit operator EquatableDictionary<TKey, TValue>( ImmutableSortedDictionary<TKey, TValue> dictionaryToWrap )
         {

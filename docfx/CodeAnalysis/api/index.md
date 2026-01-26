@@ -1,6 +1,21 @@
 # About
-Ubiquity.NET.CodeAnalysis contains general extensions for .NET. 
+Ubiquity.NET.CodeAnlysis.Utils contains support for Roslyn components doing code analysis,
+fixes, and source generation within the Roslyn compiler.
 
 ## Key support
-TBD
 
+* Support for caching of generation scan results (via `IEquatable<T>`)
+* Debug diagnostic asserts for class vs. struct trade-offs 
+* Capturing symbol information in a cacheable fashion
+* Generation of diagnostics for issues detected in a generator<a href="#footnote_1"><sup>1</sup></a>
+* Create a `SourceText` from a `StringBuilder` to allow generation to remain independent of
+  the Roslyn CodeAnalysis types.
+
+------
+<sup id="footnote_1">1</sup> Generators creating diagnostics is generally not recommended.
+The official
+[Incremental Generators](https://github.com/dotnet/roslyn/blob/main/docs/features/incremental-generators.cookbook.md)
+cook book recommends against it. A generator should generally ignore invalid input and fail
+silently by ignoring the problem. An analyzer can produce the diagnostics for problems. At
+most a generator can use this support to report critical problems that prevent the generator
+from running at all.

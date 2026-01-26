@@ -82,7 +82,7 @@ namespace Ubiquity.NET.CodeAnalysis.Utils
         /// <inheritdoc/>
         public override int GetHashCode( )
         {
-            // sadly this will re-hash the hashcode computed for the structure, but there is no way
+            // sadly this will re-hash the hash code computed for the structure, but there is no way
             // to combine the result of a hash with other things. (The overload of Add(int) is private)
             // The generic Add<T>() will call the type's GetHashCode() and ignores the implementation of
             // IStructuralEquatable.
