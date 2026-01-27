@@ -9,14 +9,14 @@ namespace Ubiquity.NET.CommandLine
         , IReadOnlyCollection<DiagnosticMessage>
     {
         /// <summary>Initializes a new instance of the <see cref="DiagnosticMessageCollection"/> class.</summary>
-        /// <param name="level">Minimal reporting level for this collector [Default is <see cref="MsgLevel.Error"/> to collect all messaged</param>
-        public DiagnosticMessageCollection( MsgLevel level = MsgLevel.Error )
+        /// <param name="level">Minimal reporting level for this collector [Default is <see cref="MessageLevel.Error"/> to collect all messaged</param>
+        public DiagnosticMessageCollection( MessageLevel level = MessageLevel.Error )
         {
             Level = level;
         }
 
         /// <inheritdoc/>
-        public MsgLevel Level { get; }
+        public MessageLevel Level { get; }
 
         /// <inheritdoc/>
         public Encoding Encoding => Encoding.Unicode;

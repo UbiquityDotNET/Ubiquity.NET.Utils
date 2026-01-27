@@ -18,7 +18,7 @@ namespace Ubiquity.NET.CommandLine.UT
         [TestMethod]
         public void Construction_throws_on_invalid_init( )
         {
-            Assert.AreEqual( default, MsgLevel.None, "None should be the default (invalid) level" );
+            Assert.AreEqual( default, MessageLevel.None, "None should be the default (invalid) level" );
 
             Assert.ThrowsExactly<ArgumentException>(
                 static ( ) =>
@@ -26,7 +26,7 @@ namespace Ubiquity.NET.CommandLine.UT
                     _ = new DiagnosticMessage()
                     {
                         Code = "Has Whitespace",
-                        Level = MsgLevel.Verbose,
+                        Level = MessageLevel.Verbose,
                         Location = default,
                         Origin = default,
                         Subcategory = default,
@@ -42,7 +42,7 @@ namespace Ubiquity.NET.CommandLine.UT
                     _ = new DiagnosticMessage()
                     {
                         Code = default,
-                        Level = MsgLevel.Verbose,
+                        Level = MessageLevel.Verbose,
                         Location = default,
                         Origin = default,
                         Subcategory = "Has Whitespace",
@@ -74,7 +74,7 @@ namespace Ubiquity.NET.CommandLine.UT
                     _ = new DiagnosticMessage()
                     {
                         Code = default,
-                        Level = (MsgLevel)int.MaxValue,
+                        Level = (MessageLevel)int.MaxValue,
                         Location = default,
                         Origin = default,
                         Subcategory = default,
@@ -90,7 +90,7 @@ namespace Ubiquity.NET.CommandLine.UT
                     _ = new DiagnosticMessage()
                     {
                         Code = default,
-                        Level = MsgLevel.Verbose,
+                        Level = MessageLevel.Verbose,
                         Location = default,
                         Origin = default,
                         Subcategory = default,
@@ -106,7 +106,7 @@ namespace Ubiquity.NET.CommandLine.UT
                     _ = new DiagnosticMessage()
                     {
                         Code = default,
-                        Level = MsgLevel.Verbose,
+                        Level = MessageLevel.Verbose,
                         Location = default,
                         Origin = default,
                         Subcategory = default,
@@ -124,7 +124,7 @@ namespace Ubiquity.NET.CommandLine.UT
                     _ = new DiagnosticMessage()
                     {
                         Code = default,
-                        Level = MsgLevel.Verbose,
+                        Level = MessageLevel.Verbose,
                         Location = default,
                         Origin = default,
                         Subcategory = default,
@@ -142,7 +142,7 @@ namespace Ubiquity.NET.CommandLine.UT
             const string testCode = "CODE1";
             const string testSubCategory = "TestSubcategory";
             const string testMsg = "This is a test message";
-            const MsgLevel testLevel = MsgLevel.Verbose;
+            const MessageLevel testLevel = MessageLevel.Verbose;
 
             var testLoc = new SourceRange(new SourcePosition(1,2,3), new SourcePosition(2,1,4));
             var testOrigin = new Uri("file://MyOrigin");
@@ -172,7 +172,7 @@ namespace Ubiquity.NET.CommandLine.UT
             var msg = new DiagnosticMessage( )
             {
                 Code = default,
-                Level = MsgLevel.Error,
+                Level = MessageLevel.Error,
                 Location = default,
                 Origin = default,
                 Subcategory = default,
@@ -190,7 +190,7 @@ namespace Ubiquity.NET.CommandLine.UT
             const string testCode = "CODE1";
             const string testSubCategory = "Subcategory";
             const string testMsg = "This is a test message";
-            const MsgLevel testLevel = MsgLevel.Verbose;
+            const MessageLevel testLevel = MessageLevel.Verbose;
 
             var testLoc = new SourceRange(new SourcePosition(1,2,3), new SourcePosition(2,1,4));
             var testOrigin = new Uri("file://C:/MyOrigin.txt");

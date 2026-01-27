@@ -3,7 +3,7 @@
 
 namespace Ubiquity.NET.CommandLine.InterpolatedStringHandlers
 {
-    /// <summary>Interpolated string handler for an <see cref="IDiagnosticReporter"/> using a fixed <see cref="MsgLevel.Warning"/></summary>
+    /// <summary>Interpolated string handler for an <see cref="IDiagnosticReporter"/> using a fixed <see cref="MessageLevel.Warning"/></summary>
     /// <remarks>
     /// <para>This handler will use the state of the <see cref="IDiagnosticReporter.Level"/> to filter messages
     /// as interpolated strings. If the channel for the message is not enabled, then the handler filters
@@ -35,7 +35,7 @@ namespace Ubiquity.NET.CommandLine.InterpolatedStringHandlers
         /// </remarks>
         public WarningReportingInterpolatedStringHandler( int literalLength, int formattedCount, IDiagnosticReporter reporter )
         {
-            Builder = reporter.IsEnabled( MsgLevel.Warning ) ? new( literalLength ) : null;
+            Builder = reporter.IsEnabled( MessageLevel.Warning ) ? new( literalLength ) : null;
         }
 
         /// <summary>Gets a value indicating whether this handler is enabled</summary>
@@ -46,7 +46,7 @@ namespace Ubiquity.NET.CommandLine.InterpolatedStringHandlers
         /// <returns><see langword="true"/> if the interpolation should continue with other conversions or <see langword="false"/> if not.</returns>
         /// <remarks>
         /// The return is used to short circuit all other calls to interpolation, thus, this implementation returns if the
-        /// <see cref="MsgLevel.Warning"/> level is enabled for a given reporter.
+        /// <see cref="MessageLevel.Warning"/> level is enabled for a given reporter.
         /// </remarks>
         public bool AppendLiteral( string s )
         {
@@ -65,7 +65,7 @@ namespace Ubiquity.NET.CommandLine.InterpolatedStringHandlers
         /// <returns><see langword="true"/> if the interpolation should continue with other conversions or <see langword="false"/> if not.</returns>
         /// <remarks>
         /// The return is used to short circuit all other calls to interpolation, thus, this implementation returns if the
-        /// <see cref="MsgLevel.Warning"/>  level is enabled for a given reporter.
+        /// <see cref="MessageLevel.Warning"/>  level is enabled for a given reporter.
         /// </remarks>
         public readonly bool AppendFormatted<T>( T t )
         {
@@ -85,7 +85,7 @@ namespace Ubiquity.NET.CommandLine.InterpolatedStringHandlers
         /// <returns><see langword="true"/> if the interpolation should continue with other conversions or <see langword="false"/> if not.</returns>
         /// <remarks>
         /// The return is used to short circuit all other calls to interpolation, thus, this implementation returns if the
-        /// <see cref="MsgLevel.Warning"/>  level is enabled for a given reporter.
+        /// <see cref="MessageLevel.Warning"/>  level is enabled for a given reporter.
         /// </remarks>
         public readonly bool AppendFormatted<T>( T t, string format )
             where T : IFormattable

@@ -6,7 +6,7 @@ using Ubiquity.NET.Extensions.FluentValidation;
 namespace Ubiquity.NET.CommandLine
 {
     /// <summary>Tool Message category</summary>
-    public enum MsgLevel
+    public enum MessageLevel
     {
         /// <summary>All channels off</summary>
         None = 0,
@@ -60,15 +60,15 @@ namespace Ubiquity.NET.CommandLine
         }
 
         /// <summary>Gets the Level/Category of the message</summary>
-        public MsgLevel Level
+        public MessageLevel Level
         {
             get;
             init
             {
                 value.ThrowIfNotDefined();
-                if(value == MsgLevel.None)
+                if(value == MessageLevel.None)
                 {
-                    throw new InvalidEnumArgumentException( nameof( value ), 0, typeof( MsgLevel ) );
+                    throw new InvalidEnumArgumentException( nameof( value ), 0, typeof( MessageLevel ) );
                 }
 
                 field = value;
@@ -117,15 +117,15 @@ namespace Ubiquity.NET.CommandLine
         }
 
         /// <summary>Gets the Level/Category of the message</summary>
-        public MsgLevel Level
+        public MessageLevel Level
         {
             get => LevelBackingField;
             init
             {
                 value.ThrowIfNotDefined();
-                if(value == MsgLevel.None)
+                if(value == MessageLevel.None)
                 {
-                    throw new InvalidEnumArgumentException( nameof( value ), 0, typeof( MsgLevel ) );
+                    throw new InvalidEnumArgumentException( nameof( value ), 0, typeof( MessageLevel ) );
                 }
 
                 LevelBackingField = value;
@@ -159,7 +159,7 @@ namespace Ubiquity.NET.CommandLine
         }
 
         private readonly string? SubcategoryBackingField;
-        private readonly MsgLevel LevelBackingField;
+        private readonly MessageLevel LevelBackingField;
         private readonly string? CodeBackingField;
         private readonly string TextBackingField;
 #endif

@@ -8,7 +8,7 @@ namespace Ubiquity.NET.CommandLine
         : ConsoleReporter
     {
         /// <summary>Initializes a new instance of the <see cref="ColoredConsoleReporter"/> class</summary>
-        /// <param name="level">Level of messages to enable for this reporter [Default: <see cref="MsgLevel.Information"/></param>
+        /// <param name="level">Level of messages to enable for this reporter [Default: <see cref="MessageLevel.Information"/></param>
         /// <param name="colorMapping">Provides the color mapping for the message levels this reporter will use (see remarks)</param>
         /// <remarks>
         /// <paramref name="colorMapping"/> (or a default if <see langword="null"/>) is set as the <see cref="ColorMap"/> property.
@@ -16,25 +16,25 @@ namespace Ubiquity.NET.CommandLine
         /// The default colors, if not provided via <paramref name="colorMapping"/>, are:
         /// <list type="table">
         /// <listheader><term>Level</term><description>Description</description></listheader>
-        /// <item><term><see cref="MsgLevel.Verbose"/></term><description> <see cref="Color.LtBlue"/></description></item>
-        /// <item><term><see cref="MsgLevel.Information"/></term><description> <see cref="Color.Default"/></description></item>
-        /// <item><term><see cref="MsgLevel.Warning"/></term><description> <see cref="Color.LtYellow"/></description></item>
-        /// <item><term><see cref="MsgLevel.Error"/></term><description> <see cref="Color.LtRed"/></description></item>
+        /// <item><term><see cref="MessageLevel.Verbose"/></term><description> <see cref="Color.LtBlue"/></description></item>
+        /// <item><term><see cref="MessageLevel.Information"/></term><description> <see cref="Color.Default"/></description></item>
+        /// <item><term><see cref="MessageLevel.Warning"/></term><description> <see cref="Color.LtYellow"/></description></item>
+        /// <item><term><see cref="MessageLevel.Error"/></term><description> <see cref="Color.LtRed"/></description></item>
         /// </list></para>
         /// <para>
         /// Any level not in <see cref="ColorMap"/> is reported using <see cref="Color.Default"/>.
         /// </para>
         /// </remarks>
         [SetsRequiredMembers]
-        public ColoredConsoleReporter( MsgLevel level = MsgLevel.Information, ImmutableDictionary<MsgLevel, AnsiCode>? colorMapping = null)
+        public ColoredConsoleReporter( MessageLevel level = MessageLevel.Information, ImmutableDictionary<MessageLevel, AnsiCode>? colorMapping = null)
             : base(level)
         {
-            ColorMap = colorMapping ?? ImmutableDictionary<MsgLevel, AnsiCode>.Empty;
+            ColorMap = colorMapping ?? ImmutableDictionary<MessageLevel, AnsiCode>.Empty;
         }
 
 #if NET10_0_OR_GREATER
-        /// <summary>Gets the <see cref="MsgLevel"/> to <see cref="AnsiCode"/> colorMapping used for coloring</summary>
-        public ImmutableDictionary<MsgLevel, AnsiCode> ColorMap
+        /// <summary>Gets the <see cref="MessageLevel"/> to <see cref="AnsiCode"/> colorMapping used for coloring</summary>
+        public ImmutableDictionary<MessageLevel, AnsiCode> ColorMap
         {
             get => field.IsEmpty ? DefaultColorMap : field;
             init
@@ -44,8 +44,8 @@ namespace Ubiquity.NET.CommandLine
             }
         }
 #else
-        /// <summary>Gets the <see cref="MsgLevel"/> to <see cref="AnsiCode"/> colorMapping used for coloring</summary>
-        public ImmutableDictionary<MsgLevel, AnsiCode> ColorMap
+        /// <summary>Gets the <see cref="MessageLevel"/> to <see cref="AnsiCode"/> colorMapping used for coloring</summary>
+        public ImmutableDictionary<MessageLevel, AnsiCode> ColorMap
         {
             get => ColorMapBackingField.IsEmpty ? DefaultColorMap : ColorMapBackingField;
             init
@@ -56,24 +56,24 @@ namespace Ubiquity.NET.CommandLine
             }
         }
 
-        private readonly ImmutableDictionary<MsgLevel, AnsiCode> ColorMapBackingField = DefaultColorMap;
+        private readonly ImmutableDictionary<MessageLevel, AnsiCode> ColorMapBackingField = DefaultColorMap;
 #endif
 
         /// <summary>Gets the default color map for this type</summary>
-        public static ImmutableDictionary<MsgLevel, AnsiCode> DefaultColorMap { get; }
-            = new DictionaryBuilder<MsgLevel, AnsiCode>
+        public static ImmutableDictionary<MessageLevel, AnsiCode> DefaultColorMap { get; }
+            = new DictionaryBuilder<MessageLevel, AnsiCode>
             {
-                [MsgLevel.Verbose] = Color.LtBlue,
-                [MsgLevel.Information] = Color.Default,
-                [MsgLevel.Warning] = Color.LtYellow,
-                [MsgLevel.Error] = Color.LtRed,
+                [MessageLevel.Verbose] = Color.LtBlue,
+                [MessageLevel.Information] = Color.Default,
+                [MessageLevel.Warning] = Color.LtYellow,
+                [MessageLevel.Error] = Color.LtRed,
             }.ToImmutable();
 
         /// <remarks>
         /// This implementation will apply ANSI color code sequences to each message based on <paramref name="level"/>.
         /// </remarks>
         /// <inheritdoc/>
-        protected override void ReportMessage( MsgLevel level, string msg )
+        protected override void ReportMessage( MessageLevel level, string msg )
         {
             if(!ColorMap.TryGetValue(level, out AnsiCode? color))
             {

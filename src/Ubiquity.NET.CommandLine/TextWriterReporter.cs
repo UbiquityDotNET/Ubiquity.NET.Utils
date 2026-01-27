@@ -15,7 +15,7 @@ namespace Ubiquity.NET.CommandLine
         /// <param name="verbose">Verbose writer</param>
         [SetsRequiredMembers]
         public TextWriterReporter(
-            MsgLevel level,
+            MessageLevel level,
             TextWriter? error = null,
             TextWriter? warning = null,
             TextWriter? information = null,
@@ -127,7 +127,7 @@ namespace Ubiquity.NET.CommandLine
 #endif
 
         /// <inheritdoc/>
-        public MsgLevel Level { get; init; }
+        public MessageLevel Level { get; init; }
 
         /// <inheritdoc/>
         public Encoding Encoding => Error.Encoding;
@@ -135,7 +135,7 @@ namespace Ubiquity.NET.CommandLine
         /// <inheritdoc/>
         /// <remarks>
         /// This implementation will test if the <see cref="DiagnosticMessage.Level"/> of the
-        /// message is enabled. If so, then a call is made to the virtual <see cref="ReportMessage(MsgLevel, string)"/>
+        /// message is enabled. If so, then a call is made to the virtual <see cref="ReportMessage(MessageLevel, string)"/>
         /// with the results of <see cref="DiagnosticMessage.ToString()"/> as the message text.
         /// </remarks>
         public void Report( DiagnosticMessage diagnostic )
@@ -157,16 +157,16 @@ namespace Ubiquity.NET.CommandLine
         /// and the messages go nowhere.
         /// </remarks>
         /// <exception cref="InvalidOperationException">Invalid/Unknown level - should never hit this, internal or derived type error if it does.</exception>
-        protected virtual void ReportMessage(MsgLevel level, string msg)
+        protected virtual void ReportMessage(MessageLevel level, string msg)
         {
             var writer = level switch
             {
-                MsgLevel.Error => Error,
-                MsgLevel.Warning => Warning,
-                MsgLevel.Information => Information,
-                MsgLevel.Verbose => Verbose,
-                MsgLevel.None => null,
-                _ => throw new InvalidEnumArgumentException(nameof(level), (int)level, typeof(MsgLevel))
+                MessageLevel.Error => Error,
+                MessageLevel.Warning => Warning,
+                MessageLevel.Information => Information,
+                MessageLevel.Verbose => Verbose,
+                MessageLevel.None => null,
+                _ => throw new InvalidEnumArgumentException(nameof(level), (int)level, typeof(MessageLevel))
             };
 
             // A message level of None is always ignored, this will not occur normally as that level is

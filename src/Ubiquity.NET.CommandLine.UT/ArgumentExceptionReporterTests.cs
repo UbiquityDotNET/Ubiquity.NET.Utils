@@ -23,7 +23,7 @@ namespace Ubiquity.NET.CommandLine.UT
             var reporter = new ArgumentExceptionReporter(ParamExpressionName);
             Assert.IsNotNull( reporter );
             Assert.AreEqual( ParamExpressionName, reporter.ArgumentExpression );
-            Assert.AreEqual( MsgLevel.Error, reporter.Level );
+            Assert.AreEqual( MessageLevel.Error, reporter.Level );
             Assert.AreEqual( Encoding.Unicode, reporter.Encoding );
         }
 
@@ -35,7 +35,7 @@ namespace Ubiquity.NET.CommandLine.UT
             // should not throw for a Verbose level message
             var verboseMsg = new DiagnosticMessage()
             {
-                Level = MsgLevel.Verbose,
+                Level = MessageLevel.Verbose,
                 Text = VerboseMessage,
             };
 
@@ -44,7 +44,7 @@ namespace Ubiquity.NET.CommandLine.UT
             // should not throw for an Information level message
             var informationMsg = new DiagnosticMessage()
             {
-                Level = MsgLevel.Information,
+                Level = MessageLevel.Information,
                 Text = InformationMessage,
             };
 
@@ -53,7 +53,7 @@ namespace Ubiquity.NET.CommandLine.UT
             // should not throw for a warning
             var warningMsg = new DiagnosticMessage()
             {
-                Level = MsgLevel.Warning,
+                Level = MessageLevel.Warning,
                 Text = WarningMessage,
             };
 
@@ -62,7 +62,7 @@ namespace Ubiquity.NET.CommandLine.UT
             // should only throw for an error
             var errorMsg = new DiagnosticMessage()
             {
-                Level = MsgLevel.Error,
+                Level = MessageLevel.Error,
                 Text = ErrorMessage,
             };
 

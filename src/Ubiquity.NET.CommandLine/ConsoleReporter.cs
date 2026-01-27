@@ -5,24 +5,24 @@ namespace Ubiquity.NET.CommandLine
 {
     /// <summary>Implementation of <see cref="IDiagnosticReporter"/> that reports messages to a <see cref="Console"/></summary>
     /// <remarks>
-    /// Messages with a <see cref="DiagnosticMessage.Level"/> of <see cref="MsgLevel.Error"/> are reported to the console's <see cref="Console.Error"/>
+    /// Messages with a <see cref="DiagnosticMessage.Level"/> of <see cref="MessageLevel.Error"/> are reported to the console's <see cref="Console.Error"/>
     /// writer, while other levels, if enabled, are reported to the console's <see cref="Console.Out"/> writer.
     /// </remarks>
     public class ConsoleReporter
         : TextWriterReporter
     {
         /// <summary>Initializes a new instance of the <see cref="ConsoleReporter"/> class.</summary>
-        /// <param name="level">Level of messages to enable for this reporter [Default: <see cref="MsgLevel.Information"/></param>
+        /// <param name="level">Level of messages to enable for this reporter [Default: <see cref="MessageLevel.Information"/></param>
         /// <remarks>
         /// <para>Any message reported with a level that is greater than or equal to <paramref name="level"/>
         /// is enabled, and thus reported.</para>
         /// <para>
-        /// The <see cref="Console.Error"/> stream is used for <see cref="MsgLevel.Error"/>. Any other message level
+        /// The <see cref="Console.Error"/> stream is used for <see cref="MessageLevel.Error"/>. Any other message level
         /// goes to <see cref="Console.Out"/>.
         /// </para>
         /// </remarks>
         [SetsRequiredMembers]
-        public ConsoleReporter( MsgLevel level = MsgLevel.Information)
+        public ConsoleReporter( MessageLevel level = MessageLevel.Information)
             : base(level, Console.Error, Console.Out, Console.Out, Console.Out)
         {
         }

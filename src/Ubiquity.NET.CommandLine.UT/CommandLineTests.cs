@@ -183,7 +183,7 @@ namespace Ubiquity.NET.CommandLine.UT
             bool actionCalled = false;
             var settings = CreateTestSettings();
             using var stringWriter = new StringWriter();
-            var reporter = new TextWriterReporter( MsgLevel.Error, error: stringWriter, warning: stringWriter, information: stringWriter, verbose: stringWriter );
+            var reporter = new TextWriterReporter( MessageLevel.Error, error: stringWriter, warning: stringWriter, information: stringWriter, verbose: stringWriter );
 
             string[] testArgs = ["--option1", "value1"];
 
@@ -288,7 +288,7 @@ namespace Ubiquity.NET.CommandLine.UT
             bool actionCalled = false;
             var settings = CreateTestSettings();
             using var stringWriter = new StringWriter();
-            var reporter = new TextWriterReporter( MsgLevel.Error, error: stringWriter, warning: stringWriter, information: stringWriter, verbose: stringWriter );
+            var reporter = new TextWriterReporter( MessageLevel.Error, error: stringWriter, warning: stringWriter, information: stringWriter, verbose: stringWriter );
 
             string[] testArgs = ["--option1", "value1"];
 

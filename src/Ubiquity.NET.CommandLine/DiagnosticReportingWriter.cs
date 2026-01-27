@@ -17,7 +17,7 @@ namespace Ubiquity.NET.CommandLine
         /// <summary>Initializes a new instance of the <see cref="DiagnosticReportingWriter"/> class.</summary>
         /// <param name="reporter">Reporter to create reports with</param>
         /// <param name="msgLevel">Level of diagnostics to report for this instance</param>
-        public DiagnosticReportingWriter( IDiagnosticReporter reporter, MsgLevel msgLevel )
+        public DiagnosticReportingWriter( IDiagnosticReporter reporter, MessageLevel msgLevel )
         {
             Reporter = reporter;
             MsgLevel = msgLevel;
@@ -85,7 +85,7 @@ namespace Ubiquity.NET.CommandLine
         }
 
         /// <summary>Gets the message level reported by this instance</summary>
-        public MsgLevel MsgLevel { get; }
+        public MessageLevel MsgLevel { get; }
 
         /// <summary>Gets the reporter this instance reports diagnostics to</summary>
         public IDiagnosticReporter Reporter { get; }

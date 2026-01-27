@@ -14,7 +14,7 @@ namespace Ubiquity.NET.CommandLine
     public interface IDiagnosticReporter
     {
         /// <summary>Gets the current reporting level for this reporter</summary>
-        MsgLevel Level { get; }
+        MessageLevel Level { get; }
 
         /// <summary>Gets the encoding used for this reporter</summary>
         Encoding Encoding { get; }

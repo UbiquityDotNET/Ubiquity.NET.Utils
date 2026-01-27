@@ -39,7 +39,7 @@ namespace Ubiquity.NET.CommandLine.InterpolatedStringHandlers
             int literalLength,
             int formattedCount,
             IDiagnosticReporter reporter,
-            MsgLevel level,
+            MessageLevel level,
             IFormatProvider? formatProvider = null
             )
         {

@@ -18,12 +18,12 @@ namespace Ubiquity.NET.CommandLine
         public string ArgumentExpression { get; }
 
         /// <inheritdoc/>
-        public MsgLevel Level => MsgLevel.Error;
+        public MessageLevel Level => MessageLevel.Error;
 
         /// <inheritdoc/>
         public Encoding Encoding => Encoding.Unicode;
 
-        /// <remarks>Any diagnostics with <see cref="MsgLevel.Error"/> will throw an argument exception</remarks>
+        /// <remarks>Any diagnostics with <see cref="MessageLevel.Error"/> will throw an argument exception</remarks>
         /// <inheritdoc/>
         public void Report( DiagnosticMessage diagnostic )
         {
