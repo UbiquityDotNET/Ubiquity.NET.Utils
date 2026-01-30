@@ -25,7 +25,7 @@ namespace Ubiquity.NET.CommandLine.SrcGen.UT
                 => self switch
                 {
                     TestRuntime.Net8_0 => ReferenceAssemblies.Net.Net80,
-                    TestRuntime.Net10_0 => TestHelpers.Net10,
+                    TestRuntime.Net10_0 => ReferenceAssemblies.Net.Net100,
                     _ => throw new InvalidEnumArgumentException( nameof( self ), (int)self, typeof( TestRuntime ) ),
                 };
 

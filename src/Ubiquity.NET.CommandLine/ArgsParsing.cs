@@ -189,7 +189,7 @@ namespace Ubiquity.NET.CommandLine
             where T : IRootCommandBuilder, ICommandBinder<T>
         {
             ArgumentNullException.ThrowIfNull( settings );
-            return TryParse<T>( args, settings, new ConsoleReporter( MsgLevel.Information ), out boundValue, out exitCode );
+            return TryParse<T>( args, settings, new ConsoleReporter( MessageLevel.Information ), out boundValue, out exitCode );
         }
 
         /// <inheritdoc cref="TryParse{T}(string[], CommandLineSettings?, IDiagnosticReporter, out T, out int)"/>
@@ -197,7 +197,7 @@ namespace Ubiquity.NET.CommandLine
         public static bool TryParse<T>( string[] args, out T? boundValue, out int exitCode )
             where T : IRootCommandBuilder, ICommandBinder<T>
         {
-            return TryParse<T>( args, settings: null, new ConsoleReporter( MsgLevel.Information ), out boundValue, out exitCode );
+            return TryParse<T>( args, settings: null, new ConsoleReporter( MessageLevel.Information ), out boundValue, out exitCode );
         }
 
         /// <inheritdoc cref="TryParse{T}(string[], CommandLineSettings?, IDiagnosticReporter, out T, out int)"/>

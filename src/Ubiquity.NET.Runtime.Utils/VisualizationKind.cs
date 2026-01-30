@@ -3,6 +3,10 @@
 
 namespace Ubiquity.NET.Runtime.Utils
 {
+    // TODO: Remove this, in favor of a more generalized "visualizer" that doesn't care about the form. Instead the REPL is provided
+    // an ImmutableArray<IVisualizer> that can handle the various forms of input. (ISyntaxNode, IAstNode)...
+    // see: https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/issues/14
+
     /// <summary>Enumeration to define the kinds of diagnostic intermediate data to generate from a runtime/language AST</summary>
     [Flags]
     public enum VisualizationKind

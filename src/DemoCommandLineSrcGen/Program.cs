@@ -9,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using Ubiquity.NET.CommandLine;
+using Ubiquity.NET.Extensions;
 
 namespace TestNamespace
 {
@@ -25,7 +26,7 @@ namespace TestNamespace
             };
 
             // start with information level for parsing; parsed options might specify different level
-            var reporter = new ColoredConsoleReporter( MsgLevel.Information );
+            var reporter = new ColoredConsoleReporter( MessageLevel.Information );
 
             return await TestOptions.BuildRootCommand( ( options, ct ) => AppMainAsync( options, reporter, ct ) )
                                     .ParseAndInvokeResultAsync( reporter, cts.Token, args );

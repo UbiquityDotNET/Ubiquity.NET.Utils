@@ -6,6 +6,8 @@ using System.CommandLine;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+using Ubiquity.NET.Extensions;
+
 namespace Ubiquity.NET.CommandLine.UT
 {
     [TestClass]

@@ -103,6 +103,7 @@ invocable
 jit
 len
 Lexer
+lhs
 LibLLVM
 Licensor
 Llilum
@@ -158,6 +159,7 @@ referenceable
 Relocations
 repl
 repo
+rhs
 RMW
 runtimes
 RValue

@@ -55,8 +55,8 @@ namespace TestNamespace
                 Required = true,
             }.EnsureFolder();
 
-        internal static readonly global::System.CommandLine.Option<global::Ubiquity.NET.CommandLine.MsgLevel> Verbosity
-            = new global::System.CommandLine.Option<global::Ubiquity.NET.CommandLine.MsgLevel>("-v")
+        internal static readonly global::System.CommandLine.Option<global::Ubiquity.NET.Extensions.MessageLevel> Verbosity
+            = new global::System.CommandLine.Option<global::Ubiquity.NET.Extensions.MessageLevel>("-v")
             {
                 Description = "Verbosity Level",
             };

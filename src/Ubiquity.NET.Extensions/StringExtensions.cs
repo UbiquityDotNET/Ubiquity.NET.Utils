@@ -12,13 +12,12 @@ namespace Ubiquity.NET.Extensions
         /// <returns><see langword="true"/> if the string contains any line endings</returns>
         public static bool HasLineEndings( this string self, bool skipUnicodeLineEndigs = false )
         {
+            Requires.NotNull( self );
 #if NETSTANDARD2_0
-            PolyFillExceptionValidators.ThrowIfNull(self);
             return skipUnicodeLineEndigs
                  ? PolyFillStringExtensions.SystemNewLinesRegex.IsMatch(self)
                  : PolyFillStringExtensions.UnicodeNewLinesRegex.IsMatch(self);
 #else
-            ArgumentNullException.ThrowIfNull(self);
             return skipUnicodeLineEndigs
                  ? SystemNewLinesRegex.IsMatch(self)
                  : UnicodeNewLinesRegex.IsMatch(self);

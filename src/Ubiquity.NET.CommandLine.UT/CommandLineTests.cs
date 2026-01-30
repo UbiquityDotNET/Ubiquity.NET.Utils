@@ -9,6 +9,11 @@ using System.Threading.Tasks;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+using Ubiquity.NET.Extensions;
+
+// Disambiguate from test framework type
+using MessageLevel = Ubiquity.NET.Extensions.MessageLevel;
+
 namespace Ubiquity.NET.CommandLine.UT
 {
     [TestClass]
@@ -183,7 +188,7 @@ namespace Ubiquity.NET.CommandLine.UT
             bool actionCalled = false;
             var settings = CreateTestSettings();
             using var stringWriter = new StringWriter();
-            var reporter = new TextWriterReporter( MsgLevel.Error, error: stringWriter, warning: stringWriter, information: stringWriter, verbose: stringWriter );
+            var reporter = new TextWriterReporter( MessageLevel.Error, error: stringWriter, warning: stringWriter, information: stringWriter, verbose: stringWriter );
 
             string[] testArgs = ["--option1", "value1"];
 
@@ -288,7 +293,7 @@ namespace Ubiquity.NET.CommandLine.UT
             bool actionCalled = false;
             var settings = CreateTestSettings();
             using var stringWriter = new StringWriter();
-            var reporter = new TextWriterReporter( MsgLevel.Error, error: stringWriter, warning: stringWriter, information: stringWriter, verbose: stringWriter );
+            var reporter = new TextWriterReporter( MessageLevel.Error, error: stringWriter, warning: stringWriter, information: stringWriter, verbose: stringWriter );
 
             string[] testArgs = ["--option1", "value1"];
 

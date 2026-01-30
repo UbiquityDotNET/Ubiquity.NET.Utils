@@ -9,6 +9,9 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 using Ubiquity.NET.Extensions;
 
+// Disambiguate from test framework type
+using MessageLevel = Ubiquity.NET.Extensions.MessageLevel;
+
 namespace Ubiquity.NET.CommandLine.UT
 {
     [TestClass]
@@ -63,7 +66,7 @@ namespace Ubiquity.NET.CommandLine.UT
             //     [InterpolatedStringHandlerArgument( "self", "level" )] DiagnosticReporterInterpolatedStringHandler handler
             //)
 
-            const MsgLevel testLevel = MsgLevel.Verbose;
+            const MessageLevel testLevel = MessageLevel.Verbose;
             const string testValue = "[Boo]";
             const string expectedMsg = "This is a test value: [Boo]";
 
@@ -75,8 +78,8 @@ namespace Ubiquity.NET.CommandLine.UT
             var msg = reporter.VerboseMessages[ 0 ];
             Assert.IsNull( msg.Code );
             Assert.AreEqual( testLevel, msg.Level );
-            Assert.IsNull( msg.Location );
-            Assert.IsNull( msg.Origin );
+            Assert.IsNull( msg.SourceLocation.Source );
+            Assert.AreEqual( msg.SourceLocation.Range, default );
             Assert.IsNull( msg.Subcategory );
             Assert.AreEqual( expectedMsg, msg.Text );
 
@@ -84,7 +87,7 @@ namespace Ubiquity.NET.CommandLine.UT
 
             // Validate interpolated string handler filters correctly
             // Messages captured must be Information+
-            reporter = new TestReporter( MsgLevel.Information );
+            reporter = new TestReporter( MessageLevel.Information );
             DiagnosticReporterExtensions.Report( reporter, testLevel, $"This is a test value: {SetValue( testValue )}" );
             Assert.HasCount( 0, reporter.VerboseMessages );
             Assert.HasCount( 0, reporter.AllMessages );
@@ -110,7 +113,7 @@ namespace Ubiquity.NET.CommandLine.UT
             //     string msg
             //)
 
-            const MsgLevel testLevel = MsgLevel.Verbose;
+            const MessageLevel testLevel = MessageLevel.Verbose;
             const string testMsg = "This is a test";
 
             var reporter = new TestReporter(); // Default is capture all
@@ -121,13 +124,13 @@ namespace Ubiquity.NET.CommandLine.UT
             var msg = reporter.VerboseMessages[ 0 ];
             Assert.IsNull( msg.Code );
             Assert.AreEqual( testLevel, msg.Level );
-            Assert.IsNull( msg.Location );
-            Assert.IsNull( msg.Origin );
+            Assert.IsNull( msg.SourceLocation.Source );
+            Assert.AreEqual( msg.SourceLocation.Range, default );
             Assert.IsNull( msg.Subcategory );
             Assert.AreEqual( testMsg, msg.Text );
 
             // Messages captured must be Information+
-            reporter = new TestReporter( MsgLevel.Information );
+            reporter = new TestReporter( MessageLevel.Information );
             DiagnosticReporterExtensions.Report( reporter, testLevel, testMsg );
             Assert.HasCount( 0, reporter.VerboseMessages );
             Assert.HasCount( 0, reporter.AllMessages );
@@ -143,7 +146,7 @@ namespace Ubiquity.NET.CommandLine.UT
             //     [InterpolatedStringHandlerArgument( "self", "level" )] DiagnosticReporterInterpolatedStringHandler handler
             //)
 
-            const MsgLevel testLevel = MsgLevel.Verbose;
+            const MessageLevel testLevel = MessageLevel.Verbose;
             var testLocation = new SourceRange(new SourcePosition(2,3,4), new SourcePosition(3,4,5));
             const string testValue = "[Boo]";
             const string expectedMsg = "This is a test value: [Boo]";
@@ -156,8 +159,8 @@ namespace Ubiquity.NET.CommandLine.UT
             var msg = reporter.VerboseMessages[ 0 ];
             Assert.IsNull( msg.Code );
             Assert.AreEqual( testLevel, msg.Level );
-            Assert.AreEqual( testLocation, msg.Location );
-            Assert.IsNull( msg.Origin );
+            Assert.AreEqual( testLocation, msg.SourceLocation.Range );
+            Assert.IsNull( msg.SourceLocation.Source );
             Assert.IsNull( msg.Subcategory );
             Assert.AreEqual( expectedMsg, msg.Text );
 
@@ -165,7 +168,7 @@ namespace Ubiquity.NET.CommandLine.UT
 
             // Validate interpolated string handler filters correctly
             // Messages captured must be Information+
-            reporter = new TestReporter( MsgLevel.Information );
+            reporter = new TestReporter( MessageLevel.Information );
             DiagnosticReporterExtensions.Report( reporter, testLevel, testLocation, $"This is a test value: {SetValue( testValue )}" );
             Assert.HasCount( 0, reporter.VerboseMessages );
             Assert.HasCount( 0, reporter.AllMessages );
@@ -194,7 +197,7 @@ namespace Ubiquity.NET.CommandLine.UT
             //     params object[] args
             // )
 
-            const MsgLevel testLevel = MsgLevel.Verbose;
+            const MessageLevel testLevel = MessageLevel.Verbose;
             var testLocation = new SourceRange(new SourcePosition(2,3,4), new SourcePosition(3,4,5));
             var testOrigin = new Uri("file://foo");
             const string testFormat = "This is a test value: {0}";
@@ -209,13 +212,13 @@ namespace Ubiquity.NET.CommandLine.UT
             var msg = reporter.VerboseMessages[ 0 ];
             Assert.IsNull( msg.Code );
             Assert.AreEqual( testLevel, msg.Level );
-            Assert.AreEqual( testLocation, msg.Location );
-            Assert.AreEqual( testOrigin, msg.Origin );
+            Assert.AreEqual( testLocation, msg.SourceLocation.Range );
+            Assert.AreEqual( testOrigin, msg.SourceLocation.Source );
             Assert.IsNull( msg.Subcategory );
             Assert.AreEqual( expectedMsg, msg.Text );
 
             // Messages captured must be Information+
-            reporter = new TestReporter( MsgLevel.Information );
+            reporter = new TestReporter( MessageLevel.Information );
             DiagnosticReporterExtensions.Report( reporter, testLevel, testOrigin, testLocation, testFormat, testValue );
             Assert.HasCount( 0, reporter.VerboseMessages );
             Assert.HasCount( 0, reporter.AllMessages );
@@ -232,7 +235,7 @@ namespace Ubiquity.NET.CommandLine.UT
             //     [InterpolatedStringHandlerArgument( "self", "level" )] DiagnosticReporterInterpolatedStringHandler handler
             //)
 
-            const MsgLevel level = MsgLevel.Verbose;
+            const MessageLevel level = MessageLevel.Verbose;
             var location = new SourceRange(new SourcePosition(2,3,4), new SourcePosition(3,4,5));
             var origin = new Uri("file://foo");
             string testValue = "[Boo]";
@@ -243,9 +246,9 @@ namespace Ubiquity.NET.CommandLine.UT
             Assert.HasCount( 1, reporter.VerboseMessages );
             var msg = reporter.VerboseMessages[ 0 ];
             Assert.IsNull( msg.Code );
-            Assert.AreEqual( MsgLevel.Verbose, msg.Level );
-            Assert.AreEqual( location, msg.Location );
-            Assert.AreEqual( origin, msg.Origin );
+            Assert.AreEqual( MessageLevel.Verbose, msg.Level );
+            Assert.AreEqual( location, msg.SourceLocation.Range );
+            Assert.AreEqual( origin, msg.SourceLocation.Source );
             Assert.IsNull( msg.Subcategory );
             Assert.AreEqual( expectedMsg, msg.Text );
 
@@ -253,7 +256,7 @@ namespace Ubiquity.NET.CommandLine.UT
 
             // Validate interpolated string handler filters correctly
             // Messages captured must be Information+
-            reporter = new TestReporter( MsgLevel.Information );
+            reporter = new TestReporter( MessageLevel.Information );
             DiagnosticReporterExtensions.Report( reporter, level, $"This is a test value: {SetValue( testValue )}" );
             Assert.HasCount( 0, reporter.VerboseMessages );
             Assert.HasCount( 0, reporter.AllMessages );
@@ -287,13 +290,13 @@ namespace Ubiquity.NET.CommandLine.UT
             var origin = new Uri("file://foo");
             string expecteMsg = $"Testing 1, 2, {1.23.ToString(CultureInfo.CurrentCulture)}";
 
-            DiagnosticReporterExtensions.Report( reporter, MsgLevel.Verbose, origin, location, "Testing 1, 2, {0}", 1.23 );
+            DiagnosticReporterExtensions.Report( reporter, MessageLevel.Verbose, origin, location, "Testing 1, 2, {0}", 1.23 );
             Assert.HasCount( 1, reporter.VerboseMessages );
             var msg = reporter.VerboseMessages[ 0 ];
             Assert.IsNull( msg.Code );
-            Assert.AreEqual( MsgLevel.Verbose, msg.Level );
-            Assert.AreEqual( location, msg.Location );
-            Assert.AreEqual( origin, msg.Origin );
+            Assert.AreEqual( MessageLevel.Verbose, msg.Level );
+            Assert.AreEqual( location, msg.SourceLocation.Range );
+            Assert.AreEqual( origin, msg.SourceLocation.Source );
             Assert.IsNull( msg.Subcategory );
             Assert.AreEqual( expecteMsg, msg.Text );
         }
@@ -312,7 +315,7 @@ namespace Ubiquity.NET.CommandLine.UT
             //     string? code = default
             // )
 
-            const MsgLevel testLevel = MsgLevel.Verbose;
+            const MessageLevel testLevel = MessageLevel.Verbose;
             var testLocation = new SourceRange(new SourcePosition(2,3,4), new SourcePosition(3,4,5));
             var testOrigin = new Uri("file://foo");
             const string testMsg = "This is a test";
@@ -326,8 +329,8 @@ namespace Ubiquity.NET.CommandLine.UT
             var msg = reporter.VerboseMessages[ 0 ];
             Assert.AreEqual( testCode, msg.Code );
             Assert.AreEqual( testLevel, msg.Level );
-            Assert.AreEqual( testLocation, msg.Location );
-            Assert.AreEqual( testOrigin, msg.Origin );
+            Assert.AreEqual( testLocation, msg.SourceLocation.Range );
+            Assert.AreEqual( testOrigin, msg.SourceLocation.Source );
             Assert.AreEqual( testSubcategory, msg.Subcategory );
             Assert.AreEqual( testMsg, msg.Text );
         }
@@ -336,37 +339,33 @@ namespace Ubiquity.NET.CommandLine.UT
           = [
                 new DiagnosticMessage( )
                 {
+                    SourceLocation = new SourceLocation( new System.Uri( @"file://foo" ), new SourceRange( new SourcePosition( 2, 3, 10 ), new SourcePosition( 3, 3, 12 ) ) ),
                     Code = "Code0",
-                    Level = MsgLevel.Error,
-                    Location = new Extensions.SourceRange( new SourcePosition( 2, 3, 10 ), new SourcePosition( 3, 3, 12 ) ),
-                    Origin = new System.Uri( @"file://foo" ),
+                    Level = MessageLevel.Error,
                     Subcategory = "subcategory",
                     Text = "Text"
                 },
                 new DiagnosticMessage( )
                 {
+                    SourceLocation = new SourceLocation( new System.Uri( @"file://foo" ), new SourceRange( new SourcePosition( 2, 3, 10 ), new SourcePosition( 3, 3, 12 ) ) ),
                     Code = "Code1",
-                    Level = MsgLevel.Warning,
-                    Location = new Extensions.SourceRange( new SourcePosition( 2, 3, 10 ), new SourcePosition( 3, 3, 12 ) ),
-                    Origin = new System.Uri( @"file://foo" ),
+                    Level = MessageLevel.Warning,
                     Subcategory = "subcategory",
                     Text = "Text"
                 },
                 new DiagnosticMessage( )
                 {
+                    SourceLocation = new SourceLocation( new System.Uri( @"file://foo" ), new SourceRange( new SourcePosition( 2, 3, 10 ), new SourcePosition( 3, 3, 12 ) ) ),
                     Code = "Code2",
-                    Level = MsgLevel.Information,
-                    Location = new Extensions.SourceRange( new SourcePosition( 2, 3, 10 ), new SourcePosition( 3, 3, 12 ) ),
-                    Origin = new System.Uri( @"file://foo" ),
+                    Level = MessageLevel.Information,
                     Subcategory = "subcategory",
                     Text = "Text"
                 },
                 new DiagnosticMessage( )
                 {
+                    SourceLocation = new SourceLocation( new System.Uri( @"file://foo" ), new SourceRange( new SourcePosition( 2, 3, 10 ), new SourcePosition( 3, 3, 12 ) ) ),
                     Code = "Code3",
-                    Level = MsgLevel.Verbose,
-                    Location = new Extensions.SourceRange( new SourcePosition( 2, 3, 10 ), new SourcePosition( 3, 3, 12 ) ),
-                    Origin = new System.Uri( @"file://foo" ),
+                    Level = MessageLevel.Verbose,
                     Subcategory = "subcategory",
                     Text = "Text"
                 }

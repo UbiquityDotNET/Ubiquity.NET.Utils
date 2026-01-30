@@ -39,45 +39,39 @@ namespace Ubiquity.NET.CommandLine.SrcGen.UT
                 get
                 {
                     string runDir = self.TestRunDirectory ?? throw new InvalidOperationException("No test run directory");
-                    return Path.GetFullPath( Path.Combine( runDir, "..", "..", "bin" ) );
+                    string retVal = Path.GetFullPath( Path.Combine( runDir, "..", "..", "bin" ) );
+                    return Directory.Exists(retVal)
+                        ? retVal
+                        : throw new DirectoryNotFoundException( $"Directory not found: '{retVal}'" );
                 }
             }
 
             public MetadataReference GetUbiquityNetCommandLineLib( TestRuntime testRuntime )
             {
-                string runtimeName = testRuntime switch
+                return self.GetDependentLib( testRuntime, "Ubiquity.NET.CommandLine" );
+            }
+
+            public MetadataReference GetUbiquityNetExtensionsLib( TestRuntime testRuntime )
+            {
+                return self.GetDependentLib( testRuntime, "Ubiquity.NET.Extensions" );
+            }
+
+            public MetadataReference GetDependentLib( TestRuntime testRuntime, string targetName )
+            {
+                string runtimePathPartName = testRuntime switch
                 {
                     TestRuntime.Net8_0 => "net8.0",
                     TestRuntime.Net10_0 => "net10.0",
                     _ => throw new InvalidEnumArgumentException(nameof(testRuntime), (int)testRuntime, typeof(TestRuntime))
                 };
 
-                string pathName = Path.Combine( self.BuildOutputBinPath, "Ubiquity.NET.CommandLine", ConfigName, runtimeName, "Ubiquity.NET.CommandLine.dll" );
+                string pathName = Path.Combine( self.BuildOutputBinPath, targetName, ConfigName, runtimePathPartName, $"{targetName}.dll" );
                 return MetadataReference.CreateFromFile( pathName );
             }
         }
 
-        #region .NET 10 Reference Assemblies
-
-        /// <summary>Gets the .NET 10 reference assemblies</summary>
-        /// <remarks>
-        /// Sadly, Microsoft.CodeAnalysis.Testing.ReferenceAssemblies does not contain any reference for .NET 10
-        /// (even the latest version of that lib)
-        /// </remarks>
-        /// <seealso href="https://github.com/dotnet/roslyn-sdk/issues/1233"/>
-        public static ReferenceAssemblies Net10 => LazyNet10Refs.Value;
-
-        private static readonly Lazy<ReferenceAssemblies> LazyNet10Refs = new(
-            static ()=> new(
-                targetFramework: "net10.0",
-                referenceAssemblyPackage: new PackageIdentity("Microsoft.NETCore.App.Ref", "10.0.0"),
-                referenceAssemblyPath: Path.Combine("ref", "net10.0")
-            )
-        );
-        #endregion
-
         // There is no way to detect the configuration at runtime to include the correct
-        // reference to the DLL so use the compiler define to do the best available.
+        // reference to an assembly so use the compiler define to do the best available.
 #if DEBUG
         private const string ConfigName = "Debug";
 #else

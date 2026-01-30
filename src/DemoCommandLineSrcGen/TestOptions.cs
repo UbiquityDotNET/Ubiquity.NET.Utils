@@ -6,15 +6,11 @@
 using System.IO;
 using System.Linq;
 
-using Ubiquity.NET.CommandLine;
 using Ubiquity.NET.CommandLine.GeneratorAttributes;
+using Ubiquity.NET.Extensions;
 
 namespace TestNamespace
 {
-    // It is important to understand how "required" is handled in the underlying command line handler
-    // in System.CommandLine. The semantics are:
-    //     When the command is invoked, the value may not be null.
-    // That is, it is NOT evaluated during parse, ONLY during invocation.
     [RootCommand( Description = "Root command for tests" )]
     internal partial class TestOptions
     {
@@ -23,7 +19,7 @@ namespace TestNamespace
         public required DirectoryInfo SomePath { get; init; }
 
         [Option( "-v", Description = "Verbosity Level" )]
-        public MsgLevel Verbosity { get; init; } = MsgLevel.Information;
+        public MessageLevel Verbosity { get; init; } = MessageLevel.Information;
 
         [Option( "-b", Description = "Test Some existing Path", Required = true )]
         [FolderValidation( FolderValidation.ExistingOnly )]

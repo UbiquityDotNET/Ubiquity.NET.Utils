@@ -34,15 +34,9 @@ namespace Ubiquity.NET.SrcGeneration
             bool writeClosingNewLine = false
             )
         {
-#if NET6_0_OR_GREATER
-            ArgumentNullException.ThrowIfNull( self );
-            ArgumentNullException.ThrowIfNull( open );
-            ArgumentNullException.ThrowIfNull( close );
-#else
-            PolyFillExceptionValidators.ThrowIfNull( self );
-            PolyFillExceptionValidators.ThrowIfNull( open );
-            PolyFillExceptionValidators.ThrowIfNull( close );
-#endif
+            Requires.NotNull( self );
+            Requires.NotNull( open );
+            Requires.NotNull( close );
 
             if(leadingLine is not null)
             {
@@ -81,11 +75,7 @@ namespace Ubiquity.NET.SrcGeneration
         /// <returns>Disposable that when invoked, will reduce the indentation.</returns>
         public static IDisposable PushIndent( this IndentedTextWriter self )
         {
-#if NET6_0_OR_GREATER
-            ArgumentNullException.ThrowIfNull( self );
-#else
-            PolyFillExceptionValidators.ThrowIfNull( self );
-#endif
+            Requires.NotNull( self );
 
             ++self.Indent;
 
@@ -99,11 +89,7 @@ namespace Ubiquity.NET.SrcGeneration
         /// <param name="self">Writer to apply extension method to</param>
         public static void WriteEmptyLine( this IndentedTextWriter self )
         {
-#if NET6_0_OR_GREATER
-            ArgumentNullException.ThrowIfNull( self );
-#else
-            PolyFillExceptionValidators.ThrowIfNull( self );
-#endif
+            Requires.NotNull( self );
 
             self.WriteLineNoTabs( string.Empty );
         }

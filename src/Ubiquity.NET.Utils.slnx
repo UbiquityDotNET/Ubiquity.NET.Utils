@@ -47,7 +47,6 @@
   <Project Path="Ubiquity.NET.CommandLine/Ubiquity.NET.CommandLine.csproj" Id="3dae7afd-0d33-4805-855b-c1283237b58a" />
   <Project Path="Ubiquity.NET.Extensions/Ubiquity.NET.Extensions.csproj" />
   <Project Path="Ubiquity.NET.InteropHelpers/Ubiquity.NET.InteropHelpers.csproj" />
-  <Project Path="Ubiquity.NET.PollyFill.SharedSources/Ubiquity.NET.PollyFill.SharedSources.shproj" Id="9fb998e5-6d78-4129-8022-9bb39fea81f2" />
   <Project Path="Ubiquity.NET.Runtime.Utils/Ubiquity.NET.Runtime.Utils.csproj" />
   <Project Path="Ubiquity.NET.SourceGenerator.Test.Utils/Ubiquity.NET.SourceGenerator.Test.Utils.csproj" Id="d147612e-b247-49cc-8fda-800e1e69879c" />
   <Project Path="Ubiquity.NET.SrcGeneration/Ubiquity.NET.SrcGeneration.csproj" />

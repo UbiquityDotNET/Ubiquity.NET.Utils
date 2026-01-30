@@ -8,10 +8,27 @@ namespace Ubiquity.NET.Runtime.Utils
         : IAstNode
     {
         /// <inheritdoc/>
-        public SourceRange Location { get; }
+        public SourceLocation Location { get; }
 
         /// <inheritdoc/>
         public abstract IEnumerable<IAstNode> Children { get; }
+
+        /// <inheritdoc/>
+        [SuppressMessage( "CodeQuality", "IDE0079:Remove unnecessary suppression", Justification = "Only applies to 8.0 builds" )]
+        [SuppressMessage( "Style", "IDE0305:Simplify collection initialization", Justification = "Result is obscure/terse syntax that is anything but more comprehensible" )]
+        public ImmutableList<DiagnosticMessage> Diagnostics => DiagnosticList;
+
+        /// <inheritdoc/>
+        public void AddDiagnostic( DiagnosticMessage error )
+        {
+            ImmutableInterlocked.Update( ref DiagnosticList, ( l, e ) => l.Add( e ), error );
+        }
+
+        /// <inheritdoc/>
+        public void AddDiagnostics( IEnumerable<DiagnosticMessage> errors )
+        {
+            ImmutableInterlocked.Update( ref DiagnosticList, ( l, e ) => l.AddRange( e ), errors );
+        }
 
         // NOTE: Accept() dispatching is NOT implemented here to allow type specific handling
         //       dispatch to the correct Visit(...). Implementation of that method requires
@@ -34,9 +51,11 @@ namespace Ubiquity.NET.Runtime.Utils
 
         /// <summary>Initializes a new instance of the <see cref="AstNode"/> class</summary>
         /// <param name="location">Location in the source this node represents</param>
-        protected AstNode( SourceRange location )
+        protected AstNode( SourceLocation location )
         {
             Location = location;
         }
+
+        private ImmutableList<DiagnosticMessage> DiagnosticList = [];
     }
 }

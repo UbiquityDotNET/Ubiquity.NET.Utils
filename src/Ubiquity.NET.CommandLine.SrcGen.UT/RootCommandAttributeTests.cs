@@ -73,7 +73,8 @@ namespace Ubiquity.NET.CommandLine.SrcGen.UT
                     ReferenceAssemblies = testRuntime.ReferenceAssemblies,
                     AdditionalReferences =
                     {
-                        TestContext.GetUbiquityNetCommandLineLib( testRuntime )
+                        TestContext.GetUbiquityNetCommandLineLib( testRuntime ),
+                        TestContext.GetUbiquityNetExtensionsLib( testRuntime )
                     },
                     OutputKind = OutputKind.DynamicallyLinkedLibrary, // Don't require a Main() method
                     GeneratedSources = { (expectedHintPath, expectedContent) }

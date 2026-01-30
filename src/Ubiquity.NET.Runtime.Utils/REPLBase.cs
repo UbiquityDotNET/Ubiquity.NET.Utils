@@ -16,7 +16,7 @@ namespace Ubiquity.NET.Runtime.Utils
         public abstract void ProcessResults( T resultValue );
 
         /// <summary>Gets the error logger to use for logging any parse errors</summary>
-        public IParseErrorReporter ErrorLogger { get; }
+        public IDiagnosticReporter Reporter { get; }
 
         /// <summary>Asynchronously runs the REPL loop on the input reader</summary>
         /// <param name="input">Reader to process the input for</param>
@@ -31,7 +31,7 @@ namespace Ubiquity.NET.Runtime.Utils
             // Create sequence of parsed AST RootNodes to feed the REPL loop
             var replSeq = from stmt in input.ToStatements( ShowPrompt, cancelToken: cancelToken )
                           let node = parser.Parse( stmt )
-                          where !ErrorLogger.CheckAndReportParseErrors( node )
+                          where node.IsValid()
                           select node;
 
             await foreach(IAstNode node in replSeq.WithCancellation( cancelToken ))
@@ -46,19 +46,34 @@ namespace Ubiquity.NET.Runtime.Utils
                 }
                 catch(CodeGeneratorException ex)
                 {
+                    var diagnostic = new DiagnosticMessage()
+                    {
+                        Code = CodeGeneratorExceptionCode,
+                        Level = MessageLevel.Error,
+                        SourceLocation = default,
+                        Subcategory = default,
+                        Text = ex.ToString()
+                    };
+
                     // This is an internal error that is not recoverable.
                     // Report the error and stop additional processing
-                    ErrorLogger.ReportError( ex.ToString() );
+                    Reporter.Report(diagnostic);
                     break;
                 }
             }
         }
 
+        /// <summary>Gets the string form of the code to use for any <see cref="DiagnosticMessage"/> created for a <see cref="CodeGeneratorException"/></summary>
+        /// <remarks>
+        /// The default value is "CG0001" but derived types may override this if an alternate is desired.
+        /// </remarks>
+        protected virtual string CodeGeneratorExceptionCode { get; } = "CG0001";
+
         /// <summary>Initializes a new instance of the <see cref="REPLBase{T}"/> class</summary>
-        /// <param name="logger">Logger to use for reporting any errors during parse</param>
-        protected REPLBase( IParseErrorReporter logger )
+        /// <param name="reporter">Diagnostic reporter to report messages to</param>
+        protected REPLBase( IDiagnosticReporter reporter )
         {
-            ErrorLogger = logger;
+            Reporter = reporter;
         }
     }
 }

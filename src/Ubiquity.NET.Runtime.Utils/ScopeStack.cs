@@ -7,10 +7,11 @@ namespace Ubiquity.NET.Runtime.Utils
     /// <typeparam name="T">Type of the values to associate with the symbol name</typeparam>
     /// <remarks>
     /// <para>In essence, this is a stack of Dictionaries of symbol names to <typeparamref name="T"/>
-    /// values that is most commonly used in code generation. Most languages have some sort of notion
-    /// of symbol scopes and name lookups. This implements the common case of nested scopes where a
-    /// new 'local scope' may override some of the symbols in a parent scope. Any values in any parent
-    /// not overridden by the child are visible to the child scope.</para>
+    /// values that is most commonly used in code generation and other language processing scenarios.
+    /// Most languages have some sort of notion of symbol scopes and name lookups. This implements the
+    /// common case of nested scopes where a new 'local scope' may override some of the symbols in a
+    /// parent scope. Any values in any parent not overridden by the child are visible to the child
+    /// scope.</para>
     /// </remarks>
     [SuppressMessage( "Naming", "CA1711:Identifiers should not have incorrect suffix", Justification = "Semantically this type *is* a Stack" )]
     public class ScopeStack<T>

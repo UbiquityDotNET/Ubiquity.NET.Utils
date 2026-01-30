@@ -11,14 +11,7 @@ namespace Ubiquity.NET.Extensions.Properties
     {
         internal static LocalizableResourceString Build( [NotNull] string resourceName, params object?[] args )
         {
-#if NET6_0_OR_GREATER
-            ArgumentNullException.ThrowIfNull(resourceName);
-#else
-            if( resourceName is null )
-            {
-                throw new ArgumentNullException(nameof(resourceName));
-            }
-#endif
+            Requires.NotNull(resourceName);
             return new LocalizableResourceString( resourceName, Resources.ResourceManager, args );
         }
 

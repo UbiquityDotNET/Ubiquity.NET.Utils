@@ -3,6 +3,10 @@
 
 namespace Ubiquity.NET.Runtime.Utils
 {
+    // TODO: Remove this, in favor of a more generalized "visualizer" that doesn't care about the form. Instead the REPL is provided
+    // an ImmutableArray<IVisualizer> that can handle the various forms of input. (ISyntaxNode, IAstNode)...
+    // see: https://github.com/UbiquityDotNET/Ubiquity.NET.Utils/issues/14
+
     /// <summary>Interface to process the results of a parse for "visualization"</summary>
     /// <parameter>
     /// Generally this is used before or in place of generating any actual code to aid

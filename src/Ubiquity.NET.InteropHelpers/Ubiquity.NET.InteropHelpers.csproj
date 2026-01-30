@@ -42,6 +42,4 @@
     <ItemGroup>
       <ProjectReference Include="..\Ubiquity.NET.Extensions\Ubiquity.NET.Extensions.csproj" />
     </ItemGroup>
-
-    <Import Condition="$(TargetFramework)=='netstandard2.0'" Project="..\Ubiquity.NET.PollyFill.SharedSources\Ubiquity.NET.PollyFill.SharedSources.projitems" Label="Shared" />
 </Project>

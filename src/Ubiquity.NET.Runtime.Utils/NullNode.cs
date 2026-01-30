@@ -8,7 +8,7 @@ namespace Ubiquity.NET.Runtime.Utils
         : IAstNode
     {
         /// <inheritdoc/>
-        public SourceRange Location { get; } = default;
+        public SourceLocation Location { get; } = default;
 
         /// <inheritdoc/>
         public IEnumerable<IAstNode> Children { get; } = [];
@@ -29,6 +29,21 @@ namespace Ubiquity.NET.Runtime.Utils
         {
             ArgumentNullException.ThrowIfNull( visitor );
             return default;
+        }
+
+        /// <inheritdoc/>
+        public ImmutableList<DiagnosticMessage> Diagnostics => [];
+
+        /// <inheritdoc/>
+        public void AddDiagnostic( DiagnosticMessage error )
+        {
+            throw new NotSupportedException( "Cannot add diagnostics to a null node" );
+        }
+
+        /// <inheritdoc/>
+        public void AddDiagnostics( IEnumerable<DiagnosticMessage> errors )
+        {
+            throw new NotSupportedException( "Cannot add diagnostics to a null node" );
         }
 
         /// <summary>Gets a singleton null node instance</summary>

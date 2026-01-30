@@ -10,6 +10,9 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 using Ubiquity.NET.Extensions;
 
+// Disambiguate from test framework type
+using MessageLevel = Ubiquity.NET.Extensions.MessageLevel;
+
 namespace Ubiquity.NET.CommandLine.UT
 {
     [TestClass]
@@ -18,17 +21,16 @@ namespace Ubiquity.NET.CommandLine.UT
         [TestMethod]
         public void Construction_throws_on_invalid_init( )
         {
-            Assert.AreEqual( default, MsgLevel.None, "None should be the default (invalid) level" );
+            Assert.AreEqual( default, MessageLevel.None, "None should be the default (invalid) level" );
 
             Assert.ThrowsExactly<ArgumentException>(
                 static ( ) =>
                 {
                     _ = new DiagnosticMessage()
                     {
+                        SourceLocation = default,
                         Code = "Has Whitespace",
-                        Level = MsgLevel.Verbose,
-                        Location = default,
-                        Origin = default,
+                        Level = MessageLevel.Verbose,
                         Subcategory = default,
                         Text = string.Empty,
                     };
@@ -41,10 +43,9 @@ namespace Ubiquity.NET.CommandLine.UT
                 {
                     _ = new DiagnosticMessage()
                     {
+                        SourceLocation = default,
                         Code = default,
-                        Level = MsgLevel.Verbose,
-                        Location = default,
-                        Origin = default,
+                        Level = MessageLevel.Verbose,
                         Subcategory = "Has Whitespace",
                         Text = string.Empty,
                     };
@@ -57,10 +58,9 @@ namespace Ubiquity.NET.CommandLine.UT
                 {
                     _ = new DiagnosticMessage()
                     {
+                        SourceLocation = default,
                         Code = default,
                         Level = default,
-                        Location = default,
-                        Origin = default,
                         Subcategory = default,
                         Text = string.Empty,
                     };
@@ -73,10 +73,9 @@ namespace Ubiquity.NET.CommandLine.UT
                 {
                     _ = new DiagnosticMessage()
                     {
+                        SourceLocation = default,
                         Code = default,
-                        Level = (MsgLevel)int.MaxValue,
-                        Location = default,
-                        Origin = default,
+                        Level = (MessageLevel)int.MaxValue,
                         Subcategory = default,
                         Text = string.Empty,
                     };
@@ -89,10 +88,9 @@ namespace Ubiquity.NET.CommandLine.UT
                 {
                     _ = new DiagnosticMessage()
                     {
+                        SourceLocation = default,
                         Code = default,
-                        Level = MsgLevel.Verbose,
-                        Location = default,
-                        Origin = default,
+                        Level = MessageLevel.Verbose,
                         Subcategory = default,
                         Text = string.Empty,
                     };
@@ -105,10 +103,9 @@ namespace Ubiquity.NET.CommandLine.UT
                 {
                     _ = new DiagnosticMessage()
                     {
+                        SourceLocation = default,
                         Code = default,
-                        Level = MsgLevel.Verbose,
-                        Location = default,
-                        Origin = default,
+                        Level = MessageLevel.Verbose,
                         Subcategory = default,
                         Text = " \t\n\r\f",
                     };
@@ -123,10 +120,9 @@ namespace Ubiquity.NET.CommandLine.UT
                 {
                     _ = new DiagnosticMessage()
                     {
+                        SourceLocation = default,
                         Code = default,
-                        Level = MsgLevel.Verbose,
-                        Location = default,
-                        Origin = default,
+                        Level = MessageLevel.Verbose,
                         Subcategory = default,
                         Text = null,
                     };
@@ -142,25 +138,24 @@ namespace Ubiquity.NET.CommandLine.UT
             const string testCode = "CODE1";
             const string testSubCategory = "TestSubcategory";
             const string testMsg = "This is a test message";
-            const MsgLevel testLevel = MsgLevel.Verbose;
+            const MessageLevel testLevel = MessageLevel.Verbose;
 
             var testLoc = new SourceRange(new SourcePosition(1,2,3), new SourcePosition(2,1,4));
             var testOrigin = new Uri("file://MyOrigin");
 
             var msg = new DiagnosticMessage( )
             {
+                SourceLocation = new SourceLocation(testOrigin, testLoc),
                 Code = testCode,
                 Level = testLevel,
-                Location = testLoc,
-                Origin = testOrigin,
                 Subcategory = testSubCategory,
                 Text = testMsg,
             };
 
             Assert.AreEqual( testCode, msg.Code );
             Assert.AreEqual( testLevel, msg.Level );
-            Assert.AreEqual( testLoc, msg.Location );
-            Assert.AreEqual( testOrigin, msg.Origin );
+            Assert.AreEqual( testLoc, msg.SourceLocation.Range );
+            Assert.AreEqual( testOrigin, msg.SourceLocation.Source );
             Assert.AreEqual( testSubCategory, msg.Subcategory );
             Assert.AreEqual( testMsg, msg.Text );
         }
@@ -171,10 +166,9 @@ namespace Ubiquity.NET.CommandLine.UT
             const string testMsg = "This is a test";
             var msg = new DiagnosticMessage( )
             {
+                SourceLocation = default,
                 Code = default,
-                Level = MsgLevel.Error,
-                Location = default,
-                Origin = default,
+                Level = MessageLevel.Error,
                 Subcategory = default,
                 Text = testMsg,
             };
@@ -190,9 +184,9 @@ namespace Ubiquity.NET.CommandLine.UT
             const string testCode = "CODE1";
             const string testSubCategory = "Subcategory";
             const string testMsg = "This is a test message";
-            const MsgLevel testLevel = MsgLevel.Verbose;
+            const MessageLevel testLevel = MessageLevel.Verbose;
 
-            var testLoc = new SourceRange(new SourcePosition(1,2,3), new SourcePosition(2,1,4));
+            var testRange = new SourceRange(new SourcePosition(1,2,3), new SourcePosition(2,1,4));
             var testOrigin = new Uri("file://C:/MyOrigin.txt");
 
             // MSBuild format: 'Origin : Subcategory Category Code : Text'
@@ -200,15 +194,14 @@ namespace Ubiquity.NET.CommandLine.UT
 
             var msg = new DiagnosticMessage( )
             {
+                SourceLocation = new SourceLocation(testOrigin, testRange),
                 Code = testCode,
                 Level = testLevel,
-                Location = testLoc,
-                Origin = testOrigin,
                 Subcategory = testSubCategory,
                 Text = testMsg,
             };
 
-            string actual = msg.ToString();
+            string actual = msg.ToString("M", null);
             Assert.AreEqual( expectedMsBuildMsg, msg.ToString( "M", null ) );
 
             // Test platform specific forms
@@ -217,7 +210,14 @@ namespace Ubiquity.NET.CommandLine.UT
             //       Test currently assumes all runtime specific forms are MSBuild
             //       As new runtimes are supported this should validate them.
             Assert.AreEqual( expectedMsBuildMsg, msg.ToString() );
-            Assert.AreEqual( expectedMsBuildMsg, msg.ToString( "G", CultureInfo.CurrentCulture ) );
+            if(OperatingSystem.IsWindows())
+            {
+                Assert.AreEqual( expectedMsBuildMsg, msg.ToString( "G", CultureInfo.CurrentCulture ) );
+            }
+            else
+            {
+                Assert.Inconclusive("Non-Windows platforms use platform specific generic form, not yet accounted for in this test");
+            }
         }
     }
 }

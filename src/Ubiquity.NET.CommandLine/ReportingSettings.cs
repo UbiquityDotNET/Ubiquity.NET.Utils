@@ -14,8 +14,8 @@ namespace Ubiquity.NET.CommandLine
             return new()
             {
                 EnableDefaultExceptionHandler = enableDefaultHandler,
-                Error = new DiagnosticReportingWriter( self, MsgLevel.Error ),
-                Output = new DiagnosticReportingWriter( self, MsgLevel.Information ),
+                Error = new DiagnosticReportingWriter( self, MessageLevel.Error ),
+                Output = new DiagnosticReportingWriter( self, MessageLevel.Information ),
                 ProcessTerminationTimeout = timeout,
             };
         }

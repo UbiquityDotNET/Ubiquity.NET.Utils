@@ -5,7 +5,7 @@ namespace Ubiquity.NET.Runtime.Utils
 {
     /// <inheritdoc cref="IAstVisitor{TResult, TArg}"/>
     /// <remarks>
-    /// <para>This interface is sued for visiting an AST, typically for
+    /// <para>This interface is used for visiting an AST, typically for
     /// generating code but may also be used to detect errors in the
     /// AST etc..</para>
     /// </remarks>
@@ -21,9 +21,9 @@ namespace Ubiquity.NET.Runtime.Utils
     /// <remarks>
     /// <para>This interface is used for visiting an AST, typically for generating code but may also
     /// be used to detect errors in the AST etc..</para>
-    /// <para>In frameworks that support it the <typeparamref name="TArg"/> is typically used for a <c>byref-like</c>
+    /// <note type="important">In frameworks that support it the <typeparamref name="TArg"/> is typically used for a <c>byref-like</c>
     /// type where the type may NOT be stored on the heap and MUST be passed via <c>ref readonly</c>. (Such support
-    /// requires at least .NET 9 to support <c>allows ref struct</c>, which requires runtime support.)</para>
+    /// requires at least .NET 9 to support <c>allows ref struct</c>, which requires runtime support.)</note>
     /// </remarks>
     public interface IAstVisitor<out TResult, TArg>
 #if NET9_0_OR_GREATER

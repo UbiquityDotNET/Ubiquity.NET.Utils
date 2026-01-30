@@ -9,6 +9,14 @@ namespace Ubiquity.NET.Runtime.Utils
     /// <summary>Core interface for a general parser that parses input text into an AST represented as a root <see cref="IAstNode"/></summary>
     public interface IParser
     {
+        /// <summary>Gets the reporter to use for reporting any diagnostics</summary>
+        /// <remarks>
+        /// If <see cref="DiagnosticReporter"/> is provided it is used to report
+        /// any diagnostics found during the parse. If not provided the diagnostics are
+        /// still available with each node in the result.
+        /// </remarks>
+        IDiagnosticReporter? DiagnosticReporter { get; }
+
         /// <summary>Try parsing the given input text</summary>
         /// <param name="txt">Text to parse</param>
         /// <returns>Parse results as an <see cref="IAstNode"/></returns>
@@ -19,7 +27,7 @@ namespace Ubiquity.NET.Runtime.Utils
         /// implementing <see cref="IParser"/>.
         /// <note type="important">
         /// If the parse succeeds, but creation of the AST fails, then the result is
-        /// an AST tree with some nodes as <see cref="ErrorNode"/>
+        /// an AST tree with some nodes with diagnostic messages.
         /// </note>
         /// </remarks>
         IAstNode? Parse( string txt );
@@ -40,11 +48,11 @@ namespace Ubiquity.NET.Runtime.Utils
         /// <param name="sourceFilePath">Path of the input file to parse</param>
         /// <returns>Parse results as an <see cref="IAstNode"/></returns>
         /// <inheritdoc cref="IParser.Parse(string)" path="/remarks"/>
-        public static IAstNode? ParseFrom<T>(this T self, string sourceFilePath)
+        public static IAstNode? ParseFrom<T>( this T self, string sourceFilePath )
             where T : IParser
         {
             using var rdr = File.OpenText( sourceFilePath );
-            return self.Parse(rdr);
+            return self.Parse( rdr );
         }
     }
 }

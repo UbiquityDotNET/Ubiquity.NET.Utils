@@ -87,8 +87,15 @@ possible.
 
 ### Lists
 The largest intrusion of the XML into the source is that of lists. The XML doc comments
-official support is to use the `<list>` tag. However, that is VERY intrusive and doesn't
-easily support sub-lists. Consider:
+official support is to use the `<list>` tag. For an example of how intrusive and ugly these
+can become see this [Blog Article](https://documentation.contiem.com/HelpAuthoringTools/UseListsAndTablesInXmlComments.html)
+>[!NOTE]
+> The output shown in that article is using a theoretcial rendering. It is ***NOT*** how the
+> IDE Will present the text. Usually the IDE is not as "pretty".
+
+#### Bulleted lists
+Unfortunately, the XML doc comments for a bulleted list (and any other form really) is VERY
+intrusive and doesn't easily support sub-lists. Consider:
 
 ``` C#
 /// Additional steps might include:
@@ -122,7 +129,7 @@ Which one would ***YOU*** rather encounter in code? Which one is easier to under
 reading the source? This repo chooses the latter. (If you favor the former, perhaps you
 should reconsider... :grinning:)
 
-#### How to handle lists
+##### How to handle bulleted lists
 There is little that can be done to alter the rendering of any editor support, at most an
 editor might allow specification of a CSS file, but that is the lowest priority of doc
 comments. Readability by maintainers of the docs AND the rendering for final docs used by
@@ -151,3 +158,24 @@ render properly in final docs.
             1) Turning this off can greatly reduce the noise AND reduce the problems of
                different rendering as lists are generally not used in the other elements.
 
+#### Tables
+There's sadly no simple rendering of these. Many user requests for a simpler markdown tag
+have gone unresolved. The docfx tool will render tables from the XML comment form though
+so a pattern of implementing them is possible
+
+#### Guidance for tables
+1) Avoid using them if at all possible.
+    - This is the simplest advice to give for these, they are ugly and intrusive so avoid
+      them whenever possible.
+2) If they are unavoidable or alternate representations leads to even uglier forms then use
+   the following guidance.
+
+``` C#
+/// <list type="table">
+/// <listheader><term>{Header 1}</term><term>{Header 2}</term></listheader>
+/// <item><term>{Row 1, Col 1}</term><term>{Row 1, Col 2}</term></item>
+/// <item><term>{Row 2, Col 2}</term><term>{Row 2, Col 2}</term></item>
+/// </list>
+```
+If a table needs more than 3 columns this gets ugly, fast, don't do that. Re-think the docs,
+use an additional markdown file that includes a simpler form of the table, anything else...

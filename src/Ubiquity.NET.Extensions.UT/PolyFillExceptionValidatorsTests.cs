@@ -3,9 +3,10 @@
 
 // .NET 7 added the various exception static methods for parameter validation
 // This will back fill them for earlier versions.
-//
-// NOTE: C #14 extension keyword support is required to make this work.
-#if !NET7_0_OR_GREATER
+
+#if NET481
+
+using Ubiquity.NET.PolyFill;
 
 namespace Ubiquity.NET.Extensions.UT
 {
