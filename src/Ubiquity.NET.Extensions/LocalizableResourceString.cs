@@ -37,15 +37,10 @@ namespace Ubiquity.NET.Extensions
             params object?[] formatArguments
             )
         {
-#if NETCOREAPP2_1_OR_GREATER
-            ArgumentNullException.ThrowIfNull( nameOfLocalizableResource );
-            ArgumentNullException.ThrowIfNull( resourceManager );
-            ArgumentNullException.ThrowIfNull( formatArguments );
-#else
-            PolyFillExceptionValidators.ThrowIfNull( nameOfLocalizableResource );
-            PolyFillExceptionValidators.ThrowIfNull( resourceManager );
-            PolyFillExceptionValidators.ThrowIfNull( formatArguments );
-#endif
+            Requires.NotNull( nameOfLocalizableResource );
+            Requires.NotNull( resourceManager );
+            Requires.NotNull( formatArguments );
+
             ResourceManager = resourceManager;
             NameOfLocalizableResource = nameOfLocalizableResource;
             FormatArguments = formatArguments;

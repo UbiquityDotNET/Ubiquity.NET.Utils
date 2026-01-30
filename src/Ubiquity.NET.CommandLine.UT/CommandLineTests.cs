@@ -9,6 +9,11 @@ using System.Threading.Tasks;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+using Ubiquity.NET.Extensions;
+
+// Disambiguate from test framework type
+using MessageLevel = Ubiquity.NET.Extensions.MessageLevel;
+
 namespace Ubiquity.NET.CommandLine.UT
 {
     [TestClass]

@@ -13,15 +13,12 @@ For an explanation of the benefits of the language feature see: https://www.hans
 */
 
 global using System;
-global using System.Collections;
 global using System.Collections.Generic;
-global using System.Collections.Immutable;
 global using System.CommandLine;
 global using System.CommandLine.Completions;
 global using System.CommandLine.Help;
 global using System.CommandLine.Invocation;
 global using System.CommandLine.Parsing;
-global using System.ComponentModel;
 global using System.Diagnostics.CodeAnalysis;
 global using System.Globalization;
 global using System.IO;
@@ -31,7 +28,4 @@ global using System.Text;
 global using System.Threading;
 global using System.Threading.Tasks;
 
-global using AnsiCodes;
-
-global using Ubiquity.NET.CommandLine.InterpolatedStringHandlers;
 global using Ubiquity.NET.Extensions;

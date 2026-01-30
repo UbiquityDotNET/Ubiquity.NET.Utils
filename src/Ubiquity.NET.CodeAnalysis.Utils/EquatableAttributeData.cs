@@ -25,7 +25,7 @@ namespace Ubiquity.NET.CodeAnalysis.Utils
         /// <param name="data">The <see cref="AttributeData"/> to capture equatable information from</param>
         public EquatableAttributeData( AttributeData data )
         {
-            PolyFillExceptionValidators.ThrowIfNull( data );
+            Requires.NotNull( data );
 
             Name = data.GetNamespaceQualifiedName();
             ConstructorArguments = [ .. data.ConstructorArguments.Select(e=>(StructurallyEquatableTypedConstant)e) ];

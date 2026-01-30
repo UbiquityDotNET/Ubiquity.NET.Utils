@@ -34,11 +34,7 @@ namespace Ubiquity.NET.Extensions
             get;
             init
             {
-#if NET7_0_OR_GREATER
-                ArgumentOutOfRangeException.ThrowIfLessThan(value, 0);
-#else
-                PolyFillExceptionValidators.ThrowIfLessThan(value, 0);
-#endif
+                Requires.GreaterThanOrEqualTo(value, 0);
                 field = value;
             }
         }
@@ -49,13 +45,57 @@ namespace Ubiquity.NET.Extensions
             get;
             init
             {
-#if NET7_0_OR_GREATER
-                ArgumentOutOfRangeException.ThrowIfLessThanOrEqual(value, 0);
-#else
-                PolyFillExceptionValidators.ThrowIfLessThanOrEqual(value, 0);
-#endif
+                Requires.GreaterThan(value, 0);
                 field = value;
             }
+        }
+
+        /// <summary>Offset an absolute position by amounts specified in a relative offset</summary>
+        /// <param name="offset">relative position to offset</param>
+        /// <returns>New position offset from this position</returns>
+        /// <remarks>
+        /// In essence this instance is considered an absolute position and <paramref name="offset"/>
+        /// is relative to it. The result is an absolute position that results from adding the relative
+        /// offset to the one represented by this instance.
+        /// </remarks>
+        public SourcePosition Offset( SourcePosition offset )
+        {
+            return Offset( this, offset );
+        }
+
+        /// <summary>Offset an absolute position by amounts specified in a relative offset</summary>
+        /// <param name="baseValue">Base/Absolute position to apply the offset to</param>
+        /// <param name="offset">relative position to offset</param>
+        /// <returns>New position offset from <paramref name="baseValue"/></returns>
+        /// <remarks>
+        /// In essence <paramref name="baseValue"/> is considered an absolute position and <paramref name="offset"/>
+        /// is relative to it. The result is an absolute position that results from adding the relative
+        /// offset to <paramref name="baseValue"/>.
+        /// </remarks>
+        public static SourcePosition Offset( SourcePosition baseValue, SourcePosition offset )
+        {
+            // if the base, or offset is nothing, then the base is the value (NOP)
+            if(offset.Line == 0)
+            {
+                return baseValue;
+            }
+
+            int line = baseValue.Line + offset.Line;
+            if(line == 0)
+            {
+                line = offset.Line;
+            }
+
+            int col = baseValue.Column + offset.Column;
+
+            // if the rhs line is from anything past the first line, then the column in lhs
+            // is of no relevance, only the rhs column is valid.
+            if(offset.Line > 1)
+            {
+                col = offset.Column;
+            }
+
+            return new SourcePosition( line, col, baseValue.Index + offset.Index );
         }
 
         /// <summary>Produces a string form of this position</summary>

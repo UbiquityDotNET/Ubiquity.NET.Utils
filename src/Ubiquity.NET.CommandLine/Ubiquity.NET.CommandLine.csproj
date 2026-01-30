@@ -30,7 +30,6 @@
 
     <ItemGroup>
         <PackageReference Include="System.CommandLine" />
-        <PackageReference Include="AnsiCodes" />
     </ItemGroup>
 
     <ItemGroup>

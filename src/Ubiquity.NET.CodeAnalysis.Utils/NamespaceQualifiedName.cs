@@ -31,14 +31,14 @@ namespace Ubiquity.NET.CodeAnalysis.Utils
         /// <param name="simpleName">Unqualified name of the symbol</param>
         public NamespaceQualifiedName( IEnumerable<string> namespaceNames, string simpleName )
         {
-            PolyFillExceptionValidators.ThrowIfNull(namespaceNames);
-            PolyFillExceptionValidators.ThrowIfNullOrWhiteSpace(simpleName);
+            Requires.NotNull(namespaceNames);
+            Requires.NotNullOrWhiteSpace(simpleName);
 
             SimpleName = simpleName;
             NamespaceNames = [ .. namespaceNames.Select( s => ValidateNamespacePart(s) ) ];
             static string ValidateNamespacePart( string s, [CallerArgumentExpression(nameof(s))] string? exp = null )
             {
-                PolyFillExceptionValidators.ThrowIfNullOrWhiteSpace( s, exp );
+                Requires.NotNullOrWhiteSpace( s, exp );
                 return s;
             }
         }

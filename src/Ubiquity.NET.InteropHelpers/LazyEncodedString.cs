@@ -430,11 +430,7 @@ namespace Ubiquity.NET.InteropHelpers
         /// </remarks>
         public static implicit operator ReadOnlySpan<byte>( LazyEncodedString self )
         {
-#if NET6_0_OR_GREATER
-            ArgumentNullException.ThrowIfNull( self );
-#else
-            PolyFillExceptionValidators.ThrowIfNull( self );
-#endif
+            Requires.NotNull( self );
 
             return self.ToReadOnlySpan();
         }

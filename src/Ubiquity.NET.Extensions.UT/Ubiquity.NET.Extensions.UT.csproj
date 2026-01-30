@@ -50,6 +50,4 @@
         <LastGenOutput>TestResources1.Designer.cs</LastGenOutput>
       </EmbeddedResource>
     </ItemGroup>
-
-    <Import Condition="'$(TargetFramework)'=='net481'" Project="..\Ubiquity.NET.PollyFill.SharedSources\Ubiquity.NET.PollyFill.SharedSources.projitems" Label="Shared" />
 </Project>

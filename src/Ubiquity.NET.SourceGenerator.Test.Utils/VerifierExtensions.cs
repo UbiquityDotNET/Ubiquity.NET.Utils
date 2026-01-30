@@ -329,7 +329,7 @@ namespace Ubiquity.NET.SourceGenerator.Test.Utils
                 }
 
                 string uniDiff = expected.UniDiff(actual);
-                Verify.True( string.IsNullOrWhiteSpace( uniDiff ), $"{message}Differences:\n{uniDiff}" );
+                Verify.True( string.IsNullOrWhiteSpace( uniDiff ), $"{message}\nDifferences:\n{uniDiff}" );
             }
         }
 

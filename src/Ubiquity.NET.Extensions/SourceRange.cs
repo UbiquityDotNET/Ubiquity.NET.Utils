@@ -40,6 +40,44 @@ namespace Ubiquity.NET.Extensions
         /// <remarks>This only has a value if <see cref="CanSlice"/> is <see langword="true"/></remarks>
         public int? Length => !CanSlice ? null : End.Index - Start.Index - 1;
 
+        /// <summary>Determines if the location contains the index based position</summary>
+        /// <param name="position">Index based position to test for</param>
+        /// <returns><see langword="true"/> if this location contains the position</returns>
+        public bool Contains( int position )
+        {
+            return Start.Index.HasValue
+                && End.Index.HasValue
+                && Start.Index.Value <= position
+                && End.Index.Value >= position;
+        }
+
+        /// <summary>Offset this location by amounts specified</summary>
+        /// <param name="offset">relative location to offset</param>
+        /// <returns>New location offset from this instance</returns>
+        /// <remarks>
+        /// In essence this location is considered an absolute location and <paramref name="offset"/>
+        /// is relative to it. The result is that of adding the relative offset to this location.
+        /// </remarks>
+        public SourceRange Offset( SourceRange offset )
+        {
+            return Offset( this, offset );
+        }
+
+        /// <summary>Offset an absolute location by amounts specified in a relative offset</summary>
+        /// <param name="baseValue">Base/Absolute location to apply the offset to</param>
+        /// <param name="offset">relative location to offset</param>
+        /// <returns>New location offset from <paramref name="baseValue"/></returns>
+        /// <remarks>
+        /// In essence <paramref name="baseValue"/> is considered an absolute location and <paramref name="offset"/>
+        /// is relative to it. The result is that of adding the relative offset to the absolute location.
+        /// </remarks>
+        public static SourceRange Offset( SourceRange baseValue, SourceRange offset )
+        {
+            var start = SourcePosition.Offset(baseValue.Start, offset.Start);
+            var end = SourcePosition.Offset(baseValue.End, offset.End);
+            return new SourceRange( start, end );
+        }
+
         /// <inheritdoc/>
         public override string ToString( )
         {
@@ -50,7 +88,7 @@ namespace Ubiquity.NET.Extensions
         /// <inheritdoc/>
         /// <remarks>
         /// Accepted format strings are:
-        /// "B" for MSBuild format used for Windows build tools.
+        /// "M" for MSBuild format used for Windows build tools.
         /// "G" for runtime specific (For Windows, this is the MSBuild format)
         /// [Format strings for other runtimes TBD]
         /// </remarks>

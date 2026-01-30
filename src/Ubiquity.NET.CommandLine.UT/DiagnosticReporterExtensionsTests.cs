@@ -9,6 +9,9 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 using Ubiquity.NET.Extensions;
 
+// Disambiguate from test framework type
+using MessageLevel = Ubiquity.NET.Extensions.MessageLevel;
+
 namespace Ubiquity.NET.CommandLine.UT
 {
     [TestClass]
@@ -75,8 +78,8 @@ namespace Ubiquity.NET.CommandLine.UT
             var msg = reporter.VerboseMessages[ 0 ];
             Assert.IsNull( msg.Code );
             Assert.AreEqual( testLevel, msg.Level );
-            Assert.IsNull( msg.Location );
-            Assert.IsNull( msg.Origin );
+            Assert.IsNull( msg.SourceLocation.Source );
+            Assert.AreEqual( msg.SourceLocation.Range, default );
             Assert.IsNull( msg.Subcategory );
             Assert.AreEqual( expectedMsg, msg.Text );
 
@@ -121,8 +124,8 @@ namespace Ubiquity.NET.CommandLine.UT
             var msg = reporter.VerboseMessages[ 0 ];
             Assert.IsNull( msg.Code );
             Assert.AreEqual( testLevel, msg.Level );
-            Assert.IsNull( msg.Location );
-            Assert.IsNull( msg.Origin );
+            Assert.IsNull( msg.SourceLocation.Source );
+            Assert.AreEqual( msg.SourceLocation.Range, default );
             Assert.IsNull( msg.Subcategory );
             Assert.AreEqual( testMsg, msg.Text );
 
@@ -156,8 +159,8 @@ namespace Ubiquity.NET.CommandLine.UT
             var msg = reporter.VerboseMessages[ 0 ];
             Assert.IsNull( msg.Code );
             Assert.AreEqual( testLevel, msg.Level );
-            Assert.AreEqual( testLocation, msg.Location );
-            Assert.IsNull( msg.Origin );
+            Assert.AreEqual( testLocation, msg.SourceLocation.Range );
+            Assert.IsNull( msg.SourceLocation.Source );
             Assert.IsNull( msg.Subcategory );
             Assert.AreEqual( expectedMsg, msg.Text );
 
@@ -209,8 +212,8 @@ namespace Ubiquity.NET.CommandLine.UT
             var msg = reporter.VerboseMessages[ 0 ];
             Assert.IsNull( msg.Code );
             Assert.AreEqual( testLevel, msg.Level );
-            Assert.AreEqual( testLocation, msg.Location );
-            Assert.AreEqual( testOrigin, msg.Origin );
+            Assert.AreEqual( testLocation, msg.SourceLocation.Range );
+            Assert.AreEqual( testOrigin, msg.SourceLocation.Source );
             Assert.IsNull( msg.Subcategory );
             Assert.AreEqual( expectedMsg, msg.Text );
 
@@ -244,8 +247,8 @@ namespace Ubiquity.NET.CommandLine.UT
             var msg = reporter.VerboseMessages[ 0 ];
             Assert.IsNull( msg.Code );
             Assert.AreEqual( MessageLevel.Verbose, msg.Level );
-            Assert.AreEqual( location, msg.Location );
-            Assert.AreEqual( origin, msg.Origin );
+            Assert.AreEqual( location, msg.SourceLocation.Range );
+            Assert.AreEqual( origin, msg.SourceLocation.Source );
             Assert.IsNull( msg.Subcategory );
             Assert.AreEqual( expectedMsg, msg.Text );
 
@@ -292,8 +295,8 @@ namespace Ubiquity.NET.CommandLine.UT
             var msg = reporter.VerboseMessages[ 0 ];
             Assert.IsNull( msg.Code );
             Assert.AreEqual( MessageLevel.Verbose, msg.Level );
-            Assert.AreEqual( location, msg.Location );
-            Assert.AreEqual( origin, msg.Origin );
+            Assert.AreEqual( location, msg.SourceLocation.Range );
+            Assert.AreEqual( origin, msg.SourceLocation.Source );
             Assert.IsNull( msg.Subcategory );
             Assert.AreEqual( expecteMsg, msg.Text );
         }
@@ -326,8 +329,8 @@ namespace Ubiquity.NET.CommandLine.UT
             var msg = reporter.VerboseMessages[ 0 ];
             Assert.AreEqual( testCode, msg.Code );
             Assert.AreEqual( testLevel, msg.Level );
-            Assert.AreEqual( testLocation, msg.Location );
-            Assert.AreEqual( testOrigin, msg.Origin );
+            Assert.AreEqual( testLocation, msg.SourceLocation.Range );
+            Assert.AreEqual( testOrigin, msg.SourceLocation.Source );
             Assert.AreEqual( testSubcategory, msg.Subcategory );
             Assert.AreEqual( testMsg, msg.Text );
         }
@@ -336,37 +339,33 @@ namespace Ubiquity.NET.CommandLine.UT
           = [
                 new DiagnosticMessage( )
                 {
+                    SourceLocation = new SourceLocation( new System.Uri( @"file://foo" ), new SourceRange( new SourcePosition( 2, 3, 10 ), new SourcePosition( 3, 3, 12 ) ) ),
                     Code = "Code0",
                     Level = MessageLevel.Error,
-                    Location = new Extensions.SourceRange( new SourcePosition( 2, 3, 10 ), new SourcePosition( 3, 3, 12 ) ),
-                    Origin = new System.Uri( @"file://foo" ),
                     Subcategory = "subcategory",
                     Text = "Text"
                 },
                 new DiagnosticMessage( )
                 {
+                    SourceLocation = new SourceLocation( new System.Uri( @"file://foo" ), new SourceRange( new SourcePosition( 2, 3, 10 ), new SourcePosition( 3, 3, 12 ) ) ),
                     Code = "Code1",
                     Level = MessageLevel.Warning,
-                    Location = new Extensions.SourceRange( new SourcePosition( 2, 3, 10 ), new SourcePosition( 3, 3, 12 ) ),
-                    Origin = new System.Uri( @"file://foo" ),
                     Subcategory = "subcategory",
                     Text = "Text"
                 },
                 new DiagnosticMessage( )
                 {
+                    SourceLocation = new SourceLocation( new System.Uri( @"file://foo" ), new SourceRange( new SourcePosition( 2, 3, 10 ), new SourcePosition( 3, 3, 12 ) ) ),
                     Code = "Code2",
                     Level = MessageLevel.Information,
-                    Location = new Extensions.SourceRange( new SourcePosition( 2, 3, 10 ), new SourcePosition( 3, 3, 12 ) ),
-                    Origin = new System.Uri( @"file://foo" ),
                     Subcategory = "subcategory",
                     Text = "Text"
                 },
                 new DiagnosticMessage( )
                 {
+                    SourceLocation = new SourceLocation( new System.Uri( @"file://foo" ), new SourceRange( new SourcePosition( 2, 3, 10 ), new SourcePosition( 3, 3, 12 ) ) ),
                     Code = "Code3",
                     Level = MessageLevel.Verbose,
-                    Location = new Extensions.SourceRange( new SourcePosition( 2, 3, 10 ), new SourcePosition( 3, 3, 12 ) ),
-                    Origin = new System.Uri( @"file://foo" ),
                     Subcategory = "subcategory",
                     Text = "Text"
                 }

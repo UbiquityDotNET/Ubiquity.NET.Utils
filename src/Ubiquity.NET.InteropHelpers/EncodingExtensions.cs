@@ -15,26 +15,6 @@ namespace Ubiquity.NET.InteropHelpers
     /// </remarks>
     public static class EncodingExtensions
     {
-#if NETSTANDARD2_0
-        /// <summary>Encodes into a span of bytes a set of characters from the specified read-only span.</summary>
-        /// <param name="self">Encoding to extend</param>
-        /// <param name="chars">The span containing the set of characters to encode.</param>
-        /// <param name="bytes">The byte span to hold the encoded bytes.</param>
-        /// <returns>The number of encoded bytes.</returns>
-        [SuppressMessage( "StyleCop.CSharp.LayoutRules", "SA1519:Braces should not be omitted from multi-line child statement", Justification = "multiple fixed statements" )]
-        internal static int GetBytes( this Encoding self, ReadOnlySpan<char> chars, Span<byte> bytes )
-        {
-            unsafe
-            {
-                fixed(Char* pChar = chars)
-                fixed(byte* pBytes = bytes)
-                {
-                    return self.GetBytes(pChar, chars.Length, pBytes, bytes.Length);
-                }
-            }
-        }
-#endif
-
         /// <summary>Provides conversion of a span of bytes to managed code</summary>
         /// <param name="self">The encoding to use for conversion</param>
         /// <param name="span">Input span to convert with or without a null terminator.</param>
@@ -45,11 +25,7 @@ namespace Ubiquity.NET.InteropHelpers
         /// <exception cref="ArgumentNullException"><paramref name="self"/> is <see langword="null"/></exception>
         public static string? MarshalString( this Encoding self, ReadOnlySpan<byte> span )
         {
-#if NET6_0_OR_GREATER
-            ArgumentNullException.ThrowIfNull( self );
-#else
-            PolyFillExceptionValidators.ThrowIfNull( self );
-#endif
+            Requires.NotNull( self );
 
             return span.IsEmpty
                  ? string.Empty // optimization for empty spans
@@ -66,12 +42,7 @@ namespace Ubiquity.NET.InteropHelpers
         /// <exception cref="ArgumentNullException"><paramref name="self"/> is <see langword="null"/></exception>
         public static unsafe string? MarshalString( this Encoding self, byte* nativeStringPtr )
         {
-#if NET6_0_OR_GREATER
-            ArgumentNullException.ThrowIfNull( self );
-#else
-            PolyFillExceptionValidators.ThrowIfNull( self );
-#endif
-
+            Requires.NotNull( self );
             if(nativeStringPtr is null)
             {
                 return null;
