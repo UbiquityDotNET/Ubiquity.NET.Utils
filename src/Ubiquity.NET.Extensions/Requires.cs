@@ -42,19 +42,26 @@ namespace Ubiquity.NET.Extensions
 #endif
         }
 
-        /// <summary>Throws an <see cref="ObjectDisposedException"/> if <paramref name="condition"/> is <see langword="false"/>.</summary>
-        /// <param name="condition">Condition to determine if the instance is disposed</param>
+        /// <summary>Throws an <see cref="ObjectDisposedException"/> if <paramref name="isDisposed"/> is <see langword="true"/>.</summary>
+        /// <param name="isDisposed">Condition to determine if the instance is disposed</param>
         /// <param name="instance">instance that is tested; Used to get type name for exception</param>
-        /// <exception cref="ObjectDisposedException"><paramref name="condition"/> is <see langword="true"/></exception>
+        /// <exception cref="ObjectDisposedException"><paramref name="isDisposed"/> is <see langword="true"/></exception>
+        /// <remarks>
+        /// This will throw an <see cref="ObjectDisposedException"/> if <paramref name="isDisposed"/> is true.
+        /// That is, this assumes that the expression for <paramref name="isDisposed"/> is semantically some form of
+        /// "IsDisposed" check. This is the same as the semantics for <c>ObjectDisposedException.ThrowIf</c> if the
+        /// runtime supports that. The result is semantically the same. An exception is thrown if the expression indicates
+        /// that <paramref name="instance"/> is disposed.
+        /// </remarks>
         public static void NotDisposed(
-            [DoesNotReturnIfAttribute( false )] bool condition,
+            [DoesNotReturnIfAttribute( true )] bool isDisposed,
             object instance
             )
         {
 #if NETSTANDARD2_0
-            PolyFillExceptionValidators.ThrowIf(!condition, instance);
+            PolyFillExceptionValidators.ThrowIf(isDisposed, instance);
 #else
-            ObjectDisposedException.ThrowIf(!condition, instance);
+            ObjectDisposedException.ThrowIf(isDisposed, instance);
 #endif
         }
 
